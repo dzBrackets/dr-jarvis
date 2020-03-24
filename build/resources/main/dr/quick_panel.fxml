@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="738.0" prefWidth="912.0" style="-fx-background-color: #2C3964;" stylesheets="@CSS/quick_panel_style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label id="top_label" layoutX="48.0" layoutY="38.0" prefHeight="17.0" prefWidth="194.0" style="-fx-font-size: 18px;" text="Patient informations :" textFill="WHITE" />
+      <Pane id="pat_info_panel" layoutX="48.0" layoutY="87.0" prefHeight="136.0" prefWidth="823.0" style="-fx-background-color: #737FE7; -fx-background-radius: 30px;" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="41.0">
+         <children>
+            <Label id="info1_label" layoutX="60.0" layoutY="14.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Name :" textFill="WHITE" />
+            <Label id="info2_label" layoutX="60.0" layoutY="55.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Last Name" textFill="WHITE" />
+            <Label id="info3_label" layoutX="60.0" layoutY="95.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Last Visite :" textFill="WHITE" />
+            <Label id="name_label" layoutX="226.0" layoutY="15.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Aymen" textFill="WHITE" />
+            <Label id="last_name_label" layoutX="226.0" layoutY="56.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Brahim" textFill="WHITE" />
+            <Label id="visite_label" layoutX="226.0" layoutY="95.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="32/02/2050" textFill="WHITE" />
+            <Label id="info4_label" layoutX="387.0" layoutY="15.0" prefHeight="21.0" prefWidth="132.0" style="-fx-font-size: 15px;" text="Last Notice" textFill="WHITE" />
+            <Label id="notice_label" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="10.0" layoutX="387.0" layoutY="47.0" prefHeight="75.0" prefWidth="332.0" style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-blend-mode: normal;" text="fgfgfgfg gfdgdgdg&#10;&#10;fhgfgfgfg" textFill="WHITE">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
