@@ -1,0 +1,36 @@
+
+#quick_pane{
+-fx-background-color :#2C3964 ;
+}
+.increment-arrow-button {
+-fx-background-color :#2196F3 ;
+ -fx-background-radius:0px 50px 0px 0px;
+
+}
+.decrement-arrow-button {
+-fx-background-color :#2196F3 ;
+ -fx-background-radius :0px 0px 50px 0px ;
+}
+.increment-arrow{
+-fx-background-color :#ffffff ;
+}
+.decrement-arrow{
+-fx-background-color :#ffffff ;
+}
+#spinner{
+-fx-background-color :transparent;
+}
+.jfx-combo-box .arrow-button{
+-fx-background-color:#2196F3;
+}
+.jfx-combo-box{
+-fx-prompt-text-fill: white;
+-fx-prompt-text-align:center;
+ -fx-font-size: 18px;
+}
+.jfx-combo-box .arrow-button .arrow{
+	-fx-background-color:#ffffff;
+}
+.jfx-combo-box .arrow-button{
+	-fx-background-radius:0px 100px 100px 0px;
+}

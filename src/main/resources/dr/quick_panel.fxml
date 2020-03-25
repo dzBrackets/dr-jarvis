@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="738.0" prefWidth="912.0" style="-fx-background-color: #2C3964;" stylesheets="@CSS/quick_panel_style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="738.0" prefWidth="912.0" stylesheets="@CSS/quick_panel_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label id="top_label" layoutX="48.0" layoutY="38.0" prefHeight="17.0" prefWidth="194.0" style="-fx-font-size: 18px;" text="Patient informations :" textFill="WHITE" />
-      <Pane id="pat_info_panel" layoutX="48.0" layoutY="87.0" prefHeight="136.0" prefWidth="823.0" style="-fx-background-color: #737FE7; -fx-background-radius: 30px;" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="41.0">
+      <Label id="top_label" layoutX="48.0" layoutY="14.0" prefHeight="17.0" prefWidth="194.0" style="-fx-font-size: 18px;" text="Patient informations :" textFill="WHITE" />
+      <Pane id="pat_info_panel" layoutX="47.0" layoutY="53.0" prefHeight="136.0" prefWidth="823.0" style="-fx-background-color: #737FE7; -fx-background-radius: 30px;" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0">
          <children>
             <Label id="info1_label" layoutX="60.0" layoutY="14.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Name :" textFill="WHITE" />
             <Label id="info2_label" layoutX="60.0" layoutY="55.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Last Name" textFill="WHITE" />
@@ -17,12 +25,35 @@
             <Label id="last_name_label" layoutX="226.0" layoutY="56.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Brahim" textFill="WHITE" />
             <Label id="visite_label" layoutX="226.0" layoutY="95.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="32/02/2050" textFill="WHITE" />
             <Label id="info4_label" layoutX="387.0" layoutY="15.0" prefHeight="21.0" prefWidth="132.0" style="-fx-font-size: 15px;" text="Last Notice" textFill="WHITE" />
-            <Label id="notice_label" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="10.0" layoutX="387.0" layoutY="47.0" prefHeight="75.0" prefWidth="332.0" style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-blend-mode: normal;" text="fgfgfgfg gfdgdgdg&#10;&#10;fhgfgfgfg" textFill="WHITE">
+            <Label id="notice_label" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="10.0" layoutX="387.0" layoutY="47.0" prefHeight="75.0" prefWidth="332.0" style="-fx-background-color: rgba(255, 255, 255, 0.06);" text="fgfgfgfg gfdgdgdg&#10;&#10;fhgfgfgfg" textFill="WHITE">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </Label>
          </children>
       </Pane>
+      <Label layoutX="48.0" layoutY="199.0" prefHeight="17.0" prefWidth="162.0" style="-fx-font-size: 18px;" text="Add Drugs :" textFill="WHITE" />
+      <JFXTextField fx:id="drug_name_input" focusColor="WHITE" layoutX="48.0" layoutY="249.0" prefHeight="39.0" prefWidth="248.0" promptText="Name" style="-jfx-focus-color: #43A047; -jfx-unfocus-color: #626ED4;" unFocusColor="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXTextField>
+      <Spinner id="spinner" layoutX="354.0" layoutY="231.0" prefHeight="57.0" prefWidth="126.0">
+         
+      </Spinner>
+      <Label layoutX="354.0" layoutY="199.0" prefHeight="17.0" prefWidth="104.0" style="-fx-font-size: 18px;" text="Qts" textFill="WHITE" />
+      <JFXTextArea focusColor="#43a047" layoutX="517.0" layoutY="231.0" prefHeight="57.0" prefWidth="264.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30px;" />
+      <Label layoutX="517.0" layoutY="199.0" prefHeight="17.0" prefWidth="220.0" style="-fx-font-size: 18px;" text="Notice :" textFill="WHITE" />
+      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="798.0" layoutY="222.0" prefHeight="75.0" prefWidth="72.0" style="-fx-background-radius: 5em; -fx-background-color: #737FE7;" text="Button">
+         <graphic>
+            <ImageView fitHeight="66.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/quick_btn.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXComboBox layoutX="48.0" layoutY="317.0" prefHeight="39.0" prefWidth="104.0" promptText="Type" />
+      <JFXComboBox layoutX="192.0" layoutY="317.0" prefHeight="39.0" prefWidth="104.0" promptText="Doss" />
    </children>
 </AnchorPane>
