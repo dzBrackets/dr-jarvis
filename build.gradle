@@ -21,11 +21,18 @@ dependencies {
     compile 'com.github.jiconfont:jiconfont-javafx:1.0.0'
     compile 'org.kordamp.bootstrapfx:bootstrapfx-core:0.2.4'
     implementation 'org.controlsfx:controlsfx:11.0.1'
+
 }
 
 
 javafx {
     version = "12"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
+
+}
+run {
+    run {
+        jvmArgs = ['--add-exports=javafx.base/com.sun.javafx.event=ALL-UNNAMED']
+    }
 }
 mainClassName = 'dr.Main'

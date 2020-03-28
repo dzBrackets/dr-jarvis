@@ -10,9 +10,9 @@
 
 <AnchorPane id="serach_panel" prefHeight="358.0" prefWidth="698.0" stylesheets="@CSS/search_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dr.PatientSearch">
    <children>
-      <Pane id="serach_panel" layoutX="33.0" layoutY="113.0" prefHeight="133.0" prefWidth="632.0" style="-fx-background-color: #2C3964; -fx-background-radius: 50px;" AnchorPane.bottomAnchor="113.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="113.0">
+      <Pane id="serach_panel" fx:id="serach_panel" layoutX="33.0" layoutY="113.0" prefHeight="133.0" prefWidth="632.0" style="-fx-background-color: #2C3964; -fx-background-radius: 50px;" AnchorPane.bottomAnchor="113.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="113.0">
          <children>
-            <JFXButton id="add_btn" contentDisplay="GRAPHIC_ONLY" layoutX="521.0" prefHeight="133.0" prefWidth="111.0" style="-fx-background-radius: 0px 50px 50px 0px;">
+            <JFXButton id="add_btn" fx:id="add_btn" contentDisplay="GRAPHIC_ONLY" layoutX="521.0" onAction="#onClick" prefHeight="133.0" prefWidth="111.0" style="-fx-background-radius: 0px 50px 50px 0px;">
                <graphic>
                   <ImageView fitHeight="62.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -21,8 +21,8 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Label id="search_label" layoutX="55.0" layoutY="24.0" prefHeight="34.0" prefWidth="198.0" text="Patient name :" textFill="WHITE" />
-            <JFXTextField id="search_TF" layoutX="55.0" layoutY="58.0" prefHeight="34.0" prefWidth="435.0" />
+            <Label id="search_label" fx:id="search_label" layoutX="55.0" layoutY="24.0" prefHeight="34.0" prefWidth="198.0" text="Patient name :" textFill="WHITE" />
+            <JFXTextField fx:id="search_TF" layoutX="55.0" layoutY="58.0" prefHeight="34.0" prefWidth="435.0" />
          </children>
       </Pane>
       <JFXButton id="cancel_btn" contentDisplay="GRAPHIC_ONLY" layoutX="603.0" layoutY="48.0" prefHeight="59.0" prefWidth="62.0" style="-fx-background-color: #D50000; -fx-background-radius: 200px;">
