@@ -1,4 +1,4 @@
-package dr;
+package Controler;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;

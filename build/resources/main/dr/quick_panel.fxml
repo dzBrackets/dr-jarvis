@@ -4,17 +4,18 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" stylesheets="@CSS/quick_panel_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" stylesheets="@CSS/quick_panel_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.quick_panelC">
    <children>
       <Label id="top_label" layoutX="48.0" layoutY="14.0" prefHeight="17.0" prefWidth="194.0" style="-fx-font-size: 18px;" text="Patient informations :" textFill="WHITE" />
       <Pane id="pat_info_panel" layoutX="47.0" layoutY="53.0" prefHeight="136.0" prefWidth="823.0" style="-fx-background-color: #737FE7; -fx-background-radius: 30px;" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0">
@@ -56,8 +57,7 @@
       </JFXButton>
       <JFXComboBox id="type_combo" layoutX="48.0" layoutY="337.0" prefHeight="39.0" prefWidth="104.0" promptText="Type" />
       <JFXComboBox id="doss_combo" layoutX="190.0" layoutY="337.0" prefHeight="39.0" prefWidth="104.0" promptText="Doss" />
-      <JFXTreeTableView layoutX="49.0" layoutY="431.0" prefHeight="246.0" prefWidth="828.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0" />
-      <Label layoutX="48.0" layoutY="385.0" prefHeight="39.0" prefWidth="98.0" text="Drugs List :" textFill="WHITE">
+      <Label layoutX="84.0" layoutY="383.0" prefHeight="39.0" prefWidth="98.0" text="Drugs List :" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -77,5 +77,15 @@
             <Font size="15.0" />
          </font>
       </JFXButton>
+      <TableView id="table" fx:id="table" layoutX="84.0" layoutY="430.0" prefHeight="248.0" prefWidth="744.0" AnchorPane.leftAnchor="84.0" AnchorPane.rightAnchor="84.0">
+        <columns>
+          <TableColumn id="name_colm" fx:id="name_colm" prefWidth="120.0" text="Name" />
+          <TableColumn id="type_colm" fx:id="type_colm" prefWidth="120.0" text="Type" />
+            <TableColumn id="type_colm" fx:id="doss_colm" minWidth="0.0" prefWidth="120.0" text="Doss" />
+            <TableColumn id="qts_colm" fx:id="qts_colm" prefWidth="102.0" text="Qts" />
+            <TableColumn id="notice_colm" fx:id="notice_colm" prefWidth="217.0" text="Notice" />
+            <TableColumn id="delete_colm" fx:id="delete_colm" prefWidth="179.0" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

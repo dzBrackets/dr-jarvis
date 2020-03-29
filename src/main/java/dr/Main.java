@@ -17,7 +17,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("/dr/patient_search.fxml"));
+        Parent root= FXMLLoader.load(getClass().getResource("/dr/quick_panel.fxml"));
         Scene scene=new Scene(root);
         scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);
