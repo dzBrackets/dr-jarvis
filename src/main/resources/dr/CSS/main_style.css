@@ -1,6 +1,4 @@
 .root{
-	-fx-backround-color:transparent;
+	-fx-background-color:transparent;
 }
-#content_panel {
-	-fx-backround-color:transparent;
-}
+

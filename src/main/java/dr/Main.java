@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -17,10 +18,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("/dr/quick_panel.fxml"));
+        Parent root= FXMLLoader.load(getClass().getResource("/dr/main_panel.fxml"));
         Scene scene=new Scene(root);
         scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
     }
 }
