@@ -79,12 +79,12 @@
       </JFXButton>
       <TableView id="table" fx:id="table" layoutX="84.0" layoutY="430.0" prefHeight="248.0" prefWidth="744.0" AnchorPane.leftAnchor="84.0" AnchorPane.rightAnchor="84.0">
         <columns>
-          <TableColumn id="name_colm" fx:id="name_colm" prefWidth="120.0" text="Name" />
-          <TableColumn id="type_colm" fx:id="type_colm" prefWidth="120.0" text="Type" />
+          <TableColumn id="name_colm" fx:id="name_colm" prefWidth="116.0" text="Name" />
+          <TableColumn id="type_colm" fx:id="type_colm" prefWidth="124.0" text="Type" />
             <TableColumn id="type_colm" fx:id="doss_colm" minWidth="0.0" prefWidth="120.0" text="Doss" />
             <TableColumn id="qts_colm" fx:id="qts_colm" prefWidth="102.0" text="Qts" />
-            <TableColumn id="notice_colm" fx:id="notice_colm" prefWidth="217.0" text="Notice" />
-            <TableColumn id="delete_colm" fx:id="delete_colm" prefWidth="179.0" />
+            <TableColumn id="notice_colm" fx:id="notice_colm" prefWidth="228.0" text="Notice" />
+            <TableColumn id="delete_colm" fx:id="delete_colm" prefWidth="51.0" sortable="false" />
         </columns>
       </TableView>
    </children>

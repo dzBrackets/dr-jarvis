@@ -1,6 +1,8 @@
 package model;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.geometry.Insets;
+import javafx.scene.image.ImageView;
 
 public class prescription {
     String name,type,doss,qts,notice;
@@ -14,6 +16,10 @@ public class prescription {
         this.qts=qts;
         this.notice=notice;
         this.del_btn=del_btn;
+        ImageView img =new ImageView("dr/image/minus_24px.png");
+        del_btn.setGraphic(img);
+
+
     }
 
     public String getName() {

@@ -83,7 +83,7 @@ loadData();
     }
     public void  loadData(){
         ObservableList<prescription> data = FXCollections.observableArrayList();
-        data.add(new prescription("Cocayin","Sarou5","bazzaf","5 yakfo","mlih ll nik",new JFXButton("delete")));
+        data.add(new prescription("Cocayin","Sarou5","bazzaf","5 yakfo","mlih ll nik",new JFXButton()));
         table.setItems(data);
 
     }
