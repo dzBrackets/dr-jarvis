@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="738.0" prefWidth="1048.0" stylesheets="@CSS/main_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="main_panel" fx:id="main_panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="1048.0" stylesheets="@CSS/main_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.MainPanelC">
    <children>
-      <AnchorPane id="side_panel" layoutX="22.0" layoutY="10.0" prefHeight="722.0" prefWidth="89.0" style="-fx-background-color: #2C3964; -fx-background-radius: 45px;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="10.0">
+      <AnchorPane id="side_panel" layoutX="22.0" layoutY="10.0" prefHeight="722.0" prefWidth="89.0" style="-fx-background-color: #2C3964; -fx-background-radius: 45px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="15.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -23,7 +23,7 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton id="prescription_btn" contentDisplay="GRAPHIC_ONLY" layoutX="1.0" layoutY="257.0" opacity="0.66" prefHeight="88.0" prefWidth="88.0">
+            <JFXButton id="prescription_btn" fx:id="prescription_btn" contentDisplay="GRAPHIC_ONLY" layoutX="1.0" layoutY="257.0" onAction="#new_precP" opacity="0.66" prefHeight="88.0" prefWidth="88.0">
                <graphic>
                   <ImageView id="prescription-img" fitHeight="32.0" fitWidth="38.0" opacity="0.63" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -66,7 +66,7 @@
                         <Image url="@image/quick_btn.png" />
                      </image>
                   </ImageView>
-                  <JFXButton id="quick_btn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" maxHeight="88.0" maxWidth="88.0" prefHeight="88.0" prefWidth="88.0" style="-fx-background-radius: 5em;" text="Button" textAlignment="CENTER">
+                  <JFXButton id="quick_btn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" maxHeight="88.0" maxWidth="88.0" onAction="#add_quick" prefHeight="88.0" prefWidth="88.0" style="-fx-background-radius: 5em;" text="Button" textAlignment="CENTER">
                      <graphic>
                      </graphic>
                   </JFXButton>
@@ -74,6 +74,13 @@
             </Pane>
          </children>
       </AnchorPane>
-      <AnchorPane id="content_panel" layoutX="133.0" prefHeight="738.0" prefWidth="912.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="132.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane id="content_panel" fx:id="content_panel" layoutX="140.0" prefHeight="738.0" prefWidth="912.0" style="-fx-border-radius: 68px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane id="quick_panel" fx:id="quick_panel" prefHeight="738.0" prefWidth="916.0" style="-fx-border-radius: 27px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <fx:include source="quick_panel.fxml" />
+               </children>
+            </Pane>
+         </children></AnchorPane>
    </children>
 </AnchorPane>
