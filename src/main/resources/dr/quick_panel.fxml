@@ -17,46 +17,23 @@
 
 <AnchorPane id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 27px; -fx-background-radius: 27px;" stylesheets="@CSS/quick_panel_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.quick_panelC">
    <children>
-      <Label id="top_label" layoutX="48.0" layoutY="14.0" prefHeight="17.0" prefWidth="194.0" style="-fx-font-size: 18px;" text="Patient informations :" textFill="WHITE" />
-      <Pane id="pat_info_panel" layoutX="47.0" layoutY="53.0" prefHeight="136.0" prefWidth="823.0" style="-fx-background-color: #737FE7; -fx-background-radius: 30px;" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0">
+      <Label id="top_label" layoutX="585.0" layoutY="14.0" prefHeight="17.0" prefWidth="194.0" style="-fx-font-size: 18px;" text="Patient informations :" textFill="WHITE" />
+      <Pane id="pat_info_panel" layoutX="585.0" layoutY="48.0" prefHeight="341.0" prefWidth="304.0" style="-fx-background-color: #765EE2; -fx-background-radius: 30px;" AnchorPane.leftAnchor="585.0" AnchorPane.rightAnchor="23.0">
          <children>
-            <Label id="info1_label" layoutX="60.0" layoutY="14.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Name :" textFill="WHITE" />
-            <Label id="info2_label" layoutX="60.0" layoutY="55.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Last Name" textFill="WHITE" />
-            <Label id="info3_label" layoutX="60.0" layoutY="95.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Last Visite :" textFill="WHITE" />
-            <Label id="name_label" layoutX="226.0" layoutY="15.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Aymen" textFill="WHITE" />
-            <Label id="last_name_label" layoutX="226.0" layoutY="56.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Brahim" textFill="WHITE" />
-            <Label id="visite_label" layoutX="226.0" layoutY="95.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="32/02/2050" textFill="WHITE" />
-            <Label id="info4_label" layoutX="387.0" layoutY="15.0" prefHeight="21.0" prefWidth="132.0" style="-fx-font-size: 15px;" text="Last Notice" textFill="WHITE" />
-            <Label id="last_notice_label" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="10.0" layoutX="387.0" layoutY="47.0" prefHeight="75.0" prefWidth="332.0" style="-fx-background-color: rgba(255, 255, 255, 0.06);" text="fgfgfgfg gfdgdgdg&#10;&#10;fhgfgfgfg" textFill="WHITE">
+            <Label id="info4_label" layoutX="20.0" layoutY="150.0" prefHeight="21.0" prefWidth="132.0" style="-fx-font-size: 15px;" text="Last Notice :" textFill="WHITE" />
+            <Label id="info1_label" layoutX="20.0" layoutY="26.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Name :" textFill="WHITE" />
+            <Label id="name_label" fx:id="name_label" layoutX="149.0" layoutY="26.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Aymen Brahim" textFill="WHITE" />
+            <Label id="info2_label" layoutX="20.0" layoutY="66.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Age :" textFill="WHITE" />
+            <Label id="age_label" fx:id="age_label" layoutX="149.0" layoutY="66.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="12 year" textFill="WHITE" />
+            <Label id="info3_label" layoutX="19.0" layoutY="106.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Last Visite :" textFill="WHITE" />
+            <Label id="visite_label" fx:id="visite_label" layoutX="148.0" layoutY="106.0" prefHeight="21.0" prefWidth="132.0" style="-fx-font-size: 15px;" text="32/02/2050" textFill="WHITE" />
+            <Label id="last_notice_label" fx:id="last_notice_label" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="10.0" layoutX="14.0" layoutY="174.0" prefHeight="150.0" prefWidth="276.0" style="-fx-background-color: rgba(255, 255, 255, 0.06);" text="fgfgfgfg gfdgdgdg&#10;&#10;fhgfgfgfg" textFill="WHITE">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </Label>
          </children>
       </Pane>
-      <Label layoutX="48.0" layoutY="199.0" prefHeight="17.0" prefWidth="162.0" style="-fx-font-size: 18px;" text="Add Drugs :" textFill="WHITE" />
-      <JFXTextField id="drugs_name_text_field" fx:id="drug_name_input" focusColor="WHITE" layoutX="48.0" layoutY="269.0" prefHeight="39.0" prefWidth="248.0" promptText="Name" style="-jfx-focus-color: #43A047; -jfx-unfocus-color: #626ED4;" unFocusColor="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </JFXTextField>
-      <Spinner id="spinner" layoutX="338.0" layoutY="251.0" prefHeight="57.0" prefWidth="126.0">
-         
-      </Spinner>
-      <Label layoutX="338.0" layoutY="218.0" prefHeight="17.0" prefWidth="104.0" style="-fx-font-size: 18px;" text="Qts" textFill="WHITE" />
-      <JFXTextArea id="notice_text_field" focusColor="#43a047" layoutX="517.0" layoutY="251.0" prefHeight="57.0" prefWidth="264.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30px;" />
-      <Label layoutX="517.0" layoutY="218.0" prefHeight="17.0" prefWidth="220.0" style="-fx-font-size: 18px;" text="Notice :" textFill="WHITE" />
-      <JFXButton id="add_btn" contentDisplay="GRAPHIC_ONLY" layoutX="798.0" layoutY="242.0" prefHeight="75.0" prefWidth="72.0" style="-fx-background-radius: 5em; -fx-background-color: #737FE7;" text="Button">
-         <graphic>
-            <ImageView fitHeight="66.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@image/quick_btn.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXComboBox id="type_combo" layoutX="48.0" layoutY="337.0" prefHeight="39.0" prefWidth="104.0" promptText="Type" />
-      <JFXComboBox id="doss_combo" layoutX="190.0" layoutY="337.0" prefHeight="39.0" prefWidth="104.0" promptText="Doss" />
       <Label layoutX="84.0" layoutY="383.0" prefHeight="39.0" prefWidth="98.0" text="Drugs List :" textFill="WHITE">
          <font>
             <Font size="18.0" />
@@ -77,15 +54,44 @@
             <Font size="15.0" />
          </font>
       </JFXButton>
+      <Pane id="print_pane" layoutX="14.0" layoutY="48.0" prefHeight="341.0" prefWidth="527.0">
+         <children>
+            <Label layoutX="20.0" layoutY="1.0" prefHeight="17.0" prefWidth="162.0" style="-fx-font-size: 18px;" text="Add Drugs :" textFill="WHITE" />
+            <JFXTextField id="drugs_name_text_field" fx:id="drug_name_input" focusColor="WHITE" layoutX="22.0" layoutY="66.0" prefHeight="39.0" prefWidth="213.0" style="-jfx-focus-color: #43A047; -jfx-unfocus-color: #626ED4;" unFocusColor="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="20.0" layoutY="35.0" prefHeight="17.0" prefWidth="162.0" style="-fx-font-size: 18px;" text="Name" textFill="WHITE" />
+            <JFXComboBox id="type_combo" layoutX="280.0" layoutY="66.0" prefHeight="39.0" prefWidth="104.0" promptText="Type" />
+            <JFXComboBox id="doss_combo" layoutX="409.0" layoutY="66.0" prefHeight="39.0" prefWidth="104.0" promptText="Doss" />
+            <Label layoutX="14.0" layoutY="171.0" prefHeight="17.0" prefWidth="220.0" style="-fx-font-size: 18px;" text="Notice :" textFill="WHITE" />
+            <Label layoutX="174.0" layoutY="130.0" prefHeight="27.0" prefWidth="98.0" style="-fx-font-size: 18px;" text="Qts :" textFill="WHITE" />
+            <Label layoutX="280.0" layoutY="130.0" prefHeight="27.0" prefWidth="16.0" style="-fx-font-size: 18px;" text="X" textAlignment="JUSTIFY" textFill="WHITE" />
+            <Spinner id="spinner" editable="true" layoutX="306.0" layoutY="121.0" prefHeight="45.0" prefWidth="64.0">
+         
+      </Spinner>
+            <JFXTextArea id="notice_text_field" focusColor="#43a047" layoutX="14.0" layoutY="206.0" prefHeight="117.0" prefWidth="368.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30px;" />
+         </children></Pane>
+      <Label id="top_label" layoutX="28.0" layoutY="14.0" prefHeight="17.0" prefWidth="194.0" style="-fx-font-size: 18px;" text="Print a perseption :" textFill="WHITE" />
+      <JFXButton id="add_btn" contentDisplay="GRAPHIC_ONLY" layoutX="505.0" layoutY="349.0" prefHeight="75.0" prefWidth="72.0" style="-fx-background-radius: 5em; -fx-background-color: #737FE7;" text="Button">
+         <graphic>
+            <ImageView fitHeight="66.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/quick_btn.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
       <TableView id="table" fx:id="table" layoutX="84.0" layoutY="430.0" prefHeight="248.0" prefWidth="744.0" AnchorPane.leftAnchor="84.0" AnchorPane.rightAnchor="84.0">
-        <columns>
-          <TableColumn id="name_colm" fx:id="name_colm" prefWidth="116.0" text="Name" />
-          <TableColumn id="type_colm" fx:id="type_colm" prefWidth="124.0" text="Type" />
+         <columns>
+            <TableColumn id="name_colm" fx:id="name_colm" prefWidth="116.0" text="Name" />
+            <TableColumn id="type_colm" fx:id="type_colm" prefWidth="124.0" text="Type" />
             <TableColumn id="type_colm" fx:id="doss_colm" minWidth="0.0" prefWidth="120.0" text="Doss" />
             <TableColumn id="qts_colm" fx:id="qts_colm" prefWidth="102.0" text="Qts" />
             <TableColumn id="notice_colm" fx:id="notice_colm" prefWidth="228.0" text="Notice" />
             <TableColumn id="delete_colm" fx:id="delete_colm" prefWidth="51.0" sortable="false" />
-        </columns>
+         </columns>
       </TableView>
    </children>
 </AnchorPane>

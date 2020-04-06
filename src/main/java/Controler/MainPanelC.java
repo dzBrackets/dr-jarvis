@@ -1,10 +1,12 @@
 package Controler;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -20,10 +22,13 @@ public class MainPanelC  implements Initializable {
     public AnchorPane main_panel;
     public Pane patient_search;
     public Pane quick_panel;
+    public AnchorPane content_panel;
+    double xOffset,yOffset;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
     }
 
     public void add_quick(ActionEvent actionEvent) throws IOException {

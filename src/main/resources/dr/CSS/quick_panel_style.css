@@ -19,7 +19,24 @@
 }
 #spinner{
 -fx-background-color :transparent;
+-fx-alignment: CENTER;
 }
+.spinner .text-field {
+	-fx-alignment: CENTER;
+	 -fx-font-size: 18px;
+}
+/*****************************************/
+.qts_spinner  .decrement-arrow-button, .qts_spinner .increment-arrow-button {
+-fx-background-color :transparent;
+}
+.qts_spinner  .increment-arrow-button .increment-arrow , .qts_spinner .decrement-arrow-button .decrement-arrow{
+-fx-background-color :#765EE2;
+}
+.qts_spinner .text-field{
+-fx-pref-width: 75;
+}
+
+/******************************/
 .jfx-combo-box .arrow-button{
 -fx-background-color:#2196F3;
 }
@@ -34,6 +51,18 @@
 .jfx-combo-box .arrow-button{
 	-fx-background-radius:0px 100px 100px 0px;
 }
+/************************************/
+.type_combo .arrow-button{
+	-fx-background-color:transparent;
+}
+.type_combo .arrow-button .arrow{
+	-fx-background-color:#765EE2;
+}
+.type_combo {
+/*	-fx-pref-width: 100;*/
+-jfx-unfocus-color:transparent;
+}
+/***********************************************/
 #drugs_name_text_field  {
 -fx-text-fill:white;
 -fx-prompt-text-fill: white;
@@ -49,21 +78,51 @@
 
 .table-view .column-header,
 .table-view .column-header-background .filler {
-    -fx-background-color: #2C3964;
+    -fx-background-color: #765EE2;
      -fx-text-fill:white;
 }
 .table-view .column-header .label{
    -fx-text-fill: white;
    -fx-font-weight: bold; 
    -fx-alignment: CENTER;
+   -fx-padding:15px 5px 15px 5px;
+   -fx-font-size: 15px;
 }
-/*.table-row-cell{
-	 -fx-background-radius :8px;
-}*/
-/*.table-view .cell {
-	-fx-background-color: #2C3964;
-}*/
+
 .table-view .cell{
   -fx-alignment: center;
-  
+  -fx-border :none;
+  -fx-font-size: 15px;
 }
+.table-view {
+	  -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-border-radius:27px;
+}
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}
+.table-view:row-selection .column-header-background {
+	-fx-background-radius:11px 11px 0px 0px;
+
+}
+/************************************************************************/
+#print_pane {
+	-fx-border-style :solid;
+	-fx-border-color:#755EE1;
+	-fx-border-radius:11px;
+	-fx-box-shadow:  #755EE1;
+}
+.show_btn{
+-fx-background-color: #D9D9D9; -fx-border:  solid #D9D9D9; -fx-box-sizing: border-box; -fx-border-radius: 10px;
+-fx-background-radius:10px;
+/*-fx-padding :;*/
+ -fx-pref-width: 69;
+ -fx-pref-height:23;
+ -fx-text-fill:#7C9DFF;
+ -jfx-button-type: RAISED;
+ -fx-font-size: 12px;
+}
+
+/*****************************************/
+
