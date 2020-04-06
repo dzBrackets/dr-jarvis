@@ -14,35 +14,28 @@ import javafx.scene.image.ImageView;
 
 public class prescription {
     String name;
-    JFXButton del_btn,notice;
-    JFXComboBox type,doss ;
-    Spinner<Integer> qts ;
-    ObservableList<String> type_list= FXCollections.observableArrayList("pills","dwa","siro");
-    ObservableList<String> doss_list= FXCollections.observableArrayList("10mg","20mg","250mg");
+    String type;
+    String doss;
+    String qts;
+    String notice;
+    JFXComboBox del_btn;
 
-    public prescription(String name, JFXComboBox type, JFXComboBox doss, Spinner qts, JFXButton notice,JFXButton del_btn){
-        this.name=name;
-        this.type=type;
-        this.doss=doss;
-        this.qts=qts;
-        this.notice=notice;
-        this.del_btn=del_btn;
-        ImageView img =new ImageView("dr/image/trash_24px.png");
-        del_btn.setGraphic(img);
-        notice.setText("Show");
-       /* notice.setStyle(" -fx-background-color: #D9D9D9; -fx-border:  solid #D9D9D9; -fx-box-sizing: border-box; -fx-border-radius: 10px;" +
-                "");*/
-       notice.getStyleClass().add("show_btn");
-       del_btn.getStyleClass().add("del_btn");
-       type.getStyleClass().add("type_combo");
-       doss.getStyleClass().add("type_combo");
-       qts.getStyleClass().add("qts_spinner");
-       type.setItems(type_list);
-       doss.setItems(doss_list);
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 5, 3);
-        qts.setValueFactory(valueFactory);
-
-
+    public prescription(String name, String type, String doss, String qts, String notice, JFXComboBox del_btn) {
+        this.name = name;
+        this.type = type;
+        this.doss = doss;
+        this.qts = qts;
+        this.notice = notice;
+        this.del_btn = del_btn;
+        del_btn.getStyleClass().add("type_combo");
+        ImageView img1 = new ImageView("dr/image/trash_24px.png");
+        ImageView img2 = new ImageView("dr/image/ball_point_pen_24px.png");
+        JFXButton remove_btn =new JFXButton();
+        JFXButton edit_btn =new JFXButton();
+        remove_btn.setGraphic(img1);
+        edit_btn.setGraphic(img2);
+        ObservableList<JFXButton> btn_list= FXCollections.observableArrayList(remove_btn,edit_btn);
+        del_btn.setItems(btn_list);
     }
 
     public String getName() {
@@ -53,45 +46,44 @@ public class prescription {
         this.name = name;
     }
 
-    public JFXComboBox getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(JFXComboBox type) {
+    public void setType(String type) {
         this.type = type;
     }
 
-    public JFXComboBox getDoss() {
+    public String getDoss() {
         return doss;
     }
 
-    public void setDoss(JFXComboBox doss) {
+    public void setDoss(String doss) {
         this.doss = doss;
     }
 
-    public Spinner<Integer> getQts() {
+    public String getQts() {
         return qts;
     }
 
-    public void setQts(Spinner<Integer> qts) {
+    public void setQts(String qts) {
         this.qts = qts;
     }
 
-    public JFXButton getNotice() {
+    public String getNotice() {
         return notice;
     }
 
-    public void setNotice(JFXButton notice) {
+    public void setNotice(String notice) {
         this.notice = notice;
     }
-    public JFXButton getDel_btn() {
+
+    public JFXComboBox getDel_btn() {
         return del_btn;
     }
 
-    public void setDel_btn(JFXButton del_btn) {
+    public void setDel_btn(JFXComboBox del_btn) {
         this.del_btn = del_btn;
     }
-
-
 
 }

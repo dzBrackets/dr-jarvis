@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.ImageView;
 import model.prescription;
 
 import java.net.URL;
@@ -40,7 +41,7 @@ public class quick_panelC implements Initializable {
     @FXML
     private TableColumn<prescription, String> notice_colm;
 
-    public TableColumn<prescription, JFXButton> delete_colm;
+    public TableColumn<prescription, JFXComboBox> delete_colm;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initCol();
@@ -54,34 +55,34 @@ public class quick_panelC implements Initializable {
         qts_colm.setCellValueFactory(new PropertyValueFactory<>("qts"));
         notice_colm.setCellValueFactory(new PropertyValueFactory<>("notice"));
         delete_colm.setCellValueFactory(new PropertyValueFactory<>("del_btn"));
-        editablecols();
+
     }
     public void editablecols(){
         /*  making Rows editable  */
         table.setEditable(true);
         name_colm.setCellFactory(TextFieldTableCell.forTableColumn());
-    /*    type_colm.setCellFactory(TextFieldTableCell.forTableColumn());*/
-    /*   doss_colm.setCellFactory(TextFieldTableCell.forTableColumn());*/
-      /*  qts_colm.setCellFactory(TextFieldTableCell.forTableColumn());*/
+       type_colm.setCellFactory(TextFieldTableCell.forTableColumn());
+       doss_colm.setCellFactory(TextFieldTableCell.forTableColumn());
+       qts_colm.setCellFactory(TextFieldTableCell.forTableColumn());
 
         /*making Rows event listener*/
         name_colm.setOnEditCommit(event -> {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setName(event.getNewValue());
         });
-      /*  type_colm.setOnEditCommit(event -> {
+        type_colm.setOnEditCommit(event -> {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setType(event.getNewValue());
-        });*/
-      /* doss_colm.setOnEditCommit(event -> {
+        });
+       doss_colm.setOnEditCommit(event -> {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setDoss(event.getNewValue());
-        });*/
-      /*  qts_colm.setOnEditCommit(event -> {
+        });
+       qts_colm.setOnEditCommit(event -> {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setQts(event.getNewValue());
-        });*/
+        });
     }
     public void  loadData(){
         ObservableList<prescription> data = FXCollections.observableArrayList();
-        data.add(new prescription("Cocayin",new JFXComboBox(),new JFXComboBox(),new Spinner<Integer>(),new JFXButton(),new JFXButton()));
-        data.add(new prescription("sarou5",new JFXComboBox(),new JFXComboBox(),new Spinner<Integer>(),new JFXButton(),new JFXButton()));
+        data.add(new prescription("Cocayin","pills","25mg","3","stop !",new JFXComboBox()));
+        data.add(new prescription("sarou5","dwa","siro","1000mg","do it !",new JFXComboBox()));
         table.setItems(data);
 
     }

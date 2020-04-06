@@ -23,7 +23,7 @@
 }
 .spinner .text-field {
 	-fx-alignment: CENTER;
-	 -fx-font-size: 18px;
+	 -fx-font-size: 16px;
 }
 /*****************************************/
 .qts_spinner  .decrement-arrow-button, .qts_spinner .increment-arrow-button {
@@ -43,7 +43,7 @@
 .jfx-combo-box{
 -fx-prompt-text-fill: white;
 -fx-prompt-text-align:center;
- -fx-font-size: 18px;
+ -fx-font-size: 16px;
 }
 .jfx-combo-box .arrow-button .arrow{
 	-fx-background-color:#ffffff;
@@ -59,8 +59,13 @@
 	-fx-background-color:#765EE2;
 }
 .type_combo {
-/*	-fx-pref-width: 100;*/
 -jfx-unfocus-color:transparent;
+}
+.type_combo   {
+	-jfx-focus-color :transparent;
+}
+.type_combo .list-view {
+	-fx-pref-width: 70;
 }
 /***********************************************/
 #drugs_name_text_field  {
@@ -111,7 +116,6 @@
 	-fx-border-style :solid;
 	-fx-border-color:#755EE1;
 	-fx-border-radius:11px;
-	-fx-box-shadow:  #755EE1;
 }
 .show_btn{
 -fx-background-color: #D9D9D9; -fx-border:  solid #D9D9D9; -fx-box-sizing: border-box; -fx-border-radius: 10px;
