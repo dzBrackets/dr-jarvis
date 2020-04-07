@@ -20,15 +20,19 @@ import java.util.ResourceBundle;
 
 public class MainPanelC  implements Initializable {
     public AnchorPane main_panel;
+    public AnchorPane content_panel;
+
     public Pane patient_search;
     public Pane quick_panel;
-    public AnchorPane content_panel;
+    public Pane drug_panel;
+    public Pane patient_panel;
+
     double xOffset,yOffset;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+quick_panel.toFront();
     }
 
     public void add_quick(ActionEvent actionEvent) throws IOException {
@@ -44,5 +48,16 @@ public class MainPanelC  implements Initializable {
 
     public void new_precP(ActionEvent actionEvent)  {
         quick_panel.toFront();
+    }
+
+    public void show_DashP(ActionEvent actionEvent) {
+    }
+
+    public void show_patientP(ActionEvent actionEvent) {patient_panel.toFront();
+    }
+
+    public void show_drugPanel(ActionEvent actionEvent) { drug_panel.toFront();}
+
+    public void show_SettingP(ActionEvent actionEvent) {
     }
 }

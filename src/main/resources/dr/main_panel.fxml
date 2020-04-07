@@ -15,7 +15,7 @@
                   <Image url="@image/logo.png" />
                </image>
             </ImageView>
-            <JFXButton id="dashbord_btn" contentDisplay="GRAPHIC_ONLY" layoutX="1.0" layoutY="159.0" prefHeight="88.0" prefWidth="88.0">
+            <JFXButton id="dashbord_btn" contentDisplay="GRAPHIC_ONLY" layoutX="1.0" layoutY="159.0" onAction="#show_DashP" prefHeight="88.0" prefWidth="88.0">
                <graphic>
                   <ImageView id="dashbord_img" fitHeight="34.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -32,7 +32,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton id="pat_btn" contentDisplay="GRAPHIC_ONLY" layoutX="1.0" layoutY="345.0" opacity="0.63" prefHeight="88.0" prefWidth="88.0">
+            <JFXButton id="pat_btn" contentDisplay="GRAPHIC_ONLY" layoutX="1.0" layoutY="345.0" onAction="#show_patientP" opacity="0.63" prefHeight="88.0" prefWidth="88.0">
                <graphic>
                   <ImageView id="pat_img" fitHeight="38.0" fitWidth="40.0" opacity="0.63" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -41,7 +41,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton id="drug_btn" contentDisplay="GRAPHIC_ONLY" layoutX="1.0" layoutY="433.0" opacity="0.63" prefHeight="88.0" prefWidth="88.0">
+            <JFXButton id="drug_btn" contentDisplay="GRAPHIC_ONLY" layoutX="1.0" layoutY="433.0" onAction="#show_drugPanel" opacity="0.63" prefHeight="88.0" prefWidth="88.0">
                <graphic>
                   <ImageView id="drug_img" fitHeight="36.0" fitWidth="34.0" opacity="0.63" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -50,7 +50,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton id="setting_btn" contentDisplay="GRAPHIC_ONLY" layoutX="1.0" layoutY="521.0" opacity="0.63" prefHeight="88.0" prefWidth="88.0">
+            <JFXButton id="setting_btn" contentDisplay="GRAPHIC_ONLY" layoutX="1.0" layoutY="521.0" onAction="#show_SettingP" opacity="0.63" prefHeight="88.0" prefWidth="88.0">
                <graphic>
                   <ImageView id="setting_img" fitHeight="34.0" fitWidth="36.0" opacity="0.63" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -74,11 +74,21 @@
             </Pane>
          </children>
       </AnchorPane>
-      <AnchorPane id="content_panel" fx:id="content_panel" layoutX="140.0" prefHeight="738.0" prefWidth="912.0" style="-fx-border-radius: 68px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="content_panel" fx:id="content_panel" layoutX="140.0" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 68px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane id="quick_panel" fx:id="quick_panel" prefHeight="738.0" prefWidth="916.0" style="-fx-border-radius: 27px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane id="quick_panel" fx:id="quick_panel" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 68px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <fx:include source="quick_panel.fxml" />
+               </children>
+            </Pane>
+            <Pane id="drug_panel" fx:id="drug_panel" layoutX="-3.0" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 68px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <fx:include source="Drugs_List.fxml" />
+               </children>
+            </Pane>
+            <Pane id="patient_panel" fx:id="patient_panel" layoutY="-1.0" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 68px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <fx:include source="patient_list.fxml" />
                </children>
             </Pane>
          </children></AnchorPane>

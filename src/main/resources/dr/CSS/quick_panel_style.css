@@ -1,6 +1,7 @@
 
 #quick_pane{
 -fx-background-color :#2C3964 ;
+-fx-border-style:hidden ;
 }
 .increment-arrow-button {
 -fx-background-color :#2196F3 ;

@@ -1,3 +1,7 @@
+.root {
+	-fx-border-style:hidden ;
+	-fx-border-color:transparent;
+}
 #info1_label {
 	  -fx-font-weight: bold;
 }
@@ -52,40 +56,40 @@
 }
 
 
-#drug_table:row-selection .jfx-button .image-view {
+.table-view:row-selection .jfx-button .image-view {
  -fx-alignment: CENTER;
 }
-#drug_table:row-selection .jfx-button {
+.table-view:row-selection .jfx-button {
 	-fx-alignment: CENTER;
 }
 
-#drug_table .column-header,
-#drug_table .column-header-background .filler {
+.table-view .column-header,
+.table-view .column-header-background .filler {
     -fx-background-color: #765EE2;
      -fx-text-fill:white;
 }
-#drug_table .column-header .label{
+.table-view .column-header .label{
    -fx-text-fill: white;
    -fx-font-weight: bold; 
    -fx-alignment: CENTER;
    -fx-padding:15px 5px 15px 5px;
-   -fx-font-size: 15px;
+   -fx-font-size: 14px;
 }
 
-#drug_table .cell{
+.table-view .cell{
   -fx-alignment: center;
   -fx-border :none;
   -fx-font-size: 15px;
 }
-#drug_table {
+.table-view {
 	  -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
     -fx-border-radius:27px;
 }
-#drug_table:focused .table-row-cell:filled:focused:selected {
+.table-view:focused .table-row-cell:filled:focused:selected {
     -fx-background-color: -fx-focus-color;
 }
-#drug_table:row-selection .column-header-background {
+.table-view:row-selection .column-header-background {
 	-fx-background-radius:11px 11px 0px 0px;
 
 }
