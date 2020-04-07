@@ -18,9 +18,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("/dr/main_panel.fxml"));
+        Parent root= FXMLLoader.load(getClass().getResource("/dr/Drug_list.fxml"));
         Scene scene=new Scene(root);
         scene.setFill(Color.TRANSPARENT);
+       scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();

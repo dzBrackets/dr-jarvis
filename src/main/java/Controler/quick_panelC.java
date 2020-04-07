@@ -7,9 +7,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
@@ -81,8 +80,9 @@ public class quick_panelC implements Initializable {
     }
     public void  loadData(){
         ObservableList<prescription> data = FXCollections.observableArrayList();
-        data.add(new prescription("Cocayin","pills","25mg","3","stop !",new JFXComboBox()));
-        data.add(new prescription("sarou5","dwa","siro","1000mg","do it !",new JFXComboBox()));
+
+        data.add(new prescription("Cocayin","pills","25mg","3","stop !",new SplitMenuButton()));
+        data.add(new prescription("sarou5","dwa","siro","1000mg","do it !",new SplitMenuButton()));
         table.setItems(data);
 
     }

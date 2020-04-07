@@ -65,7 +65,7 @@
 	-jfx-focus-color :transparent;
 }
 .type_combo .list-view {
-	-fx-pref-width: 70;
+	-fx-border-color: transparent;
 }
 /***********************************************/
 #drugs_name_text_field  {

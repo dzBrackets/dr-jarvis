@@ -8,8 +8,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 public class prescription {
@@ -18,24 +17,30 @@ public class prescription {
     String doss;
     String qts;
     String notice;
-    JFXComboBox del_btn;
+    SplitMenuButton  del_btn;
 
-    public prescription(String name, String type, String doss, String qts, String notice, JFXComboBox del_btn) {
+    public prescription(String name, String type, String doss, String qts, String notice, SplitMenuButton del_btn) {
         this.name = name;
         this.type = type;
         this.doss = doss;
         this.qts = qts;
         this.notice = notice;
         this.del_btn = del_btn;
-        del_btn.getStyleClass().add("type_combo");
+    /*    del_btn.getStyleClass().add("type_combo");
         ImageView img1 = new ImageView("dr/image/trash_24px.png");
         ImageView img2 = new ImageView("dr/image/ball_point_pen_24px.png");
+        img1.setFitHeight(15);  img1.setFitWidth(15);
+        img2.setFitWidth(15); img2.setFitHeight(15);
         JFXButton remove_btn =new JFXButton();
         JFXButton edit_btn =new JFXButton();
         remove_btn.setGraphic(img1);
         edit_btn.setGraphic(img2);
         ObservableList<JFXButton> btn_list= FXCollections.observableArrayList(remove_btn,edit_btn);
-        del_btn.setItems(btn_list);
+        del_btn.setItems(btn_list);*/
+        del_btn.getStyleClass().add("");
+
+
+
     }
 
     public String getName() {
@@ -78,11 +83,11 @@ public class prescription {
         this.notice = notice;
     }
 
-    public JFXComboBox getDel_btn() {
+    public SplitMenuButton getDel_btn() {
         return del_btn;
     }
 
-    public void setDel_btn(JFXComboBox del_btn) {
+    public void setDel_btn(SplitMenuButton del_btn) {
         this.del_btn = del_btn;
     }
 
