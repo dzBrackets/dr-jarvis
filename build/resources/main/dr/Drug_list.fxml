@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="drug_pane" fx:id="drug_pane" prefHeight="738.0" prefWidth="912.0" stylesheets="@CSS/table_pages_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.DrugList">
+   <children>
+      <TableView id="drug_table" fx:id="drug_table" layoutX="47.0" layoutY="117.0" prefHeight="607.0" prefWidth="818.0" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="47.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Name" />
+          <TableColumn prefWidth="75.0" text="Type" />
+            <TableColumn prefWidth="75.0" text="Doss" />
+            <TableColumn prefWidth="75.0" text="Code" />
+            <TableColumn prefWidth="75.0" text="Notice" />
+            <TableColumn prefWidth="75.0" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Label id="info1_label" layoutX="47.0" layoutY="14.0" prefHeight="32.0" prefWidth="137.0" style="-fx-font-size: 21px;" text="Drugs Liste :" textFill="#4a4a4a" />
+      <Label layoutX="59.0" layoutY="76.0" prefHeight="17.0" prefWidth="41.0" style="-fx-font-size: 16px;" text="show" textFill="#5f5f5f" />
+      <Spinner id="show_spinner" fx:id="show_spinner" layoutX="100.0" layoutY="70.0" prefHeight="32.0" prefWidth="54.0" />
+      <Label id="info2_label" layoutX="157.0" layoutY="76.0" prefHeight="25.0" prefWidth="54.0" style="-fx-font-size: 16px;" text="entries" textFill="#5f5f5f" />
+      <TextField id="write_TXF" fx:id="write_TXF" layoutX="552.0" layoutY="68.0" prefHeight="41.0" prefWidth="293.0" promptText="write something..." />
+   </children>
+</AnchorPane>
