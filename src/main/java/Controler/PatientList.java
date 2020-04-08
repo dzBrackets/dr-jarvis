@@ -3,6 +3,7 @@ package Controler;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TableColumn;
@@ -48,4 +49,6 @@ loadData();
 
     }
 
+    public void add_patient_table(ActionEvent actionEvent) {
+    }
 }

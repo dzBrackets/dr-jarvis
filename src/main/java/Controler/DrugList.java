@@ -3,6 +3,7 @@ package Controler;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TableColumn;
@@ -54,5 +55,8 @@ public class DrugList  implements Initializable {
         doss_C.setCellFactory(ComboBoxTableCell.forTableColumn(doss_list));
 
         drug_table.setEditable(true);
+    }
+
+    public void add_drug_table(ActionEvent actionEvent) {
     }
 }
