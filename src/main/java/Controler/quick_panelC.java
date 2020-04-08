@@ -21,26 +21,19 @@ public class quick_panelC implements Initializable {
 
     @FXML
     private TableView<prescription> table;
-
     @FXML
     private JFXTextField drug_name_input;
-
     @FXML
     private TableColumn<prescription, String> name_colm;
-
     @FXML
     private TableColumn<prescription, String> type_colm;
-
     @FXML
     private TableColumn<prescription, String> doss_colm;
-
     @FXML
     private TableColumn<prescription, String> qts_colm;
-
     @FXML
     private TableColumn<prescription, String> notice_colm;
-
-    public TableColumn<prescription, JFXComboBox> delete_colm;
+    public TableColumn<prescription, SplitMenuButton> delete_colm;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initCol();
@@ -63,7 +56,6 @@ public class quick_panelC implements Initializable {
        type_colm.setCellFactory(TextFieldTableCell.forTableColumn());
        doss_colm.setCellFactory(TextFieldTableCell.forTableColumn());
        qts_colm.setCellFactory(TextFieldTableCell.forTableColumn());
-
         /*making Rows event listener*/
         name_colm.setOnEditCommit(event -> {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setName(event.getNewValue());

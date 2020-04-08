@@ -1,6 +1,7 @@
 
 #quick_pane{
 -fx-background-color :#2C3964 ;
+-fx-border-style:hidden ;
 }
 .increment-arrow-button {
 -fx-background-color :#2196F3 ;
@@ -116,16 +117,6 @@
 	-fx-border-style :solid;
 	-fx-border-color:#755EE1;
 	-fx-border-radius:11px;
-}
-.show_btn{
--fx-background-color: #D9D9D9; -fx-border:  solid #D9D9D9; -fx-box-sizing: border-box; -fx-border-radius: 10px;
--fx-background-radius:10px;
-/*-fx-padding :;*/
- -fx-pref-width: 69;
- -fx-pref-height:23;
- -fx-text-fill:#7C9DFF;
- -jfx-button-type: RAISED;
- -fx-font-size: 12px;
 }
 
 /*****************************************/
