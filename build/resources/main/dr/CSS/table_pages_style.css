@@ -93,6 +93,9 @@
 	-fx-background-radius:11px 11px 0px 0px;
 
 }
+
+
+/***********************************************************/
 .show_btn{
 -fx-background-color: #D9D9D9; -fx-border:  solid #D9D9D9; -fx-box-sizing: border-box; -fx-border-radius: 10px;
 -fx-background-radius:10px;
@@ -103,4 +106,44 @@
  -jfx-button-type: RAISED;
  -fx-font-size: 12px;
 }
+.menu-button:openvertically .label .text{
+	/*-fx-padding:25px 25px 25px 25px;*/
+}
+.menu-button > .arrow-button > .arrow {
+    -fx-background-color: transparent;
+   -fx-pref-width: 0;
+}
+* {
+    -fx-my-menu-color: #000000;                 
+    -fx-my-menu-color-highlighted: #455a64;      
+    -fx-my-menu-font-color: #FFFFFF;             
+    -fx-my-menu-font-color-highlighted: #FFFFFF; 
+}
+.menu-button {
+    -fx-background-color: transparent;
+}
+
+/* MENU ITEM (children of a MENU BUTTON) */
+/*** The item itself (not hovered / focused) ***/    
+.menu-item {
+    -fx-background-color: transparent; 
+}
+
+/*** The item's label (disabled) ***/   
+.menu-item .label:disabled {
+    -fx-opacity: 1.0;
+}    
+
+/*** The item itself (hovered / focused) ***/    
+.menu-item:focused, .menu-item:hovered {
+    -fx-background-color: -fx-my-menu-color-highlighted; 
+}
+
+/*** The item's label (hovered / focused) ***/  
+.menu-item:focused .label, .menu-item:hovered .label {
+    -fx-text-fill: -fx-my-menu-font-color-highlighted;
+}
+
+
+
 

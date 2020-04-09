@@ -11,3 +11,6 @@
 	-fx-text-fill:white;
 -fx-prompt-text-fill: white;
 }
+.root{
+	-fx-background-color:transparent;
+}

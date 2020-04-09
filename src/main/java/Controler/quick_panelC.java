@@ -33,7 +33,7 @@ public class quick_panelC implements Initializable {
     private TableColumn<prescription, String> qts_colm;
     @FXML
     private TableColumn<prescription, String> notice_colm;
-    public TableColumn<prescription, SplitMenuButton> delete_colm;
+    public TableColumn<prescription, MenuButton> delete_colm;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initCol();
@@ -73,8 +73,9 @@ public class quick_panelC implements Initializable {
     public void  loadData(){
         ObservableList<prescription> data = FXCollections.observableArrayList();
 
-        data.add(new prescription("Cocayin","pills","25mg","3","stop !",new SplitMenuButton()));
-        data.add(new prescription("sarou5","dwa","siro","1000mg","do it !",new SplitMenuButton()));
+
+        data.add(new prescription("Cocayin","pills","25mg","3","stop !",new MenuButton()));
+        data.add(new prescription("sarou5","dwa","siro","1000mg","do it !",new MenuButton()));
         table.setItems(data);
 
     }

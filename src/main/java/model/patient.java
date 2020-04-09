@@ -1,17 +1,21 @@
 package model;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.geometry.Side;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
+import javafx.scene.image.ImageView;
 
 public class patient {
     private String first_name ,last_name,last_visite,id;
     private  int age;
     private JFXButton diagnostic ;
-    private  SplitMenuButton menu;
+    private  MenuButton menu;
 
 
 
-    public patient(String first_name, String last_name, String last_visite, String id, int age, JFXButton diagnostic , SplitMenuButton menu) {
+    public patient(String first_name, String last_name, String last_visite, String id, int age, JFXButton diagnostic , MenuButton menu) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.last_visite = last_visite;
@@ -21,6 +25,18 @@ public class patient {
         this.menu=menu;
         diagnostic.setText("Show");
        diagnostic.getStyleClass().add("show_btn");
+
+        ImageView img1 = new ImageView("dr/image/trash_24px.png");
+        ImageView img2 = new ImageView("dr/image/ball_point_pen_24px.png");
+        ImageView img4 =new ImageView("dr/image/menu_vertical_24px.png");
+        img1.setFitHeight(15);  img1.setFitWidth(15);
+        img2.setFitWidth(15); img2.setFitHeight(15);
+        MenuItem delete = new MenuItem("Delete ...", img1);
+        MenuItem edit = new MenuItem("Edit ...", img2);
+        menu.getItems().addAll(delete,edit);
+        menu.setText("");
+        menu.setGraphic(img4);
+        menu.setPopupSide(Side.LEFT);
     }
 
     public String getFirst_name() {
@@ -70,11 +86,12 @@ public class patient {
     public void setDiagnostic(JFXButton diagnostic) {
         diagnostic = diagnostic;
     }
-    public SplitMenuButton getMenu() {
+
+    public MenuButton getMenu() {
         return menu;
     }
 
-    public void setMenu(SplitMenuButton menu) {
+    public void setMenu(MenuButton menu) {
         this.menu = menu;
     }
 

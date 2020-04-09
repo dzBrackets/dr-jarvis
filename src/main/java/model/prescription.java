@@ -8,6 +8,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Side;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
@@ -17,30 +18,27 @@ public class prescription {
     String doss;
     String qts;
     String notice;
-    SplitMenuButton  del_btn;
+    MenuButton  del_btn;
 
-    public prescription(String name, String type, String doss, String qts, String notice, SplitMenuButton del_btn) {
+    public prescription(String name, String type, String doss, String qts, String notice, MenuButton del_btn) {
         this.name = name;
         this.type = type;
         this.doss = doss;
         this.qts = qts;
         this.notice = notice;
         this.del_btn = del_btn;
-    /*    del_btn.getStyleClass().add("type_combo");
+
         ImageView img1 = new ImageView("dr/image/trash_24px.png");
         ImageView img2 = new ImageView("dr/image/ball_point_pen_24px.png");
+        ImageView img3 =new ImageView("dr/image/menu_vertical_24px.png");
         img1.setFitHeight(15);  img1.setFitWidth(15);
         img2.setFitWidth(15); img2.setFitHeight(15);
-        JFXButton remove_btn =new JFXButton();
-        JFXButton edit_btn =new JFXButton();
-        remove_btn.setGraphic(img1);
-        edit_btn.setGraphic(img2);
-        ObservableList<JFXButton> btn_list= FXCollections.observableArrayList(remove_btn,edit_btn);
-        del_btn.setItems(btn_list);*/
-        del_btn.getStyleClass().add("");
-
-
-
+        MenuItem delete = new MenuItem("Delete...", img1);
+        MenuItem edit = new MenuItem("Edit...", img2);
+        del_btn.getItems().addAll(delete,edit);
+        del_btn.setText("");
+        del_btn.setGraphic(img3);
+        del_btn.setPopupSide(Side.LEFT);
     }
 
     public String getName() {
@@ -83,11 +81,11 @@ public class prescription {
         this.notice = notice;
     }
 
-    public SplitMenuButton getDel_btn() {
+    public MenuButton getDel_btn() {
         return del_btn;
     }
 
-    public void setDel_btn(SplitMenuButton del_btn) {
+    public void setDel_btn(MenuButton del_btn) {
         this.del_btn = del_btn;
     }
 

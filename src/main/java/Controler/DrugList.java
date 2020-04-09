@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -23,7 +24,7 @@ public class DrugList  implements Initializable {
     public TableColumn<drug,String>  doss_C;
     public TableColumn<drug,String>  code_C;
     public TableColumn<drug, JFXButton>  notice_C;
-    public TableColumn<drug,SplitMenuButton> menu_C;
+    public TableColumn<drug, MenuButton> menu_C;
 
 
     @Override
@@ -43,8 +44,8 @@ public class DrugList  implements Initializable {
     }
     public void  loadData(){
         ObservableList<drug> data = FXCollections.observableArrayList();
-        data.add(new drug("Cocayin","pills","25mg","3",new JFXButton(),new SplitMenuButton()));
-        data.add(new drug("sarou5","dwa","siro","1000mg",new JFXButton(),new SplitMenuButton()));
+        data.add(new drug("Cocayin","pills","25mg","3",new JFXButton(),new MenuButton()));
+        data.add(new drug("sarou5","dwa","siro","1000mg",new JFXButton(),new MenuButton()));
         drug_table.setItems(data);
 
     }

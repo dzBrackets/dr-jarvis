@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="patient_pane" fx:id="patient_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: #ffffff; -fx-background-radius: 27px; -fx-border-radius: 27px;" stylesheets="@CSS/table_pages_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.PatientList">
+<AnchorPane id="patient_pane" fx:id="patient_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px;" stylesheets="@CSS/table_pages_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.PatientList">
    <children>
-      <TableView id="patient_table" fx:id="patient_table" layoutX="47.0" layoutY="117.0" prefHeight="624.0" prefWidth="818.0" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="47.0">
+      <TableView id="patient_table" fx:id="patient_table" layoutX="47.0" layoutY="117.0" prefHeight="624.0" prefWidth="818.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
         <columns>
           <TableColumn id="first_C" fx:id="first_C" prefWidth="75.0" text="First Name" />
           <TableColumn id="last_C" fx:id="lastName_C" prefWidth="75.0" text="Last Name" />
@@ -23,10 +26,19 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Label id="info1_label" layoutX="47.0" layoutY="14.0" prefHeight="32.0" prefWidth="137.0" style="-fx-font-size: 21px;" text="Patient Liste :" textFill="#4a4a4a" />
-      <Label layoutX="59.0" layoutY="76.0" prefHeight="17.0" prefWidth="41.0" style="-fx-font-size: 16px;" text="show" textFill="#5f5f5f" />
-      <Spinner id="show_spinner" fx:id="show_spinner" layoutX="100.0" layoutY="70.0" prefHeight="32.0" prefWidth="54.0" />
-      <Label id="info2_label" layoutX="157.0" layoutY="76.0" prefHeight="25.0" prefWidth="54.0" style="-fx-font-size: 16px;" text="entries" textFill="#5f5f5f" />
-      <TextField id="write_TXF" fx:id="write_TXF" layoutX="552.0" layoutY="68.0" prefHeight="41.0" prefWidth="293.0" promptText="write something..." />
+      <Label id="info1_label" layoutX="26.0" layoutY="14.0" prefHeight="32.0" prefWidth="189.0" style="-fx-font-size: 21px;" text="Patient Liste :" textFill="#4a4a4a" />
+      <Label layoutX="25.0" layoutY="76.0" prefHeight="17.0" prefWidth="41.0" style="-fx-font-size: 16px;" text="show" textFill="#5f5f5f" />
+      <Spinner id="show_spinner" fx:id="show_spinner" layoutX="66.0" layoutY="70.0" prefHeight="32.0" prefWidth="54.0" />
+      <Label id="info2_label" alignment="TOP_LEFT" layoutX="123.0" layoutY="76.0" prefHeight="25.0" prefWidth="54.0" style="-fx-font-size: 16px;" text="entries" textFill="#5f5f5f" />
+      <TextField id="write_TXF" fx:id="write_TXF" layoutX="431.0" layoutY="68.0" prefHeight="41.0" prefWidth="293.0" promptText="write something..." />
+      <JFXButton id="add_patient_btn" fx:id="add_patient_btn" layoutX="738.0" layoutY="68.0" onAction="#add_patient_table" prefHeight="41.0" prefWidth="149.0" style="-fx-background-color: #5144FF; -fx-background-radius: 11px;" text="Add new Patient" textAlignment="CENTER" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/quick_btn.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

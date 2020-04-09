@@ -32,22 +32,32 @@ public class MainPanelC  implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-quick_panel.toFront();
+patient_panel.toFront();
     }
 
     public void add_quick(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/dr/patient_search.fxml"));
         Scene sc =new Scene(root);
         sc.setFill(Color.TRANSPARENT);
+        sc.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
         Stage s=new Stage();
         s.initModality(Modality.APPLICATION_MODAL);
         s.setScene(sc);
-        /*  s.initStyle(StageStyle.TRANSPARENT);*/
+         s.initStyle(StageStyle.TRANSPARENT);
         s.show();
     }
 
-    public void new_precP(ActionEvent actionEvent)  {
-        quick_panel.toFront();
+    public void new_precP(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/dr/quick_panel.fxml"));
+        Scene sc =new Scene(root);
+        sc.setFill(Color.TRANSPARENT);
+        sc.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
+        Stage s=new Stage();
+        s.initModality(Modality.APPLICATION_MODAL);
+        s.setScene(sc);
+        s.initStyle(StageStyle.TRANSPARENT);
+        s.show();
+
     }
 
     public void show_DashP(ActionEvent actionEvent) {

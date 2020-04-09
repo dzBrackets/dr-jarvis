@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -23,7 +24,7 @@ public class PatientList implements Initializable {
     public TableColumn<patient, Integer> age_C;
     public TableColumn<patient,String> lastVisite_C;
     public TableColumn<patient,String> id_C;
-    public TableColumn<patient,SplitMenuButton> menu_C;
+    public TableColumn<patient,MenuButton> menu_C;
     public TableColumn<patient,JFXButton> diagnostic_C;
 
 
@@ -43,7 +44,7 @@ loadData();
     }
     public void  loadData(){
         ObservableList<patient> data = FXCollections.observableArrayList();
-        data.add( new patient("aymen","daouadji","barah","pubg",21,new JFXButton(),new SplitMenuButton()));
+        data.add( new patient("aymen","daouadji","barah","pubg",21,new JFXButton(),new MenuButton()));
 
         patient_table.setItems(data);
 
