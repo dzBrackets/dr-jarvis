@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -18,7 +19,7 @@ public class cellController<type>  {
 
     public int index;
     public IntegerProperty clicked=new SimpleIntegerProperty(-1);
-    public StringProperty MenuDispatcher =new SimpleStringProperty("-1");
+    public IntegerProperty MenuDispatcher = new SimpleIntegerProperty(-1);
     Callback<TableColumn<type, String>, TableCell<type, String>> cellFactory;
     public cellController(){
     }
@@ -40,8 +41,8 @@ public class cellController<type>  {
                                 } else {
                                     menu.getItems().forEach(n->n.setOnAction(event -> {
                                         index=getIndex();
-                                        MenuDispatcher.set("-1");
-                                        MenuDispatcher.set(n.getText().substring(0,n.getText().length()-3));
+                                        MenuDispatcher.set(-1);
+                                        MenuDispatcher.set(menu.getItems().indexOf(n));
                                     }));
                                     setGraphic(menu);
                                     setText(null);
@@ -100,10 +101,16 @@ public class cellController<type>  {
                                 } else {
                                     ComboBox<String> menu=null;
                                     if(dataType.equals("drug")) {
+                                        ObservableList<String> elements=null;
                                         if(of.equals("type"))
-                                        menu = new ComboBox<String>(FXCollections.observableList(((Drug) getTableView().getItems().get(getIndex())).getType()));
+                                        elements=FXCollections.observableList(((Drug) getTableView().getItems().get(getIndex())).getType());
                                 if(of.equals("dose"))
-                                        menu = new ComboBox<String>(FXCollections.observableList(((Drug) getTableView().getItems().get(getIndex())).getDose()));
+                                   elements= FXCollections.observableList(((Drug) getTableView().getItems().get(getIndex())).getDose());
+
+                                        menu = new ComboBox<String>(elements);
+
+
+                                        // menu.getStyleClass().addall(.costume-combo);
                                     }
 
                                     assert menu != null;

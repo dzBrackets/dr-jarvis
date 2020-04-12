@@ -1,23 +1,30 @@
 package dr;
+import DataClass.Patient;
+import libs.coronaDb.coCollection;
 import libs.requestFormer;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import static dr.FinalsVal.*;
-public class dataThread<type> extends Thread {
-    private ArrayList<type> data;
+import java.util.concurrent.SynchronousQueue;
 
-    public dataThread(String name, Class<type> className) throws IOException, ClassNotFoundException {
+import static dr.FinalsVal.database;
+public class dataThread<type> extends Thread {
+    private coCollection<type> data;
+private SynchronousQueue<requestFormer<type>> request;
+   private SynchronousQueue<coCollection<type>> respond;
+    public dataThread(String name, Class<type> className,SynchronousQueue<requestFormer<type>> request, SynchronousQueue<coCollection<type>> respond) throws IOException, ClassNotFoundException {
         super(name);
-        data = database.getCollection("drug", className);
+        this.respond=respond;
+        this.request=request;
+        data = database.getCollection(name, className);
+        System.out.println("abc");
 
     }
 
     public void run() {
 
-
+        System.out.println("abc");
         while (true) {
-            requestFormer req;
+            requestFormer<type> req;
             try {
                 req = request.take();
 
@@ -27,11 +34,18 @@ public class dataThread<type> extends Thread {
             if (req.type.equals("find")){
 
             } ;
-            if (req.type.equals("remove")) ;
-            if (req.type.equals("append")) ;
+            if (req.type.equals("remove")){
+                data.removeOne(req.object);
+                respond.put(data);
+            } ;
+            if (req.type.equals("add")) {
+                data.insertOne(req.object);
+                respond.put(data);
+
+            };
             if (req.type.equals("post")) ;
 
-            } catch (InterruptedException e) {
+            } catch (InterruptedException | IOException e) {
                 e.printStackTrace();
             }
         }

@@ -25,11 +25,17 @@ File conf;
         this.name=name;
         this.tables=new ArrayList<>();
         mapper=new ObjectMapper();
+        new File(dir).mkdirs();
         conf=new File(dir+name+".config");
+
         try {
             loadConfig();
         } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                conf.createNewFile();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 private void initTab(String table,String fileName) throws IOException{
@@ -86,7 +92,6 @@ public void loadConfig() throws IOException {
         System.out.println(conf.toString());
     }
     else saveConfig();
-        System.out.println();
 
 }
 public void saveConfig() throws IOException {

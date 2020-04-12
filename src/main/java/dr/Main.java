@@ -1,5 +1,6 @@
 package dr;
 
+import DataClass.Drug;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,12 +8,21 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+import static dr.FinalsVal.*;
 import java.io.IOException;
 
 public class Main extends Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
+        dataThread<Drug> drugThread=null;
+        try {
+            drugThread=new dataThread<>("drug",Drug.class,requestD,respondD);
+            drugThread.start();
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
+
         launch(args);
     }
 
@@ -25,5 +35,6 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
+
     }
 }
