@@ -54,7 +54,13 @@
 	 -fx-border-radius:10px 0px 0px 10px;
 	 -fx-border-style:  solid  hidden solid solid;
 }
+.table-row-cell:odd {
+    -fx-background-color: white;
 
+}
+.table-row-cell:even {
+     -fx-background-color: white;
+ }
 
 .table-view:row-selection .jfx-button .image-view {
  -fx-alignment: CENTER;
@@ -77,17 +83,23 @@
 }
 
 .table-view .cell{
-  -fx-alignment: center;
-  -fx-border :none;
-  -fx-font-size: 15px;
+    -fx-alignment: center;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-font-size: 15px;
+    -fx-text-fill: black;/*must change*/
 }
+
+
 .table-view {
-	  -fx-table-cell-border-color: transparent;
+    -fx-background-color: white;
+    -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
     -fx-border-radius:27px;
 }
-.table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: -fx-focus-color;
+
+.table-row-cell:filled:focused:selected {
+    -fx-background-color: none;
 }
 .table-view:row-selection .column-header-background {
 	-fx-background-radius:11px 11px 0px 0px;
@@ -136,7 +148,7 @@
 
 /*** The item itself (hovered / focused) ***/    
 .menu-item:focused, .menu-item:hovered {
-    -fx-background-color: -fx-my-menu-color-highlighted; 
+    -fx-background-color: -fx-my-menu-color-highlighted;
 }
 
 /*** The item's label (hovered / focused) ***/  

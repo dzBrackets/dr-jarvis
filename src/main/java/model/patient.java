@@ -25,18 +25,7 @@ public class patient {
         this.menu=menu;
         diagnostic.setText("Show");
        diagnostic.getStyleClass().add("show_btn");
-
-        ImageView img1 = new ImageView("dr/image/trash_24px.png");
-        ImageView img2 = new ImageView("dr/image/ball_point_pen_24px.png");
-        ImageView img4 =new ImageView("dr/image/menu_vertical_24px.png");
-        img1.setFitHeight(15);  img1.setFitWidth(15);
-        img2.setFitWidth(15); img2.setFitHeight(15);
-        MenuItem delete = new MenuItem("Delete ...", img1);
-        MenuItem edit = new MenuItem("Edit ...", img2);
-        menu.getItems().addAll(delete,edit);
-        menu.setText("");
-        menu.setGraphic(img4);
-        menu.setPopupSide(Side.LEFT);
+        this.menu=new cPopupMenu(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png", "dr/image/add_32px.png"},new  String[]{"Delete...","Edit...","new prescription..."});
     }
 
     public String getFirst_name() {
