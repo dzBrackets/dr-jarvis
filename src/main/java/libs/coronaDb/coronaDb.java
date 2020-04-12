@@ -58,18 +58,16 @@ else{
 
     public <type> coCollection<type> getCollection(String name,Class<type> className) throws IOException, ClassNotFoundException {
         String filePath=dir+name+".json";
-
+        coCollection<type> loadedObject=new coCollection<type>(name,filePath,className);
         if (!tables.contains(name)) {
             initTab(name,filePath);
             System.out.println("Not Founds! Creating table...");
-            return new coCollection<>(name,filePath,className);
         };
 
         File tempFile=_tempFile(filePath);
         tempFile.deleteOnExit();
-        coCollection<type> loadedObject=new coCollection<type>(name,filePath,className);
-       String loadedJson = _jsonStringFixer(readFile(filePath));
-        loadedObject.addAll(mapper.readValue(loadedJson, TypeFactory.defaultInstance().constructCollectionType(ArrayList.class,className)));
+        String loadedJson = _jsonStringFixer(readFile(filePath));
+            loadedObject.addAll(mapper.readValue(loadedJson, TypeFactory.defaultInstance().constructCollectionType(ArrayList.class,className)));
 
         return loadedObject ;
     }
@@ -99,11 +97,11 @@ public void saveConfig() throws IOException {
     mapper.writeValue(conf,tables);
 };
     static public String _jsonStringFixer(String str) {
-        if (str != null && str.length() > 0) {
+        if (str != null && str.length() > 1) {
             str = str.substring(0, str.length() - 1);
-            str += "]";
         }
-    return str;
+        str += "]";
+        return str;
     }
 }
 
