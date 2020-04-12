@@ -111,7 +111,7 @@ public class cellController<type>  {
 
 
                                         // menu.getStyleClass().addall(.costume-combo);
-                                    }
+                                        }
 
                                     assert menu != null;
                                     menu.getSelectionModel().select(0);
