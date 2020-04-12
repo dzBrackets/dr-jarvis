@@ -1,4 +1,4 @@
-package dr;
+package libs;
 
 import DataClass.Drug;
 import com.jfoenix.controls.JFXButton;
@@ -22,14 +22,14 @@ public class cellController<type>  {
     Callback<TableColumn<type, String>, TableCell<type, String>> cellFactory;
     public cellController(){
     }
-    public Callback<TableColumn<type, String>, TableCell<type, String>> MCellFactory(){
+    public Callback<TableColumn<type, String>, TableCell<type, String>> MCellFactory(String[] imgPath,String[]items){
         return
                 new Callback<TableColumn<type, String>, TableCell<type, String>>() {
                     @Override
                     public TableCell call(final TableColumn<type, String> param) {
                         final TableCell<type, String> cell = new TableCell<type, String>() {
 
-                            cPopupMenu menu=new cPopupMenu(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."});
+                            cPopupMenu menu=new cPopupMenu(imgPath,items);
 
                             @Override
                             public void updateItem(String item, boolean empty) {

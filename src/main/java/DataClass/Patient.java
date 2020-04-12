@@ -1,7 +1,9 @@
 package DataClass;
 
 import java.io.Serializable;
+import java.time.Period;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Patient implements Serializable {
     private String patientId;
@@ -24,7 +26,9 @@ public class Patient implements Serializable {
         this.prescriptionsId = new ArrayList<>();
         return this;
     }
-
+public int getAge(){
+  return 18;
+}
 
     public String toString()
     {

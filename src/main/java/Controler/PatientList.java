@@ -26,11 +26,11 @@ public class PatientList implements Initializable {
     public TableView<patient> patient_table;
     public TableColumn<patient,String> first_C;
     public TableColumn<patient,String> lastName_C;
-    public TableColumn<patient, Integer> age_C;
+    public TableColumn<patient, String> age_C;
     public TableColumn<patient,String> lastVisite_C;
     public TableColumn<patient,String> id_C;
-    public TableColumn<patient,MenuButton> menu_C;
-    public TableColumn<patient,JFXButton> diagnostic_C;
+    public TableColumn<patient,String > menu_C;
+    public TableColumn<patient,String> diagnostic_C;
 
 
     @Override
@@ -39,8 +39,8 @@ initCol();
 loadData();
     }
     public void initCol(){
-        first_C.setCellValueFactory(new PropertyValueFactory<>("first_name"));
-        lastName_C.setCellValueFactory(new PropertyValueFactory<>("last_name"));
+        first_C.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastName_C.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         age_C.setCellValueFactory(new PropertyValueFactory<>("age"));
         lastVisite_C.setCellValueFactory(new PropertyValueFactory<>("last_visite"));
         id_C.setCellValueFactory(new PropertyValueFactory<>("id"));
