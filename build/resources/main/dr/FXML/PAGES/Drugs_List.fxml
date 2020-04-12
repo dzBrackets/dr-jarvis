@@ -10,7 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="drugs_pane" fx:id="drugs_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px; -fx-background-color: #ffffff;" stylesheets="@CSS/table_pages_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.DrugList">
+<AnchorPane id="drugs_pane" fx:id="drugs_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px; -fx-background-color: #ffffff;" stylesheets="@../../CSS/table_pages_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.DrugList">
     <children>
         <TableView id="drug_table" fx:id="drug_table" layoutX="47.0" layoutY="117.0" prefHeight="607.0" prefWidth="818.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
             <columns>
@@ -31,7 +31,7 @@
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@image/quick_btn.png" />
+                  <Image url="@../../image/quick_btn.png" />
                </image>
             </ImageView>
          </graphic>

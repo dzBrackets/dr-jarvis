@@ -3,19 +3,19 @@
 -fx-background-color :#2C3964 ;
 -fx-border-style:hidden ;
 }
-.increment-arrow-button {
+.spinner  .increment-arrow-button {
 -fx-background-color :#2196F3 ;
  -fx-background-radius:0px 50px 0px 0px;
 
 }
-.decrement-arrow-button {
+.spinner  .decrement-arrow-button {
 -fx-background-color :#2196F3 ;
  -fx-background-radius :0px 0px 50px 0px ;
 }
-.increment-arrow{
+.spinner  .increment-arrow{
 -fx-background-color :#ffffff ;
 }
-.decrement-arrow{
+.spinner  .decrement-arrow{
 -fx-background-color :#ffffff ;
 }
 #spinner{
@@ -34,7 +34,7 @@
 -fx-background-color :#765EE2;
 }
 .qts_spinner .text-field{
--fx-pref-width: 75;
+-fx-pref-width: 50;
 }
 
 /******************************/
@@ -42,32 +42,31 @@
 -fx-background-color:#2196F3;
 }
 .jfx-combo-box{
--fx-prompt-text-fill: white;
 -fx-prompt-text-align:center;
- -fx-font-size: 16px;
+ -fx-font-size: 13px;
 }
 .jfx-combo-box .arrow-button .arrow{
 	-fx-background-color:#ffffff;
+	-fx-pref-width: 8px;
+	-fx-pref-height:1px;
 }
 .jfx-combo-box .arrow-button{
-	-fx-background-radius:0px 100px 100px 0px;
+	-fx-background-radius:0px 12px 12px 0px;
 }
+.jfx-combo-box .list-cell:filled:selected {
+	-fx-background-color:#ffffff;
+}
+.combo-box-base  {
+-fx-background-radius:12px ;
+-fx-background-color:#ffffff;
+   }
+
+  
+
 /************************************/
-.type_combo .arrow-button{
-	-fx-background-color:transparent;
-}
-.type_combo .arrow-button .arrow{
-	-fx-background-color:#765EE2;
-}
-.type_combo {
--jfx-unfocus-color:transparent;
-}
-.type_combo   {
-	-jfx-focus-color :transparent;
-}
-.type_combo .list-view {
-	-fx-border-color: transparent;
-}
+
+
+
 /***********************************************/
 #drugs_name_text_field  {
 -fx-text-fill:white;

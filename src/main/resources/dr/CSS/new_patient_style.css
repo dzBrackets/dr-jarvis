@@ -1,0 +1,29 @@
+.jfx-combo-box .arrow-button{
+-fx-background-color:#6D788B;
+}
+.jfx-combo-box{
+-fx-prompt-text-align:center;
+ -fx-font-size: 16px;
+}
+.jfx-combo-box .arrow-button .arrow{
+	-fx-background-color:#ffffff;
+	-fx-padding:3 6 3 6;
+}
+.jfx-combo-box .arrow-button{
+	-fx-background-radius:0px 12px 12px 0px;
+    -fx-padding:3;
+}
+.combo-box-base :hover {
+	-fx-background-color: #1AD28B;
+}
+
+
+.combo-box-base  {
+-fx-background-radius:0px 12px 12px 0px ;
+-fx-background-color:#6D788B;
+  }
+/***********************************************/
+   #write_TXA {
+-fx-prompt-text-fill:#D9D9D9;
+
+   }

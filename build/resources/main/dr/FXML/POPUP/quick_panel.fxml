@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 27px; -fx-background-radius: 27px;" stylesheets="@CSS/quick_panel_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.quick_panelC">
+<AnchorPane id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 27px; -fx-background-radius: 27px;" stylesheets="@../../CSS/quick_panel_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.quick_panelC">
    <children>
       <Label id="top_label" layoutX="585.0" layoutY="14.0" prefHeight="17.0" prefWidth="194.0" style="-fx-font-size: 18px;" text="Patient informations :" textFill="WHITE" />
       <Pane id="pat_info_panel" layoutX="585.0" layoutY="48.0" prefHeight="315.0" prefWidth="304.0" style="-fx-background-color: #765EE2; -fx-background-radius: 30px;" AnchorPane.leftAnchor="585.0" AnchorPane.rightAnchor="23.0">
@@ -39,44 +39,43 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXButton id="exit_btn" layoutX="527.0" layoutY="699.0" prefHeight="39.0" prefWidth="81.0" style="-fx-background-color: #F24E1E; -fx-background-radius: 16.5px;" text="Exit" textFill="WHITE">
+      <JFXButton id="exit_btn" layoutX="546.0" layoutY="699.0" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: #F24E1E; -fx-background-radius: 16.5px;" text="Exit" textFill="WHITE">
          <font>
-            <Font size="15.0" />
+            <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton id="save_btn" layoutX="627.0" layoutY="699.0" prefHeight="39.0" prefWidth="81.0" style="-fx-background-color: #0ACF83; -fx-background-radius: 16.5px;" text="Save" textFill="WHITE">
+      <JFXButton id="save_btn" layoutX="643.0" layoutY="699.0" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: #0ACF83; -fx-background-radius: 16.5px;" text="Save" textFill="WHITE">
          <font>
-            <Font size="15.0" />
+            <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton id="print_btn" layoutX="731.0" layoutY="699.0" prefHeight="39.0" prefWidth="115.0" style="-fx-background-color: #0ACF83; -fx-background-radius: 16.5px;" text="Save &amp; print" textFill="WHITE">
+      <JFXButton id="print_btn" layoutX="737.0" layoutY="699.0" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #0ACF83; -fx-background-radius: 16.5px;" text="Save &amp; print" textFill="WHITE">
          <font>
-            <Font size="15.0" />
+            <Font size="14.0" />
          </font>
       </JFXButton>
       <Pane id="print_pane" layoutX="14.0" layoutY="48.0" prefHeight="315.0" prefWidth="532.0">
          <children>
-            <Label layoutX="14.0" layoutY="1.0" prefHeight="17.0" prefWidth="162.0" style="-fx-font-size: 16px;" text="Add Drugs :" textFill="WHITE" />
-            <JFXTextField id="drugs_name_text_field" fx:id="drug_name_input" focusColor="WHITE" layoutX="9.0" layoutY="66.0" prefHeight="35.0" prefWidth="279.0" style="-jfx-focus-color: #43A047; -jfx-unfocus-color: #626ED4;" unFocusColor="WHITE">
+            <Label layoutX="14.0" layoutY="2.0" prefHeight="21.0" prefWidth="162.0" style="-fx-font-size: 16px;" text="Add Drugs :" textFill="WHITE" />
+            <JFXTextField id="drugs_name_text_field" fx:id="drug_name_input" focusColor="WHITE" layoutX="14.0" layoutY="77.0" prefHeight="39.0" prefWidth="188.0" style="-jfx-focus-color: #43A047; -jfx-unfocus-color: #626ED4; -fx-background-color: white; -fx-background-radius: 5px;" unFocusColor="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXTextField>
             <Label layoutX="14.0" layoutY="39.0" prefHeight="17.0" prefWidth="162.0" style="-fx-font-size: 16px;" text="Name" textFill="WHITE" />
-            <JFXComboBox id="type" layoutX="324.0" layoutY="66.0" prefHeight="35.0" prefWidth="90.0" promptText="Type" />
-            <JFXComboBox id="doss" layoutX="428.0" layoutY="66.0" prefHeight="35.0" prefWidth="90.0" promptText="Doss" />
-            <Label layoutX="14.0" layoutY="168.0" prefHeight="17.0" prefWidth="220.0" style="-fx-font-size: 16px;" text="Notice :" textFill="WHITE" />
-            <Label layoutX="14.0" layoutY="124.0" prefHeight="27.0" prefWidth="98.0" style="-fx-font-size: 16px;" text="Qts :" textFill="WHITE" />
-            <Label layoutX="124.0" layoutY="124.0" prefHeight="27.0" prefWidth="16.0" style="-fx-font-size: 16px;" text="X" textAlignment="JUSTIFY" textFill="WHITE" />
-            <Spinner id="spinner" editable="true" layoutX="145.0" layoutY="118.0" prefHeight="35.0" prefWidth="63.0">
+            <JFXComboBox id="type_combo" fx:id="type_combo" layoutX="222.0" layoutY="77.0" prefHeight="37.0" prefWidth="85.0" promptText="Type" />
+            <JFXComboBox id="doss" layoutX="328.0" layoutY="77.0" prefHeight="37.0" prefWidth="85.0" promptText="Doss" />
+            <Label layoutX="14.0" layoutY="145.0" prefHeight="17.0" prefWidth="220.0" style="-fx-font-size: 16px;" text="Notice :" textFill="WHITE" />
+            <Label layoutX="429.0" layoutY="82.0" prefHeight="27.0" prefWidth="16.0" style="-fx-font-size: 14px;" text="X" textAlignment="JUSTIFY" textFill="WHITE" />
+            <Spinner id="spinner" editable="true" layoutX="450.0" layoutY="76.0" prefHeight="35.0" prefWidth="63.0">
          
       </Spinner>
-            <JFXTextArea id="notice_text_field" focusColor="#43a047" layoutX="14.0" layoutY="206.0" prefHeight="96.0" prefWidth="366.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30px;" />
+            <JFXTextArea id="notice_text_field" focusColor="#43a047" layoutX="14.0" layoutY="186.0" prefHeight="104.0" prefWidth="322.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30px;" />
             <JFXButton id="add_btn" contentDisplay="GRAPHIC_ONLY" layoutX="508.0" layoutY="293.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 50%; -fx-background-color: #737FE7;" text="Button">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@image/quick_btn.png" />
+                        <Image url="@../../image/quick_btn.png" />
                      </image>
                   </ImageView>
                </graphic>

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="main_panel" fx:id="main_panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="1001.0" stylesheets="@CSS/main_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.MainPanelC">
+<AnchorPane id="main_panel" fx:id="main_panel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="1001.0" stylesheets="@../../CSS/main_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.MainPanelC">
    <children>
       <AnchorPane id="back_side_pane" fx:id="back_side_pane" prefHeight="752.0" prefWidth="89.0" style="-fx-background-color: #ffffff; -fx-background-radius: 5em 0px 0px 5em;">
          <children>
@@ -14,14 +14,14 @@
                <children>
                   <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="15.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@image/logo.png" />
+                        <Image url="@../../image/logo.png" />
                      </image>
                   </ImageView>
                   <JFXButton id="dashbord_btn" contentDisplay="GRAPHIC_ONLY" layoutX="1.0" layoutY="172.0" onAction="#show_DashP" prefHeight="88.0" prefWidth="88.0">
                      <graphic>
                         <ImageView id="dashbord_img" fitHeight="34.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@image/view-dashboard-outline.png" />
+                              <Image url="@../../image/view-dashboard-outline.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -30,7 +30,7 @@
                      <graphic>
                         <ImageView id="prescription-img" fitHeight="32.0" fitWidth="38.0" opacity="0.63" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@image/file-outline.png" />
+                              <Image url="@../../image/file-outline.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -39,7 +39,7 @@
                      <graphic>
                         <ImageView id="pat_img" fitHeight="38.0" fitWidth="40.0" opacity="0.63" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@image/account-outline.png" />
+                              <Image url="@../../image/account-outline.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -48,7 +48,7 @@
                      <graphic>
                         <ImageView id="drug_img" fitHeight="36.0" fitWidth="34.0" opacity="0.63" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@image/syringe_48px.png" />
+                              <Image url="@../../image/syringe_48px.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -57,7 +57,7 @@
                      <graphic>
                         <ImageView id="setting_img" fitHeight="34.0" fitWidth="36.0" opacity="0.63" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@image/settings_48px.png" />
+                              <Image url="@../../image/settings_48px.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -66,7 +66,7 @@
                      <children>
                         <ImageView fitHeight="51.0" fitWidth="59.0" layoutX="19.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@image/quick_btn.png" />
+                              <Image url="@../../image/quick_btn.png" />
                            </image>
                         </ImageView>
                         <JFXButton id="quick_btn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" maxHeight="88.0" maxWidth="88.0" onAction="#add_quick" prefHeight="88.0" prefWidth="88.0" style="-fx-background-radius: 5em;" textAlignment="CENTER" />
@@ -80,7 +80,7 @@
          <children>
             <Pane id="quick_panel" fx:id="quick_panel" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;">
                <children>
-                  <fx:include source="quick_panel.fxml" />
+                  <fx:include source="../POPUP/quick_panel.fxml" />
                </children>
             </Pane>
             <Pane id="drug_panel" fx:id="drug_panel" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;">
