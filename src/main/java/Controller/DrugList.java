@@ -1,4 +1,4 @@
-package Controler;
+package Controller;
 
 import DataClass.Drug;
 import javafx.fxml.FXMLLoader;

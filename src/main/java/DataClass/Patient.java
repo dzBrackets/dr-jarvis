@@ -1,9 +1,17 @@
 package DataClass;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class Patient implements Serializable {
     private String patientId;
@@ -14,21 +22,23 @@ public class Patient implements Serializable {
     private String lastVisit;
     private String lastDiagnostic;
     private ArrayList<String> prescriptionsId;
+private DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-    public Patient Patient(String patientId, String firstName, String lastName, String birthDay, int gender, String lastVisit, String lastDiagnostic) {
+    public Patient Patient(String patientId, String firstName, String lastName, String birthDay, int gender, LocalDate lastVisit, String lastDiagnostic) {
         this.patientId = patientId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDay = birthDay;
         this.gender = gender;
-        this.lastVisit = lastVisit;
+        this.lastVisit =lastVisit.format(df);;
         this.lastDiagnostic = lastDiagnostic;
         this.prescriptionsId = new ArrayList<>();
         return this;
     }
-public int getAge(){
-  return 18;
-}
+    @JsonIgnore
+    public int getAge(){
+            return Period.between(LocalDate.parse(birthDay,df),LocalDate.now()).getYears();
+    }
 
     public String toString()
     {

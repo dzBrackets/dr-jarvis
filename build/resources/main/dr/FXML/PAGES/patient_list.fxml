@@ -10,16 +10,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="patient_pane" fx:id="patient_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px;" stylesheets="@../../CSS/table_pages_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.PatientList">
+<AnchorPane id="patient_pane" fx:id="patient_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px;" stylesheets="@../../CSS/table_pages_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PatientList">
    <children>
       <TableView id="patient_table" fx:id="patient_table" layoutX="47.0" layoutY="117.0" prefHeight="624.0" prefWidth="818.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
         <columns>
-          <TableColumn id="first_C" fx:id="first_C" prefWidth="75.0" text="First Name" />
-          <TableColumn id="last_C" fx:id="lastName_C" prefWidth="75.0" text="Last Name" />
+            <TableColumn id="id_C" fx:id="id_C" prefWidth="75.0" text="Patient Id" />
+            <TableColumn id="first_C" fx:id="first_C" prefWidth="75.0" text="First Name" />
+            <TableColumn id="last_C" fx:id="lastName_C" prefWidth="75.0" text="Last Name" />
             <TableColumn id="age_C" fx:id="age_C" prefWidth="75.0" text="Age" />
             <TableColumn id="last_C" fx:id="lastVisite_C" prefWidth="75.0" text="Last Visite" />
             <TableColumn id="Diagnostic" fx:id="diagnostic_C" prefWidth="75.0" text="Diagnostic" />
-            <TableColumn id="id_C" fx:id="id_C" prefWidth="75.0" text="Patient Id" />
             <TableColumn id="menu_C" fx:id="menu_C" prefWidth="75.0" />
         </columns>
          <columnResizePolicy>

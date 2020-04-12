@@ -10,14 +10,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="drugs_pane" fx:id="drugs_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px; -fx-background-color: #ffffff;" stylesheets="@../../CSS/table_pages_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.DrugList">
+<AnchorPane id="drugs_pane" fx:id="drugs_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px; -fx-background-color: #ffffff;" stylesheets="@../../CSS/table_pages_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DrugList">
     <children>
         <TableView id="drug_table" fx:id="drug_table" layoutX="47.0" layoutY="117.0" prefHeight="607.0" prefWidth="818.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
             <columns>
+                <TableColumn id="code_C" fx:id="code_C" prefWidth="75.0" text="Code" />
                 <TableColumn id="name_C" fx:id="name_C" prefWidth="75.0" text="Name" />
                 <TableColumn id="type_C" fx:id="type_C" prefWidth="75.0" text="Type" />
                 <TableColumn id="doss_C" fx:id="doss_C" prefWidth="75.0" text="Doss" />
-                <TableColumn id="code_C" fx:id="code_C" prefWidth="75.0" text="Code" />
                 <TableColumn id="notice_C" fx:id="notice_C" prefWidth="75.0" text="Notice" />
                 <TableColumn id="menu_C" fx:id="menu_C" prefWidth="75.0" />
             </columns>

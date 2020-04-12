@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="687.0" prefWidth="561.0" style="-fx-background-color: #2C3964; -fx-background-radius: 11px;" stylesheets="@../../CSS/new_patient_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.NewDrug">
+<AnchorPane prefHeight="687.0" prefWidth="561.0" style="-fx-background-color: #2C3964; -fx-background-radius: 11px;" stylesheets="@../../CSS/new_patient_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewDrug">
    <children>
       <Label layoutX="38.0" layoutY="50.0" prefHeight="17.0" prefWidth="133.0" style="-fx-font-size: 24px;" text="New Drug" textFill="WHITE" />
       <TextField id="name_TXF" fx:id="name_TXF" layoutX="73.0" layoutY="177.0" prefHeight="44.0" prefWidth="415.0" style="-fx-background-radius: 11px;" />

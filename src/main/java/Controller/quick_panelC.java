@@ -1,17 +1,13 @@
-package Controler;
+package Controller;
 
 import com.jfoenix.controls.*;
-import javafx.beans.Observable;
-import javafx.beans.property.Property;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.image.ImageView;
 import model.prescription;
 
 import java.net.URL;

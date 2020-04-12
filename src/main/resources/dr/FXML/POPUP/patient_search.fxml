@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="serach_panel" prefHeight="358.0" prefWidth="698.0" stylesheets="@../../CSS/search_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.PatientSearch">
+<AnchorPane id="serach_panel" prefHeight="358.0" prefWidth="698.0" stylesheets="@../../CSS/search_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PatientSearch">
    <children>
       <Pane id="serach_panel" fx:id="serach_panel" layoutX="33.0" layoutY="113.0" prefHeight="133.0" prefWidth="632.0" style="-fx-background-color: #2C3964; -fx-background-radius: 50px;" AnchorPane.bottomAnchor="113.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="113.0">
          <children>

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 27px; -fx-background-radius: 27px;" stylesheets="@../../CSS/quick_panel_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.quick_panelC">
+<AnchorPane id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 27px; -fx-background-radius: 27px;" stylesheets="@../../CSS/quick_panel_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.quick_panelC">
    <children>
       <Label id="top_label" layoutX="585.0" layoutY="14.0" prefHeight="17.0" prefWidth="194.0" style="-fx-font-size: 18px;" text="Patient informations :" textFill="WHITE" />
       <Pane id="pat_info_panel" layoutX="585.0" layoutY="48.0" prefHeight="315.0" prefWidth="304.0" style="-fx-background-color: #765EE2; -fx-background-radius: 30px;" AnchorPane.leftAnchor="585.0" AnchorPane.rightAnchor="23.0">
