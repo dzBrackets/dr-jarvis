@@ -1,12 +1,10 @@
 package Controler;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -36,7 +34,7 @@ patient_panel.toFront();
     }
 
     public void add_quick(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/dr/patient_search.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/patient_search.fxml"));
         Scene sc =new Scene(root);
         sc.setFill(Color.TRANSPARENT);
         sc.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
@@ -48,7 +46,7 @@ patient_panel.toFront();
     }
 
     public void new_precP(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/dr/quick_panel.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/quick_panel.fxml"));
         Scene sc =new Scene(root);
         sc.setFill(Color.TRANSPARENT);
         sc.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");

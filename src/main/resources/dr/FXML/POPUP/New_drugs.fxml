@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="687.0" prefWidth="561.0" style="-fx-background-color: #2C3964; -fx-background-radius: 11px;" stylesheets="@../../CSS/new_patient_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.NewDrug">
+   <children>
+      <Label layoutX="38.0" layoutY="50.0" prefHeight="17.0" prefWidth="133.0" style="-fx-font-size: 24px;" text="New Drug" textFill="WHITE" />
+      <TextField id="name_TXF" fx:id="name_TXF" layoutX="73.0" layoutY="177.0" prefHeight="44.0" prefWidth="415.0" style="-fx-background-radius: 11px;" />
+      <Label layoutX="73.0" layoutY="139.0" prefHeight="17.0" prefWidth="85.0" style="-fx-font-size: 18px;" text="Name" textFill="WHITE" />
+      <TextField id="type_TXF" fx:id="type_TXF" layoutX="73.0" layoutY="266.0" prefHeight="44.0" prefWidth="188.0" promptText="Type" style="-fx-background-radius: 11px;" />
+      <TextField id="doss_TXF" fx:id="doss_TXF" layoutX="300.0" layoutY="266.0" prefHeight="44.0" prefWidth="125.0" promptText="Doss" style="-fx-background-radius: 11px 0px 0px 11px;" />
+      <JFXComboBox id="weight_combo" fx:id="weight_combo" layoutX="425.0" layoutY="266.0" prefHeight="44.0" prefWidth="63.0" />
+      <Label id="info3_lable" fx:id="info3_lable" layoutX="73.0" layoutY="354.0" prefHeight="27.0" prefWidth="354.0" style="-fx-font-size: 18px;" text="Info (feel free to keep this blank) :" textFill="WHITE" />
+      <JFXTextArea id="write_TXA" fx:id="write_TXA" layoutX="73.0" layoutY="400.0" prefHeight="123.0" prefWidth="415.0" promptText="write something...." style="-fx-background-color: white; -fx-background-radius: 11px;">
+         <font>
+            <Font size="15.0" />
+         </font></JFXTextArea>
+      <JFXButton id="add_drug" fx:id="add_btn" layoutX="93.0" layoutY="559.0" onAction="#add_drug" prefHeight="48.0" prefWidth="376.0" style="-fx-background-color: #1AD28B; -fx-background-radius: 5px;" text="Add Drug" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font></JFXButton>
+   </children>
+</AnchorPane>

@@ -18,7 +18,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("/dr/main_pane.fxml"));
+        Parent root= FXMLLoader.load(getClass().getResource("/dr/FXML/PAGES/main_pane.fxml"));
         Scene scene=new Scene(root);
         scene.setFill(Color.TRANSPARENT);
        scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
