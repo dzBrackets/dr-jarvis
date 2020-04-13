@@ -55,11 +55,14 @@
 }
 .jfx-combo-box .list-cell:filled:selected {
 	-fx-background-color:#ffffff;
+	-fx-alignment:center;	
 }
 .combo-box-base  {
 -fx-background-radius:12px ;
 -fx-background-color:#ffffff;
    }
+
+
 
   
 

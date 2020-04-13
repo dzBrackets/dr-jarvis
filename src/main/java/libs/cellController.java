@@ -117,6 +117,7 @@ public class cellController<type>  {
                                     menu.getSelectionModel().select(0);
                                     setGraphic(menu);
                                     setText(null);
+                                    menu.getStyleClass().add("combo_box");
                                 }
                             }
                         };
