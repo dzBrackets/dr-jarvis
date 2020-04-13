@@ -4,19 +4,19 @@
 -fx-border-style:hidden ;
 }
 .spinner  .increment-arrow-button {
--fx-background-color :#2196F3 ;
+-fx-background-color :transparent ;
  -fx-background-radius:0px 50px 0px 0px;
 
 }
 .spinner  .decrement-arrow-button {
--fx-background-color :#2196F3 ;
+-fx-background-color :transparent ;
  -fx-background-radius :0px 0px 50px 0px ;
 }
 .spinner  .increment-arrow{
--fx-background-color :#ffffff ;
+-fx-background-color :#2196F3 ;
 }
 .spinner  .decrement-arrow{
--fx-background-color :#ffffff ;
+-fx-background-color :#2196F3 ;
 }
 #spinner{
 -fx-background-color :transparent;
@@ -25,6 +25,7 @@
 .spinner .text-field {
 	-fx-alignment: CENTER;
 	 -fx-font-size: 16px;
+	 -fx-background-radius :10px;
 }
 /*****************************************/
 .qts_spinner  .decrement-arrow-button, .qts_spinner .increment-arrow-button {
