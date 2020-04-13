@@ -1,14 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Controller.NewPatient"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane id="Pform" fx:id="Pform" prefHeight="687.0" prefWidth="680.0" style="-fx-background-color: #2C3964; -fx-background-radius: 11px;" stylesheets="@../../CSS/new_patient_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewPatient">
+   <children>
+      <Label layoutX="68.0" layoutY="31.0" prefHeight="32.0" prefWidth="150.0" text="New patient" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="68.0" layoutY="131.0" text="Name : " textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <JFXTextField id="firstN_TXF" fx:id="firstN_TXF" alignment="CENTER" layoutX="226.0" layoutY="122.0" prefHeight="44.0" prefWidth="188.0" promptText="First Name" style="-fx-background-color: white; -fx-background-radius: 11px;" />
+      <JFXTextField id="lastN_TXF" fx:id="lastN_TXF" alignment="CENTER" layoutX="443.0" layoutY="122.0" prefHeight="44.0" prefWidth="188.0" promptText="Last Name" style="-fx-background-color: white; -fx-background-radius: 11px;" />
+      <Label layoutX="68.0" layoutY="228.0" prefHeight="26.0" prefWidth="134.0" text="Date of birth:" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="68.0" layoutY="310.0" prefHeight="26.0" prefWidth="106.0" text="Gender :" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="68.0" layoutY="387.0" prefHeight="26.0" prefWidth="318.0" text="Diagnostic (feel free to fill this later):" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <JFXTextArea id="write_TXA" fx:id="write_TXA" layoutX="68.0" layoutY="437.0" prefHeight="123.0" prefWidth="544.0" promptText="write something...." style="-fx-background-color: white; -fx-background-radius: 11px;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextArea>
+      <JFXButton id="add_patient" fx:id="add_btn" layoutX="134.0" layoutY="589.0" onAction="#add_patient" prefHeight="48.0" prefWidth="376.0" style="-fx-background-color: #1AD28B; -fx-background-radius: 5px;" text="Add Patient" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+      <JFXDatePicker defaultColor="#1ad28b" layoutX="227.0" layoutY="219.0" prefHeight="44.0" prefWidth="402.0" style="-fx-background-color: white; -fx-background-radius: 11px;" />
+      <JFXRadioButton layoutX="270.0" layoutY="310.0" prefWidth="70.0" selected="true" style="-jfx-selected-color: #765EE2; -jfx-unselected-color: #765EE2;" text="Male" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="gender_group" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton layoutX="450.0" layoutY="310.0" style="-jfx-selected-color: #765EE2; -jfx-unselected-color: #765EE2;" text="Female" textFill="WHITE" toggleGroup="$gender_group">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXRadioButton>
+   </children>
 </AnchorPane>

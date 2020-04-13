@@ -63,7 +63,7 @@ loadData();
 
     
     public void add_patient_table(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/New_Patient.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/New_patient.fxml"));
         Scene sc =new Scene(root);
         sc.setFill(Color.TRANSPARENT);
         sc.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
