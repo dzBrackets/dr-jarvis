@@ -1,6 +1,7 @@
 package Controller;
 
 import DataClass.Drug;
+import com.sun.javafx.charts.Legend;
 import javafx.beans.property.IntegerProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +23,7 @@ import libs.requestFormer;
 import model.showButton;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import static dr.FinalsVal.*;
 public class DrugList  implements Initializable {
@@ -29,10 +31,11 @@ public class DrugList  implements Initializable {
     public TableColumn<Drug,String>  code_C;
     public TableColumn<Drug,String> name_C;
     public TableColumn<Drug,String>  type_C;
-    public TableColumn<Drug,String>  doss_C;
+    public TableColumn<Drug, String> doss_C;
     public TableColumn<Drug, String>  notice_C;
     public TableColumn<Drug, String> menu_C;
-
+   static ObservableList<Drug> data = FXCollections.observableArrayList();
+static public  Stage s;
     cellController<Drug> cellController = new cellController<>();
 
 
@@ -51,22 +54,18 @@ public class DrugList  implements Initializable {
         notice_C.setCellFactory(cellController.BCellFactory(new showButton("show")));
     }
     public void  loadData(){
-        ObservableList<Drug> data = FXCollections.observableArrayList();
         try {
-            requestD.put(new requestFormer<>("get","",null));
-            coCollection<Drug> dList=respondD.take();
-            System.out.println(dList.size());
-            data.addAll(dList);
+            requestD.put(new requestFormer<>("get"));
+            List<Drug> dList=respondD.take();
+            data.setAll(dList);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        drug_table.setItems(data);
+       drug_table.setItems(data);
 
     }
-    public void setTableItems(coCollection<Drug> items){
-        ObservableList<Drug> data = FXCollections.observableArrayList();
-               data.addAll(items);
-        drug_table.setItems(data);
+    static void setTableItems(List<Drug> items){
+        data.setAll(items);
     }
     public void eventTrigger(){
 cellController.MenuDispatcher.addListener(e-> {
@@ -74,7 +73,7 @@ cellController.MenuDispatcher.addListener(e-> {
     if(prop.getValue()==0){
         System.out.println("delete");
         try {
-            requestD.put(new requestFormer<>("remove","",drug_table.getItems().get(cellController.index)));
+            requestD.put(new requestFormer<>("remove", drug_table.getItems().get(cellController.index)));
             setTableItems(respondD.take());
 
         } catch (InterruptedException ex) {
@@ -84,17 +83,20 @@ cellController.MenuDispatcher.addListener(e-> {
 }
     );
     }
-
+static public void closePopuUp(){
+    s.close();
+}
     public void add_drug_table(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/New_drugs.fxml"));
-        Scene sc =new Scene(root);
+      Scene sc =new Scene(root);
 
         sc.setFill(Color.TRANSPARENT);
         sc.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-        Stage s=new Stage();
+       s=new Stage();
         s.initModality(Modality.APPLICATION_MODAL);
         s.setScene(sc);
         s.initStyle(StageStyle.TRANSPARENT);
         s.show();
+
     }
 }

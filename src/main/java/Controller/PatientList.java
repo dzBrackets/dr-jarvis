@@ -18,9 +18,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import libs.cellController;
-import model.patient;
 import model.showButton;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;

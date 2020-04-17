@@ -25,5 +25,10 @@
          <font>
             <Font size="13.0" />
          </font></JFXButton>
+      <Label  id="error_txt" fx:id="error_txt" layoutX="263.0" layoutY="96.0" text="Error!!" textFill="RED" visible="false">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

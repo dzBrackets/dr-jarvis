@@ -2,6 +2,7 @@ package libs.coronaDb;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
+import sun.awt.X11.Screen;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,11 +14,13 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class coronaDb {
     private String name;
     static ObjectMapper mapper;
-    private ArrayList<String> tables;
+    private ArrayList<tablesObj> tables;
     private String dir=new File("storage").getAbsolutePath()+File.separator;
     private String backup=new File("backup").getAbsolutePath()+File.separator;
 File conf;
@@ -38,14 +41,17 @@ File conf;
             }
         }
     }
+    void createTabFile(String fileName) throws IOException {
+        String jsonString = "[";
+        new BufferedWriter(new FileWriter(fileName))
+                .append(jsonString)
+                .close();
+    }
 private void initTab(String table,String fileName) throws IOException{
-    tables.add(table);
+    tables.add(new tablesObj().tablesObj(0,table));
     saveConfig();
 if(!new File(fileName).exists()){
-    String jsonString = "[";
-            new BufferedWriter(new FileWriter(fileName))
-                    .append(jsonString)
-                    .close();
+   createTabFile(fileName);
 }
 
 else{
@@ -59,16 +65,24 @@ else{
     public <type> coCollection<type> getCollection(String name,Class<type> className) throws IOException, ClassNotFoundException {
         String filePath=dir+name+".json";
         coCollection<type> loadedObject=new coCollection<type>(name,filePath,className);
-        if (!tables.contains(name)) {
+        if (!tables.stream().map(tablesObj::getTableName).collect(Collectors.toList()).contains(name)) {
             initTab(name,filePath);
             System.out.println("Not Founds! Creating table...");
+            return loadedObject ;
         };
+        if(!new File(filePath).exists()){
+            createTabFile(filePath);
+            return loadedObject ;
+        }
 
         File tempFile=_tempFile(filePath);
         tempFile.deleteOnExit();
         String loadedJson = _jsonStringFixer(readFile(filePath));
+        if (loadedJson.length()<=2){
+            createTabFile(filePath);
+        return loadedObject;
+        }
             loadedObject.addAll(mapper.readValue(loadedJson, TypeFactory.defaultInstance().constructCollectionType(ArrayList.class,className)));
-
         return loadedObject ;
     }
 
@@ -81,12 +95,15 @@ else{
     }
 
     private String readFile(String filePath) throws IOException {
-        return Files.readAllLines(Paths.get(filePath)).get(0);
+        List<String> l=Files.readAllLines(Paths.get(filePath));
+        if(l.size()>0)
+        return l.get(0);
+        return "";
     }
 public void loadConfig() throws IOException {
 
     if (conf.exists()) {
-        Collections.addAll(tables,mapper.readValue(conf,String[].class));
+        Collections.addAll(tables,mapper.readValue(conf,tablesObj[].class));
         System.out.println(conf.toString());
     }
     else saveConfig();
@@ -102,6 +119,15 @@ public void saveConfig() throws IOException {
         }
         str += "]";
         return str;
+    }
+    public int getUUID(String tableName){
+        return tables.stream().filter(v->(v.getTableName()).equals(tableName)).findFirst().get().getUUID();
+    }
+    public int updateUUID(String tableName) throws IOException {
+       tablesObj tb=tables.stream().filter(v->(v.getTableName()).equals(tableName)).findFirst().get();
+       tb.setUUID(tb.getUUID()+1);
+       saveConfig();
+return tb.getUUID();
     }
 }
 

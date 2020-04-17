@@ -9,8 +9,8 @@ import java.util.Collections;
 import java.util.Objects;
 
 public class Drug implements Serializable {
-    private  String code=null;
-    private String name=null;
+    private  String code="N/D";
+    private String name="N/D";
     private ArrayList<String> type=new ArrayList<>();
     private ArrayList<String> dose=new ArrayList<>();
 
@@ -28,6 +28,14 @@ Collections.addAll(this.type,type);
         this.code=code;
         (this.type=new ArrayList<String>()).add(type);
         (this.dose=new ArrayList<String>()).add(dose);
+
+        return this;
+    }
+    public Drug Drug(String code, String name, ArrayList<String> type, ArrayList<String> dose){
+        this.name=name;
+        this.code=code;
+        this.type=type;
+        this.dose=dose;
 
         return this;
     }
@@ -78,9 +86,14 @@ Collections.addAll(this.type,type);
     public Drug getThis() {
         return this;
     }
+    @JsonIgnore
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setNumCode(int  code) {
+        setCode(String.format("#%06d",code));
+
+    }
+    public void setCode(String  code) {
+            this.code=code;
     }
 
     public String getName() {

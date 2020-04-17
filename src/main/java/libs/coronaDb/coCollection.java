@@ -43,6 +43,7 @@ public class coCollection < type > extends ArrayList < type >  {
 
     }
     public void insertOne(type data) throws IOException {
+        if(data!=null){
         add(data);
         FileWriter fw = new FileWriter(path, true);
         BufferedWriter bw = new BufferedWriter(fw);
@@ -50,12 +51,13 @@ public class coCollection < type > extends ArrayList < type >  {
         String jsonString =  coronaDb.mapper.writeValueAsString(data);
         new BufferedWriter(new FileWriter(path, true))
                     .append(jsonString).append(",")
-                    .close();
+                    .close();}
 
     }
 
 
     public void updateOne(type oldObject, type newObject) {
+        System.out.println(oldObject);
         this.add(indexOf(getLike(oldObject)), newObject);
         reSave();
     }
@@ -64,7 +66,7 @@ public class coCollection < type > extends ArrayList < type >  {
         reSave();
     }
 
-    private void reSave() {
+    public void reSave() {
         try {
             String jsonString = coronaDb.mapper.writeValueAsString(this.toArray());
             BufferedWriter writer = new BufferedWriter(new FileWriter(path));

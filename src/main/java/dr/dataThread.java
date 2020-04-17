@@ -2,8 +2,9 @@ package dr;
 import DataClass.Patient;
 import libs.coronaDb.coCollection;
 import libs.requestFormer;
-
+import static dr.FinalsVal.respondObj;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.SynchronousQueue;
 
 import static dr.FinalsVal.database;
@@ -32,18 +33,29 @@ private SynchronousQueue<requestFormer<type>> request;
                 respond.put(data);
             }
             if (req.type.equals("find")){
+                List<type> D=data.findByObject(req.req,req.canon);
+                if(D.size()>0) {
+                    respondObj.put(D.get(0));}
+                else respondObj.put(new Object());
 
-            } ;
+
+            }
             if (req.type.equals("remove")){
                 data.removeOne(req.object);
                 respond.put(data);
             } ;
             if (req.type.equals("add")) {
                 data.insertOne(req.object);
+
                 respond.put(data);
 
             };
-            if (req.type.equals("post")) ;
+            if (req.type.equals("update")){
+                //data.updateOne(req.arguments[0],req.arguments[1]);
+                data.reSave();
+                respond.put(data);
+
+            } ;
 
             } catch (InterruptedException | IOException e) {
                 e.printStackTrace();
