@@ -12,13 +12,14 @@ public class dataThread<type> extends Thread {
     private coCollection<type> data;
 private SynchronousQueue<requestFormer<type>> request;
    private SynchronousQueue<coCollection<type>> respond;
+   private Class <type> className;
     public dataThread(String name, Class<type> className,SynchronousQueue<requestFormer<type>> request, SynchronousQueue<coCollection<type>> respond) throws IOException, ClassNotFoundException {
         super(name);
         this.respond=respond;
         this.request=request;
-        data = database.getCollection(name, className);
-        System.out.println("abc");
 
+        data = database.getCollection(name, className);
+this.className=className;
     }
 
     public void run() {
@@ -29,33 +30,41 @@ private SynchronousQueue<requestFormer<type>> request;
             try {
                 req = request.take();
 
-            if (req.type.equals("get")) {
+            if (req.request.equals(requestFormer.GET)) {
                 respond.put(data);
             }
-            if (req.type.equals("find")){
-                List<type> D=data.findByObject(req.req,req.canon);
+
+
+            if (req.request.equals(requestFormer.REMOVE)){
+                @SuppressWarnings("unchecked")
+                type p=(type) req.arg1;
+                data.removeOne(p);
+                respond.put(data);
+                }
+
+            if (req.request.equals(requestFormer.FIND)){
+                List<type> D=data.findByObject((String) req.arg1,req.arg2);
                 if(D.size()>0) {
-                    respondObj.put(D.get(0));}
+                    respondObj.put(D.get(0));
+                }
                 else respondObj.put(new Object());
 
 
             }
-            if (req.type.equals("remove")){
-                data.removeOne(req.object);
-                respond.put(data);
-            } ;
-            if (req.type.equals("add")) {
-                data.insertOne(req.object);
+
+            if (req.request.equals(requestFormer.POST)) {
+                @SuppressWarnings("unchecked")
+                type p=(type) req.arg1;
+                data.insertOne(p);
 
                 respond.put(data);
 
-            };
-            if (req.type.equals("update")){
-                //data.updateOne(req.arguments[0],req.arguments[1]);
+            }
+            if (req.request.equals(requestFormer.UPDATE)){
                 data.reSave();
                 respond.put(data);
 
-            } ;
+            }
 
             } catch (InterruptedException | IOException e) {
                 e.printStackTrace();

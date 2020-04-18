@@ -30,6 +30,7 @@ public class NewDrug implements Initializable {
     public JFXComboBox<String> weight_combo;
     public Label error_txt;
 Drug drug;
+private requestFormer<Drug> req=formerD;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<String> weight_list = FXCollections.observableArrayList("mg","kg","ml","ug");
@@ -48,7 +49,7 @@ Drug drug;
             if(parsedName.length()>=3){
                 if(doss_TXF.getText().length()>0&&isNumeric(doss_TXF.getText())) {
                     if(parsedType.length()>1) {
-                        requestD.put(new requestFormer<>("find","getName",parsedName));
+                        requestD.put(req.find("getName",parsedName));
                         Object obj=respondObj.take();
                         if (!(obj instanceof Drug)){
                             drug=new Drug();
@@ -64,10 +65,10 @@ Drug drug;
 
                         //correct
                         if(update)
-                            requestD.put(new requestFormer<>("update"));
+                            requestD.put(req.update());
                         else{
                             drug.setNumCode(database.updateUUID("drug"));
-                            requestD.put(new requestFormer<>("add",drug));
+                            requestD.put(req.post(drug));
                         }
                         setTableItems(respondD.take());
                         closePopuUp();

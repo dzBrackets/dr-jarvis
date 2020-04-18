@@ -38,6 +38,7 @@ public class DrugList  implements Initializable {
 static public  Stage s;
     cellController<Drug> cellController = new cellController<>();
 
+    private requestFormer<Drug> req=formerD;
 
     @Override
       public void initialize(URL location, ResourceBundle resources) {
@@ -55,7 +56,7 @@ static public  Stage s;
     }
     public void  loadData(){
         try {
-            requestD.put(new requestFormer<>("get"));
+            requestD.put(req.get());
             List<Drug> dList=respondD.take();
             data.setAll(dList);
         } catch (Exception e) {
@@ -73,7 +74,7 @@ cellController.MenuDispatcher.addListener(e-> {
     if(prop.getValue()==0){
         System.out.println("delete");
         try {
-            requestD.put(new requestFormer<>("remove", drug_table.getItems().get(cellController.index)));
+            requestD.put(req.remove(drug_table.getItems().get(cellController.index)));
             setTableItems(respondD.take());
 
         } catch (InterruptedException ex) {
