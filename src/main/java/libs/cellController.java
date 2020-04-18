@@ -27,7 +27,7 @@ public class cellController<type>  {
         return
                 new Callback<TableColumn<type, String>, TableCell<type, String>>() {
                     @Override
-                    public TableCell call(final TableColumn<type, String> param) {
+                    public TableCell<type,String > call(final TableColumn<type, String> param) {
                         final TableCell<type, String> cell = new TableCell<type, String>() {
 
                             cPopupMenu menu=new cPopupMenu(imgPath,items);
@@ -58,8 +58,8 @@ public class cellController<type>  {
         return
                 new Callback<TableColumn<type, String>, TableCell<type, String>>() {
                     @Override
-                    public TableCell call(final TableColumn<type, String> param) {
-                        final TableCell<type, String> cell = new TableCell<type, String>() {
+                    public TableCell<type,String> call(final TableColumn<type, String> param) {
+                        return new TableCell<type, String>() {
                             JFXButton notice = new JFXButton();
                             {
                                notice.setText(button.getText());notice.getStyleClass().addAll(button.getStyleClass());
@@ -78,7 +78,6 @@ public class cellController<type>  {
                                 }
                             }
                         };
-                        return cell;
                     }
                 };
 
@@ -87,8 +86,8 @@ public class cellController<type>  {
         return
                 new Callback<TableColumn<type, String>, TableCell<type, String>>() {
                     @Override
-                    public TableCell call(final TableColumn<type, String> param) {
-                        final TableCell<type, String> cell = new TableCell<type, String>() {
+                    public TableCell<type,String> call(final TableColumn<type, String> param) {
+                        return new TableCell<type, String>() {
 
                            // cPopupMenu menu=new cPopupMenu(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."});
 
@@ -121,7 +120,6 @@ public class cellController<type>  {
                                 }
                             }
                         };
-                        return cell;
                     }
                 };
 

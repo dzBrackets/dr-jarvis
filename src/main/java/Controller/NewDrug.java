@@ -56,15 +56,18 @@ Drug drug;
                             update=false;
                         }
                         else drug = (Drug) obj;
+                        if(!drug.getType().contains(parsedType))
                         drug.getType().add(parsedType);
+
+                        if(!drug.getDose().contains(doss_TXF.getText() + weight_combo.getSelectionModel().getSelectedItem()))
                         drug.getDose().add(doss_TXF.getText() + weight_combo.getSelectionModel().getSelectedItem());
-                        drug.setNumCode(database.updateUUID("drug"));
 
                         //correct
                         if(update)
                             requestD.put(new requestFormer<>("update"));
                         else{
-                        requestD.put(new requestFormer<>("add",drug));
+                            drug.setNumCode(database.updateUUID("drug"));
+                            requestD.put(new requestFormer<>("add",drug));
                         }
                         setTableItems(respondD.take());
                         closePopuUp();
