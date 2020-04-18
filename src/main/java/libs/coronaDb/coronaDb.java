@@ -1,5 +1,6 @@
 package libs.coronaDb;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import java.io.BufferedWriter;
@@ -53,35 +54,57 @@ if(!new File(fileName).exists()){
 }
 
 else{
-    File f=new File(backup+table+" "+new Date().toString());
-   f.mkdirs();
-    Files.copy(Paths.get(fileName),f.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
-    throw new IOException("Something Wrong happen your file has been backedUp in case of loss data.try launch app again and hope good");}
+backupTable(table,fileName);
+}
     }
 
-    public <type> coCollection<type> getCollection(String name,Class<type> className) throws IOException, ClassNotFoundException {
-        String filePath=dir+name+".json";
-        coCollection<type> loadedObject=new coCollection<type>(name,filePath,className);
-        if (!tables.stream().map(tablesObj::getTableName).collect(Collectors.toList()).contains(name)) {
-            initTab(name,filePath);
-            System.out.println("Not Founds! Creating table...");
-            return loadedObject ;
-        };
-        if(!new File(filePath).exists()){
-            createTabFile(filePath);
-            return loadedObject ;
-        }
+void backupTable(String table,String fileName) throws IOException {
+    File f=new File(backup+table+" "+new Date().toString());
+    f.mkdirs();
+    Files.copy(Paths.get(fileName),f.toPath(), StandardCopyOption.REPLACE_EXISTING);
+createTabFile(fileName);
+    throw new IOException("Something Wrong happen your file has been backedUp in case of loss data.try launch app again and hope good");
 
-        File tempFile=_tempFile(filePath);
-        tempFile.deleteOnExit();
-        String loadedJson = _jsonStringFixer(readFile(filePath));
-        if (loadedJson.length()<=2){
-            createTabFile(filePath);
-        return loadedObject;
-        }
-            loadedObject.addAll(mapper.readValue(loadedJson, TypeFactory.defaultInstance().constructCollectionType(ArrayList.class,className)));
-        return loadedObject ;
+}
+
+
+
+    public <type> coCollection<type> getCollection(String name,Class<type> className)  {
+        String loadedJson="";
+        String filePath = dir + name + ".json";
+        coCollection<type> loadedObject = new coCollection<type>(name, filePath, className);
+        try {
+           if (!tables.stream().map(tablesObj::getTableName).collect(Collectors.toList()).contains(name)) {
+               initTab(name, filePath);
+               System.out.println("Not Founds! Creating table...");
+               return loadedObject;
+           }
+           ;
+           if (!new File(filePath).exists()) {
+               createTabFile(filePath);
+               return loadedObject;
+           }
+
+           File tempFile = _tempFile(filePath);
+           tempFile.deleteOnExit();
+            loadedJson = _jsonStringFixer(readFile(filePath));
+           if (loadedJson.length() <= 2) {
+               createTabFile(filePath);
+               return loadedObject;
+           }
+           loadedObject.addAll(mapper.readValue(loadedJson, TypeFactory.defaultInstance().constructCollectionType(ArrayList.class, className)));
+           return loadedObject;
+       }
+       catch (IOException e){
+           e.printStackTrace();
+           System.out.println(" is this look like json? :->\n"+ loadedJson);
+           try{
+           backupTable(name,filePath);}
+           catch (IOException e2){
+               System.out.println(e2.getMessage());           }
+           return loadedObject;
+       }
+
     }
 
     private File _tempFile(String filePath) throws IOException {
