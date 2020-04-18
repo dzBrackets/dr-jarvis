@@ -2,8 +2,6 @@ package libs.coronaDb;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
-import sun.awt.X11.Screen;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;

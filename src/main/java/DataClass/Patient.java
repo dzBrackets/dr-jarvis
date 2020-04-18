@@ -35,6 +35,17 @@ private DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
         this.prescriptionsId = new ArrayList<>();
         return this;
     }
+    public Patient Patient(String patientId, String firstName, String lastName, LocalDate birthDay, int gender, LocalDate lastVisit, String lastDiagnostic) {
+        this.patientId = patientId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDay = birthDay.format(df);
+        this.gender = gender;
+        this.lastVisit =lastVisit.format(df);;
+        this.lastDiagnostic = lastDiagnostic;
+        this.prescriptionsId = new ArrayList<>();
+        return this;
+    }
     @JsonIgnore
     public int getAge(){
             return Period.between(LocalDate.parse(birthDay,df),LocalDate.now()).getYears();
@@ -69,7 +80,11 @@ private DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
     public void setPatientId(String patientId) {
         this.patientId = patientId;
     }
+    @JsonIgnore
+    public void setUUID(int  code) {
+        setPatientId(String.format("#%06d",code));
 
+    }
     public String getFirstName() {
         return firstName;
     }

@@ -46,27 +46,26 @@ Drug drug;
         String parsedName=removeSpace(name_TXF.getText().toLowerCase());
         String parsedType=removeSpace(type_TXF.getText().toLowerCase());
             if(parsedName.length()>=3){
-                requestD.put(new requestFormer<>("find","getName",parsedName));
-
-            Object obj=respondObj.take();
-            if (!(obj instanceof Drug)){
-                drug=new Drug();
-                drug.setName(parsedName);
-                    update=false;
-                }
-            else drug = (Drug) obj;
                 if(doss_TXF.getText().length()>0&&isNumeric(doss_TXF.getText())) {
-                    drug.getDose().add(doss_TXF.getText() + weight_combo.getSelectionModel().getSelectedItem());
-
                     if(parsedType.length()>1) {
+                        requestD.put(new requestFormer<>("find","getName",parsedName));
+                        Object obj=respondObj.take();
+                        if (!(obj instanceof Drug)){
+                            drug=new Drug();
+                            drug.setName(parsedName);
+                            update=false;
+                        }
+                        else drug = (Drug) obj;
                         drug.getType().add(parsedType);
+                        drug.getDose().add(doss_TXF.getText() + weight_combo.getSelectionModel().getSelectedItem());
                         drug.setNumCode(database.updateUUID("drug"));
 
                         //correct
                         if(update)
                             requestD.put(new requestFormer<>("update"));
-                        else
+                        else{
                         requestD.put(new requestFormer<>("add",drug));
+                        }
                         setTableItems(respondD.take());
                         closePopuUp();
                     }

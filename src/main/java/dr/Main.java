@@ -1,6 +1,7 @@
 package dr;
 
 import DataClass.Drug;
+import DataClass.Patient;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,9 +17,12 @@ public class Main extends Application {
     public static void main(String[] args)
     {
         dataThread<Drug> drugThread=null;
+        dataThread<Patient> patientThread=null;
         try {
             drugThread=new dataThread<>("drug",Drug.class,requestD,respondD);
             drugThread.start();
+            patientThread=new dataThread<>("patient",Patient.class,requestP,respondP);
+            patientThread.start();
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
