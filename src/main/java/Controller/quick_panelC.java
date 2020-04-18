@@ -3,11 +3,13 @@ package Controller;
 import com.jfoenix.controls.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
 import model.prescription;
 
 import java.net.URL;
@@ -15,6 +17,19 @@ import java.util.ResourceBundle;
 
 public class quick_panelC implements Initializable {
 
+    public Label name_label;
+    public Label age_label;
+    public Label visite_label;
+    public Label last_notice_label;
+    public JFXButton exit_btn;
+    public JFXButton save_btn;
+    public JFXButton print_btn;
+    public JFXComboBox type_combo;
+    public JFXComboBox doss_combo;
+    public Spinner spinner;
+    public JFXTextArea notice_text_field;
+    public JFXButton add_btn;
+    public AnchorPane quick_pane;
     @FXML
     private TableView<prescription> table;
     @FXML
@@ -74,5 +89,20 @@ public class quick_panelC implements Initializable {
         data.add(new prescription("sarou5","dwa","siro","1000mg","do it !",new MenuButton()));
         table.setItems(data);
 
+    }
+
+    public void exit_methode(ActionEvent actionEvent) {
+         MainPanelC.s.close();
+         MainPanelC.effect.setRadius(0);
+
+    }
+
+    public void save(ActionEvent actionEvent) {
+    }
+
+    public void save_and_print(ActionEvent actionEvent) {
+    }
+
+    public void add_to_table(ActionEvent actionEvent) {
     }
 }

@@ -1,6 +1,7 @@
 .root {
 	-fx-border-style:hidden ;
 	-fx-border-color:transparent;
+
 }
 #info1_label {
 	  -fx-font-weight: bold;

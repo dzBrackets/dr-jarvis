@@ -29,7 +29,7 @@
       <Label id="info1_label" layoutX="26.0" layoutY="14.0" prefHeight="32.0" prefWidth="189.0" style="-fx-font-size: 21px;" text="Patient Liste :" textFill="#4a4a4a" />
       <Label layoutX="25.0" layoutY="76.0" prefHeight="17.0" prefWidth="41.0" style="-fx-font-size: 16px;" text="show" textFill="#5f5f5f" />
       <Spinner id="show_spinner" fx:id="show_spinner" layoutX="66.0" layoutY="70.0" prefHeight="32.0" prefWidth="54.0" />
-      <Label id="info2_label" alignment="TOP_LEFT" layoutX="123.0" layoutY="76.0" prefHeight="25.0" prefWidth="54.0" style="-fx-font-size: 16px;" text="entries" textFill="#5f5f5f" />
+      <Label id="info2_label" fx:id="info2_label" alignment="TOP_LEFT" layoutX="123.0" layoutY="76.0" prefHeight="25.0" prefWidth="54.0" style="-fx-font-size: 16px;" text="entries" textFill="#5f5f5f" />
       <TextField id="write_TXF" fx:id="write_TXF" layoutX="431.0" layoutY="68.0" prefHeight="41.0" prefWidth="293.0" promptText="write something..." />
       <JFXButton id="add_patient_btn" fx:id="add_patient_btn" layoutX="738.0" layoutY="68.0" onAction="#add_patient_table" prefHeight="41.0" prefWidth="149.0" style="-fx-background-color: #5144FF; -fx-background-radius: 11px;" text="Add new Patient" textAlignment="CENTER" textFill="WHITE">
          <graphic>

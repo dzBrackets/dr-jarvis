@@ -11,9 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -44,6 +42,10 @@ public class PatientList implements Initializable {
 public cellController<Patient> cellController=new cellController<>();
     static ObservableList<Patient> data = FXCollections.observableArrayList();
     static public  Stage s;
+    public Spinner show_spinner;
+    public TextField write_TXF;
+    public JFXButton add_patient_btn;
+    public Label info2_label;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
