@@ -1,5 +1,6 @@
 package Controller;
 
+import DataClass.Drug;
 import DataClass.Patient;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
@@ -20,6 +21,8 @@ import static Controller.PatientList.closePopuUp;
 import static dr.FinalsVal.*;
 
 public class NewPatient implements Initializable {
+
+    private requestFormer<Patient> req=formerP;
     public TextField firstN_TXF;
     public TextField lastN_TXF;
     public JFXDatePicker date;
@@ -41,7 +44,7 @@ int gender=((JFXRadioButton)gender_group.getSelectedToggle()).getText().equals("
                     patient= new Patient().Patient("N/D",pf,pl,date.getValue(),gender,LocalDate.now(),"N/D");
                 patient.setUUID(database.updateUUID("patient"));
 
-          requestP.put(new requestFormer<>("add",patient));
+          requestP.put(req.post(patient));
                   setTableItems(respondP.take());
                   closePopuUp();}
 

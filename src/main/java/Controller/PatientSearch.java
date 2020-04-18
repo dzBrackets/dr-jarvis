@@ -24,6 +24,7 @@ public class PatientSearch implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         String [] possible_list= {"aymen", "brahim", "daouadji","team","dzb"};
         TextFields.bindAutoCompletion(search_TF,possible_list);
+
     }
 
     public void onClick(ActionEvent e) {

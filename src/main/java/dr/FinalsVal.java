@@ -15,6 +15,8 @@ final public class FinalsVal {
        static public final SynchronousQueue<coCollection<Patient>> respondP = new SynchronousQueue<>();
        static public final SynchronousQueue<requestFormer<Patient>> requestP = new SynchronousQueue<>();
        static public final SynchronousQueue<Object> respondObj = new SynchronousQueue<>();
+       static public final requestFormer<Patient> formerP=new requestFormer<>();
+       static public final requestFormer<Drug> formerD=new requestFormer<>();
 
        static public final coronaDb database=new coronaDb("norme");
 
