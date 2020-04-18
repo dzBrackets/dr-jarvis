@@ -46,6 +46,8 @@ public cellController<Patient> cellController=new cellController<>();
     public TextField write_TXF;
     public JFXButton add_patient_btn;
     public Label info2_label;
+    private requestFormer<Patient> req=formerP;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -64,7 +66,7 @@ eventTrigger();
     }
     public void  loadData(){
         try{
-        requestP.put(new requestFormer<>("get"));
+        requestP.put(req.get());
         List<Patient> dList=respondP.take();
         data.setAll(dList);
     } catch (Exception e) {
@@ -84,7 +86,7 @@ eventTrigger();
                     if(prop.getValue()==0){
                         System.out.println("delete");
                         try {
-                            requestP.put(new requestFormer<>("remove", patient_table.getItems().get(cellController.index)));
+                            requestP.put(req.remove(patient_table.getItems().get(cellController.index)));
                             setTableItems(respondP.take());
 
                         } catch (InterruptedException ex) {
