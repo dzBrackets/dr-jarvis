@@ -14,7 +14,7 @@
          <children>
             <Label id="search_label" fx:id="search_label" layoutX="55.0" layoutY="24.0" prefHeight="34.0" prefWidth="198.0" text="Patient name :" textFill="WHITE" />
             <JFXTextField fx:id="search_TF" layoutX="55.0" layoutY="58.0" prefHeight="34.0" prefWidth="435.0" />
-            <JFXButton id="add_btn" fx:id="add_btn" contentDisplay="GRAPHIC_ONLY" layoutX="544.0" layoutY="43.0" onAction="#onClick" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 11px; -fx-background-color: #765EE2;">
+            <JFXButton id="add_btn" fx:id="add_btn" contentDisplay="GRAPHIC_ONLY" layoutX="544.0" layoutY="43.0" onAction="#add_methode" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 11px; -fx-background-color: #765EE2;">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -25,7 +25,7 @@
             </JFXButton>
          </children>
       </Pane>
-      <JFXButton id="cancel_btn" contentDisplay="GRAPHIC_ONLY" layoutX="631.0" layoutY="113.0" prefHeight="34.0" prefWidth="34.0">
+      <JFXButton id="cancel_btn" fx:id="cancel_btn" contentDisplay="GRAPHIC_ONLY" layoutX="631.0" layoutY="113.0" onAction="#exit_methode" prefHeight="34.0" prefWidth="34.0">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>

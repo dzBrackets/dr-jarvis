@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 
 public class PatientSearch implements Initializable {
     public Label search_label;
+    public JFXButton cancel_btn;
     @FXML
      private JFXTextField search_TF;
      @FXML
@@ -26,8 +27,11 @@ public class PatientSearch implements Initializable {
         TextFields.bindAutoCompletion(search_TF,possible_list);
 
     }
-
-    public void onClick(ActionEvent e) {
+    public void exit_methode(ActionEvent actionEvent) {
+        MainPanelC.search_stage.close();
+        MainPanelC.effect.setRadius(0);
+    }
+    public void add_methode(ActionEvent actionEvent) {
 
     }
 }

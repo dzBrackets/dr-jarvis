@@ -97,6 +97,8 @@
                   <fx:include source="patient_list.fxml" />
                </children>
             </Pane>
+            <Pane id="dashbord_pane" fx:id="dashbord_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px; -fx-background-color: black;" />
+            <Pane id="setting_pane" fx:id="setting_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px; -fx-background-color: green;" />
          </children>
       </AnchorPane>
    </children>

@@ -4,12 +4,20 @@ import DataClass.Drug;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.IntegerValidator;
+import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.validation.RegexValidator;
+import com.jfoenix.validation.RequiredFieldValidator;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import libs.requestFormer;
 
 import java.io.IOException;
@@ -22,9 +30,9 @@ import static dr.FinalsVal.*;
 
 public class NewDrug implements Initializable {
 
-    public TextField name_TXF;
-    public TextField type_TXF;
-    public TextField doss_TXF;
+    public JFXTextField name_TXF;
+    public JFXTextField type_TXF;
+    public JFXTextField doss_TXF;
     public JFXTextArea write_TXA;
     public JFXButton add_btn;
     public JFXComboBox<String> weight_combo;
@@ -33,6 +41,7 @@ Drug drug;
 private requestFormer<Drug> req=formerD;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        form_validation();
         ObservableList<String> weight_list = FXCollections.observableArrayList("mg","kg","ml","ug");
         weight_combo.setItems(weight_list);
         weight_combo.getSelectionModel().select(0);
@@ -93,5 +102,57 @@ error_txt.setVisible(true);
         catch (InterruptedException | IOException e) {
             e.printStackTrace();
         }
+    }
+    public void form_validation(){
+        name_TXF.setFocusTraversable(false);
+        type_TXF.setFocusTraversable(false);
+        doss_TXF.setFocusTraversable(false);
+        RequiredFieldValidator name_req =new RequiredFieldValidator();
+        RequiredFieldValidator type_req=new RequiredFieldValidator();
+        RequiredFieldValidator doss_req=new RequiredFieldValidator();
+        name_req.setMessage("Please fill out this Field !");
+        type_req.setMessage("Please fill out this Field !");
+        doss_req.setMessage("Put a number !");
+        name_req.setIcon(new ImageView("dr/image/icons8_box_important_16.png"));
+        type_req.setIcon(new ImageView("dr/image/icons8_box_important_16.png"));
+        doss_req.setIcon(new ImageView("dr/image/icons8_box_important_16.png"));
+        /******************************************************************************/
+        RegexValidator name_val=new RegexValidator();
+        RegexValidator type_val =new RegexValidator();
+        NumberValidator doss_val =new NumberValidator();
+        name_val.setMessage("Please provide a Valid name !");
+        type_val.setMessage("Please provide a Valid input !");
+        doss_val.setMessage("Put a number !");
+        name_val.setIcon(new ImageView("dr/image/icons8_box_important_16.png"));
+        type_val.setIcon(new ImageView("dr/image/icons8_box_important_16.png"));
+        doss_val.setIcon(new ImageView("dr/image/icons8_box_important_16.png"));
+        name_val.setRegexPattern("[a-z]{1,10}");
+        type_val.setRegexPattern("[a-z]{1,10}");
+        /*******************************************************************************/
+        name_TXF.getValidators().addAll(name_req,name_val);
+        type_TXF.getValidators().addAll(type_req,type_val);
+        doss_TXF.getValidators().addAll(doss_req,doss_val);
+
+        name_TXF.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(newValue==false){
+                name_TXF.validate();
+            }}
+        });
+        type_TXF.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(newValue==false){
+                type_TXF.validate();
+            }}
+        });
+        doss_TXF.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(newValue==false){
+                doss_TXF.validate();
+            }}
+        });
     }
 }

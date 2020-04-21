@@ -92,9 +92,8 @@ public class quick_panelC implements Initializable {
     }
 
     public void exit_methode(ActionEvent actionEvent) {
-         MainPanelC.s.close();
+         MainPanelC.quick_stage.close();
          MainPanelC.effect.setRadius(0);
-
     }
 
     public void save(ActionEvent actionEvent) {
