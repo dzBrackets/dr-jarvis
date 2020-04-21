@@ -10,20 +10,38 @@
 
 <AnchorPane prefHeight="687.0" prefWidth="561.0" style="-fx-background-color: #2C3964; -fx-background-radius: 11px;" stylesheets="@../../CSS/new_drug_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewDrug">
    <children>
-      <Label layoutX="38.0" layoutY="50.0" prefHeight="17.0" prefWidth="133.0" style="-fx-font-size: 24px;" text="New Drug" textFill="WHITE" />
-      <JFXTextField id="name_TXF" fx:id="name_TXF" alignment="CENTER" layoutX="73.0" layoutY="177.0" prefHeight="44.0" prefWidth="415.0" style="-fx-background-radius: 11px; -fx-background-color: white;" />
-      <Label layoutX="73.0" layoutY="139.0" prefHeight="17.0" prefWidth="85.0" style="-fx-font-size: 18px;" text="Name" textFill="WHITE" />
-      <JFXTextField id="type_TXF" fx:id="type_TXF" alignment="CENTER" layoutX="73.0" layoutY="266.0" prefHeight="44.0" prefWidth="188.0" promptText="Type" style="-fx-background-radius: 11px; -fx-background-color: white;" />
-      <JFXTextField id="doss_TXF" fx:id="doss_TXF" alignment="CENTER" layoutX="300.0" layoutY="266.0" prefHeight="44.0" prefWidth="125.0" promptText="Doss" style="-fx-background-radius: 11px 0px 0px 11px; -fx-background-color: white;" />
+      <Label layoutX="73.0" layoutY="50.0" prefHeight="17.0" prefWidth="133.0" text="New Drug" textFill="WHITE">
+         <font>
+            <Font name="Sarabun SemiBold" size="22.0" />
+         </font></Label>
+      <JFXTextField id="name_TXF" fx:id="name_TXF" alignment="CENTER" layoutX="73.0" layoutY="177.0" prefHeight="44.0" prefWidth="415.0" style="-fx-background-radius: 11px; -fx-background-color: white;">
+         <font>
+            <Font name="Sarabun Medium" size="12.0" />
+         </font></JFXTextField>
+      <Label layoutX="73.0" layoutY="139.0" prefHeight="17.0" prefWidth="85.0" text="Name" textFill="WHITE">
+         <font>
+            <Font name="Sarabun SemiBold" size="18.0" />
+         </font></Label>
+      <JFXTextField id="type_TXF" fx:id="type_TXF" alignment="CENTER" layoutX="73.0" layoutY="266.0" prefHeight="44.0" prefWidth="188.0" promptText="Type" style="-fx-background-radius: 11px; -fx-background-color: white;">
+         <font>
+            <Font name="Sarabun Medium" size="12.0" />
+         </font></JFXTextField>
+      <JFXTextField id="doss_TXF" fx:id="doss_TXF" alignment="CENTER" layoutX="300.0" layoutY="266.0" prefHeight="44.0" prefWidth="125.0" promptText="Doss" style="-fx-background-radius: 11px 0px 0px 11px; -fx-background-color: white;">
+         <font>
+            <Font name="Sarabun Medium" size="12.0" />
+         </font></JFXTextField>
       <JFXComboBox id="weight_combo" fx:id="weight_combo" layoutX="425.0" layoutY="266.0" prefHeight="44.0" prefWidth="63.0" />
-      <Label id="info3_lable" fx:id="info3_lable" layoutX="73.0" layoutY="354.0" prefHeight="27.0" prefWidth="354.0" style="-fx-font-size: 18px;" text="Info (feel free to keep this blank) :" textFill="WHITE" />
+      <Label id="info3_lable" fx:id="info3_lable" layoutX="73.0" layoutY="354.0" prefHeight="27.0" prefWidth="354.0" text="Info (feel free to keep this blank) :" textFill="WHITE">
+         <font>
+            <Font name="Sarabun SemiBold" size="18.0" />
+         </font></Label>
       <JFXTextArea id="write_TXA" fx:id="write_TXA" layoutX="73.0" layoutY="400.0" prefHeight="123.0" prefWidth="415.0" promptText="write something...." style="-fx-background-color: white; -fx-background-radius: 11px;">
          <font>
-            <Font size="15.0" />
+            <Font name="Sarabun Medium" size="12.0" />
          </font></JFXTextArea>
       <JFXButton id="add_drug" fx:id="add_btn" layoutX="93.0" layoutY="559.0" onAction="#add_drug" prefHeight="48.0" prefWidth="376.0" style="-fx-background-color: #1AD28B; -fx-background-radius: 5px;" text="Add Drug" textFill="WHITE">
          <font>
-            <Font size="13.0" />
+            <Font name="Sarabun SemiBold" size="14.0" />
          </font></JFXButton>
       <Label id="error_txt" fx:id="error_txt" layoutX="263.0" layoutY="96.0" text="Error!!" textFill="RED" visible="false">
          <font>

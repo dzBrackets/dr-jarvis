@@ -1,13 +1,14 @@
-.jfx-date-picker:editable .date-picker-display-node {
+.jfx-date-picker .date-picker-display-node {
 	-fx-alignment:center;
 	-fx-font-size:16px;
 	-fx-font-weight	:bold;
 	-fx-text-fill:#6D788B;
 }
 .error-label {
-	-fx-font-size:11px;
+	-fx-font-size:12px;
 	-fx-pref-height:20px;
     -fx-font-weight	:bold;
+    -fx-font-family:Sarabun SemiBold;
 }
 
 

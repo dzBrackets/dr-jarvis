@@ -1,6 +1,4 @@
-.label {
-	-fx-font-family:"Girassol";
-}
+
 #quick_pane{
 -fx-background-color :#2C3964 ;
 -fx-border-style:hidden ;
@@ -77,8 +75,6 @@
 #drugs_name_text_field  {
 -fx-text-fill:black;
 -fx-prompt-text-fill: white;
--fx-font-size:14px;
-
 }
 
 .table-view:row-selection .jfx-button .image-view {
@@ -99,12 +95,14 @@
    -fx-alignment: CENTER;
    -fx-padding:15px 5px 15px 5px;
    -fx-font-size: 15px;
+   -fx-font-family:Sarabun SemiBold;
 }
 
 .table-view .cell{
   -fx-alignment: center;
   -fx-border :none;
   -fx-font-size: 15px;
+  -fx-font-family:Sarabun SemiBold;
 }
 .table-view {
 	  -fx-table-cell-border-color: transparent;

@@ -9,6 +9,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="drugs_pane" fx:id="drugs_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px; -fx-background-color: #ffffff;" stylesheets="@../../CSS/table_pages_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DrugList">
     <children>
@@ -27,7 +28,7 @@
         </TableView>
         <Label id="info1_label" layoutX="25.0" layoutY="14.0" prefHeight="32.0" prefWidth="137.0" style="-fx-font-size: 21px;" text="Drugs Liste :" textFill="#4a4a4a" />
         <TextField id="write_TXF" fx:id="write_TXF" layoutX="431.0" layoutY="68.0" prefHeight="41.0" prefWidth="293.0" promptText="write something..." />
-      <JFXButton id="add_drug_btn" fx:id="add_drug_btn" layoutX="738.0" layoutY="68.0" onAction="#add_drug_table" prefHeight="41.0" prefWidth="149.0" style="-fx-background-color: #5144FF; -fx-background-radius: 11px;" text="Add new Drug" textAlignment="CENTER" textFill="WHITE">
+      <JFXButton id="add_drug_btn" fx:id="add_drug_btn" layoutX="738.0" layoutY="68.0" onAction="#add_drug_table" prefHeight="41.0" prefWidth="149.0" style="-fx-background-color: #5144FF; -fx-background-radius: 11px;" text="Add new Drug     " textAlignment="CENTER" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -35,9 +36,18 @@
                </image>
             </ImageView>
          </graphic>
+         <font>
+            <Font name="Sarabun SemiBold" size="12.0" />
+         </font>
       </JFXButton>
-      <Label layoutX="25.0" layoutY="75.0" prefHeight="17.0" prefWidth="41.0" style="-fx-font-size: 16px;" text="show" textFill="#5f5f5f" />
-      <Spinner id="show_spinner" fx:id="show_spinner" layoutX="66.0" layoutY="69.0" prefHeight="32.0" prefWidth="54.0" />
-      <Label id="info2_label" alignment="TOP_LEFT" layoutX="123.0" layoutY="75.0" prefHeight="25.0" prefWidth="54.0" style="-fx-font-size: 16px;" text="entries" textFill="#5f5f5f" />
+      <Label layoutX="25.0" layoutY="78.0" prefHeight="17.0" prefWidth="41.0" text="show" textFill="#5f5f5f">
+         <font>
+            <Font name="Sarabun Medium" size="15.0" />
+         </font></Label>
+      <Spinner id="show_spinner" fx:id="show_spinner" layoutX="67.0" layoutY="69.0" prefHeight="32.0" prefWidth="54.0" />
+      <Label id="info2_label" alignment="TOP_LEFT" layoutX="129.0" layoutY="76.0" prefHeight="25.0" prefWidth="54.0" text="entries" textFill="#5f5f5f">
+         <font>
+            <Font name="Sarabun Medium" size="15.0" />
+         </font></Label>
     </children>
 </AnchorPane>

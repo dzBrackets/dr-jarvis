@@ -30,6 +30,7 @@
 	-fx-font-size:11px;
 	-fx-pref-height:20px;
     -fx-font-weight	:bold;
+    -fx-font-family:Sarabun SemiBold;
 }
 .jfx-text-field{
 	-fx-prompt-text-fill:#6D788B;
@@ -38,4 +39,5 @@
     -fx-font-size:11px;
 	-fx-pref-height:20px;
 	-fx-pref-width:500px;
+	-fx-font-family:Sarabun SemiBold;
 }
