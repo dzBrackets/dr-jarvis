@@ -25,6 +25,17 @@
 /***********************************************/
    #write_TXA {
 -fx-prompt-text-fill:#D9D9D9;
-
-
    }
+   .error-label {
+	-fx-font-size:11px;
+	-fx-pref-height:20px;
+    -fx-font-weight	:bold;
+}
+.jfx-text-field{
+	-fx-prompt-text-fill:#6D788B;
+}
+#doss_TXF .error-label {
+    -fx-font-size:11px;
+	-fx-pref-height:20px;
+	-fx-pref-width:500px;
+}

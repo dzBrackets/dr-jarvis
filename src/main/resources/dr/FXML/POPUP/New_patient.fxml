@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.TextField?>
 <AnchorPane id="Pform" fx:id="Pform" prefHeight="687.0" prefWidth="680.0" style="-fx-background-color: #2C3964; -fx-background-radius: 11px;" stylesheets="@../../CSS/new_patient_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewPatient">
    <children>
       <Label layoutX="68.0" layoutY="31.0" prefHeight="32.0" prefWidth="150.0" text="New patient" textFill="WHITE">
@@ -23,8 +22,8 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField id="firstN_TXF" fx:id="firstN_TXF" alignment="CENTER" layoutX="226.0" layoutY="122.0" prefHeight="44.0" prefWidth="188.0" promptText="First Name" style="-fx-background-color: white; -fx-background-radius: 11px;" />
-      <TextField id="lastN_TXF" fx:id="lastN_TXF" alignment="CENTER" layoutX="443.0" layoutY="122.0" prefHeight="44.0" prefWidth="188.0" promptText="Last Name" style="-fx-background-color: white; -fx-background-radius: 11px;" />
+      <JFXTextField id="firstN_TXF" fx:id="firstN_TXF" alignment="CENTER" layoutX="226.0" layoutY="122.0" prefHeight="44.0" prefWidth="188.0" promptText="First Name" style="-fx-background-color: white; -fx-background-radius: 11px;" />
+      <JFXTextField id="lastN_TXF" fx:id="lastN_TXF" alignment="CENTER" layoutX="443.0" layoutY="122.0" prefHeight="44.0" prefWidth="188.0" promptText="Last Name" style="-fx-background-color: white; -fx-background-radius: 11px;" />
       <Label layoutX="68.0" layoutY="228.0" prefHeight="26.0" prefWidth="134.0" text="Date of birth:" textFill="WHITE">
          <font>
             <Font size="17.0" />
