@@ -23,9 +23,9 @@ public class Main extends Application {
         dataThread<Drug> drugThread=null;
         dataThread<Patient> patientThread=null;
         try {
-            drugThread=new dataThread<>("drug",Drug.class,requestD,respondD);
+            drugThread=new dataThread<>("drug",Drug.class,requestD,respondD,respondDL);
             drugThread.start();
-            patientThread=new dataThread<>("patient",Patient.class,requestP,respondP);
+            patientThread=new dataThread<>("patient",Patient.class,requestP,respondP,respondPL);
             patientThread.start();
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();

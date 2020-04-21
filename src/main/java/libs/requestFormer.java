@@ -1,5 +1,12 @@
 package libs;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+
 final public class requestFormer<type> {
    public String request;
     public Object canon;
@@ -9,6 +16,8 @@ public String functionName;
 public Object[] funArguments;
 public Object arg1,arg2,ar3,ar4;
     public type obr1,obr2;
+    private final IntegerProperty asynk=new SimpleIntegerProperty(1);
+
 
     public static final String GET="g";
     public static final String POST="p";
@@ -57,4 +66,13 @@ public <klass> requestFormer<type> callBack(String fName, klass[] ob, Class<klas
         return this;
     }
 
+    public void onReceive(InvalidationListener event) {
+        System.out.println("you receive an event!!!");
+
+        asynk.addListener(event);
+    }
+    public void dispatchEvent(){
+        System.out.println("you dispatch an event!!");
+        asynk.setValue((asynk.getValue()+1)%2);
+    }
 }

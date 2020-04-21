@@ -1,37 +1,41 @@
 package dr;
-import DataClass.Patient;
 import libs.coronaDb.coCollection;
 import libs.requestFormer;
-import static dr.FinalsVal.respondObj;
+import org.josql.QueryExecutionException;
+import org.josql.QueryParseException;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.SynchronousQueue;
 
-import static dr.FinalsVal.database;
+import static dr.FinalsVal.*;
+
 public class dataThread<type> extends Thread {
-    private coCollection<type> data;
-private SynchronousQueue<requestFormer<type>> request;
-   private SynchronousQueue<coCollection<type>> respond;
-   private Class <type> className;
-    public dataThread(String name, Class<type> className,SynchronousQueue<requestFormer<type>> request, SynchronousQueue<coCollection<type>> respond) throws IOException, ClassNotFoundException {
+    private final coCollection<type> data;
+private final SynchronousQueue<requestFormer<type>> request;
+    private final SynchronousQueue<coCollection<type>> respond;
+    private final SynchronousQueue<List<type>> respondL;
+
+    public dataThread(String name, Class<type> className,SynchronousQueue<requestFormer<type>> request, SynchronousQueue<coCollection<type>> respond,SynchronousQueue<List<type>> respondL) throws IOException, ClassNotFoundException {
         super(name);
         this.respond=respond;
         this.request=request;
-
+        this.respondL= respondL;
         data = database.getCollection(name, className);
-this.className=className;
     }
 
     public void run() {
 
-        System.out.println("abc");
         while (true) {
             requestFormer<type> req;
             try {
                 req = request.take();
+                System.out.println(3);
+
 
             if (req.request.equals(requestFormer.GET)) {
-                respond.put(data);
+                respond.offer(data);
+             //   req.dispatchEvent();
             }
 
 
@@ -39,7 +43,10 @@ this.className=className;
                 @SuppressWarnings("unchecked")
                 type p=(type) req.arg1;
                 data.removeOne(p);
-                respond.put(data);
+                req.dispatchEvent();
+                respond.offer(data);
+                System.out.println(1);
+
                 }
 
             if (req.request.equals(requestFormer.FIND)){
@@ -48,8 +55,7 @@ this.className=className;
                     respondObj.put(D.get(0));
                 }
                 else respondObj.put(new Object());
-
-
+                req.dispatchEvent();
             }
 
             if (req.request.equals(requestFormer.POST)) {
@@ -59,18 +65,35 @@ this.className=className;
 
                 respond.put(data);
 
+                req.dispatchEvent();
+
             }
             if (req.request.equals(requestFormer.UPDATE)){
                 data.reSave();
                 respond.put(data);
 
-            }
+                req.dispatchEvent();
 
+            }
+            if(req.request.equals(requestFormer.CALLBACK))
+            {
+                if(req.functionName.equals("querySearch")){
+                    try {
+                        respondL.put(data.querySelector((String)req.arg1,(String)req.arg2).collect());
+                        req.dispatchEvent();
+                    }
+                    catch (QueryParseException|QueryExecutionException e) {
+                        e.printStackTrace();
+                        System.out.println("abb");
+                    }
+                }
+            }
             } catch (InterruptedException | IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
 }
 
 

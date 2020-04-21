@@ -72,6 +72,7 @@ public class coCollection < type > extends ArrayList < type >  {
             BufferedWriter writer = new BufferedWriter(new FileWriter(path));
             writer.write(_jsonStringFixer(jsonString,false));
             writer.close();
+            if(size()>0)
             new BufferedWriter(new FileWriter(path, true)).append(",").close();
 
         } catch (IOException e) {

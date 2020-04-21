@@ -1,5 +1,6 @@
 package Controller;
 
+import DataClass.Drug;
 import com.jfoenix.controls.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,7 +11,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
+import libs.cellController;
 import model.prescription;
+import model.showButton;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,8 +27,8 @@ public class quick_panelC implements Initializable {
     public JFXButton exit_btn;
     public JFXButton save_btn;
     public JFXButton print_btn;
-    public JFXComboBox type_combo;
-    public JFXComboBox doss_combo;
+    public JFXComboBox<String> type_combo;
+    public JFXComboBox<String> doss_combo;
     public Spinner spinner;
     public JFXTextArea notice_text_field;
     public JFXButton add_btn;
@@ -44,11 +47,17 @@ public class quick_panelC implements Initializable {
     private TableColumn<prescription, String> qts_colm;
     @FXML
     private TableColumn<prescription, String> notice_colm;
-    public TableColumn<prescription, MenuButton> delete_colm;
+    public TableColumn<prescription, String> delete_colm;
+    ObservableList<prescription> data=FXCollections.observableArrayList();;
+    cellController<prescription> cellController=new cellController<>();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initCol();
         loadData();
+        initEvents();
+
+
     }
 
     public void initCol(){
@@ -56,37 +65,17 @@ public class quick_panelC implements Initializable {
         type_colm.setCellValueFactory(new PropertyValueFactory<>("type"));
         doss_colm.setCellValueFactory(new PropertyValueFactory<>("doss"));
         qts_colm.setCellValueFactory(new PropertyValueFactory<>("qts"));
-        notice_colm.setCellValueFactory(new PropertyValueFactory<>("notice"));
-        delete_colm.setCellValueFactory(new PropertyValueFactory<>("del_btn"));
+        notice_colm.setCellFactory(cellController.BCellFactory(new showButton("show")));
+        delete_colm.setCellFactory(cellController.MCellFactory(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."}));
 
     }
-    public void editablecols(){
-        /*  making Rows editable  */
-        table.setEditable(true);
-        name_colm.setCellFactory(TextFieldTableCell.forTableColumn());
-       type_colm.setCellFactory(TextFieldTableCell.forTableColumn());
-       doss_colm.setCellFactory(TextFieldTableCell.forTableColumn());
-       qts_colm.setCellFactory(TextFieldTableCell.forTableColumn());
-        /*making Rows event listener*/
-        name_colm.setOnEditCommit(event -> {
-            event.getTableView().getItems().get(event.getTablePosition().getRow()).setName(event.getNewValue());
-        });
-        type_colm.setOnEditCommit(event -> {
-            event.getTableView().getItems().get(event.getTablePosition().getRow()).setType(event.getNewValue());
-        });
-       doss_colm.setOnEditCommit(event -> {
-            event.getTableView().getItems().get(event.getTablePosition().getRow()).setDoss(event.getNewValue());
-        });
-       qts_colm.setOnEditCommit(event -> {
-            event.getTableView().getItems().get(event.getTablePosition().getRow()).setQts(event.getNewValue());
-        });
-    }
+
     public void  loadData(){
-        ObservableList<prescription> data = FXCollections.observableArrayList();
 
 
-        data.add(new prescription("Cocayin","pills","25mg","3","stop !",new MenuButton()));
-        data.add(new prescription("sarou5","dwa","siro","1000mg","do it !",new MenuButton()));
+        data.add(new prescription("Cocayin","pills","25mg","3","stop !"));
+        data.add(new prescription("sarou5","dwa","siro","1000mg","do it !"));
+
         table.setItems(data);
 
     }
@@ -97,6 +86,9 @@ public class quick_panelC implements Initializable {
 
     }
 
+
+
+
     public void save(ActionEvent actionEvent) {
     }
 
@@ -104,5 +96,12 @@ public class quick_panelC implements Initializable {
     }
 
     public void add_to_table(ActionEvent actionEvent) {
+    }
+    public void initEvents(){
+
+        add_btn.setOnAction(v->{
+            //data.add
+
+        });
     }
 }

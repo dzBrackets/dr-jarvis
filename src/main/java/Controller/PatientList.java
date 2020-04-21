@@ -81,17 +81,20 @@ eventTrigger();
     }
 
     public void eventTrigger(){
+
         cellController.MenuDispatcher.addListener(e-> {
                     IntegerProperty prop= (IntegerProperty) e;
                     if(prop.getValue()==0){
                         System.out.println("delete");
-                        try {
-                            requestP.put(req.remove(patient_table.getItems().get(cellController.index)));
-                            setTableItems(respondP.take());
 
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
+                            requestP.offer(req.remove(patient_table.getItems().get(cellController.index)));
+                        try {
+                            setTableItems(respondP.take());
+                        } catch (InterruptedException interruptedException) {
+                            interruptedException.printStackTrace();
                         }
+
+
                     }
                 }
         );
