@@ -20,11 +20,11 @@ import java.io.IOException;
 
 public class Main extends Application {
     double xOffset,yOffset;
-
+    public static dataThread<Drug> drugThread=null;
+    public static dataThread<Patient> patientThread=null;
     public static void main(String[] args)
     {
-        dataThread<Drug> drugThread=null;
-        dataThread<Patient> patientThread=null;
+
         try {
             drugThread=new dataThread<>("drug",Drug.class,requestD,respondD,respondDL);
             drugThread.start();

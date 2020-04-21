@@ -6,10 +6,17 @@ import java.util.concurrent.SynchronousQueue;
 
 import DataClass.Drug;
 import DataClass.Patient;
+import io.reactivex.rxjava3.core.Maybe;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.internal.operators.observable.ObservableAny;
 import libs.coronaDb.coCollection;
 import libs.coronaDb.coronaDb;
 import libs.requestFormer;
+import org.reactivestreams.Subscriber;
+
 final public class FinalsVal {
+
+
        static public final SynchronousQueue<coCollection<Drug>> respondD = new SynchronousQueue<>();
        static public final SynchronousQueue<requestFormer<Drug>> requestD = new SynchronousQueue<>();
        static public final SynchronousQueue<coCollection<Patient>> respondP = new SynchronousQueue<>();

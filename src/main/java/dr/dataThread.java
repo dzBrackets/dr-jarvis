@@ -1,4 +1,7 @@
 package dr;
+import DataClass.Patient;
+import io.reactivex.rxjava3.core.Maybe;
+import io.reactivex.rxjava3.core.Observable;
 import libs.coronaDb.coCollection;
 import libs.requestFormer;
 import org.josql.QueryExecutionException;
@@ -11,11 +14,10 @@ import java.util.concurrent.SynchronousQueue;
 import static dr.FinalsVal.*;
 
 public class dataThread<type> extends Thread {
-    private final coCollection<type> data;
+    private final coCollection<type> data ;
 private final SynchronousQueue<requestFormer<type>> request;
     private final SynchronousQueue<coCollection<type>> respond;
     private final SynchronousQueue<List<type>> respondL;
-
     public dataThread(String name, Class<type> className,SynchronousQueue<requestFormer<type>> request, SynchronousQueue<coCollection<type>> respond,SynchronousQueue<List<type>> respondL) throws IOException, ClassNotFoundException {
         super(name);
         this.respond=respond;
@@ -30,12 +32,12 @@ private final SynchronousQueue<requestFormer<type>> request;
             requestFormer<type> req;
             try {
                 req = request.take();
-                System.out.println(3);
 
 
             if (req.request.equals(requestFormer.GET)) {
-                respond.offer(data);
+
              //   req.dispatchEvent();
+                respond.put(data);
             }
 
 
@@ -45,7 +47,7 @@ private final SynchronousQueue<requestFormer<type>> request;
                 data.removeOne(p);
                 req.dispatchEvent();
                 respond.offer(data);
-                System.out.println(1);
+
 
                 }
 

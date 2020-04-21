@@ -3,6 +3,7 @@ package Controller;
 import DataClass.Drug;
 import DataClass.Patient;
 import com.jfoenix.controls.JFXButton;
+import io.reactivex.rxjava3.disposables.Disposable;
 import javafx.beans.property.IntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,7 +29,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+
 import static dr.FinalsVal.*;
+import static dr.Main.patientThread;
 
 public class PatientList implements Initializable {
     public TableView  <Patient> patient_table;
@@ -64,6 +67,7 @@ eventTrigger();
         diagnostic_C.setCellFactory(cellController.BCellFactory(new showButton("show")));
         menu_C.setCellFactory(cellController.MCellFactory(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png", "dr/image/add_32px.png"},new  String[]{"Delete...","Edit...","new prescription..."}));
     }
+
     public void  loadData(){
         try{
         requestP.put(req.get());
