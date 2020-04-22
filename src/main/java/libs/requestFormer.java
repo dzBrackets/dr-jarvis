@@ -6,6 +6,10 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.util.List;
 
 final public class requestFormer<type> {
    public String request;
@@ -15,7 +19,10 @@ public type[] arguments;
 public String functionName;
 public Object[] funArguments;
 public Object arg1,arg2,ar3,ar4;
+public type respondObject=null;
+public ObservableList<type> respond= FXCollections.observableArrayList();
     public type obr1,obr2;
+    InvalidationListener eventk=null;
     private final IntegerProperty asynk=new SimpleIntegerProperty(1);
 
 
@@ -67,12 +74,19 @@ public <klass> requestFormer<type> callBack(String fName, klass[] ob, Class<klas
     }
 
     public void onReceive(InvalidationListener event) {
-        System.out.println("you receive an event!!!");
-
+        //System.out.println("you handle an event!!!");
+        eventk=eventk==null?event:eventk;
+        asynk.removeListener(event);
         asynk.addListener(event);
     }
     public void dispatchEvent(){
-        System.out.println("you dispatch an event!!");
+       // System.out.println("you dispatch an event!!");
         asynk.setValue((asynk.getValue()+1)%2);
+    }
+    public void reply(type obj){
+        respondObject=obj;
+    }
+    public void reply(List<type> resp){
+        respond.setAll(resp);
     }
 }

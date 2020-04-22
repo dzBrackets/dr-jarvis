@@ -42,47 +42,44 @@ static public  Stage s;
 
     @Override
       public void initialize(URL location, ResourceBundle resources) {
+
+
         initCol();
         loadData();
         eventTrigger();
+
     }
     public void initCol(){
         code_C.setCellValueFactory(new PropertyValueFactory<>("code"));
         name_C.setCellValueFactory(new PropertyValueFactory<>("name"));
         type_C.setCellFactory(cellController.CCellFactory("drug","type"));
-        doss_C.setCellFactory(cellController.CCellFactory("drug","dose"));
+        doss_C.setCellFactory(cellController.subCellFactory("drug","dose"));
         menu_C.setCellFactory(cellController.MCellFactory(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."}));
         notice_C.setCellFactory(cellController.BCellFactory(new showButton("show")));
     }
     public void  loadData(){
-        try {
+        try{
+            req.onReceive(v-> drug_table.setItems(req.respond));
+
             requestD.put(req.get());
-            List<Drug> dList=respondD.take();
-            data.setAll(dList);
         } catch (Exception e) {
             e.printStackTrace();
         }
-       drug_table.setItems(data);
-
     }
+
     static void setTableItems(List<Drug> items){
         data.setAll(items);
     }
     public void eventTrigger(){
-cellController.MenuDispatcher.addListener(e-> {
-           IntegerProperty prop= (IntegerProperty) e;
-    if(prop.getValue()==0){
-        System.out.println("delete");
-        try {
-            requestD.put(req.remove(drug_table.getItems().get(cellController.index)));
-            setTableItems(respondD.take());
+        cellController.MenuDispatcher.addListener(e-> {
+                    IntegerProperty prop= (IntegerProperty) e;
+                    if(prop.getValue()==0){
+                        System.out.println("delete");
+                        requestD.offer(req.remove(drug_table.getItems().get(cellController.index)));
 
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
-    }
-}
-    );
+                    }
+                }
+        );
     }
 static public void closePopuUp(){
     s.close();

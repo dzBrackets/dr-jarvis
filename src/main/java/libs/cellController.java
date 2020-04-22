@@ -18,8 +18,11 @@ import model.showButton;
 public class cellController<type>  {
 
     public int index;
-    public IntegerProperty clicked=new SimpleIntegerProperty(-1);
+    public int showIndex;
+    public int inx;
+    public IntegerProperty clicked=new SimpleIntegerProperty(0);
     public IntegerProperty MenuDispatcher = new SimpleIntegerProperty(-1);
+    public IntegerProperty comboDispatcher = new SimpleIntegerProperty(-1);
     Callback<TableColumn<type, String>, TableCell<type, String>> cellFactory;
     public cellController(){
     }
@@ -72,7 +75,10 @@ public class cellController<type>  {
                                     setGraphic(null);
                                     setText(null);
                                 } else {
-                                    notice.setOnMouseClicked(v->{clicked.setValue((clicked.getValue()+1)%2);});
+                                    notice.setOnMouseClicked(v->{
+                                        index=getIndex();
+                                        clicked.setValue((clicked.getValue()+1)%2);}
+                                    );
                                     setGraphic(notice);
                                     setText(null);
                                 }
@@ -89,7 +95,7 @@ public class cellController<type>  {
                     public TableCell<type,String> call(final TableColumn<type, String> param) {
                         return new TableCell<type, String>() {
 
-                           // cPopupMenu menu=new cPopupMenu(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."});
+                            // cPopupMenu menu=new cPopupMenu(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."});
 
                             @Override
                             public void updateItem(String item, boolean empty) {
@@ -102,17 +108,57 @@ public class cellController<type>  {
                                     if(dataType.equals("drug")) {
                                         ObservableList<String> elements=null;
                                         if(of.equals("type"))
-                                        elements=FXCollections.observableList(((Drug) getTableView().getItems().get(getIndex())).getType());
-                                if(of.equals("dose"))
-                                   elements= FXCollections.observableList(((Drug) getTableView().getItems().get(getIndex())).getDose());
+                                            elements=FXCollections.observableList(((Drug) getTableView().getItems().get(getIndex())).getType());
+                                        if(of.equals("dose"))
+                                            elements= FXCollections.observableList(((Drug) getTableView().getItems().get(getIndex())).getDose());
 
                                         menu = new ComboBox<String>(elements);
 
 
                                         // menu.getStyleClass().addall(.costume-combo);
-                                        }
+                                    }
 
                                     assert menu != null;
+                                    menu.getSelectionModel().select(0);
+                                    ComboBox<String> finalMenu = menu;
+                                    menu.setOnAction(v->{
+                                        index=getIndex();
+                                        comboDispatcher.set((comboDispatcher.get()+1)/2);
+                                    });
+                                    setGraphic(menu);
+                                    setText(null);
+                                    menu.getStyleClass().add("combo_box");
+                                }
+                            }
+                        };
+                    }
+                };
+
+    }
+    public Callback<TableColumn<type, String>, TableCell<type, String>> subCellFactory(String dataType,String of){
+        return
+                new Callback<TableColumn<type, String>, TableCell<type, String>>() {
+                    @Override
+                    public TableCell<type,String> call(final TableColumn<type, String> param) {
+                        return new TableCell<type, String>() {
+
+                            // cPopupMenu menu=new cPopupMenu(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."});
+
+                            @Override
+                            public void updateItem(String item, boolean empty) {
+                                super.updateItem(item, empty);
+                                if (empty) {
+                                    setGraphic(null);
+                                    setText(null);
+                                } else {
+                                    ComboBox<String> menu=null;
+                                        ObservableList<String> elements=null;
+                                            elements=FXCollections.observableList(((Drug) getTableView().getItems().get(getIndex())).getDose());
+                                        //ObservableList<String> dz = FXCollections.observableList(((Drug) getTableView().getItems().get(getIndex())).getType());
+
+
+                                    menu = new ComboBox<>(elements);
+
                                     menu.getSelectionModel().select(0);
                                     setGraphic(menu);
                                     setText(null);

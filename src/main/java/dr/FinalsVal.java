@@ -17,15 +17,8 @@ import org.reactivestreams.Subscriber;
 final public class FinalsVal {
 
 
-       static public final SynchronousQueue<coCollection<Drug>> respondD = new SynchronousQueue<>();
-       static public final SynchronousQueue<requestFormer<Drug>> requestD = new SynchronousQueue<>();
-       static public final SynchronousQueue<coCollection<Patient>> respondP = new SynchronousQueue<>();
        static public final SynchronousQueue<requestFormer<Patient>> requestP = new SynchronousQueue<>();
-
-       static public final SynchronousQueue<List<Drug>> respondDL = new SynchronousQueue<>();
-       static public final SynchronousQueue<List<Patient>> respondPL = new SynchronousQueue<>();
-
-       static public final SynchronousQueue<Object> respondObj = new SynchronousQueue<>();
+       static public final SynchronousQueue<requestFormer<Drug>> requestD = new SynchronousQueue<>();
        static public final requestFormer<Patient> formerP=new requestFormer<>();
        static public final requestFormer<Drug> formerD=new requestFormer<>();
 

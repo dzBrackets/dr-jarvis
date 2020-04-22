@@ -45,6 +45,7 @@
 .jfx-combo-box{
 -fx-prompt-text-align:center;
  -fx-font-size: 13px;
+ -fx-text-align:center;
 }
 .jfx-combo-box .arrow-button .arrow{
 	-fx-background-color:#ffffff;
@@ -61,6 +62,7 @@
 .combo-box-base  {
 -fx-background-radius:12px ;
 -fx-background-color:#ffffff;
+-fx-text-align:center;
    }
 
 

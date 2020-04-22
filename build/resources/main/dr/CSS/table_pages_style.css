@@ -17,11 +17,11 @@
 #show_spinner {
 -fx-background-color :transparent;
 -fx-alignment: CENTER;
-
 }
 #show_spinner  .text-field {
 	-fx-alignment: CENTER;
 	 -fx-font-size: 16px;
+	 -fx-background-color :white;
 }
 #show_spinner .increment-arrow-button {
 -fx-background-color :transparent ;

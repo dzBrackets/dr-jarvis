@@ -51,57 +51,43 @@ private requestFormer<Drug> req=formerD;
 
 
     public void add_drug(ActionEvent actionEvent) {
-        try {
-        boolean update=true;
         String parsedName=removeSpace(name_TXF.getText().toLowerCase());
         String parsedType=removeSpace(type_TXF.getText().toLowerCase());
-            if(parsedName.length()>=3){
-                if(doss_TXF.getText().length()>0&&isNumeric(doss_TXF.getText())) {
-                    if(parsedType.length()>1) {
-                        requestD.put(req.find("getName",parsedName));
-                        Object obj=respondObj.take();
-                        if (!(obj instanceof Drug)){
-                            drug=new Drug();
-                            drug.setName(parsedName);
-                            update=false;
-                        }
-                        else drug = (Drug) obj;
-                        if(!drug.getType().contains(parsedType))
-                        drug.getType().add(parsedType);
-
-                        if(!drug.getDose().contains(doss_TXF.getText() + weight_combo.getSelectionModel().getSelectedItem()))
-                        drug.getDose().add(doss_TXF.getText() + weight_combo.getSelectionModel().getSelectedItem());
-
-                        //correct
-                        if(update)
-                            requestD.put(req.update());
-                        else{
+        req.onReceive(v->
+                {
+                    boolean update=true;
+                    if(req.respondObject==null){
+                        drug = new Drug();
+                        drug.setName(parsedName);
+                        try {
                             drug.setNumCode(database.updateUUID("drug"));
-                            requestD.put(req.post(drug));
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
-                        setTableItems(respondD.take());
-                        closePopuUp();
+
+                        update = false;
                     }
 
+                    else drug = req.respondObject;
+                    if (!drug.getType().contains(parsedType))
+                        drug.getType().add(parsedType);
+
+                    if (!drug.getDose().contains(doss_TXF.getText() + weight_combo.getSelectionModel().getSelectedItem()))
+                        drug.getDose().add(doss_TXF.getText() + weight_combo.getSelectionModel().getSelectedItem());
+                    if (update)
+                        requestD.offer(req.update());
                     else
-                        error_txt.setText("Type is too short!");
-
+                        requestD.offer(req.post(drug));
                 }
-                else
-                    error_txt.setText("Wrong dose!");
+
+        );
+
+        requestD.offer(req.find("getName", parsedName));
+        closePopuUp();
 
 
-        }
 
-        else{
-            error_txt.setText("name is to short!");}
-error_txt.setVisible(true);
 
-        }
-
-        catch (InterruptedException | IOException e) {
-            e.printStackTrace();
-        }
     }
     public void form_validation(){
         name_TXF.setFocusTraversable(false);
@@ -136,21 +122,21 @@ error_txt.setVisible(true);
         name_TXF.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(newValue==false){
+                if(!newValue){
                 name_TXF.validate();
             }}
         });
         type_TXF.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(newValue==false){
+                if(!newValue){
                 type_TXF.validate();
             }}
         });
         doss_TXF.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(newValue==false){
+                if(!newValue){
                 doss_TXF.validate();
             }}
         });

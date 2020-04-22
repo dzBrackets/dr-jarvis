@@ -45,7 +45,7 @@ public class PatientList implements Initializable {
 public cellController<Patient> cellController=new cellController<>();
     static ObservableList<Patient> data = FXCollections.observableArrayList();
     static public  Stage s;
-    public Spinner show_spinner;
+    public Spinner<Integer> show_spinner;
     public TextField write_TXF;
     public JFXButton add_patient_btn;
     public Label info2_label;
@@ -54,9 +54,9 @@ public cellController<Patient> cellController=new cellController<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-initCol();
-loadData();
-eventTrigger();
+        eventTrigger();
+        initCol();
+        loadData();
     }
     public void initCol(){
         first_C.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -70,13 +70,15 @@ eventTrigger();
 
     public void  loadData(){
         try{
-        requestP.put(req.get());
-        List<Patient> dList=respondP.take();
-        data.setAll(dList);
+            req.onReceive(v->{
+                patient_table.setItems(req.respond);
+            });
+
+            requestP.offer(req.get());
+
     } catch (Exception e) {
         e.printStackTrace();
     }
-        patient_table.setItems(data);
 
     }
 
@@ -85,20 +87,11 @@ eventTrigger();
     }
 
     public void eventTrigger(){
-
         cellController.MenuDispatcher.addListener(e-> {
                     IntegerProperty prop= (IntegerProperty) e;
                     if(prop.getValue()==0){
                         System.out.println("delete");
-
                             requestP.offer(req.remove(patient_table.getItems().get(cellController.index)));
-                        try {
-                            setTableItems(respondP.take());
-                        } catch (InterruptedException interruptedException) {
-                            interruptedException.printStackTrace();
-                        }
-
-
                     }
                 }
         );
@@ -108,7 +101,11 @@ eventTrigger();
         s.close();
     }
 
-    public void add_patient_table(ActionEvent actionEvent) throws IOException {
+    public void add_patient_table(ActionEvent actionEvent) throws IOException, InterruptedException {
+
+        // System.out.println(respondP.take());
+
+
         Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/New_patient.fxml"));
         Scene sc =new Scene(root);
         sc.setFill(Color.TRANSPARENT);
@@ -118,5 +115,6 @@ eventTrigger();
         s.setScene(sc);
         s.initStyle(StageStyle.TRANSPARENT);
         s.show();
+
     }
 }

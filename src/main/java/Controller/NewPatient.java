@@ -56,8 +56,8 @@ int gender=((JFXRadioButton)gender_group.getSelectedToggle()).getText().equals("
                 patient.setUUID(database.updateUUID("patient"));
 
           requestP.put(req.post(patient));
-                  setTableItems(respondP.take());
-                  closePopuUp();}
+                  closePopuUp();
+                }
 
     }
       catch (InterruptedException | IOException e){
