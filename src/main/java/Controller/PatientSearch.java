@@ -17,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Pane;
 import libs.requestFormer;
-import model.AutoCompleteTextField;
 import model.cPopupMenu;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;

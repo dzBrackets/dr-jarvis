@@ -34,6 +34,7 @@ public class DrugList  implements Initializable {
     public TableColumn<Drug, String> doss_C;
     public TableColumn<Drug, String>  notice_C;
     public TableColumn<Drug, String> menu_C;
+    public TextField write_TXF;
    static ObservableList<Drug> data = FXCollections.observableArrayList();
 static public  Stage s;
     cellController<Drug> cellController = new cellController<>();
@@ -80,6 +81,12 @@ static public  Stage s;
                     }
                 }
         );
+        write_TXF.textProperty().addListener(v->{
+            String value=((StringProperty)v).getValue();
+            System.out.println(value);
+            requestD.offer(req.callBack("querySearch","SELECT *","WHERE name $LIKE '"+value+"%'",String.class));
+
+        });
     }
 static public void closePopuUp(){
     s.close();

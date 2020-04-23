@@ -71,19 +71,16 @@ private final SynchronousQueue<requestFormer<type>> request;
             }
             if(req.request.equals(requestFormer.CALLBACK))
             {
+                try {
                 if(req.functionName.equals("querySearch")){
-                    try {
-                        req.respL=(data.querySelector((String)req.arg1,(String)req.arg2).collect());
-
-                        if(req.respL.size()>(int)req.ar3) req.respL=req.respL.subList(0,(int)req.ar3);
-
+                        req.reply((data.querySelector((String)req.arg1,(String)req.arg2).collect()));
+                        if(req.ar3!=null&&req.respond.size()>(int)req.ar3) req.reply(req.respond.subList(0,(int)req.ar3));
                         req.dispatchEvent();
                     }
+                }
                     catch (QueryParseException|QueryExecutionException e) {
                         e.printStackTrace();
-                        System.out.println("abb");
                     }
-                }
             }
             } catch (InterruptedException | IOException e) {
                 e.printStackTrace();

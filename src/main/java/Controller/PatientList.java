@@ -5,6 +5,7 @@ import DataClass.Patient;
 import com.jfoenix.controls.JFXButton;
 import io.reactivex.rxjava3.disposables.Disposable;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -69,16 +70,12 @@ public cellController<Patient> cellController=new cellController<>();
     }
 
     public void  loadData(){
-        try{
+
             req.onReceive(v->{
                 patient_table.setItems(req.respond);
             });
 
             requestP.offer(req.get());
-
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
 
     }
 
@@ -87,14 +84,24 @@ public cellController<Patient> cellController=new cellController<>();
     }
 
     public void eventTrigger(){
+
+
         cellController.MenuDispatcher.addListener(e-> {
                     IntegerProperty prop= (IntegerProperty) e;
                     if(prop.getValue()==0){
                         System.out.println("delete");
                             requestP.offer(req.remove(patient_table.getItems().get(cellController.index)));
+                        write_TXF.clear();
+
                     }
                 }
         );
+        write_TXF.textProperty().addListener(v->{
+           String value=((StringProperty)v).getValue();
+            System.out.println(value);
+            requestP.offer(req.callBack("querySearch","SELECT *","WHERE firstName $LIKE '"+value+"%' OR lastName $LIKE '"+value+"%'",String.class));
+
+        });
     }
 
     static public void closePopuUp(){
