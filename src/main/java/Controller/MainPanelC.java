@@ -28,7 +28,7 @@ public class MainPanelC  implements Initializable {
     public static Stage search_stage;
     public static GaussianBlur effect;
     //public static  quick_panelC quick_panel = new quick_panelC();
-    public Pane quick_panel;
+    static Pane quick_panel;
     public Pane drug_panel;
     public Pane patient_panel;
     public Pane dashbord_pane;
@@ -41,7 +41,7 @@ public class MainPanelC  implements Initializable {
     public JFXButton setting_btn;
     public JFXButton quick_btn;
 
-    double xOffset,yOffset;
+   static double xOffset,yOffset;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     patient_panel.toFront();

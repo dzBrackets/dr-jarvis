@@ -21,7 +21,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class quick_panelC implements Initializable {
-
+static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
     public Label name_label;
     public Label age_label;
     public Label visite_label;
@@ -54,14 +54,17 @@ public class quick_panelC implements Initializable {
     cellController<prescription> cellController=new cellController<>();
 
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initCol();
         loadData();
+        setInfoLabelValues();
         initEvents();
 
 
     }
+
 
     public void initCol(){
         name_colm.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -100,6 +103,20 @@ public class quick_panelC implements Initializable {
 
     public void add_to_table(ActionEvent actionEvent) {
     }
+
+    public  void setInfoLabelValues(String fName, int age, String lastVisit, String lastDiagnostic) {
+        name_label.setText(fName);
+        age_label.setText(""+age);
+        last_notice_label.setText(lastDiagnostic);
+        visite_label.setText(lastVisit);
+    }
+    public void setInfoLabelValues(){
+        name_label.setText(fName);
+        age_label.setText(age);
+        last_notice_label.setText(lastDiagnostic);
+        visite_label.setText(lastVisit);
+    }
+
     public void initEvents(){
 
         add_btn.setOnAction(v->{

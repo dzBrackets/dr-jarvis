@@ -3,6 +3,9 @@ package Controller;
 import DataClass.Patient;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.application.Platform;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
@@ -38,6 +41,7 @@ public  class PatientSearch implements Initializable {
     public  static  Stage quick_stage;
     public double xOffset,yOffset;
     public quick_panelC control ;
+    public Parent root;
     requestFormer<Patient> req=new requestFormer<>();
     requestFormer<Patient> req2=new requestFormer<>();
     @FXML
@@ -46,27 +50,41 @@ public  class PatientSearch implements Initializable {
      private Pane serach_panel;
      @FXML
      private JFXButton add_btn;
+     Patient selectedPatient=null;
     List <String> data=new ArrayList<>();
+    IntegerProperty i=new SimpleIntegerProperty(1);
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            initializePane();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        req2.onReceive(g-> {
+                    System.out.println(req2.respondObject);//<-patient object contain all patient info
+                     selectedPatient = req2.respondObject;
+
+                    //struggle when try to use control here cuz its not initialized yet its work without it though
+                    Platform.runLater(() -> {add_btn.fire();
+                        control.setInfoLabelValues(selectedPatient.getFullName(), selectedPatient.getAge(), selectedPatient.getLastVisit(), selectedPatient.getLastDiagnostic());
+
+                    });
+                });
         req.onReceive(c-> {
+            i.setValue(2);
                 data=req.respond.stream().map(Patient::getFullName).collect(Collectors.toList());
             TextFields.bindAutoCompletion(search_TF, data).setOnAutoCompleted(v->{
                 String val=v.getCompletion();
-                req2.onReceive(g-> {
 
-                        System.out.println(req2.respondObject);//<-patient object contain all patient info
-                    //CloseSearchPan()--->make this Aymen Daoudji
-                    //OpenNewPrescriptionPanWithArgument(fullName,age,lastVisit,lastDiagnostic)--->Make it Aymen Daoudji
-                });
 
-                System.out.println(val);
                 requestP.offer(req2.find("getFullName",val));
 
             });
 
         });
         requestP.offer(req.get());
+
+
 
         /*
         req.onReceive(c-> {
@@ -91,17 +109,26 @@ TextFields.bindAutoCompletion(search_TF,data);
         MainPanelC.search_stage.close();
         MainPanelC.effect.setRadius(0);
     }
+
     public void add_methode(ActionEvent actionEvent) throws IOException {
         close_search_pane();
+        if(selectedPatient!=null){
         open_quick_pane();
+        }
+else{
 
+            System.out.println("not found you have to handle this");
+        }
 
 
     }
-    public void open_quick_pane() throws IOException {
+    public void initializePane() throws IOException {
         FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/quick_panel.fxml"));
-        Parent root = loader.load();
-         control=loader.getController();
+         root = loader.load();
+        control=loader.getController();
+    }
+    public void open_quick_pane() throws IOException {
+       initializePane();
      /*    control.setName_label();*/
         quick_scene =new Scene(root);
         quick_scene.setFill(Color.TRANSPARENT);
