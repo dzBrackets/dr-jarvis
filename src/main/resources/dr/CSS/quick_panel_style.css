@@ -45,7 +45,6 @@
 .jfx-combo-box{
 -fx-prompt-text-align:center;
  -fx-font-size: 13px;
- -fx-text-align:center;
 }
 .jfx-combo-box .arrow-button .arrow{
 	-fx-background-color:#ffffff;
@@ -62,7 +61,6 @@
 .combo-box-base  {
 -fx-background-radius:12px ;
 -fx-background-color:#ffffff;
--fx-text-align:center;
    }
 
 
@@ -163,4 +161,17 @@
 .menu-item:focused .label, .menu-item:hovered .label {
     -fx-text-fill: -fx-my-menu-font-color-highlighted;
 }
+.show_btn{
+-fx-background-color: #ffffff;
+    -fx-border-style:  solid ;
+    -fx-border-color: #D9D9D9;
+    -fx-border-width: 1px;
+    -fx-border-radius: 11px;
+-fx-background-radius:11px;
 
+ -fx-pref-width: 69;
+ -fx-pref-height:23;
+ -fx-text-fill:#7C9DFF;
+ /*-jfx-button-type: RAISED;*/
+ -fx-font-size: 12px;
+}

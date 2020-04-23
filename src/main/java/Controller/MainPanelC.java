@@ -24,9 +24,7 @@ import java.util.ResourceBundle;
 public class MainPanelC  implements Initializable {
     public  AnchorPane main_panel;
     public AnchorPane content_panel;
-    public static Scene quick_scene;
     public static  Scene search_scene;
-    public  static  Stage quick_stage;
     public static Stage search_stage;
     public static GaussianBlur effect;
     //public static  quick_panelC quick_panel = new quick_panelC();
@@ -47,6 +45,7 @@ public class MainPanelC  implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     patient_panel.toFront();
+
 
     }
 
@@ -91,42 +90,6 @@ public class MainPanelC  implements Initializable {
     }
 
     public void new_precP(ActionEvent actionEvent) throws IOException {
-        quick_panel.setVisible(true);
-        Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/quick_panel.fxml"));
-         quick_scene =new Scene(root);
-        quick_scene.setFill(Color.TRANSPARENT);
-        quick_scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-        quick_stage =new Stage();
-        quick_stage.initModality(Modality.APPLICATION_MODAL);
-        quick_stage.setScene(quick_scene);
-        quick_stage.initStyle(StageStyle.TRANSPARENT);
-        quick_stage.show();
-         effect= new javafx.scene.effect.GaussianBlur();
-        effect.setRadius(3.25);
-        main_panel.setEffect(effect);
-        quick_stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                quick_stage.close();
-                effect.setRadius(0);
-            }
-        });
-
-        quick_scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset=event.getSceneX();
-                yOffset=event.getSceneY();
-            }
-        });
-        quick_scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                quick_stage.setX(event.getScreenX() - xOffset);
-                quick_stage.setY(event.getScreenY()-yOffset);
-            }
-        });
-
         reset_btn_Opicity();
         prescription_btn.getGraphic().setOpacity(1);
     }

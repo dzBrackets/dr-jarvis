@@ -41,6 +41,7 @@ public class NewPatient implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         form_validation();
+
     }
 
     public void add_patient(ActionEvent actionEvent) {

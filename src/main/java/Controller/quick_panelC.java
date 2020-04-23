@@ -85,7 +85,7 @@ public class quick_panelC implements Initializable {
     }
 
     public void exit_methode(ActionEvent actionEvent) {
-         MainPanelC.quick_stage.close();
+         PatientSearch.quick_stage.close();
          MainPanelC.effect.setRadius(0);
     }
 
