@@ -27,8 +27,6 @@ public class MainPanelC  implements Initializable {
     public static  Scene search_scene;
     public static Stage search_stage;
     public static GaussianBlur effect;
-    //public static  quick_panelC quick_panel = new quick_panelC();
-    static Pane quick_panel;
     public Pane drug_panel;
     public Pane patient_panel;
     public Pane dashbord_pane;

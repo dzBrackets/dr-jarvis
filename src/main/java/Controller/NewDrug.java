@@ -53,7 +53,9 @@ private requestFormer<Drug> req=formerD;
     public void add_drug(ActionEvent actionEvent) {
         String parsedName=removeSpace(name_TXF.getText().toLowerCase());
         String parsedType=removeSpace(type_TXF.getText().toLowerCase());
-        req.onReceive(v->
+        boolean valid=doss_TXF.validate()&&name_TXF.validate()&&type_TXF.validate();
+        System.out.println(valid);
+                req.onReceive(v->
                 {
                     boolean update=true;
                     if(req.respondObject==null){
@@ -74,18 +76,25 @@ private requestFormer<Drug> req=formerD;
 
                     if (!drug.getDose().contains(doss_TXF.getText() + weight_combo.getSelectionModel().getSelectedItem()))
                         drug.getDose().add(doss_TXF.getText() + weight_combo.getSelectionModel().getSelectedItem());
+               if(valid){
                     if (update)
                         requestD.offer(req.update());
                     else
                         requestD.offer(req.post(drug));
                 }
+                }
 
         );
 
         requestD.offer(req.find("getName", parsedName));
+      if(valid)
         closePopuUp();
+else {
 
-
+          name_TXF.validate();
+          type_TXF.validate();
+          doss_TXF.validate();
+      }
 
 
     }
