@@ -55,12 +55,12 @@ int gender=((JFXRadioButton)gender_group.getSelectedToggle()).getText().equals("
                     patient= new Patient().Patient("N/D",pf,pl,date.getValue(),gender,LocalDate.now(),"N/D");
                 patient.setUUID(database.updateUUID("patient"));
 
-          requestP.put(req.post(patient));
+          requestP.offer(req.post(patient));
                   closePopuUp();
                 }
 
     }
-      catch (InterruptedException | IOException e){
+      catch ( IOException e){
 
       }
     }

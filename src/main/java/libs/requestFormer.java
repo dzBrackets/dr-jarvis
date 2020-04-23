@@ -15,14 +15,19 @@ final public class requestFormer<type> {
    public String request;
     public Object canon;
    public String req;
-public type[] arguments;
+public List<type> respL=null;
 public String functionName;
 public Object[] funArguments;
 public Object arg1,arg2,ar3,ar4;
 public type respondObject=null;
 public ObservableList<type> respond= FXCollections.observableArrayList();
     public type obr1,obr2;
-    InvalidationListener eventk=null;
+    InvalidationListener eventk=new InvalidationListener() {
+        @Override
+        public void invalidated(Observable observable) {
+
+        }
+    };
     private final IntegerProperty asynk=new SimpleIntegerProperty(1);
 
 
@@ -74,13 +79,14 @@ public <klass> requestFormer<type> callBack(String fName, klass[] ob, Class<klas
     }
 
     public void onReceive(InvalidationListener event) {
-        //System.out.println("you handle an event!!!");
-        eventk=eventk==null?event:eventk;
-        asynk.removeListener(event);
+        System.out.println("you handle an event!!!");
+        //eventk=eventk==null?event:eventk;
+        asynk.removeListener(eventk);
         asynk.addListener(event);
+        eventk=event;
     }
     public void dispatchEvent(){
-       // System.out.println("you dispatch an event!!");
+       System.out.println("you dispatch an event!!");
         asynk.setValue((asynk.getValue()+1)%2);
     }
     public void reply(type obj){
@@ -88,5 +94,14 @@ public <klass> requestFormer<type> callBack(String fName, klass[] ob, Class<klas
     }
     public void reply(List<type> resp){
         respond.setAll(resp);
+    }
+
+    public requestFormer<type> querySearch(String s, String s1, int entries) {
+        this.functionName="querySearch";
+        this.arg1=s;
+        this.arg2=s1;
+        this.ar3=entries;
+        this.request=CALLBACK;
+        return this;
     }
 }

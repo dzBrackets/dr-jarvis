@@ -18,8 +18,6 @@ import model.showButton;
 public class cellController<type>  {
 
     public int index;
-    public int showIndex;
-    public int inx;
     public IntegerProperty clicked=new SimpleIntegerProperty(0);
     public IntegerProperty MenuDispatcher = new SimpleIntegerProperty(-1);
     public IntegerProperty comboDispatcher = new SimpleIntegerProperty(-1);

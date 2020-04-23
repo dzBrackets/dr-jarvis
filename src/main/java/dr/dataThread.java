@@ -73,7 +73,10 @@ private final SynchronousQueue<requestFormer<type>> request;
             {
                 if(req.functionName.equals("querySearch")){
                     try {
-                        req.reply(data.querySelector((String)req.arg1,(String)req.arg2).collect());
+                        req.respL=(data.querySelector((String)req.arg1,(String)req.arg2).collect());
+
+                        if(req.respL.size()>(int)req.ar3) req.respL=req.respL.subList(0,(int)req.ar3);
+
                         req.dispatchEvent();
                     }
                     catch (QueryParseException|QueryExecutionException e) {

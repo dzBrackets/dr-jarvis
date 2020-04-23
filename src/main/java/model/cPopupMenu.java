@@ -19,5 +19,16 @@ public class cPopupMenu extends MenuButton {
         this.setGraphic(new ImageView("dr/image/menu_vertical_24px.png"));
         this.setPopupSide(Side.LEFT);
     }
+    public cPopupMenu( String[] items,Side side){
+        for (int i = 0; i <items.length ; i++) {
+            MenuItem menu = new MenuItem(items[i]);
+            this.getItems().add(menu);
+
+        }
+        this.setText("");
+        this.setGraphic(new ImageView("dr/image/menu_vertical_24px.png"));
+        this.setPopupSide(side);
+    }
+
 
 }

@@ -50,7 +50,10 @@ private DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
     public int getAge(){
             return Period.between(LocalDate.parse(birthDay,df),LocalDate.now()).getYears();
     }
-
+    @JsonIgnore
+    public String getFullName() {
+        return lastName+" "+firstName;
+    }
     public String toString()
     {
 

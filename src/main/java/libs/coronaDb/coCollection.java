@@ -143,8 +143,7 @@ public type getLike(type object){
 public QuerySelector<type> querySelector(String selectwhat,String Clausers) throws QueryParseException {
         //SELECT * FROM className.getClass WHERE IT FUCKEDUP
 
-    System.out.println(className.getName());
-    return query.parser(selectwhat+" FROM "+className.getName()+Clausers);
+    return query.parser(selectwhat+" FROM "+className.getName()+" "+Clausers);
 }
 
     public String getName() {

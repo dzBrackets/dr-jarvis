@@ -61,7 +61,7 @@ static public  Stage s;
         try{
             req.onReceive(v-> drug_table.setItems(req.respond));
 
-            requestD.put(req.get());
+            requestD.offer(req.get());
         } catch (Exception e) {
             e.printStackTrace();
         }

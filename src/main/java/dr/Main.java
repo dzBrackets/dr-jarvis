@@ -27,9 +27,11 @@ public class Main extends Application {
 
         try {
             drugThread=new dataThread<>("drug",Drug.class,requestD);
-            drugThread.start();
             patientThread=new dataThread<>("patient",Patient.class,requestP);
+
             patientThread.start();
+            drugThread.start();
+
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
@@ -62,6 +64,7 @@ public class Main extends Application {
                 System.exit(0);
             }
         });
+
 
 
     }

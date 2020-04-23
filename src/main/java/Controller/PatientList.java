@@ -103,7 +103,6 @@ public cellController<Patient> cellController=new cellController<>();
 
     public void add_patient_table(ActionEvent actionEvent) throws IOException, InterruptedException {
 
-        // System.out.println(respondP.take());
 
 
         Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/New_patient.fxml"));
