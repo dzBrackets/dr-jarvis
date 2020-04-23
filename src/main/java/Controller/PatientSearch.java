@@ -1,23 +1,15 @@
 package Controller;
 
 import DataClass.Patient;
-import com.jfoenix.controls.JFXAutoCompletePopup;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.events.JFXAutoCompleteEvent;
-import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Side;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Pane;
 import libs.requestFormer;
-import model.cPopupMenu;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 import static dr.FinalsVal.requestP;
@@ -31,21 +23,31 @@ public class PatientSearch implements Initializable {
     public Label search_label;
     public JFXButton cancel_btn;
     requestFormer<Patient> req=new requestFormer<>();
+    requestFormer<Patient> req2=new requestFormer<>();
     @FXML
      private JFXTextField search_TF;
      @FXML
      private Pane serach_panel;
      @FXML
      private JFXButton add_btn;
-     int i=0;
     List <String> data=new ArrayList<>();
-    String value="";
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         req.onReceive(c-> {
-            System.out.println("hello");
                 data=req.respond.stream().map(Patient::getFullName).collect(Collectors.toList());
+            TextFields.bindAutoCompletion(search_TF, data).setOnAutoCompleted(v->{
+                String val=v.getCompletion();
+                req2.onReceive(g-> {
+                        System.out.println(req2.respondObject);//<-patient object contain all patient info
+                    //CloseSearchPan()--->make this Aymen Daoudji
+                    //OpenNewPrescriptionPanWithArgument(fullName,age,lastVisit,lastDiagnostic)--->Make it Aymen Daoudji
+                });
+
+                System.out.println(val);
+                requestP.offer(req2.find("getFullName",val));
+
+            });
+
         });
         requestP.offer(req.get());
 

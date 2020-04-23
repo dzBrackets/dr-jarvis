@@ -1,6 +1,7 @@
 package Controller;
 
 import DataClass.Drug;
+import DataClass.Patient;
 import com.jfoenix.controls.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import libs.cellController;
 import model.prescription;
 import model.showButton;
@@ -51,6 +53,7 @@ public class quick_panelC implements Initializable {
     ObservableList<prescription> data=FXCollections.observableArrayList();;
     cellController<prescription> cellController=new cellController<>();
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initCol();
@@ -69,6 +72,7 @@ public class quick_panelC implements Initializable {
         delete_colm.setCellFactory(cellController.MCellFactory(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."}));
 
     }
+
 
     public void  loadData(){
 

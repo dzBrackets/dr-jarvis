@@ -16,6 +16,7 @@ import org.reactivestreams.Subscriber;
 
 final public class FinalsVal {
 
+       static public final SynchronousQueue<Patient> respond = new SynchronousQueue<>();
 
        static public final SynchronousQueue<requestFormer<Patient>> requestP = new SynchronousQueue<>();
        static public final SynchronousQueue<requestFormer<Drug>> requestD = new SynchronousQueue<>();

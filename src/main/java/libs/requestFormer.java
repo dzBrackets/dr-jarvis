@@ -87,6 +87,7 @@ public <klass> requestFormer<type> callBack(String fName, klass[] ob, Class<klas
     }
     public void dispatchEvent(){
        System.out.println("you dispatch an event!!");
+        System.out.println(asynk.getValue());
         asynk.setValue((asynk.getValue()+1)%2);
     }
     public void reply(type obj){
