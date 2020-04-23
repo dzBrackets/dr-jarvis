@@ -102,7 +102,6 @@ public class MainPanelC  implements Initializable {
         drug_panel.setVisible(false);
         patient_panel.setVisible(false);
         setting_pane.setVisible(false);
-        quick_panel.setVisible(false);
     }
 
     public void show_patientP(ActionEvent actionEvent) {
@@ -112,7 +111,6 @@ public class MainPanelC  implements Initializable {
         pat_btn.getGraphic().setOpacity(1);
         drug_panel.setVisible(false);
         setting_pane.setVisible(false);
-        quick_panel.setVisible(false);
         dashbord_pane.setVisible(false);
     }
 
@@ -123,7 +121,6 @@ public class MainPanelC  implements Initializable {
         drug_btn.getGraphic().setOpacity(1);
         patient_panel.setVisible(false);
         setting_pane.setVisible(false);
-        quick_panel.setVisible(false);
         dashbord_pane.setVisible(false);
     }
 
@@ -134,7 +131,6 @@ public class MainPanelC  implements Initializable {
         setting_btn.getGraphic().setOpacity(1);
         drug_panel.setVisible(false);
         patient_panel.setVisible(false);
-        quick_panel.setVisible(false);
         dashbord_pane.setVisible(false);
     }
     public void reset_btn_Opicity(){
