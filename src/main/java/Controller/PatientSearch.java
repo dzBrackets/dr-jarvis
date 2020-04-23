@@ -37,6 +37,7 @@ public  class PatientSearch implements Initializable {
     public static Scene quick_scene;
     public  static  Stage quick_stage;
     public double xOffset,yOffset;
+    public quick_panelC control ;
     requestFormer<Patient> req=new requestFormer<>();
     requestFormer<Patient> req2=new requestFormer<>();
     @FXML
@@ -95,9 +96,13 @@ TextFields.bindAutoCompletion(search_TF,data);
         open_quick_pane();
 
 
+
     }
     public void open_quick_pane() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/quick_panel.fxml"));
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/quick_panel.fxml"));
+        Parent root = loader.load();
+         control=loader.getController();
+     /*    control.setName_label();*/
         quick_scene =new Scene(root);
         quick_scene.setFill(Color.TRANSPARENT);
         quick_scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");

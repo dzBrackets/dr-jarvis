@@ -107,4 +107,5 @@ public class quick_panelC implements Initializable {
 
         });
     }
+
 }
