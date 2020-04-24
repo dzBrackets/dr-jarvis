@@ -85,7 +85,7 @@ public cellController<Patient> cellController=new cellController<>();
 
     public void eventTrigger(){
 
-
+//cellController.clicked.addListener(v-> popUP.settext(patient_table.getItems().get(cellController.index).getLastDiagnostic()));
         cellController.MenuDispatcher.addListener(e-> {
                     IntegerProperty prop= (IntegerProperty) e;
                     if(prop.getValue()==0){

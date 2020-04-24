@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.show_winC">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.show_winC">
    <children>
       <Pane id="win_pane" fx:id="win_pane" layoutX="70.0" layoutY="108.0" prefHeight="200.0" prefWidth="592.0" style="-fx-background-color: #2C3964; -fx-background-radius: 11px;">
          <children>
@@ -18,7 +16,7 @@
                   <Font name="Sarabun SemiBold" size="18.0" />
                </font>
             </Label>
-            <Label id="value_area" fx:id="value_area" alignment="TOP_LEFT" graphicTextGap="10.0" layoutX="26.0" layoutY="65.0" prefHeight="108.0" prefWidth="538.0" style="-fx-background-color: white; -fx-background-radius: 11px;" text=" value here">
+            <Label id="value_area" fx:id="value_area" alignment="TOP_LEFT" graphicTextGap="10.0" layoutX="26.0" layoutY="65.0" prefHeight="108.0" prefWidth="538.0" style="-fx-background-color: #765EE2; -fx-background-radius: 11px;" text=" value here" textFill="#eeeeee">
                <font>
                   <Font name="Sarabun SemiBold" size="14.0" />
                </font>

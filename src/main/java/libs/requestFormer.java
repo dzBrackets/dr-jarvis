@@ -1,11 +1,8 @@
 package libs;
 
 import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -22,13 +19,10 @@ public Object arg1,arg2,ar3,ar4;
 public type respondObject=null;
 public ObservableList<type> respond= FXCollections.observableArrayList();
     public type obr1,obr2;
-    InvalidationListener eventk=new InvalidationListener() {
-        @Override
-        public void invalidated(Observable observable) {
+    InvalidationListener event = observable -> {
 
-        }
     };
-    private final IntegerProperty asynk=new SimpleIntegerProperty(1);
+    private final IntegerProperty async =new SimpleIntegerProperty(1);
 
 
     public static final String GET="g";
@@ -80,15 +74,13 @@ public <klass> requestFormer<type> callBack(String fName, klass[] ob, Class<klas
 
     public void onReceive(InvalidationListener event) {
         System.out.println("you handle an event!!!");
-        //eventk=eventk==null?event:eventk;
-        asynk.removeListener(eventk);
-        asynk.addListener(event);
-        eventk=event;
+        async.removeListener(this.event);
+        async.addListener(event);
+        this.event =event;
     }
     public void dispatchEvent(){
        System.out.println("you dispatch an event!!");
-        System.out.println(asynk.getValue());
-        asynk.setValue((asynk.getValue()+1)%2);
+        async.setValue((async.getValue()+1)%2);
     }
     public void reply(type obj){
         respondObject=obj;

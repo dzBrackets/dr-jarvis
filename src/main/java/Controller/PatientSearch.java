@@ -4,35 +4,27 @@ import DataClass.Patient;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
+import javafx.beans.InvalidationListener;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Side;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
 import libs.requestFormer;
-import model.cPopupMenu;
-import org.controlsfx.control.textfield.AutoCompletionBinding;
-import org.controlsfx.control.textfield.TextFields;
+import model.popupMenu;
+
 import static dr.FinalsVal.requestP;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -46,18 +38,13 @@ public  class PatientSearch implements Initializable {
     public quick_panelC control ;
     public Parent root;
     requestFormer<Patient> req=new requestFormer<>();
-    requestFormer<Patient> req2=new requestFormer<>();
     @FXML
-     private JFXTextField search_TF;
-     @FXML
-     private Pane serach_panel;
-     @FXML
-     private JFXButton add_btn;
-     Patient selectedPatient=null;
-    List <String> data=new ArrayList<>();
-    IntegerProperty i=new SimpleIntegerProperty(1);
-    String value="";
-    cPopupMenu menu=new cPopupMenu();
+    private JFXTextField search_TF;
+    @FXML
+    private JFXButton add_btn;
+    private InvalidationListener k=null;
+    private Patient selectedPatient=null;
+    private final popupMenu suggestionsBar=new popupMenu();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
          try {
@@ -65,49 +52,39 @@ public  class PatientSearch implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-menu.index.addListener(v->{
+        suggestionsBar.onSelect(v->{
     int value=((IntegerProperty) v).getValue();
-    if(value!=-1){
-        System.out.println("value="+value);
+    if(value!=-1&&req.respond.size()-1>=value){
     selectedPatient=req.respond.get(value);
+    search_TF.textProperty().removeListener(k);
     search_TF.setText(selectedPatient.getFullName());
-   menu.hide();
-  //  add_btn.fire();
-
+    suggestionsBar.onHide();
+    add_btn.fire();
     }
 });
-req.onReceive(c-> {
-            data=req.respond.stream().map(Patient::getFullName).collect(Collectors.toList());
+        req.onReceive(c-> {
+            List <String> data=req.respond.stream().map(Patient::getFullName).collect(Collectors.toList());
             Platform.runLater(() ->{
             if ( data.size()>0){
-                menu.setItem(data);
-                    System.out.println(menu.getContextMenu().getItems());
-               menu.showSuggestion(search_TF);
-
-        }
-        else
-                menu.hide();
-
+                 suggestionsBar.setItem(data);
+                 suggestionsBar.showSuggestion(search_TF);
+                 }
+            else suggestionsBar.onHide();
             });
         });
-
-
-        search_TF.textProperty().addListener(v->{
-                value=((StringProperty)v).getValue();
-            if(value.length()>0)
-                requestP.offer(req.querySearch("SELECT *","WHERE firstName $LIKE '"+value+"%' OR lastName $LIKE '"+value+"%'",5));
-else
-    menu.hide();
-
-        });
+        k = v -> {
+            String value = ((StringProperty) v).getValue();
+            if (value.length() > 0)
+                requestP.offer(req.querySearch("SELECT *", "WHERE firstName $LIKE '" + value + "%' OR lastName $LIKE '" + value + "%'", 5));
+            else suggestionsBar.onHide();
+        };
+        search_TF.textProperty().addListener(k);
 
     }
     public void exit_methode(ActionEvent actionEvent) {
         MainPanelC.search_stage.close();
         MainPanelC.effect.setRadius(0);
     }
-
     public void add_methode(ActionEvent actionEvent) throws IOException {
         close_search_pane();
         if(selectedPatient!=null){
@@ -126,9 +103,7 @@ else{
         control=loader.getController();
     }
     public void open_quick_pane() throws IOException {
-       initializePane();
-     /*    control.setName_label();*/
-        control.setInfoLabelValues(selectedPatient.getFullName(), selectedPatient.getAge(), selectedPatient.getLastVisit(), selectedPatient.getLastDiagnostic());
+        initializePane();
         quick_scene =new Scene(root);
         quick_scene.setFill(Color.TRANSPARENT);
         quick_scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
@@ -136,28 +111,21 @@ else{
         quick_stage.initModality(Modality.APPLICATION_MODAL);
         quick_stage.setScene(quick_scene);
         quick_stage.initStyle(StageStyle.TRANSPARENT);
+        //setLabels
+        control.setInfoLabelValues(selectedPatient.getFullName(), selectedPatient.getAge(), selectedPatient.getLastVisit(), selectedPatient.getLastDiagnostic());
         quick_stage.show();
-        quick_stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                quick_stage.close();
-                MainPanelC.effect.setRadius(0);
-            }
+        quick_stage.setOnCloseRequest(event -> {
+            quick_stage.close();
+            MainPanelC.effect.setRadius(0);
         });
 
-        quick_scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset=event.getSceneX();
-                yOffset=event.getSceneY();
-            }
+        quick_scene.setOnMousePressed(event -> {
+            xOffset=event.getSceneX();
+            yOffset=event.getSceneY();
         });
-        quick_scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                quick_stage.setX(event.getScreenX() - xOffset);
-                quick_stage.setY(event.getScreenY()-yOffset);
-            }
+        quick_scene.setOnMouseDragged(event -> {
+            quick_stage.setX(event.getScreenX() - xOffset);
+            quick_stage.setY(event.getScreenY()-yOffset);
         });
 
 
@@ -166,6 +134,8 @@ else{
         MainPanelC.search_stage.close();
     }
 }
+
+
 /*
         req2.onReceive(g-> {
                     System.out.println(req2.respondObject);//<-patient object contain all patient info

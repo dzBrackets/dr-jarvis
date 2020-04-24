@@ -60,8 +60,8 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
         initCol();
         loadData();
         setInfoLabelValues();
+        initSearchBar();
         initEvents();
-
 
     }
 
@@ -105,7 +105,7 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
     }
 
     public  void setInfoLabelValues(String fName, int age, String lastVisit, String lastDiagnostic) {
-        quick_panelC.fName=fName;
+        name_label.setText(fName);
         age_label.setText(""+age);
         last_notice_label.setText(lastDiagnostic);
         visite_label.setText(lastVisit);
@@ -124,6 +124,9 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
             //data.add
 
         });
+    }
+    public void initSearchBar(){
+
     }
 
 }

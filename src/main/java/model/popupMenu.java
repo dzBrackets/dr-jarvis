@@ -1,6 +1,7 @@
 package model;
 
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.InvalidationListener;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
@@ -16,12 +17,12 @@ import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class cPopupMenu extends MenuButton {
+public class popupMenu extends MenuButton {
     ObservableList<String> obs=FXCollections.observableArrayList();
     public IntegerProperty index=new SimpleIntegerProperty(-1);
     ObservableList<MenuItem> itemsObs=FXCollections.observableArrayList();
 ContextMenu contextMenu = new ContextMenu();
-    public cPopupMenu( String[] imgSource,String[] items){
+    public popupMenu(String[] imgSource, String[] items){
         for (int i = 0; i <items.length ; i++) {
             ImageView img = new ImageView(imgSource[i]);
             img.setFitWidth(15); img.setFitHeight(15);
@@ -33,7 +34,7 @@ ContextMenu contextMenu = new ContextMenu();
         this.setGraphic(new ImageView("dr/image/menu_vertical_24px.png"));
         this.setPopupSide(Side.LEFT);
     }
-    public cPopupMenu(){
+    public popupMenu(){
         itemsObs.addListener((ListChangeListener<? super MenuItem>) v->
         {
             contextMenu.getItems().setAll(itemsObs);
@@ -49,7 +50,6 @@ ContextMenu contextMenu = new ContextMenu();
             itemMenus.add(new MenuItem(item));
             itemMenus.get(items.indexOf(item)).setOnAction(v->{
                 index.set(items.indexOf(item));
-                System.out.println(items.indexOf(item));
             });
         }
         itemsObs.setAll(itemMenus);
@@ -59,9 +59,13 @@ public void showSuggestion(JFXTextField tf){
     if (!getContextMenu().isShowing())
         getContextMenu().show(tf,Side.BOTTOM,0,0);
 }
-public void hide(){
+public void onHide(){
         index.set(-1);
     getContextMenu().hide();
+
+}
+public void onSelect(InvalidationListener v){
+        index.addListener(v);
 
 }
 

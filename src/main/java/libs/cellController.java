@@ -4,16 +4,13 @@ import DataClass.Drug;
 import com.jfoenix.controls.JFXButton;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.util.Callback;
-import model.cPopupMenu;
-import model.showButton;
+import model.popupMenu;
 
 public class cellController<type>  {
 
@@ -31,7 +28,7 @@ public class cellController<type>  {
                     public TableCell<type,String > call(final TableColumn<type, String> param) {
                         final TableCell<type, String> cell = new TableCell<type, String>() {
 
-                            cPopupMenu menu=new cPopupMenu(imgPath,items);
+                            popupMenu menu=new popupMenu(imgPath,items);
 
                             @Override
                             public void updateItem(String item, boolean empty) {
@@ -93,7 +90,7 @@ public class cellController<type>  {
                     public TableCell<type,String> call(final TableColumn<type, String> param) {
                         return new TableCell<type, String>() {
 
-                            // cPopupMenu menu=new cPopupMenu(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."});
+                            // popupMenu menu=new popupMenu(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."});
 
                             @Override
                             public void updateItem(String item, boolean empty) {
@@ -140,7 +137,7 @@ public class cellController<type>  {
                     public TableCell<type,String> call(final TableColumn<type, String> param) {
                         return new TableCell<type, String>() {
 
-                            // cPopupMenu menu=new cPopupMenu(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."});
+                            // popupMenu menu=new popupMenu(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."});
 
                             @Override
                             public void updateItem(String item, boolean empty) {
@@ -179,7 +176,7 @@ public class cellController<type>  {
                     public TableCell call(final TableColumn<drug, String> param) {
                         final TableCell<drug, String> cell = new TableCell<drug, String>() {
 
-        cPopupMenu menu=new cPopupMenu(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."});
+        popupMenu menu=new popupMenu(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."});
 
                             @Override
                             public void updateItem(String item, boolean empty) {
