@@ -6,12 +6,14 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Side;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -23,6 +25,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import libs.requestFormer;
+import model.cPopupMenu;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 import static dr.FinalsVal.requestP;
@@ -53,56 +56,51 @@ public  class PatientSearch implements Initializable {
      Patient selectedPatient=null;
     List <String> data=new ArrayList<>();
     IntegerProperty i=new SimpleIntegerProperty(1);
+    String value="";
+    cPopupMenu menu=new cPopupMenu();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
+         try {
             initializePane();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        req2.onReceive(g-> {
-                    System.out.println(req2.respondObject);//<-patient object contain all patient info
-                     selectedPatient = req2.respondObject;
 
-                    //struggle when try to use control here cuz its not initialized yet its work without it though
-                    Platform.runLater(() -> {add_btn.fire();
-                        control.setInfoLabelValues(selectedPatient.getFullName(), selectedPatient.getAge(), selectedPatient.getLastVisit(), selectedPatient.getLastDiagnostic());
+menu.index.addListener(v->{
+    int value=((IntegerProperty) v).getValue();
+    if(value!=-1){
+        System.out.println("value="+value);
+    selectedPatient=req.respond.get(value);
+    search_TF.setText(selectedPatient.getFullName());
+   menu.hide();
+  //  add_btn.fire();
 
-                    });
-                });
-        req.onReceive(c-> {
-            i.setValue(2);
-                data=req.respond.stream().map(Patient::getFullName).collect(Collectors.toList());
-            TextFields.bindAutoCompletion(search_TF, data).setOnAutoCompleted(v->{
-                String val=v.getCompletion();
+    }
+});
+req.onReceive(c-> {
+            data=req.respond.stream().map(Patient::getFullName).collect(Collectors.toList());
+            Platform.runLater(() ->{
+            if ( data.size()>0){
+                menu.setItem(data);
+                    System.out.println(menu.getContextMenu().getItems());
+               menu.showSuggestion(search_TF);
 
-
-                requestP.offer(req2.find("getFullName",val));
+        }
+        else
+                menu.hide();
 
             });
-
-        });
-        requestP.offer(req.get());
-
-
-
-        /*
-        req.onReceive(c-> {
-            System.out.println("hello");
-            if (value.length() > 0 && req.respL!=null){
-                data=req.respL.stream().map(Patient::getFullName).collect(Collectors.toList());
-TextFields.bindAutoCompletion(search_TF,data);
-            }
         });
 
 
         search_TF.textProperty().addListener(v->{
-            acb.dispose();
-            value=((StringProperty)v).getValue();
+                value=((StringProperty)v).getValue();
+            if(value.length()>0)
                 requestP.offer(req.querySearch("SELECT *","WHERE firstName $LIKE '"+value+"%' OR lastName $LIKE '"+value+"%'",5));
+else
+    menu.hide();
 
         });
-        */
 
     }
     public void exit_methode(ActionEvent actionEvent) {
@@ -130,6 +128,7 @@ else{
     public void open_quick_pane() throws IOException {
        initializePane();
      /*    control.setName_label();*/
+        control.setInfoLabelValues(selectedPatient.getFullName(), selectedPatient.getAge(), selectedPatient.getLastVisit(), selectedPatient.getLastDiagnostic());
         quick_scene =new Scene(root);
         quick_scene.setFill(Color.TRANSPARENT);
         quick_scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
@@ -167,3 +166,28 @@ else{
         MainPanelC.search_stage.close();
     }
 }
+/*
+        req2.onReceive(g-> {
+                    System.out.println(req2.respondObject);//<-patient object contain all patient info
+                     selectedPatient = req2.respondObject;
+
+                    //struggle when try to use control here cuz its not initialized yet its work without it though
+                    Platform.runLater(() -> {add_btn.fire();
+                        control.setInfoLabelValues(selectedPatient.getFullName(), selectedPatient.getAge(), selectedPatient.getLastVisit(), selectedPatient.getLastDiagnostic());
+
+                    });
+                });
+        req.onReceive(c-> {
+            i.setValue(2);
+                data=req.respond.stream().map(Patient::getFullName).collect(Collectors.toList());
+            TextFields.bindAutoCompletion(search_TF, data).setOnAutoCompleted(v->{
+                String val=v.getCompletion();
+
+
+                requestP.offer(req2.find("getFullName",val));
+
+            });
+
+        });
+        requestP.offer(req.get());
+*/

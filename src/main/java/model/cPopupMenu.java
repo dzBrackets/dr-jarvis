@@ -1,12 +1,26 @@
 package model;
 
+import com.jfoenix.controls.JFXTextField;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.geometry.Side;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class cPopupMenu extends MenuButton {
+    ObservableList<String> obs=FXCollections.observableArrayList();
+    public IntegerProperty index=new SimpleIntegerProperty(-1);
+    ObservableList<MenuItem> itemsObs=FXCollections.observableArrayList();
+ContextMenu contextMenu = new ContextMenu();
     public cPopupMenu( String[] imgSource,String[] items){
         for (int i = 0; i <items.length ; i++) {
             ImageView img = new ImageView(imgSource[i]);
@@ -19,16 +33,38 @@ public class cPopupMenu extends MenuButton {
         this.setGraphic(new ImageView("dr/image/menu_vertical_24px.png"));
         this.setPopupSide(Side.LEFT);
     }
-    public cPopupMenu( String[] items,Side side){
-        for (int i = 0; i <items.length ; i++) {
-            MenuItem menu = new MenuItem(items[i]);
-            this.getItems().add(menu);
-
-        }
+    public cPopupMenu(){
+        itemsObs.addListener((ListChangeListener<? super MenuItem>) v->
+        {
+            contextMenu.getItems().setAll(itemsObs);
+        });
+       this.setContextMenu(contextMenu);
         this.setText("");
-        this.setGraphic(new ImageView("dr/image/menu_vertical_24px.png"));
-        this.setPopupSide(side);
     }
 
 
+    public void setItem(List<String> items){
+        List<MenuItem>itemMenus=new ArrayList<>();
+        for (String item:items) {
+            itemMenus.add(new MenuItem(item));
+            itemMenus.get(items.indexOf(item)).setOnAction(v->{
+                index.set(items.indexOf(item));
+                System.out.println(items.indexOf(item));
+            });
+        }
+        itemsObs.setAll(itemMenus);
+
+    }
+public void showSuggestion(JFXTextField tf){
+    if (!getContextMenu().isShowing())
+        getContextMenu().show(tf,Side.BOTTOM,0,0);
 }
+public void hide(){
+        index.set(-1);
+    getContextMenu().hide();
+
+}
+
+}
+
+

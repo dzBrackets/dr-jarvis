@@ -105,7 +105,7 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
     }
 
     public  void setInfoLabelValues(String fName, int age, String lastVisit, String lastDiagnostic) {
-        name_label.setText(fName);
+        quick_panelC.fName=fName;
         age_label.setText(""+age);
         last_notice_label.setText(lastDiagnostic);
         visite_label.setText(lastVisit);
@@ -116,6 +116,7 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
         last_notice_label.setText(lastDiagnostic);
         visite_label.setText(lastVisit);
     }
+
 
     public void initEvents(){
 
