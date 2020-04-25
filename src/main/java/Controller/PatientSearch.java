@@ -47,11 +47,7 @@ public  class PatientSearch implements Initializable {
     private final popupMenu suggestionsBar=new popupMenu();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-         try {
-            initializePane();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         suggestionsBar.onSelect(v->{
     int value=((IntegerProperty) v).getValue();
     if(value!=-1&&req.respond.size()-1>=value){
