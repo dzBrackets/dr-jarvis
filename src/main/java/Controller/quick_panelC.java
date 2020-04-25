@@ -93,7 +93,6 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
     public void  loadData(){
 
 
-        data.add(new prescription("Cocayin","pills","25mg","3","stop !"));
         data.add(new prescription("sarou5","dwa","siro","1000mg","do it !"));
 
         table.setItems(data);
@@ -134,8 +133,13 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
     public void initEvents(){
 
         add_btn.setOnAction(v->{
-            //data.add
-
+            if(selectedDrug!=null){
+                data.add(new prescription(selectedDrug.getName(),type_combo.getSelectionModel().getSelectedItem(),doss_combo.getSelectionModel().getSelectedItem(),"3",notice_text_field.getText()));
+       selectedDrug=null;
+       type_combo.getItems().clear();
+       doss_combo.getItems().clear();
+       drug_search.setText("");
+            }
         });
     }
     public void initSearchBar(){
