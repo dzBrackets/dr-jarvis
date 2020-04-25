@@ -3,6 +3,10 @@ package Controller;
 import DataClass.Drug;
 import DataClass.Patient;
 import com.jfoenix.controls.*;
+import javafx.application.Platform;
+import javafx.beans.InvalidationListener;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,11 +18,18 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import libs.cellController;
+import libs.requestFormer;
+import model.popupMenu;
 import model.prescription;
 import model.showButton;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+
+import static dr.FinalsVal.requestD;
+import static dr.FinalsVal.requestP;
 
 public class quick_panelC implements Initializable {
 static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
@@ -38,7 +49,7 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
     @FXML
     private TableView<prescription> table;
     @FXML
-    private JFXTextField drug_name_input;
+    private JFXTextField drug_search;
     @FXML
     private TableColumn<prescription, String> name_colm;
     @FXML
@@ -52,6 +63,8 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
     public TableColumn<prescription, String> delete_colm;
     ObservableList<prescription> data=FXCollections.observableArrayList();;
     cellController<prescription> cellController=new cellController<>();
+
+    Drug selectedDrug=null;
 
 
 
@@ -126,6 +139,50 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
         });
     }
     public void initSearchBar(){
+
+
+        requestFormer<Drug> req=new requestFormer<>();
+        popupMenu suggestionsBar =new popupMenu();
+
+        InvalidationListener k=v -> {
+            String value = ((StringProperty) v).getValue();
+            if (value.length() > 0)
+                requestD.offer(req.querySearch("SELECT *", "WHERE name $LIKE '" + value + "%'", 5));
+            else suggestionsBar.onHide();
+        };
+
+        suggestionsBar.bind(drug_search);
+
+
+        req.onReceive(c-> {
+            List<String> data=req.respond.stream().map(Drug::getName).collect(Collectors.toList());
+            Platform.runLater(() ->{
+                if ( data.size()>0){
+                    suggestionsBar.setItem(data);
+                    suggestionsBar.showSuggestion();
+                }
+                else suggestionsBar.onHide();
+            });
+        });
+
+        suggestionsBar.onSelect(v->{
+            int value=((IntegerProperty) v).getValue();
+            if(value!=-1&&req.respond.size()-1>=value){
+                selectedDrug=req.respond.get(value);
+                drug_search.textProperty().removeListener(k);
+                //setting info
+                drug_search.setText(selectedDrug.getName());
+                type_combo.getItems().setAll(selectedDrug.getType());
+                type_combo.getSelectionModel().select(0);
+                doss_combo.getItems().setAll(selectedDrug.getDose());
+                doss_combo.getSelectionModel().select(0);
+                suggestionsBar.onHide();
+                initSearchBar();
+
+            }
+        });
+
+        drug_search.textProperty().addListener(k);
 
     }
 

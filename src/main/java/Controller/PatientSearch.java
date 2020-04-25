@@ -47,7 +47,7 @@ public  class PatientSearch implements Initializable {
     private final popupMenu suggestionsBar=new popupMenu();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        suggestionsBar.bind(search_TF);
         suggestionsBar.onSelect(v->{
     int value=((IntegerProperty) v).getValue();
     if(value!=-1&&req.respond.size()-1>=value){
@@ -63,7 +63,7 @@ public  class PatientSearch implements Initializable {
             Platform.runLater(() ->{
             if ( data.size()>0){
                  suggestionsBar.setItem(data);
-                 suggestionsBar.showSuggestion(search_TF);
+                 suggestionsBar.showSuggestion();
                  }
             else suggestionsBar.onHide();
             });

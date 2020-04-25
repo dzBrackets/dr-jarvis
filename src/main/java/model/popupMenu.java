@@ -18,10 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class popupMenu extends MenuButton {
-    ObservableList<String> obs=FXCollections.observableArrayList();
-    public IntegerProperty index=new SimpleIntegerProperty(-1);
-    ObservableList<MenuItem> itemsObs=FXCollections.observableArrayList();
-ContextMenu contextMenu = new ContextMenu();
+    private final IntegerProperty index=new SimpleIntegerProperty(-1);
+    private final ObservableList<MenuItem> itemsObs=FXCollections.observableArrayList();
+    private final ContextMenu contextMenu = new ContextMenu();
+    private JFXTextField tf=null;
     public popupMenu(String[] imgSource, String[] items){
         for (int i = 0; i <items.length ; i++) {
             ImageView img = new ImageView(imgSource[i]);
@@ -55,7 +55,11 @@ ContextMenu contextMenu = new ContextMenu();
         itemsObs.setAll(itemMenus);
 
     }
-public void showSuggestion(JFXTextField tf){
+    public void bind(JFXTextField tf){
+        this.tf=tf;
+    }
+
+public void showSuggestion(){
     if (!getContextMenu().isShowing())
         getContextMenu().show(tf,Side.BOTTOM,0,0);
 }
