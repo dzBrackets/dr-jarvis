@@ -111,7 +111,7 @@ public cellController<Patient> cellController=new cellController<>();
                         //open new prescription
                         try {
                             initializePane();
-                            open_quick_pane();
+                            open_quick_pane(patient_table.getItems().get(cellController.index));
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
@@ -153,7 +153,7 @@ public cellController<Patient> cellController=new cellController<>();
         control=loader.getController();
 
     }
-    public void open_quick_pane() throws IOException {
+    public void open_quick_pane(Patient selectedPatient) throws IOException {
         initializePane();
         Scene   quick_scene =new Scene(root);
         quick_scene.setFill(Color.TRANSPARENT);
@@ -162,8 +162,7 @@ public cellController<Patient> cellController=new cellController<>();
         Table_quick_stage .initModality(Modality.APPLICATION_MODAL);
         Table_quick_stage .setScene(quick_scene);
         Table_quick_stage .initStyle(StageStyle.TRANSPARENT);
-        //setLabels
-   //     control.setInfoLabelValues(selectedPatient);//
+          control.setInfoLabelValues(selectedPatient);
         Table_quick_stage .show();
         MainPanelC.effect.setRadius(3.25);
         Table_quick_stage .setOnCloseRequest(event -> {
