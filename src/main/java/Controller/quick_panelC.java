@@ -98,7 +98,13 @@ List<Drug> drugList=new ArrayList<>();
     }
 
     public void exit_methode(ActionEvent actionEvent) {
-         PatientSearch.quick_stage.close();
+        if(PatientList.Table_quick_stage!=null&&PatientList.Table_quick_stage.isShowing()){
+            PatientList.Table_quick_stage.close();
+        }
+        else {
+            PatientSearch.quick_stage.close();
+        }
+
          MainPanelC.effect.setRadius(0);
     }
 

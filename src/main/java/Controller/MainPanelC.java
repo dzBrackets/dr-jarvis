@@ -44,6 +44,9 @@ public class MainPanelC  implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     patient_panel.toFront();
+        effect= new javafx.scene.effect.GaussianBlur();
+        effect.setRadius(0);
+        main_panel.setEffect(effect);
 
 
     }
@@ -58,10 +61,7 @@ public class MainPanelC  implements Initializable {
         search_stage.setScene(search_scene);
          search_stage.initStyle(StageStyle.TRANSPARENT);
         search_stage.show();
-
-        effect= new javafx.scene.effect.GaussianBlur();
         effect.setRadius(3.25);
-        main_panel.setEffect(effect);
         search_stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {

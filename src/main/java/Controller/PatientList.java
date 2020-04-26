@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
+
 import static dr.FinalsVal.*;
 
 public class PatientList implements Initializable {
@@ -43,12 +44,15 @@ public cellController<Patient> cellController=new cellController<>();
     static ObservableList<Patient> data = FXCollections.observableArrayList();
     public static popUpWindow  showField ;
     static public  Stage patientFormStage;
+    public static Stage Table_quick_stage ;
+    public  static  quick_panelC control ;
     public Spinner<Integer> show_spinner;
     public TextField write_TXF;
     public JFXButton add_patient_btn;
     public Label info2_label;
     private requestFormer<Patient> req=formerP;
-
+    double xOffset,yOffset;
+    Parent root ;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -105,6 +109,14 @@ public cellController<Patient> cellController=new cellController<>();
                     }
                     if(prop.getValue()==2){
                         //open new prescription
+                        try {
+                            initializePane();
+                            open_quick_pane();
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+
+
                     }
                 }
         );
@@ -133,6 +145,41 @@ public cellController<Patient> cellController=new cellController<>();
         patientFormStage.setScene(sc);
         patientFormStage.initStyle(StageStyle.TRANSPARENT);
         patientFormStage.show();
+
+    }
+    public void initializePane() throws IOException {
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/quick_panel.fxml"));
+        root = loader.load();
+        control=loader.getController();
+
+    }
+    public void open_quick_pane() throws IOException {
+        initializePane();
+        Scene   quick_scene =new Scene(root);
+        quick_scene.setFill(Color.TRANSPARENT);
+        quick_scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
+        Table_quick_stage =new Stage();
+        Table_quick_stage .initModality(Modality.APPLICATION_MODAL);
+        Table_quick_stage .setScene(quick_scene);
+        Table_quick_stage .initStyle(StageStyle.TRANSPARENT);
+        //setLabels
+   //     control.setInfoLabelValues(selectedPatient);//
+        Table_quick_stage .show();
+        MainPanelC.effect.setRadius(3.25);
+        Table_quick_stage .setOnCloseRequest(event -> {
+            Table_quick_stage .close();
+            MainPanelC.effect.setRadius(0);
+        });
+
+        quick_scene.setOnMousePressed(event -> {
+            xOffset=event.getSceneX();
+            yOffset=event.getSceneY();
+        });
+        quick_scene.setOnMouseDragged(event -> {
+            Table_quick_stage .setX(event.getScreenX() - xOffset);
+            Table_quick_stage .setY(event.getScreenY()-yOffset);
+        });
+
 
     }
 }
