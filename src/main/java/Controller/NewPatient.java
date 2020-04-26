@@ -5,6 +5,7 @@ import DataClass.Patient;
 import com.jfoenix.controls.*;
 import com.jfoenix.validation.RegexValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
+import dr.Main;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -65,6 +66,7 @@ int gender=((JFXRadioButton)gender_group.getSelectedToggle()).getText().equals("
       catch ( IOException e){
 
       }
+        MainPanelC.effect.setRadius(0);
     }
 
     public void form_validation(){
@@ -118,5 +120,6 @@ int gender=((JFXRadioButton)gender_group.getSelectedToggle()).getText().equals("
 
     public void Cancel(ActionEvent actionEvent) {
      PatientList.PatientForm_stage.close();
+     MainPanelC.effect.setRadius(0);
     }
 }

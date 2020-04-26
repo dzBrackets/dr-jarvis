@@ -48,7 +48,7 @@ public class MainPanelC  implements Initializable {
 
     }
 
-    public void add_quick(ActionEvent actionEvent) throws IOException {
+    public void  add_quick(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/patient_search.fxml"));
         search_scene =new Scene(root);
         search_scene.setFill(Color.TRANSPARENT);

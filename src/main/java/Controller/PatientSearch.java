@@ -21,6 +21,7 @@ import javafx.stage.StageStyle;
 import libs.requestFormer;
 import model.popupMenu;
 
+import static Controller.PatientList.PatientForm_stage;
 import static dr.FinalsVal.requestP;
 
 import java.io.IOException;
@@ -87,7 +88,16 @@ public  class PatientSearch implements Initializable {
         open_quick_pane();
         }
 else{
-            System.out.println("not found you have to handle this");
+
+            Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/New_patient.fxml"));
+            Scene sc =new Scene(root);
+            sc.setFill(Color.TRANSPARENT);
+            sc.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
+            PatientForm_stage =new Stage();
+            PatientForm_stage.initModality(Modality.APPLICATION_MODAL);
+            PatientForm_stage.setScene(sc);
+            PatientForm_stage.initStyle(StageStyle.TRANSPARENT);
+            PatientForm_stage.show();
         }
 
 
