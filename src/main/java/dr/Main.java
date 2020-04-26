@@ -22,6 +22,7 @@ public class Main extends Application {
     double xOffset,yOffset;
     public static dataThread<Drug> drugThread=null;
     public static dataThread<Patient> patientThread=null;
+    public static Stage staticstage=null;
     public static void main(String[] args)
     {
 
@@ -48,7 +49,9 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
-      /*  Font.loadFont(getClass().getResource("/dr/fonts/Sarabun-Regular.ttf").toExternalForm(),18);*/
+        staticstage=primaryStage;
+
+        /*  Font.loadFont(getClass().getResource("/dr/fonts/Sarabun-Regular.ttf").toExternalForm(),18);*/
         scene.setOnMousePressed(event -> {
             xOffset=event.getSceneX();
             yOffset=event.getSceneY();

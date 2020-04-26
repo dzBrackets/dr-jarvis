@@ -26,6 +26,7 @@ public class MainPanelC  implements Initializable {
     public AnchorPane content_panel;
     public static  Scene search_scene;
     public static Stage search_stage;
+    public static Stage drugList;
     public static GaussianBlur effect;
     public Pane drug_panel;
     public Pane patient_panel;

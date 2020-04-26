@@ -35,6 +35,7 @@ public class popupMenu extends MenuButton {
         this.setPopupSide(Side.LEFT);
     }
     public popupMenu(){
+
         itemsObs.addListener((ListChangeListener<? super MenuItem>) v->
         {
             contextMenu.getItems().setAll(itemsObs);

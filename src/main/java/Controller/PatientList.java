@@ -94,6 +94,9 @@ public cellController<Patient> cellController=new cellController<>();
                         write_TXF.clear();
 
                     }
+                    if(prop.getValue()==2){
+                        //open new prescription
+                    }
                 }
         );
         write_TXF.textProperty().addListener(v->{

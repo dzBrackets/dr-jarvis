@@ -2,6 +2,8 @@ package Controller;
 
 import DataClass.Drug;
 import com.sun.javafx.charts.Legend;
+import dr.Main;
+import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,6 +22,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import libs.coronaDb.coCollection;
 import libs.requestFormer;
+import model.popUpWindow;
 import model.showButton;
 import java.io.IOException;
 import java.net.URL;
@@ -36,7 +39,7 @@ public class DrugList  implements Initializable {
     public TableColumn<Drug, String> menu_C;
     public TextField write_TXF;
    static ObservableList<Drug> data = FXCollections.observableArrayList();
-static public  Stage s;
+    static public  Stage s;
     cellController<Drug> cellController = new cellController<>();
 
     private requestFormer<Drug> req=formerD;
@@ -72,6 +75,21 @@ static public  Stage s;
         data.setAll(items);
     }
     public void eventTrigger(){
+        cellController.clicked.addListener(v->{
+            FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/show_window.fxml"));
+            try {
+                Parent root = loader.load();
+                show_winC control=loader.getController();
+                popUpWindow showField = new popUpWindow(root.getChildrenUnmodifiable());
+                showField.show(Main.staticstage);
+                control.value_area.setText(drug_table.getItems().get(cellController.index).getName());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+
         cellController.MenuDispatcher.addListener(e-> {
                     IntegerProperty prop= (IntegerProperty) e;
                     if(prop.getValue()==0){
@@ -97,7 +115,7 @@ static public void closePopuUp(){
 
         sc.setFill(Color.TRANSPARENT);
         sc.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-       s=new Stage();
+         s=new Stage();
         s.initModality(Modality.APPLICATION_MODAL);
         s.setScene(sc);
         s.initStyle(StageStyle.TRANSPARENT);

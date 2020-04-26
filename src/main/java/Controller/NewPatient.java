@@ -49,7 +49,8 @@ int gender=((JFXRadioButton)gender_group.getSelectedToggle()).getText().equals("
         String pf=removeSpace(firstN_TXF.getText().toLowerCase());
         String pl=removeSpace(lastN_TXF.getText().toLowerCase());
         Patient patient=null ;
-      try{
+
+        try{
         if(pf.length()>2)
             if(pl.length()>2)
                 if(date.getValue().toString().length()>5){

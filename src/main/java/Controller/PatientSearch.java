@@ -87,7 +87,6 @@ public  class PatientSearch implements Initializable {
         open_quick_pane();
         }
 else{
-
             System.out.println("not found you have to handle this");
         }
 
@@ -96,7 +95,7 @@ else{
     public void initializePane() throws IOException {
         FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/quick_panel.fxml"));
          root = loader.load();
-        control=loader.getController();
+         control=loader.getController();
     }
     public void open_quick_pane() throws IOException {
         initializePane();
