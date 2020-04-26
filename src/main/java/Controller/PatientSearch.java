@@ -21,7 +21,7 @@ import javafx.stage.StageStyle;
 import libs.requestFormer;
 import model.popupMenu;
 
-import static Controller.PatientList.PatientForm_stage;
+import static Controller.PatientList.patientFormStage;
 import static dr.FinalsVal.requestP;
 
 import java.io.IOException;
@@ -93,11 +93,11 @@ else{
             Scene sc =new Scene(root);
             sc.setFill(Color.TRANSPARENT);
             sc.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-            PatientForm_stage =new Stage();
-            PatientForm_stage.initModality(Modality.APPLICATION_MODAL);
-            PatientForm_stage.setScene(sc);
-            PatientForm_stage.initStyle(StageStyle.TRANSPARENT);
-            PatientForm_stage.show();
+            patientFormStage =new Stage();
+            patientFormStage.initModality(Modality.APPLICATION_MODAL);
+            patientFormStage.setScene(sc);
+            patientFormStage.initStyle(StageStyle.TRANSPARENT);
+            patientFormStage.show();
         }
 
 
@@ -117,7 +117,7 @@ else{
         quick_stage.setScene(quick_scene);
         quick_stage.initStyle(StageStyle.TRANSPARENT);
         //setLabels
-        control.setInfoLabelValues(selectedPatient.getFullName(), selectedPatient.getAge(), selectedPatient.getLastVisit(), selectedPatient.getLastDiagnostic());
+        control.setInfoLabelValues(selectedPatient);
         quick_stage.show();
         quick_stage.setOnCloseRequest(event -> {
             quick_stage.close();

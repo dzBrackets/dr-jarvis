@@ -1,18 +1,23 @@
 package DataClass;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import libs.coronaDb.deserializeType;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class prescriptionsHistory implements Serializable {
     private String presId;
     private String date;
-    private String patName;
-    private String jsonData ;
+    private String patId;
+    private List<Drug> drugList=null;
 
-    public prescriptionsHistory prescriptionsHistory(String presId, String date, String patName, String jsonData) {
+    public prescriptionsHistory prescriptionsHistory(String presId, String date, String patName, List<Drug> drugList) {
         this.presId = presId;
         this.date = date;
-        this.patName = patName;
-        this.jsonData = jsonData;
+        this.patId = patName;
+        this.drugList = drugList;
         return this;
     }
 
@@ -32,19 +37,19 @@ public class prescriptionsHistory implements Serializable {
         this.date = date;
     }
 
-    public String getPatName() {
-        return patName;
+    public String getPatId() {
+        return patId;
     }
 
-    public void setPatName(String patName) {
-        this.patName = patName;
+    public void setPatId(String patId) {
+        this.patId = patId;
     }
 
-    public String getJsonData() {
-        return jsonData;
+    public List<Drug> getDrugList() {
+        return drugList;
     }
-
-    public void setJsonData(String jsonData) {
-        this.jsonData = jsonData;
+    @JsonDeserialize(using = deserializeType.class)
+    public void setDrugList(List<Drug> drugList) {
+        this.drugList = drugList;
     }
 }

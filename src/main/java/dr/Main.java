@@ -33,6 +33,7 @@ public class Main extends Application {
             patientThread.start();
             drugThread.start();
 
+
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }

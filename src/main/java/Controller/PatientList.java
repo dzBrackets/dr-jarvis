@@ -2,6 +2,7 @@ package Controller;
 
 import DataClass.Patient;
 import com.jfoenix.controls.JFXButton;
+import dr.Main;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -19,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import libs.cellController;
 import libs.requestFormer;
+import model.popUpWindow;
 import model.showButton;
 import java.io.IOException;
 import java.net.URL;
@@ -39,7 +41,8 @@ public class PatientList implements Initializable {
     public TableColumn<Patient,String> diagnostic_C;
 public cellController<Patient> cellController=new cellController<>();
     static ObservableList<Patient> data = FXCollections.observableArrayList();
-    static public  Stage PatientForm_stage;
+
+    static public  Stage patientFormStage;
     public Spinner<Integer> show_spinner;
     public TextField write_TXF;
     public JFXButton add_patient_btn;
@@ -79,7 +82,19 @@ public cellController<Patient> cellController=new cellController<>();
 
     public void eventTrigger(){
 
-//cellController.clicked.addListener(v-> popUP.settext(patient_table.getItems().get(cellController.index).getLastDiagnostic()));
+        cellController.clicked.addListener(v->{
+            FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/show_window.fxml"));
+            try {
+                Parent root = loader.load();
+                show_winC control=loader.getController();
+                popUpWindow showField = new popUpWindow(root.getChildrenUnmodifiable());
+                showField.show(Main.staticstage);
+                control.value_area.setText(patient_table.getItems().get(cellController.index).getLastDiagnostic());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         cellController.MenuDispatcher.addListener(e-> {
                     IntegerProperty prop= (IntegerProperty) e;
                     if(prop.getValue()==0){
@@ -102,7 +117,7 @@ public cellController<Patient> cellController=new cellController<>();
     }
 
     static public void closePopuUp(){
-        PatientForm_stage.close();
+        patientFormStage.close();
     }
 
     public void add_patient_table(ActionEvent actionEvent) throws IOException, InterruptedException {
@@ -113,11 +128,11 @@ public cellController<Patient> cellController=new cellController<>();
         Scene sc =new Scene(root);
         sc.setFill(Color.TRANSPARENT);
         sc.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-         PatientForm_stage =new Stage();
-        PatientForm_stage.initModality(Modality.APPLICATION_MODAL);
-        PatientForm_stage.setScene(sc);
-        PatientForm_stage.initStyle(StageStyle.TRANSPARENT);
-        PatientForm_stage.show();
+        patientFormStage =new Stage();
+        patientFormStage.initModality(Modality.APPLICATION_MODAL);
+        patientFormStage.setScene(sc);
+        patientFormStage.initStyle(StageStyle.TRANSPARENT);
+        patientFormStage.show();
 
     }
 }

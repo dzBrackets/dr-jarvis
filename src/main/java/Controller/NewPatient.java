@@ -55,7 +55,7 @@ int gender=((JFXRadioButton)gender_group.getSelectedToggle()).getText().equals("
         if(pf.length()>2)
             if(pl.length()>2)
                 if(date.getValue().toString().length()>5){
-                    patient= new Patient().Patient("N/D",pf,pl,date.getValue(),gender,LocalDate.now(),"N/D");
+                    patient= new Patient().Patient("N/D",pf,pl,date.getValue(),gender,LocalDate.now(),write_TXA.getText());
                 patient.setUUID(database.updateUUID("patient"));
 
           requestP.offer(req.post(patient));
@@ -119,7 +119,7 @@ int gender=((JFXRadioButton)gender_group.getSelectedToggle()).getText().equals("
     }
 
     public void Cancel(ActionEvent actionEvent) {
-     PatientList.PatientForm_stage.close();
+     PatientList.patientFormStage.close();
      MainPanelC.effect.setRadius(0);
     }
 }

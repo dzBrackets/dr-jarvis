@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="dashborad_pane" fx:id="dashborad_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: #F8F8FA; -fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px;" stylesheets="@../../CSS/dashborad.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="dashborad_pane" fx:id="dashborad_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: #F8F8FA; -fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px;" stylesheets="@../../CSS/dashborad.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane id="recent_pane" fx:id="recent_pane" layoutX="676.0" prefHeight="752.0" prefWidth="236.0" style="-fx-background-radius: 27px; -fx-background-color: #2C3964; -fx-border-radius: 27px;" />
+      <Pane id="recent_pane" fx:id="recent_pane" layoutX="644.0" prefHeight="752.0" prefWidth="268.0" style="-fx-background-radius: 27px; -fx-background-color: #2C3964; -fx-border-radius: 27px;" />
       <Pane id="boxes_pane" fx:id="boxes_pane" prefHeight="752.0" prefWidth="677.0">
          <children>
-            <Pane layoutX="57.0" layoutY="65.0" prefHeight="200.0" prefWidth="587.0" style="-fx-background-color: #737FE7; -fx-background-radius: 11px;">
+            <Pane layoutX="57.0" layoutY="65.0" prefHeight="200.0" prefWidth="544.0" style="-fx-background-color: #737FE7; -fx-background-radius: 11px;">
                <children>
                   <Line endX="34.0" endY="-15.0" fill="#5b6072" layoutX="377.0" layoutY="131.0" startX="34.0" startY="-2.0" />
                   <Label id="good_label" fx:id="good_label" layoutX="323.0" layoutY="69.0" text="Good Evening" textFill="WHITE">
@@ -34,15 +32,15 @@
                   <Image url="@../../image/stBackground.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="259.0" fitWidth="200.0" layoutX="99.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="237.0" fitWidth="190.0" layoutX="99.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../image/Group%201.png" />
                </image>
             </ImageView>
-            <Pane layoutX="34.0" layoutY="343.0" prefHeight="200.0" prefWidth="130.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" />
-            <Pane layoutX="190.0" layoutY="343.0" prefHeight="200.0" prefWidth="130.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" />
-            <Pane layoutX="351.0" layoutY="343.0" prefHeight="200.0" prefWidth="130.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" />
-            <Pane layoutX="511.0" layoutY="343.0" prefHeight="200.0" prefWidth="130.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" />
+            <Pane layoutX="22.0" layoutY="343.0" prefHeight="200.0" prefWidth="130.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" />
+            <Pane layoutX="170.0" layoutY="343.0" prefHeight="200.0" prefWidth="130.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" />
+            <Pane layoutX="323.0" layoutY="343.0" prefHeight="200.0" prefWidth="130.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" />
+            <Pane layoutX="471.0" layoutY="343.0" prefHeight="200.0" prefWidth="130.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" />
          </children>
       </Pane>
    </children>

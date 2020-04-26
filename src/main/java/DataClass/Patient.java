@@ -14,13 +14,13 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Patient implements Serializable {
-    private String patientId;
-    private String firstName;
-    private String lastName;
-    private String birthDay;
-    private int gender;
-    private String lastVisit;
-    private String lastDiagnostic;
+    private String patientId="N/D";
+    private String firstName="N/D";
+    private String lastName="N/D";
+    private String birthDay="N/D";
+    private int gender=-1;
+    private String lastVisit="N/D";
+    private String lastDiagnostic="N/D";
     private ArrayList<String> prescriptionsId;
 private DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
 

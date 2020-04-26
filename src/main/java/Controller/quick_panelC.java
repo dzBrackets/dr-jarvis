@@ -1,6 +1,7 @@
 package Controller;
 
 import DataClass.Drug;
+import DataClass.Patient;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
@@ -68,6 +69,7 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
     cellController<prescription> cellController=new cellController<>();
 List<Drug> drugList=new ArrayList<>();
     Drug selectedDrug=null;
+    Patient selectedPatient=null;
 
 
 
@@ -125,6 +127,13 @@ List<Drug> drugList=new ArrayList<>();
         age_label.setText(""+age);
         last_notice_label.setText(lastDiagnostic);
         visite_label.setText(lastVisit);
+    }
+    public  void setInfoLabelValues(Patient patient) {
+        selectedPatient=patient;
+        name_label.setText(patient.getFullName());
+        age_label.setText(""+patient.getAge());
+        last_notice_label.setText(patient.getLastDiagnostic());
+        visite_label.setText(patient.getLastVisit());
     }
     public void setInfoLabelValues(){
         name_label.setText(fName);
