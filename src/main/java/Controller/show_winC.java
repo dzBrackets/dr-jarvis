@@ -20,10 +20,11 @@ public class show_winC implements Initializable {
     }
 
     public void exit_methode(ActionEvent actionEvent) {
-        if(DrugList.showNotice.isShowing()){
+
+        if(DrugList.showNotice!=null&&DrugList.showNotice.isShowing()){
             DrugList.showNotice.hide();
         }
-        else if(PatientList.showField.isShowing()){
+        else if(PatientList.showField!=null&&PatientList.showField.isShowing()){
             PatientList.showField.hide();
     }
     }
