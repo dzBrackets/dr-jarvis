@@ -82,9 +82,14 @@
       </AnchorPane>
       <AnchorPane id="content_panel" fx:id="content_panel" layoutX="89.0" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane id="quick_panel" fx:id="quick_panel" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;">
+            <Pane id="dashbord_pane" fx:id="dashbord_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;">
                <children>
-                  <fx:include source="../POPUP/quick_panel.fxml" />
+                  <fx:include source="Dashboard.fxml" />
+               </children></Pane>
+            <Pane id="template_pane" fx:id="template_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;" />
+            <Pane id="patient_panel" fx:id="patient_panel" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;">
+               <children>
+                  <fx:include source="patient_list.fxml" />
                </children>
             </Pane>
             <Pane id="drug_panel" fx:id="drug_panel" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;">
@@ -92,12 +97,6 @@
                   <fx:include source="Drugs_List.fxml" />
                </children>
             </Pane>
-            <Pane id="patient_panel" fx:id="patient_panel" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;">
-               <children>
-                  <fx:include source="patient_list.fxml" />
-               </children>
-            </Pane>
-            <Pane id="dashbord_pane" fx:id="dashbord_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px; -fx-background-color: black;" />
             <Pane id="setting_pane" fx:id="setting_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px; -fx-background-color: green;" />
          </children>
       </AnchorPane>

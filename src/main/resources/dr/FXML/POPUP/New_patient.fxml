@@ -44,7 +44,7 @@
             <Font size="15.0" />
          </font>
       </JFXTextArea>
-      <JFXButton id="add_patient" fx:id="add_btn" layoutX="134.0" layoutY="589.0" onAction="#add_patient" prefHeight="48.0" prefWidth="376.0" style="-fx-background-color: #1AD28B; -fx-background-radius: 5px;" text="Add Patient" textFill="WHITE">
+      <JFXButton id="add_patient" fx:id="add_btn" layoutX="85.0" layoutY="586.0" onAction="#add_patient" prefHeight="48.0" prefWidth="234.0" style="-fx-background-color: #1AD28B; -fx-background-radius: 5px;" text="Add Patient" textFill="WHITE">
          <font>
             <Font name="Sarabun SemiBold" size="13.0" />
          </font>
@@ -63,5 +63,10 @@
             <Font name="Sarabun SemiBold" size="18.0" />
          </font>
       </JFXRadioButton>
+      <JFXButton id="Cancel_btn" fx:id="Cancel_btn" layoutX="358.0" layoutY="586.0" onAction="#Cancel" prefHeight="48.0" prefWidth="234.0" style="-fx-background-color: red; -fx-background-radius: 5px;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="Sarabun SemiBold" size="13.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

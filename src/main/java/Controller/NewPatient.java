@@ -115,4 +115,8 @@ int gender=((JFXRadioButton)gender_group.getSelectedToggle()).getText().equals("
 
 
     }
+
+    public void Cancel(ActionEvent actionEvent) {
+     PatientList.PatientForm_stage.close();
+    }
 }

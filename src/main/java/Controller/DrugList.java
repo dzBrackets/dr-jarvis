@@ -1,9 +1,8 @@
 package Controller;
 
 import DataClass.Drug;
-import com.sun.javafx.charts.Legend;
+import com.jfoenix.controls.JFXPopup;
 import dr.Main;
-import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,7 +19,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import libs.coronaDb.coCollection;
 import libs.requestFormer;
 import model.popUpWindow;
 import model.showButton;
@@ -40,6 +38,7 @@ public class DrugList  implements Initializable {
     public TextField write_TXF;
    static ObservableList<Drug> data = FXCollections.observableArrayList();
     static public  Stage s;
+    public static popUpWindow showNotice;/*create same methode for patientlist and quick panel and i will close them*/
     cellController<Drug> cellController = new cellController<>();
 
     private requestFormer<Drug> req=formerD;
@@ -80,8 +79,8 @@ public class DrugList  implements Initializable {
             try {
                 Parent root = loader.load();
                 show_winC control=loader.getController();
-                popUpWindow showField = new popUpWindow(root.getChildrenUnmodifiable());
-                showField.show(Main.staticstage);
+                 showNotice  = new popUpWindow(root.getChildrenUnmodifiable());
+                showNotice.show(Main.staticstage);
                 control.value_area.setText(drug_table.getItems().get(cellController.index).getName());
 
             } catch (IOException e) {

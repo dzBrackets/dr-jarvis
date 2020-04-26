@@ -20,6 +20,6 @@ public class show_winC implements Initializable {
     }
 
     public void exit_methode(ActionEvent actionEvent) {
-
+        DrugList.showNotice.hide();
     }
 }
