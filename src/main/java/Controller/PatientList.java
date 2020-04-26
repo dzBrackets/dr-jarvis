@@ -41,7 +41,7 @@ public class PatientList implements Initializable {
     public TableColumn<Patient,String> diagnostic_C;
 public cellController<Patient> cellController=new cellController<>();
     static ObservableList<Patient> data = FXCollections.observableArrayList();
-
+    public static popUpWindow  showField ;
     static public  Stage patientFormStage;
     public Spinner<Integer> show_spinner;
     public TextField write_TXF;
@@ -87,7 +87,7 @@ public cellController<Patient> cellController=new cellController<>();
             try {
                 Parent root = loader.load();
                 show_winC control=loader.getController();
-                popUpWindow showField = new popUpWindow(root.getChildrenUnmodifiable());
+                 showField = new popUpWindow(root.getChildrenUnmodifiable());
                 showField.show(Main.staticstage);
                 control.value_area.setText(patient_table.getItems().get(cellController.index).getLastDiagnostic());
 
