@@ -6,3 +6,51 @@
 	-fx-font-size:13px;
 	-fx-font-family:'Sarabun Medium';
 }
+#mini_label {
+	-fx-font-size:12px;
+	-fx-font-family:'Sarabun Medium';
+}
+#count_label{
+	-fx-font-size:22px;
+	-fx-font-family:'Sarabun SemiBold';
+}
+#info1_label {
+	-fx-font-size:13px;
+	-fx-font-family:'Sarabun Medium';
+}
+#shwo_all_btn {
+		-fx-font-size:13px;
+	-fx-font-family:'Sarabun Medium';
+}
+
+
+#item1 :hover  {
+	-fx-background-color:#727FF0;
+	-fx-background-radius:15px;
+	-fx-border-radius:15px;
+	
+}
+#item2 :hover  {
+	-fx-background-color:#727FF0;
+	
+}
+#show_pres_btn {
+	-fx-font-family:'Sarabun Medium';
+	-fx-font-size:10px; 
+}
+#recent_name_label {
+-fx-font-family:'Sarabun Medium';
+	-fx-font-size:15px; 
+}
+#recent_age_label{
+	-fx-font-family:'Sarabun Medium';
+	-fx-font-size:13px;
+}
+#recent_diago_label {
+		-fx-font-family:'Sarabun Medium';
+	-fx-font-size:10px;
+}
+#time_label {
+		-fx-font-family:'Sarabun Medium';
+	-fx-font-size:11px;
+}

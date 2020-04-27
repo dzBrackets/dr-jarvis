@@ -43,7 +43,7 @@ public class MainPanelC  implements Initializable {
    static double xOffset,yOffset;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    patient_panel.toFront();
+    dashbord_pane.toFront();
         effect= new javafx.scene.effect.GaussianBlur();
         effect.setRadius(0);
         main_panel.setEffect(effect);
