@@ -11,9 +11,9 @@
    <children>
       <AnchorPane id="back_side_pane" fx:id="back_side_pane" prefHeight="752.0" prefWidth="89.0" style="-fx-background-color: #ffffff; -fx-background-radius: 5em 0px 0px 5em;">
          <children>
-            <Pane id="side_panel" prefHeight="722.0" prefWidth="89.0" style="-fx-background-color: #2C3964; -fx-background-radius: 45px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane id="side_panel" fx:id="side_pane" prefHeight="722.0" prefWidth="89.0" style="-fx-background-color: #2C3964; -fx-background-radius: 45px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="15.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="app_icon" fitHeight="60.0" fitWidth="59.0" layoutX="15.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../image/logo.png" />
                      </image>

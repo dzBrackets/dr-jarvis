@@ -1,6 +1,7 @@
 package Controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXRippler;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -50,16 +51,14 @@ public class DashboardC implements Initializable {
     public Label item3_age;
     public Label item3_diago;
     public Label item3_time;
+    public Pane pane1;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
-    public void pan_selected(MouseEvent mouseEvent) {
 
-
-    }
 
     public void show_prescription(ActionEvent actionEvent) {
     }

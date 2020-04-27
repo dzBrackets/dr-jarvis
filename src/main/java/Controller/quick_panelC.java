@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 import libs.cellController;
 import libs.requestFormer;
 import model.popupMenu;
@@ -80,6 +81,10 @@ List<Drug> drugList=new ArrayList<>();
         setInfoLabelValues();
         initSearchBar();
         initEvents();
+        ObservableList<String> l=FXCollections.observableArrayList("dwa","sarou5","cocayin");
+        type_combo.setItems(l);
+        type_combo.getSelectionModel().select(0);
+
 
     }
 

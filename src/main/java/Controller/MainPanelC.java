@@ -1,6 +1,7 @@
 package Controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXRippler;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.GaussianBlur;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -41,12 +43,16 @@ public class MainPanelC  implements Initializable {
     public JFXButton quick_btn;
 
    static double xOffset,yOffset;
+    public ImageView app_icon;
+    public Pane side_pane;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     dashbord_pane.toFront();
         effect= new javafx.scene.effect.GaussianBlur();
         effect.setRadius(0);
         main_panel.setEffect(effect);
+
 
 
     }
