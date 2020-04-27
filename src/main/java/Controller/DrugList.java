@@ -1,7 +1,6 @@
 package Controller;
 
 import DataClass.Drug;
-import com.jfoenix.controls.JFXPopup;
 import dr.Main;
 import javafx.beans.property.IntegerProperty;
 import javafx.fxml.FXMLLoader;
@@ -37,7 +36,7 @@ public class DrugList  implements Initializable {
     public TableColumn<Drug, String> menu_C;
     public TextField write_TXF;
    static ObservableList<Drug> data = FXCollections.observableArrayList();
-    static public  Stage s;
+    static public  Stage add_drug_from_stage;
     public static popUpWindow showNotice;/*create same methode for patientlist and quick panel and i will close them*/
     cellController<Drug> cellController = new cellController<>();
 
@@ -106,7 +105,7 @@ public class DrugList  implements Initializable {
         });
     }
 static public void closePopuUp(){
-    s.close();
+    add_drug_from_stage.close();
 }
     public void add_drug_table(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/New_drugs.fxml"));
@@ -114,11 +113,11 @@ static public void closePopuUp(){
 
         sc.setFill(Color.TRANSPARENT);
         sc.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-         s=new Stage();
-        s.initModality(Modality.APPLICATION_MODAL);
-        s.setScene(sc);
-        s.initStyle(StageStyle.TRANSPARENT);
-        s.show();
+         add_drug_from_stage =new Stage();
+        add_drug_from_stage.initModality(Modality.APPLICATION_MODAL);
+        add_drug_from_stage.setScene(sc);
+        add_drug_from_stage.initStyle(StageStyle.TRANSPARENT);
+        add_drug_from_stage.show();
 
     }
 }

@@ -57,6 +57,7 @@ public  class PatientSearch implements Initializable {
     search_TF.setText(selectedPatient.getFullName());
     suggestionsBar.onHide();
     add_btn.fire();
+
     }
 });
         req.onReceive(c-> {

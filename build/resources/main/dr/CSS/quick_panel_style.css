@@ -3,6 +3,17 @@
 -fx-background-color :#2C3964 ;
 -fx-border-style:hidden ;
 }
+.label {
+	-fx-font-family:'Sarabun Medium';
+}
+#top_label {
+	-fx-font-size:18px; 
+	-fx-font-family:'Sarabun SemiBold';
+}
+#print_panel_labels {
+	-fx-font-size:16px; 
+	-fx-font-family:'Sarabun Medium';
+}
 .spinner  .increment-arrow-button {
 -fx-background-color :transparent ;
  -fx-background-radius:0px 50px 0px 0px;
@@ -54,18 +65,29 @@
 .jfx-combo-box .arrow-button{
 	-fx-background-radius:0px 12px 12px 0px;
 }
-.jfx-combo-box .list-cell:filled:selected {
-	-fx-background-color:#ffffff;
-	-fx-alignment:center;	
-}
+
 .combo-box-base  {
+
 -fx-background-radius:12px ;
--fx-background-color:#ffffff;
+-fx-background-color:white;
+-fx-padding:0;
+-fx-font-family:'Sarabun Medium';
+-fx-font-size:12px;
    }
+.combo-box .list-cell {
+	 -fx-text-fill: black;
+    -fx-cell-size: 40px; 
+}
+.combo-box-popup .list-view .list-cell:filled:selected{
+	 -fx-background-color: #2196F3;
+    -fx-text-fill: black;
+}
+.combo-box-popup .list-view .list-cell:filled:hover {
+		 -fx-background-color: #64DD17;
+    -fx-text-fill: black;
 
+}
 
-
-  
 
 /************************************/
 
@@ -174,4 +196,7 @@
  -fx-text-fill:#7C9DFF;
  /*-jfx-button-type: RAISED;*/
  -fx-font-size: 12px;
+}
+#exit_btn ,#print_btn,#save_btn {
+	-fx-font-family: 'Sarabun Medium';
 }

@@ -37,7 +37,8 @@ public class NewDrug implements Initializable {
     public JFXButton add_btn;
     public JFXComboBox<String> weight_combo;
     public Label error_txt;
-Drug drug;
+    public JFXButton Cancel_btn;
+    Drug drug;
 private requestFormer<Drug> req=formerD;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -149,5 +150,10 @@ else {
                 doss_TXF.validate();
             }}
         });
+    }
+
+    public void Cancel(ActionEvent actionEvent) {
+        DrugList.add_drug_from_stage.close();
+        MainPanelC.effect.setRadius(0);
     }
 }
