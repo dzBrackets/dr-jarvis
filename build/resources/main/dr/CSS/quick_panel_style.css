@@ -79,11 +79,11 @@
     -fx-cell-size: 40px; 
 }
 .combo-box-popup .list-view .list-cell:filled:selected{
-	 -fx-background-color: #2196F3;
+	 -fx-background-color: transparent;
     -fx-text-fill: black;
 }
 .combo-box-popup .list-view .list-cell:filled:hover {
-		 -fx-background-color: #64DD17;
+		 -fx-background-color: #2196F3;
     -fx-text-fill: black;
 
 }
