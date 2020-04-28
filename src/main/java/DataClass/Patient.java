@@ -54,6 +54,12 @@ private DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
     public String getFullName() {
         return lastName+" "+firstName;
     }
+
+    @JsonIgnore
+    public Patient cloneMe(){
+        return new Patient().Patient(patientId,firstName,lastName,birthDay,gender,LocalDate.parse(lastVisit,df),lastDiagnostic);
+    }
+
     public String toString()
     {
 
@@ -87,6 +93,10 @@ private DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
     public void setUUID(int  code) {
         setPatientId(String.format("#%06d",code));
 
+    }
+    @JsonIgnore
+    public void addPrescription(String id){
+        prescriptionsId.add(id);
     }
     public String getFirstName() {
         return firstName;
@@ -142,5 +152,9 @@ private DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     public void setPrescriptionsId(ArrayList<String> prescriptionsId) {
         this.prescriptionsId = prescriptionsId;
+    }
+    @JsonIgnore
+    public void updateVisit() {
+        lastVisit=LocalDate.now().format(df);
     }
 }

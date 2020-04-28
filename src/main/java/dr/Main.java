@@ -2,6 +2,7 @@ package dr;
 
 import DataClass.Drug;
 import DataClass.Patient;
+import DataClass.prescriptionsHistory;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -22,6 +23,8 @@ public class Main extends Application {
     double xOffset,yOffset;
     public static dataThread<Drug> drugThread=null;
     public static dataThread<Patient> patientThread=null;
+    public static dataThread<prescriptionsHistory> hisPerThread=null;
+
     public static Stage staticstage=null;
     public static void main(String[] args)
     {
@@ -29,10 +32,10 @@ public class Main extends Application {
         try {
             drugThread=new dataThread<>("drug",Drug.class,requestD);
             patientThread=new dataThread<>("patient",Patient.class,requestP);
-
+hisPerThread=new dataThread<>("prescriptions",prescriptionsHistory.class,requestH);
             patientThread.start();
             drugThread.start();
-
+hisPerThread.start();
 
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();

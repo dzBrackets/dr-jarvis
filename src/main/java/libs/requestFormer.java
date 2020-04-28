@@ -10,8 +10,7 @@ import java.util.List;
 
 final public class requestFormer<type> {
    public String request;
-    public Object canon;
-   public String req;
+
 public List<type> respL=null;
 public String functionName;
 public Object[] funArguments;
@@ -27,7 +26,8 @@ public ObservableList<type> respond= FXCollections.observableArrayList();
 
     public static final String GET="g";
     public static final String POST="p";
-    public static final String UPDATE="u";
+    public static final String UPDATE="u"
+            ;public static final String UPDATE_BY ="ub";
     public static final String REMOVE="r";
     public static final String CALLBACK="cb";
     public static final String FIND="f";
@@ -60,6 +60,12 @@ public <klass> requestFormer<type> callBack(String fName, klass[] ob, Class<klas
         this.request=UPDATE;
         return this;
     }
+    public requestFormer<type> update(type object){
+        this.request= UPDATE_BY;
+        arg1=object;
+        return this;
+    }
+
     public requestFormer<type> find(String getter,Object like){
         this.request=FIND;
         this.arg1=getter;

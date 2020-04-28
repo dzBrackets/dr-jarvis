@@ -56,9 +56,11 @@ public class coCollection < type > extends ArrayList < type >  {
     }
 
 
-    public void updateOne(type oldObject, type newObject) {
-        System.out.println(oldObject);
-        this.add(indexOf(getLike(oldObject)), newObject);
+    public void updateOne(type oldObject) {
+        remove(oldObject);
+
+        add(oldObject);
+        //this.add(indexOf(getLike(oldObject)), newObject);
         reSave();
     }
     public void removeOne(type data) {

@@ -1,4 +1,6 @@
 package model.components;
+import DataClass.Patient;
+import DataClass.prescriptionsHistory;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,13 +15,12 @@ public class recentComp extends Button{
     private final JFXButton showMore;
 
 
-public recentComp(){
+public recentComp(Patient patient){
     name=new Label();
     age=new Label();
     diagnosis=new Label();
     time=new Label();
     showMore=new JFXButton("Show Prescription");
-
 
          setContentDisplay(GRAPHIC_ONLY);
      //    setLayoutX(6.0);
@@ -41,6 +42,7 @@ public recentComp(){
     diagnosis.setText("diagno");
     time.setText("time");
 
+    settexts(patient);
 
 
     setGraphic(childPan());
@@ -88,5 +90,11 @@ Pane childPan(){
     p.prefWidth(227);
 p.getChildren().addAll(name,age,diagnosis,time,showMore);
 return p;
+}
+void settexts(Patient patient){
+    name.setText(patient.getFullName());
+    age.setText(patient.getAge()+"");
+    diagnosis.setText(patient.getLastDiagnostic());
+    time.setText(patient.getLastVisit());
 }
 }

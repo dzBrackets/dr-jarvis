@@ -2,6 +2,7 @@ package Controller;
 
 import DataClass.Drug;
 import DataClass.Patient;
+import DataClass.prescriptionsHistory;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
@@ -21,20 +22,20 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Font;
 import libs.cellController;
 import libs.requestFormer;
 import model.popupMenu;
-import model.prescription;
+import model.usedDrug;
 import model.showButton;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-import static dr.FinalsVal.requestD;
+import static dr.FinalsVal.*;
 
 public class quick_panelC implements Initializable {
 static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
@@ -52,22 +53,22 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
     public JFXButton add_btn;
     public AnchorPane quick_pane;
     @FXML
-    private TableView<prescription> table;
+    private TableView<usedDrug> table;
     @FXML
     private JFXTextField drug_search;
     @FXML
-    private TableColumn<prescription, String> name_colm;
+    private TableColumn<usedDrug, String> name_colm;
     @FXML
-    private TableColumn<prescription, String> type_colm;
+    private TableColumn<usedDrug, String> type_colm;
     @FXML
-    private TableColumn<prescription, String> doss_colm;
+    private TableColumn<usedDrug, String> doss_colm;
     @FXML
-    private TableColumn<prescription, String> qts_colm;
+    private TableColumn<usedDrug, String> qts_colm;
     @FXML
-    private TableColumn<prescription, String> notice_colm;
-    public TableColumn<prescription, String> delete_colm;
-    ObservableList<prescription> data=FXCollections.observableArrayList();;
-    cellController<prescription> cellController=new cellController<>();
+    private TableColumn<usedDrug, String> notice_colm;
+    public TableColumn<usedDrug, String> delete_colm;
+    ObservableList<usedDrug> data=FXCollections.observableArrayList();;
+    cellController<usedDrug> cellController=new cellController<>();
 List<Drug> drugList=new ArrayList<>();
     Drug selectedDrug=null;
     Patient selectedPatient=null;
@@ -116,7 +117,19 @@ List<Drug> drugList=new ArrayList<>();
 
 
 
-    public void save(ActionEvent actionEvent) {
+    public void save(ActionEvent actionEvent) throws IOException {
+        prescriptionsHistory pres = new prescriptionsHistory();
+        pres.setUUID(database.updateUUID("prescriptions"));
+        pres.setDrugList(table.getItems());
+        selectedPatient.updateVisit();
+        selectedPatient.addPrescription(pres.getPresId());
+        pres.setDate(selectedPatient.getLastVisit());
+        requestP.offer(formerP.update(selectedPatient));
+        requestH.offer(formerH.post(pres));
+
+
+
+
     }
 
     public void save_and_print(ActionEvent actionEvent) {
@@ -157,7 +170,7 @@ List<Drug> drugList=new ArrayList<>();
     public void initEvents(){
     add_btn.setOnAction(v->{
             if(selectedDrug!=null){
-                data.add(new prescription(selectedDrug.getName(),type_combo.getSelectionModel().getSelectedItem(),doss_combo.getSelectionModel().getSelectedItem(),"3",notice_text_field.getText()));
+                data.add(new usedDrug().usedDrug(selectedDrug.getName(),type_combo.getSelectionModel().getSelectedItem(),doss_combo.getSelectionModel().getSelectedItem(),"3",notice_text_field.getText()));
                 drugList.add(selectedDrug);
                 selectedDrug=null;
                 type_combo.getItems().clear();
