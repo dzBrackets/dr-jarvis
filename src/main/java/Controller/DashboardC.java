@@ -70,9 +70,7 @@ public class DashboardC implements Initializable {
         timer.start();
 loadRecent();
 
-//        recent_grid.add(new recentComp(new Patient().Patient("001", "masoud", "ouzil", LocalDate.now(), 1, LocalDate.now(), "N/D")),0,1);
-    //    recent_grid.add(new recentComp(),0,1);
-       // recent_grid.add(new recentComp(),0,2);
+
     }
     void setGridList(List<Patient> list){
         for(int i=0;i<list.size();i++)
