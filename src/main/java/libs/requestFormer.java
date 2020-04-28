@@ -25,9 +25,10 @@ public ObservableList<type> respond= FXCollections.observableArrayList();
 
 
     public static final String GET="g";
+    public static final String GET_AMOUNT="ga";
     public static final String POST="p";
-    public static final String UPDATE="u"
-            ;public static final String UPDATE_BY ="ub";
+    public static final String UPDATE="u";
+    public static final String UPDATE_BY ="ub";
     public static final String REMOVE="r";
     public static final String CALLBACK="cb";
     public static final String FIND="f";
@@ -49,6 +50,11 @@ public <klass> requestFormer<type> callBack(String fName, klass[] ob, Class<klas
 
     public requestFormer<type> get(){
         this.request=GET;
+        return this;
+    }
+    public requestFormer<type> get(int amount){
+        this.request=GET_AMOUNT;
+        arg1=amount;
         return this;
     }
     public requestFormer<type> post(type arg1){

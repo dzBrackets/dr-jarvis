@@ -13,7 +13,9 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import libs.requestFormer;
 import model.components.recentComp;
+import sun.security.krb5.internal.PAData;
 
 import java.awt.*;
 import java.net.URL;
@@ -21,16 +23,17 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import static dr.FinalsVal.database;
+import static dr.FinalsVal.requestP;
 import static java.time.temporal.TemporalQueries.localDate;
 
 public class DashboardC implements Initializable {
 
 
     public AnchorPane dashborad_pane;
-    public Pane recent_pane;
-    public JFXButton shwo_all_btn;
     public Pane boxes_pane;
     public Label doctor_name_label;
     public Label date_label;
@@ -40,28 +43,11 @@ public class DashboardC implements Initializable {
     public Label today_precp_cpt;
     public Pane recent_pane1;
     public JFXButton shwo_all_btn1;
-    public Button item1;
-    public Label item1_name_label;
-    public JFXButton show_pres_btn;
-    public Label item1_age;
-    public Label item1_diago;
-    public Label item1_time;
-    public Button item2;
-    public Label item2_name_label1;
-    public Label item2_age;
-    public JFXButton show_pres_btn2;
-    public Label item2_diago;
-    public Label item2_time;
-    public Button item3;
-    public Label item1_name_label11;
-    public JFXButton show_pres_btn3;
-    public Label item3_age;
-    public Label item3_diago;
-    public Label item3_time;
     public Label date_label1;
     public Pane recent_btn_pane1;
     public GridPane recent_grid;
     boolean enough=false;
+    static public final requestFormer<Patient> req=new requestFormer<>();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -82,11 +68,24 @@ public class DashboardC implements Initializable {
             }
         });
         timer.start();
-        recent_grid.add(new recentComp(new Patient().Patient("001", "masoud", "ouzil", LocalDate.now(), 1, LocalDate.now(), "N/D")),0,1);
+loadRecent();
+
+//        recent_grid.add(new recentComp(new Patient().Patient("001", "masoud", "ouzil", LocalDate.now(), 1, LocalDate.now(), "N/D")),0,1);
     //    recent_grid.add(new recentComp(),0,1);
        // recent_grid.add(new recentComp(),0,2);
     }
+    void setGridList(List<Patient> list){
+        for(int i=0;i<list.size();i++)
+            recent_grid.add(new recentComp(list.get(i)),0,i);
+    }
+void loadRecent(){
+    req.onReceive(v->{
+        Platform.runLater(()->all_prec_cpt.setText(database.getUUID("prescriptions")+""));
+        setGridList(req.respond);
+    });
 
+    requestP.offer(req.get(3));
+}
     public void pan_selected(MouseEvent mouseEvent) {
 
 

@@ -1,4 +1,5 @@
 package dr;
+import DataClass.Patient;
 import libs.coronaDb.coCollection;
 import libs.requestFormer;
 import org.josql.QueryExecutionException;
@@ -7,6 +8,7 @@ import org.josql.QueryParseException;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.SynchronousQueue;
+import java.util.stream.Collectors;
 
 import static dr.FinalsVal.*;
 
@@ -30,7 +32,15 @@ private final SynchronousQueue<requestFormer<type>> request;
                     req.dispatchEvent();
                 }
 
-
+                if (req.request.equals(requestFormer.GET_AMOUNT)) {
+                    List<type> accepted;
+                    if(data.size()-(int)req.arg1>0)
+                        accepted=data.subList(data.size()-(int)req.arg1,data.size());
+                    else
+accepted=data;
+                    req.reply(accepted.stream().filter(v->!((Patient)v).getPrescriptionsId().isEmpty()).collect(Collectors.toList()));
+                    req.dispatchEvent();
+                }
 
                 if (req.request.equals(requestFormer.REMOVE)){
                 @SuppressWarnings("unchecked")

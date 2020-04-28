@@ -67,7 +67,7 @@ public cellController<Patient> cellController=new cellController<>();
         lastVisite_C.setCellValueFactory(new PropertyValueFactory<>("lastVisit"));
         id_C.setCellValueFactory(new PropertyValueFactory<>("PatientId"));
         diagnostic_C.setCellFactory(cellController.BCellFactory(new showButton("show")));
-        menu_C.setCellFactory(cellController.MCellFactory(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png", "dr/image/add_32px.png"},new  String[]{"Delete...","Edit...","new usedDrug..."}));
+        menu_C.setCellFactory(cellController.MCellFactory(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png", "dr/image/add_32px.png"},new  String[]{"Delete...","Edit...","new prescription..."}));
     }
 
     public void  loadData(){
