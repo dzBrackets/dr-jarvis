@@ -1,21 +1,21 @@
 package Controller;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXRippler;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import model.components.recentComp;
 
 import java.awt.*;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class DashboardC implements Initializable {
@@ -51,14 +51,40 @@ public class DashboardC implements Initializable {
     public Label item3_age;
     public Label item3_diago;
     public Label item3_time;
-    public Pane pane1;
-
+    public Label date_label1;
+    public Pane recent_btn_pane1;
+    public GridPane recent_grid;
+    boolean enough=false;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        Thread timer = new Thread(() -> {
+            SimpleDateFormat clock = new SimpleDateFormat("k:mm:ss");
+            SimpleDateFormat date = new SimpleDateFormat("d MMMMM y");
+            while(!enough) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ignored) {}
+                Date dateNow = new Date();
+                final String time = clock.format(dateNow);
+                final String dmy=date.format(dateNow);
+                Platform.runLater(()-> {
+                    date_label1.setText(time);
+                    date_label.setText(dmy);
+                });
+            }
+        });
+        timer.start();
+item1=new recentComp();
+        recent_grid.add(new recentComp(),0,0);
+        recent_grid.add(new recentComp(),0,1);
+        recent_grid.add(new recentComp(),0,2);
     }
 
+    public void pan_selected(MouseEvent mouseEvent) {
 
+
+    }
 
     public void show_prescription(ActionEvent actionEvent) {
     }

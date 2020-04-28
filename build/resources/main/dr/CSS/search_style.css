@@ -35,7 +35,9 @@
 /* MENU ITEM (children of a MENU BUTTON) */
 /*** The item itself (not hovered / focused) ***/
 .menu-item {
-	-fx-background-color: transparent;
+	-fx-background-color: white;
+	-fx-padding:25;
+	-fx-pref-width:430px;
 }
 
 /*** The item's label (disabled) ***/

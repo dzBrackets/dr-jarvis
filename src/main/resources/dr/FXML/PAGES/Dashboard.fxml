@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListView?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="dashborad_pane" fx:id="dashborad_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: #F8F8FA; -fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px;" stylesheets="@../../CSS/dashborad.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashboardC">
+<AnchorPane id="dashborad_pane" fx:id="dashborad_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: #F8F8FA; -fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px;" stylesheets="@../../CSS/dashborad.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashboardC">
    <children>
       <Pane id="recent_pane" fx:id="recent_pane" layoutX="614.0" prefHeight="752.0" prefWidth="298.0" style="-fx-background-radius: 27px; -fx-background-color: #2C3964; -fx-border-radius: 27px;">
          <children>
@@ -101,48 +97,17 @@
                <children>
                   <Label id="info1_label" layoutX="14.0" layoutY="11.0" prefHeight="25.0" prefWidth="129.0" text="Recent Prescription" textFill="WHITE" />
                   <JFXButton id="shwo_all_btn" fx:id="shwo_all_btn1" layoutX="162.0" layoutY="9.0" onAction="#show_all_pres" text="Show all" textFill="WHITE" />
-                  <Button id="item1" fx:id="item1" contentDisplay="GRAPHIC_ONLY" layoutX="6.0" layoutY="45.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="243.0" style="-fx-background-color: transparent; -fx-background-radius: 15px; -fx-border-radius: 15px;" text="Button">
-                     <graphic>
-                        <Pane prefHeight="82.0" prefWidth="227.0">
-                           <children>
-                              <Label id="recent_name_label" fx:id="item1_name_label" layoutX="7.0" layoutY="6.0" prefHeight="21.0" prefWidth="115.0" text="Aymen daouadji" textFill="WHITE" />
-                              <JFXButton id="show_pres_btn" fx:id="show_pres_btn" layoutX="132.0" layoutY="4.0" onAction="#show_prescription" prefHeight="25.0" prefWidth="95.0" text="Show Prescription" textFill="WHITE" />
-                              <Label id="recent_age_label" fx:id="item1_age" layoutX="7.0" layoutY="38.0" prefHeight="17.0" prefWidth="55.0" text="Age : 40" textFill="WHITE" />
-                              <Label id="recent_diago_label" layoutX="7.0" layoutY="61.0" prefHeight="17.0" prefWidth="59.0" text="diagnostic : " textFill="WHITE" />
-                              <Label id="recent_diago_label" fx:id="item1_diago" layoutX="62.0" layoutY="61.0" prefHeight="17.0" prefWidth="89.0" text="mrid bark" textFill="WHITE" />
-                              <Label id="time_label" fx:id="item1_time" layoutX="164.0" layoutY="70.0" text="Today 12:00 " textFill="WHITE" />
-                           </children>
-                        </Pane>
-                     </graphic>
-                  </Button>
-                  <Button id="item1" fx:id="item2" contentDisplay="GRAPHIC_ONLY" layoutX="6.0" layoutY="155.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="243.0" style="-fx-background-color: transparent; -fx-background-radius: 15px; -fx-border-radius: 15px;" text="Button">
-                     <graphic>
-                        <Pane prefHeight="82.0" prefWidth="227.0">
-                           <children>
-                              <Label id="recent_name_label" fx:id="item2_name_label1" layoutX="7.0" layoutY="6.0" prefHeight="21.0" prefWidth="115.0" text="Aymen daouadji" textFill="WHITE" />
-                              <JFXButton id="show_pres_btn" fx:id="show_pres_btn2" layoutX="132.0" layoutY="4.0" onAction="#show_prescription" prefHeight="25.0" prefWidth="95.0" text="Show Prescription" textFill="WHITE" />
-                              <Label id="recent_age_label" fx:id="item2_age" layoutX="7.0" layoutY="38.0" prefHeight="17.0" prefWidth="55.0" text="Age : 40" textFill="WHITE" />
-                              <Label id="recent_diago_label" layoutX="7.0" layoutY="61.0" prefHeight="17.0" prefWidth="59.0" text="diagnostic : " textFill="WHITE" />
-                              <Label id="recent_diago_label" fx:id="item2_diago" layoutX="62.0" layoutY="61.0" prefHeight="17.0" prefWidth="89.0" text="mrid bark" textFill="WHITE" />
-                              <Label id="time_label" fx:id="item2_time" layoutX="164.0" layoutY="70.0" text="Today 12:00 " textFill="WHITE" />
-                           </children>
-                        </Pane>
-                     </graphic>
-                  </Button>
-                  <Button id="item1" fx:id="item3" contentDisplay="GRAPHIC_ONLY" layoutX="6.0" layoutY="264.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="243.0" style="-fx-background-color: transparent; -fx-background-radius: 15px; -fx-border-radius: 15px;" text="Button">
-                     <graphic>
-                        <Pane prefHeight="82.0" prefWidth="227.0">
-                           <children>
-                              <Label id="recent_name_label" fx:id="item1_name_label11" layoutX="7.0" layoutY="6.0" prefHeight="21.0" prefWidth="115.0" text="Aymen daouadji" textFill="WHITE" />
-                              <JFXButton id="show_pres_btn" fx:id="show_pres_btn3" layoutX="132.0" layoutY="4.0" onAction="#show_prescription" prefHeight="25.0" prefWidth="95.0" text="Show Prescription" textFill="WHITE" />
-                              <Label id="recent_age_label" fx:id="item3_age" layoutX="7.0" layoutY="38.0" prefHeight="17.0" prefWidth="55.0" text="Age : 40" textFill="WHITE" />
-                              <Label id="recent_diago_label" layoutX="7.0" layoutY="61.0" prefHeight="17.0" prefWidth="59.0" text="diagnostic : " textFill="WHITE" />
-                              <Label id="recent_diago_label" fx:id="item3_diago" layoutX="62.0" layoutY="61.0" prefHeight="17.0" prefWidth="89.0" text="mrid bark" textFill="WHITE" />
-                              <Label id="time_label" fx:id="item3_time" layoutX="164.0" layoutY="70.0" text="Today 12:00 " textFill="WHITE" />
-                           </children>
-                        </Pane>
-                     </graphic>
-                  </Button>
+                  <GridPane id="recent_grid" fx:id="recent_grid" hgap="50.0" layoutX="6.0" layoutY="33.0" prefHeight="337.0" prefWidth="243.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+
                </children>
             </Pane>
          </children>

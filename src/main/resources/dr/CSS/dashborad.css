@@ -30,10 +30,7 @@
 	-fx-border-radius:15px;
 	
 }
-#item2 :hover  {
-	-fx-background-color:#727FF0;
-	
-}
+
 #show_pres_btn {
 	-fx-font-family:'Sarabun Medium';
 	-fx-font-size:10px; 

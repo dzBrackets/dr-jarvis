@@ -39,7 +39,7 @@
          <font>
             <Font name="Sarabun Medium" size="12.0" />
          </font></JFXTextArea>
-      <JFXButton id="add_drug" fx:id="add_btn" layoutX="93.0" layoutY="559.0" onAction="#add_drug" prefHeight="48.0" prefWidth="376.0" style="-fx-background-color: #1AD28B; -fx-background-radius: 5px;" text="Add Drug" textFill="WHITE">
+      <JFXButton id="add_drug" fx:id="add_btn" layoutX="297.0" layoutY="557.0" onAction="#add_drug" prefHeight="48.0" prefWidth="180.0" style="-fx-background-color: #1AD28B; -fx-background-radius: 5px;" text="Add Drug" textFill="WHITE">
          <font>
             <Font name="Sarabun SemiBold" size="14.0" />
          </font></JFXButton>
@@ -48,5 +48,10 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
+      <JFXButton id="add_drug" fx:id="Cancel_btn" layoutX="86.0" layoutY="557.0" onAction="#Cancel" prefHeight="48.0" prefWidth="180.0" style="-fx-background-color: red; -fx-background-radius: 5px;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="Sarabun SemiBold" size="14.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
