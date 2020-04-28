@@ -81,10 +81,7 @@ item1=new recentComp();
         recent_grid.add(new recentComp(),0,2);
     }
 
-    public void pan_selected(MouseEvent mouseEvent) {
 
-
-    }
 
     public void show_prescription(ActionEvent actionEvent) {
     }

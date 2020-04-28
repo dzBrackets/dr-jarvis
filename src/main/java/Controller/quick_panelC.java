@@ -81,9 +81,7 @@ List<Drug> drugList=new ArrayList<>();
         setInfoLabelValues();
         initSearchBar();
         initEvents();
-        ObservableList<String> l=FXCollections.observableArrayList("dwa","sarou5","cocayin");
-        type_combo.setItems(l);
-        type_combo.getSelectionModel().select(0);
+
 
 
     }
