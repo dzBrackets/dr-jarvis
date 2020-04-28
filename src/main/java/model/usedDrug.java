@@ -12,20 +12,20 @@ import javafx.geometry.Side;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
-public class prescription {
+public class usedDrug {
     String name;
     String type;
     String doss;
     String qts;
     String notice;
 
-    public prescription(String name, String type, String doss, String qts, String notice) {
+    public usedDrug  usedDrug(String name, String type, String doss, String qts, String notice) {
         this.name = name;
         this.type = type;
         this.doss = doss;
         this.qts = qts;
         this.notice = notice;
-
+return this;
     }
 
     public String getName() {

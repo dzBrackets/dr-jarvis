@@ -1,5 +1,8 @@
 package Controller;
 
+import DataClass.Drug;
+import DataClass.Patient;
+import DataClass.prescriptionsHistory;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -15,8 +18,12 @@ import model.components.recentComp;
 import java.awt.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+
+import static java.time.temporal.TemporalQueries.localDate;
 
 public class DashboardC implements Initializable {
 
@@ -75,10 +82,9 @@ public class DashboardC implements Initializable {
             }
         });
         timer.start();
-item1=new recentComp();
-        recent_grid.add(new recentComp(),0,0);
-        recent_grid.add(new recentComp(),0,1);
-        recent_grid.add(new recentComp(),0,2);
+        recent_grid.add(new recentComp(new Patient().Patient("001", "masoud", "ouzil", LocalDate.now(), 1, LocalDate.now(), "N/D")),0,1);
+    //    recent_grid.add(new recentComp(),0,1);
+       // recent_grid.add(new recentComp(),0,2);
     }
 
 

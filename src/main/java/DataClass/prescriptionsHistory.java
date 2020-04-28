@@ -1,26 +1,30 @@
 package DataClass;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import libs.coronaDb.deserializeType;
+import libs.coronaDb.DrugDeserializer;
+import model.usedDrug;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class prescriptionsHistory implements Serializable {
     private String presId;
     private String date;
-    private String patId;
-    private List<Drug> drugList=null;
+    private List<usedDrug> drugList=null;
 
-    public prescriptionsHistory prescriptionsHistory(String presId, String date, String patName, List<Drug> drugList) {
+    public prescriptionsHistory prescriptionsHistory(String presId, String date,List<usedDrug> drugList) {
         this.presId = presId;
         this.date = date;
-        this.patId = patName;
         this.drugList = drugList;
         return this;
     }
 
+    @JsonIgnore
+    public void setUUID(int  code) {
+        setPresId(String.format("#%06d",code));
+
+    }
     public String getPresId() {
         return presId;
     }
@@ -37,19 +41,12 @@ public class prescriptionsHistory implements Serializable {
         this.date = date;
     }
 
-    public String getPatId() {
-        return patId;
-    }
 
-    public void setPatId(String patId) {
-        this.patId = patId;
-    }
-
-    public List<Drug> getDrugList() {
+    public List<usedDrug> getDrugList() {
         return drugList;
     }
-    @JsonDeserialize(using = deserializeType.class)
-    public void setDrugList(List<Drug> drugList) {
+    @JsonDeserialize(using = DrugDeserializer.class)
+    public void setDrugList(List<usedDrug> drugList) {
         this.drugList = drugList;
     }
 }

@@ -67,7 +67,7 @@ public cellController<Patient> cellController=new cellController<>();
         lastVisite_C.setCellValueFactory(new PropertyValueFactory<>("lastVisit"));
         id_C.setCellValueFactory(new PropertyValueFactory<>("PatientId"));
         diagnostic_C.setCellFactory(cellController.BCellFactory(new showButton("show")));
-        menu_C.setCellFactory(cellController.MCellFactory(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png", "dr/image/add_32px.png"},new  String[]{"Delete...","Edit...","new prescription..."}));
+        menu_C.setCellFactory(cellController.MCellFactory(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png", "dr/image/add_32px.png"},new  String[]{"Delete...","Edit...","new usedDrug..."}));
     }
 
     public void  loadData(){
@@ -107,8 +107,10 @@ public cellController<Patient> cellController=new cellController<>();
                         write_TXF.clear();
 
                     }
+                    if(prop.getValue()==1){
+                        requestP.offer(req.update((patient_table.getItems().get(cellController.index))));
+                    }
                     if(prop.getValue()==2){
-                        //open new prescription
                         try {
                             initializePane();
                             open_quick_pane(patient_table.getItems().get(cellController.index));
