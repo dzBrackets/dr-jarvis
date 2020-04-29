@@ -12,11 +12,13 @@ public class prescriptionsHistory implements Serializable {
     private String presId;
     private String date;
     private List<usedDrug> drugList=null;
+    private String userId="N/D";
 
-    public prescriptionsHistory prescriptionsHistory(String presId, String date,List<usedDrug> drugList) {
+    public prescriptionsHistory prescriptionsHistory(String presId, String date,List<usedDrug> drugList,String userId) {
         this.presId = presId;
         this.date = date;
         this.drugList = drugList;
+        this.userId=userId;
         return this;
     }
 
@@ -48,5 +50,13 @@ public class prescriptionsHistory implements Serializable {
     @JsonDeserialize(using = DrugDeserializer.class)
     public void setDrugList(List<usedDrug> drugList) {
         this.drugList = drugList;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

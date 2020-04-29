@@ -73,13 +73,17 @@ loadRecent();
 
     }
     void setGridList(List<Patient> list){
+        recent_grid.getChildren().clear();
         for(int i=0;i<list.size();i++)
             recent_grid.add(new recentComp(list.get(i)),0,i);
     }
 void loadRecent(){
     req.onReceive(v->{
-        Platform.runLater(()->all_prec_cpt.setText(database.getUUID("prescriptions")+""));
-        setGridList(req.respond);
+        Platform.runLater(()->{
+            all_prec_cpt.setText(database.getUUID("prescriptions")+"");
+            setGridList(req.respond);
+
+        });
     });
 
     requestP.offer(req.get(3));

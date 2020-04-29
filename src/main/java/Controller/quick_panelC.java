@@ -48,7 +48,7 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
     public JFXButton print_btn;
     public JFXComboBox<String> type_combo;
     public JFXComboBox<String> doss_combo;
-    public Spinner spinner;
+    public Spinner<Integer> spinner;
     public JFXTextArea notice_text_field;
     public JFXButton add_btn;
     public AnchorPane quick_pane;
@@ -82,8 +82,6 @@ List<Drug> drugList=new ArrayList<>();
         setInfoLabelValues();
         initSearchBar();
         initEvents();
-
-
 
     }
 
@@ -119,6 +117,7 @@ List<Drug> drugList=new ArrayList<>();
         prescriptionsHistory pres = new prescriptionsHistory();
         pres.setUUID(database.updateUUID("prescriptions"));
         pres.setDrugList(table.getItems());
+        pres.setUserId(selectedPatient.getPatientId());
         selectedPatient.updateVisit();
         selectedPatient.addPrescription(pres.getPresId());
         pres.setDate(selectedPatient.getLastVisit());
@@ -168,7 +167,7 @@ List<Drug> drugList=new ArrayList<>();
     public void initEvents(){
     add_btn.setOnAction(v->{
             if(selectedDrug!=null){
-                data.add(new usedDrug().usedDrug(selectedDrug.getName(),type_combo.getSelectionModel().getSelectedItem(),doss_combo.getSelectionModel().getSelectedItem(),"3",notice_text_field.getText()));
+                data.add(new usedDrug().usedDrug(selectedDrug.getName(),type_combo.getSelectionModel().getSelectedItem(),doss_combo.getSelectionModel().getSelectedItem(),spinner.getValue()+"",notice_text_field.getText()));
                 drugList.add(selectedDrug);
                 selectedDrug=null;
                 type_combo.getItems().clear();

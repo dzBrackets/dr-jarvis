@@ -37,7 +37,7 @@ private final SynchronousQueue<requestFormer<type>> request;
                     if(data.size()-(int)req.arg1>0)
                         accepted=data.subList(data.size()-(int)req.arg1,data.size());
                     else
-accepted=data;
+                    accepted=data;
                     req.reply(accepted.stream().filter(v->!((Patient)v).getPrescriptionsId().isEmpty()).collect(Collectors.toList()));
                     req.dispatchEvent();
                 }

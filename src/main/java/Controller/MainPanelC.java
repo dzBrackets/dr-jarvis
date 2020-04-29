@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static dr.FinalsVal.requestP;
+
 public class MainPanelC  implements Initializable {
     public  AnchorPane main_panel;
     public AnchorPane content_panel;
@@ -100,6 +102,8 @@ public class MainPanelC  implements Initializable {
     }
 
     public void show_DashP(ActionEvent actionEvent) {
+        requestP.offer(DashboardC.req.get(3));
+
         dashbord_pane.toFront();
         dashbord_pane.setVisible(true);
         reset_btn_Opicity();
