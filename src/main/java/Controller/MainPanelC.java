@@ -121,6 +121,8 @@ public class MainPanelC  implements Initializable {
         drug_panel.setVisible(false);
         setting_pane.setVisible(false);
         dashbord_pane.setVisible(false);
+
+
     }
 
     public void show_drugPanel(ActionEvent actionEvent) {

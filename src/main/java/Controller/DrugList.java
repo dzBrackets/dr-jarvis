@@ -3,9 +3,11 @@ package Controller;
 import DataClass.Drug;
 import dr.Main;
 import javafx.beans.property.IntegerProperty;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -39,8 +41,8 @@ public class DrugList  implements Initializable {
     static public  Stage add_drug_from_stage;
     public static popUpWindow showNotice;/*create same methode for patientlist and quick panel and i will close them*/
     cellController<Drug> cellController = new cellController<>();
-
     private requestFormer<Drug> req=formerD;
+    double xOffset,yOffset;
 
     @Override
       public void initialize(URL location, ResourceBundle resources) {
@@ -118,6 +120,20 @@ static public void closePopuUp(){
         add_drug_from_stage.setScene(sc);
         add_drug_from_stage.initStyle(StageStyle.TRANSPARENT);
         add_drug_from_stage.show();
+        sc.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset=event.getSceneX();
+                yOffset=event.getSceneY();
+            }
+        });
+        sc.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                add_drug_from_stage.setX(event.getScreenX() - xOffset);
+                add_drug_from_stage.setY(event.getScreenY()-yOffset);
+            }
+        });
 
     }
 }
