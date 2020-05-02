@@ -77,6 +77,8 @@ List<Drug> drugList=new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        spinner=new Spinner<Integer>(1,99,1,1);
+
         initCol();
         loadData();
         setInfoLabelValues();

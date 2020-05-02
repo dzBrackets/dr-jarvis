@@ -69,22 +69,17 @@ public class DashboardC implements Initializable {
         });
         timer.start();
 loadRecent();
-
-
     }
+
     void setGridList(List<Patient> list){
-        recent_grid.getChildren().clear();
+        recent_grid.getChildren().removeAll()
         for(int i=0;i<list.size();i++)
             recent_grid.add(new recentComp(list.get(i)),0,i);
     }
 void loadRecent(){
-    req.onReceive(v->{
-        Platform.runLater(()->{
-            all_prec_cpt.setText(database.getUUID("prescriptions")+"");
-            setGridList(req.respond);
-
-        });
-    });
+    req.onReceive(v-> Platform.runLater(()->{all_prec_cpt.setText(database.getUUID("prescriptions")+"") ;
+        setGridList(req.respond);
+    }));
 
     requestP.offer(req.get(3));
 }

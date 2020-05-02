@@ -55,8 +55,6 @@ public class MainPanelC  implements Initializable {
         effect.setRadius(0);
         main_panel.setEffect(effect);
 
-
-
     }
 
     public void  add_quick(ActionEvent actionEvent) throws IOException {
@@ -106,6 +104,8 @@ public class MainPanelC  implements Initializable {
 
         dashbord_pane.toFront();
         dashbord_pane.setVisible(true);
+        requestP.offer(DashboardC.req.get(3));
+
         reset_btn_Opicity();
         dashbord_btn.getGraphic().setOpacity(1);
         drug_panel.setVisible(false);
