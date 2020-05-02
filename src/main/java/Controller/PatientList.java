@@ -64,6 +64,8 @@ public cellController<Patient> cellController=new cellController<>();
 
     }
     public void initCol(){
+        id_C.getStyleClass().add("start");
+        menu_C.getStyleClass().add("end");
         first_C.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastName_C.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         age_C.setCellValueFactory(new PropertyValueFactory<>("age"));

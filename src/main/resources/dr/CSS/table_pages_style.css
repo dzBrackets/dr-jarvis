@@ -70,11 +70,25 @@
 	-fx-alignment: CENTER;
 }
 
-.table-view .column-header,
-.table-view .column-header-background .filler {
+.table-view .column-header {
     -fx-background-color: #765EE2;
      -fx-text-fill:white;
+     
 }
+.table-view .column-header-background   {
+	-fx-background-color:transparent;
+}
+
+.start {
+ 	-fx-background-radius:11px 0px 0px 11px;
+ 	-fx-border-radius:11px 0px 0px 11px;
+  }
+  .end {
+  	-fx-background-radius:0px 11px 11px 0px;
+ 	-fx-border-radius:0px 11px 11px 0px;
+  }
+
+
 .table-view .column-header .label{
    -fx-text-fill: white;
    -fx-font-weight: bold; 

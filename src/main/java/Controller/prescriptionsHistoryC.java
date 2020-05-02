@@ -32,6 +32,8 @@ public class prescriptionsHistoryC implements Initializable {
  initCol();
     }
     public void initCol(){
+        presId.getStyleClass().add("start");
+        show_c.getStyleClass().add("end");
         presId.setCellValueFactory(new PropertyValueFactory<>("PrescriptionId"));
         userId.setCellValueFactory(new PropertyValueFactory<>("UserId"));
         date.setCellValueFactory(new PropertyValueFactory<>("Date"));

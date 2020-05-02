@@ -54,6 +54,8 @@ public class DrugList  implements Initializable {
 
     }
     public void initCol(){
+        name_C.getStyleClass().add("start");
+        menu_C.getStyleClass().add("end");
         code_C.setCellValueFactory(new PropertyValueFactory<>("code"));
         name_C.setCellValueFactory(new PropertyValueFactory<>("name"));
         type_C.setCellFactory(cellController.CCellFactory("drug","type"));
