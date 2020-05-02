@@ -30,7 +30,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton id="prescription_btn" fx:id="prescription_btn" contentDisplay="GRAPHIC_ONLY" layoutX="1.0" layoutY="260.0" onAction="#new_precP" prefHeight="88.0" prefWidth="88.0">
+                  <JFXButton id="prescription_btn" fx:id="presHistory_btn" contentDisplay="GRAPHIC_ONLY" layoutX="1.0" layoutY="260.0" onAction="#show_presHistory" prefHeight="88.0" prefWidth="88.0">
                      <graphic>
                         <ImageView id="prescription-img" fitHeight="32.0" fitWidth="38.0" opacity="0.63" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -86,7 +86,10 @@
                <children>
                   <fx:include source="Dashboard.fxml" />
                </children></Pane>
-            <Pane id="template_pane" fx:id="template_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;" />
+            <Pane id="presHistory_p" fx:id="presHistory_p" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;">
+               <children>
+                  <fx:include source="prescriptionsHistory.fxml" />
+               </children></Pane>
             <Pane id="patient_panel" fx:id="patient_panel" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;">
                <children>
                   <fx:include source="patient_list.fxml" />

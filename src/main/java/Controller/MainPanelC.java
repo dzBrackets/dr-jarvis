@@ -38,7 +38,6 @@ public class MainPanelC  implements Initializable {
     public Pane setting_pane;
 
     public JFXButton dashbord_btn;
-    public JFXButton prescription_btn;
     public JFXButton pat_btn;
     public JFXButton drug_btn;
     public JFXButton setting_btn;
@@ -47,6 +46,8 @@ public class MainPanelC  implements Initializable {
    static double xOffset,yOffset;
     public ImageView app_icon;
     public Pane side_pane;
+    public JFXButton presHistory_btn;
+    public Pane presHistory_p;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -96,9 +97,16 @@ public class MainPanelC  implements Initializable {
 
     }
 
-    public void new_precP(ActionEvent actionEvent) throws IOException {
+    public void show_presHistory(ActionEvent actionEvent) throws IOException {
+
         reset_btn_Opicity();
-        prescription_btn.getGraphic().setOpacity(1);
+        presHistory_btn.getGraphic().setOpacity(1);
+        presHistory_p.toFront();
+        presHistory_p.setVisible(true);
+        dashbord_pane.setVisible(false);
+        drug_panel.setVisible(false);
+        patient_panel.setVisible(false);
+        setting_pane.setVisible(false);
     }
 
     public void show_DashP(ActionEvent actionEvent) {
@@ -145,7 +153,7 @@ public class MainPanelC  implements Initializable {
         dashbord_pane.setVisible(false);
     }
     public void reset_btn_Opicity(){
-        prescription_btn.getGraphic().setOpacity(0.5);
+        presHistory_btn.getGraphic().setOpacity(0.5);
         pat_btn.getGraphic().setOpacity(0.5);
         drug_btn.getGraphic().setOpacity(0.5);
         setting_btn.getGraphic().setOpacity(0.5);
