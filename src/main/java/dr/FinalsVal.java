@@ -1,5 +1,6 @@
 package dr;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.SynchronousQueue;
@@ -7,7 +8,6 @@ import java.util.concurrent.SynchronousQueue;
 import DataClass.Drug;
 import DataClass.Patient;
 import DataClass.prescriptionsHistory;
-import io.reactivex.rxjava3.core.Maybe;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.internal.operators.observable.ObservableAny;
 import libs.coronaDb.coCollection;
@@ -26,6 +26,7 @@ final public class FinalsVal {
        static public final SynchronousQueue<requestFormer<prescriptionsHistory>> requestH = new SynchronousQueue<>();
        static public final requestFormer<prescriptionsHistory> formerH=new requestFormer<>();
        static public final coronaDb database=new coronaDb("norme");
+       static public final DateTimeFormatter[] dateFilters={DateTimeFormatter.ofPattern("dd-MM-yyyy h:m"),DateTimeFormatter.ofPattern("dd-MM-yyyy")};
 
        public static boolean isNumeric(String strNum) {
               if (strNum == null) {

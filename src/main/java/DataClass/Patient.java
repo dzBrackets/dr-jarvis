@@ -1,6 +1,7 @@
 package DataClass;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import dr.FinalsVal;
 
 import java.io.Serializable;
 import java.text.DateFormat;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import static dr.FinalsVal.dateFilters;
+
 public class Patient implements Serializable {
     private String patientId="N/D";
     private String firstName="N/D";
@@ -22,7 +25,6 @@ public class Patient implements Serializable {
     private String lastVisit="N/D";
     private String lastDiagnostic="N/D";
     private ArrayList<String> prescriptionsId;
-private DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     public Patient Patient(String patientId, String firstName, String lastName, String birthDay, int gender, LocalDate lastVisit, String lastDiagnostic) {
         this.patientId = patientId;
@@ -30,7 +32,7 @@ private DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
         this.lastName = lastName;
         this.birthDay = birthDay;
         this.gender = gender;
-        this.lastVisit =lastVisit.format(df);;
+        this.lastVisit =lastVisit.format(dateFilters[1]);;
         this.lastDiagnostic = lastDiagnostic;
         this.prescriptionsId = new ArrayList<>();
         return this;
@@ -39,16 +41,20 @@ private DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
         this.patientId = patientId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDay = birthDay.format(df);
+        this.birthDay = birthDay.format(dateFilters[1]);
         this.gender = gender;
-        this.lastVisit =lastVisit.format(df);;
+        this.lastVisit =lastVisit.format(dateFilters[1]);;
         this.lastDiagnostic = lastDiagnostic;
         this.prescriptionsId = new ArrayList<>();
         return this;
     }
     @JsonIgnore
     public int getAge(){
-            return Period.between(LocalDate.parse(birthDay,df),LocalDate.now()).getYears();
+
+        LocalDate birth = LocalDate.parse(birthDay, dateFilters[1]);
+        System.out.println(birth);
+        int calc = Period.between(birth, LocalDate.now()).getYears();
+        return calc;
     }
     @JsonIgnore
     public String getFullName() {
@@ -57,7 +63,7 @@ private DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     @JsonIgnore
     public Patient cloneMe(){
-        return new Patient().Patient(patientId,firstName,lastName,birthDay,gender,LocalDate.parse(lastVisit,df),lastDiagnostic);
+        return new Patient().Patient(patientId,firstName,lastName,birthDay,gender,LocalDate.parse(lastVisit,dateFilters[1]),lastDiagnostic);
     }
 
     public String toString()
@@ -155,6 +161,6 @@ private DateTimeFormatter df=DateTimeFormatter.ofPattern("dd-MM-yyyy");
     }
     @JsonIgnore
     public void updateVisit() {
-        lastVisit=LocalDate.now().format(df);
+        lastVisit=LocalDate.now().format(dateFilters[1]);
     }
 }

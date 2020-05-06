@@ -1,0 +1,226 @@
+Index: src/main/java/dr/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dr;\r\n\r\nimport DataClass.Drug;\r\nimport DataClass.Patient;\r\nimport javafx.application.Application;\r\nimport javafx.application.Platform;\r\nimport javafx.event.EventHandler;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.input.MouseEvent;\r\nimport javafx.scene.paint.Color;\r\nimport javafx.scene.text.Font;\r\nimport javafx.stage.Stage;\r\nimport javafx.stage.StageStyle;\r\nimport javafx.stage.WindowEvent;\r\n\r\nimport static dr.FinalsVal.*;\r\nimport java.io.IOException;\r\n\r\npublic class Main extends Application {\r\n    double xOffset,yOffset;\r\n    public static dataThread<Drug> drugThread=null;\r\n    public static dataThread<Patient> patientThread=null;\r\n    public static void main(String[] args)\r\n    {\r\n\r\n        try {\r\n            drugThread=new dataThread<>(\"drug\",Drug.class,requestD,respondD,respondDL);\r\n            drugThread.start();\r\n            patientThread=new dataThread<>(\"patient\",Patient.class,requestP,respondP,respondPL);\r\n            patientThread.start();\r\n        } catch (ClassNotFoundException | IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n        launch(args);\r\n    }\r\n\r\n    @Override\r\n    public void start(Stage primaryStage) throws IOException {\r\n        Parent root= FXMLLoader.load(getClass().getResource(\"/dr/FXML/PAGES/main_pane.fxml\"));\r\n        Scene scene=new Scene(root);\r\n        scene.setFill(Color.TRANSPARENT);\r\n       scene.getStylesheets().add(\"org/kordamp/bootstrapfx/bootstrapfx.css\");\r\n        primaryStage.setScene(scene);\r\n        primaryStage.initStyle(StageStyle.TRANSPARENT);\r\n        primaryStage.show();\r\n      /*  Font.loadFont(getClass().getResource(\"/dr/fonts/Sarabun-Regular.ttf\").toExternalForm(),18);*/\r\n        scene.setOnMousePressed(event -> {\r\n            xOffset=event.getSceneX();\r\n            yOffset=event.getSceneY();\r\n        });\r\n        scene.setOnMouseDragged(event -> {\r\n            primaryStage.setX(event.getScreenX() - xOffset);\r\n            primaryStage.setY(event.getScreenY()-yOffset);\r\n        });\r\n        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {\r\n            @Override\r\n            public void handle(WindowEvent event) {\r\n                Platform.exit();\r\n                System.exit(0);\r\n            }\r\n        });\r\n\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/dr/Main.java	(revision 41daddf67d9882267f5808e665a3498934f6e2a4)
++++ src/main/java/dr/Main.java	(date 1587511982473)
+@@ -20,12 +20,13 @@
+ 
+ public class Main extends Application {
+     double xOffset,yOffset;
+-    public static dataThread<Drug> drugThread=null;
+-    public static dataThread<Patient> patientThread=null;
++
+     public static void main(String[] args)
+     {
+-
++       dataThread<Drug> drugThread;
++        dataThread<Patient> patientThread;
+         try {
++
+             drugThread=new dataThread<>("drug",Drug.class,requestD,respondD,respondDL);
+             drugThread.start();
+             patientThread=new dataThread<>("patient",Patient.class,requestP,respondP,respondPL);
+Index: storage/drug.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[{\"code\":\"#000007\",\"name\":\"drug\",\"type\":[\"deal\"],\"dose\":[\"55mg\"]},
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- storage/drug.json	(revision 41daddf67d9882267f5808e665a3498934f6e2a4)
++++ storage/drug.json	(date 1587511443257)
+@@ -1,1 +1,1 @@
+-[{"code":"#000007","name":"drug","type":["deal"],"dose":["55mg"]},
+\ No newline at end of file
++[{"code":"#000008","name":"crimson","type":["sce"],"dose":["55mg"]},
+\ No newline at end of file
+Index: src/main/java/dr/dataThread.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dr;\r\nimport DataClass.Patient;\r\nimport io.reactivex.rxjava3.core.Maybe;\r\nimport io.reactivex.rxjava3.core.Observable;\r\nimport libs.coronaDb.coCollection;\r\nimport libs.requestFormer;\r\nimport org.josql.QueryExecutionException;\r\nimport org.josql.QueryParseException;\r\n\r\nimport java.io.IOException;\r\nimport java.util.List;\r\nimport java.util.concurrent.SynchronousQueue;\r\n\r\nimport static dr.FinalsVal.*;\r\n\r\npublic class dataThread<type> extends Thread {\r\n    private final coCollection<type> data ;\r\nprivate final SynchronousQueue<requestFormer<type>> request;\r\n    private final SynchronousQueue<coCollection<type>> respond;\r\n    private final SynchronousQueue<List<type>> respondL;\r\n    public dataThread(String name, Class<type> className,SynchronousQueue<requestFormer<type>> request, SynchronousQueue<coCollection<type>> respond,SynchronousQueue<List<type>> respondL) throws IOException, ClassNotFoundException {\r\n        super(name);\r\n        this.respond=respond;\r\n        this.request=request;\r\n        this.respondL= respondL;\r\n        data = database.getCollection(name, className);\r\n    }\r\n\r\n    public void run() {\r\n\r\n        while (true) {\r\n            requestFormer<type> req;\r\n            try {\r\n                req = request.take();\r\n\r\n\r\n            if (req.request.equals(requestFormer.GET)) {\r\n\r\n             //   req.dispatchEvent();\r\n                respond.put(data);\r\n            }\r\n\r\n\r\n            if (req.request.equals(requestFormer.REMOVE)){\r\n                @SuppressWarnings(\"unchecked\")\r\n                type p=(type) req.arg1;\r\n                data.removeOne(p);\r\n                req.dispatchEvent();\r\n                respond.offer(data);\r\n\r\n\r\n                }\r\n\r\n            if (req.request.equals(requestFormer.FIND)){\r\n                List<type> D=data.findByObject((String) req.arg1,req.arg2);\r\n                if(D.size()>0) {\r\n                    respondObj.put(D.get(0));\r\n                }\r\n                else respondObj.put(new Object());\r\n                req.dispatchEvent();\r\n            }\r\n\r\n            if (req.request.equals(requestFormer.POST)) {\r\n                @SuppressWarnings(\"unchecked\")\r\n                type p=(type) req.arg1;\r\n                data.insertOne(p);\r\n\r\n                respond.put(data);\r\n\r\n                req.dispatchEvent();\r\n\r\n            }\r\n            if (req.request.equals(requestFormer.UPDATE)){\r\n                data.reSave();\r\n                respond.put(data);\r\n\r\n                req.dispatchEvent();\r\n\r\n            }\r\n            if(req.request.equals(requestFormer.CALLBACK))\r\n            {\r\n                if(req.functionName.equals(\"querySearch\")){\r\n                    try {\r\n                        respondL.put(data.querySelector((String)req.arg1,(String)req.arg2).collect());\r\n                        req.dispatchEvent();\r\n                    }\r\n                    catch (QueryParseException|QueryExecutionException e) {\r\n                        e.printStackTrace();\r\n                        System.out.println(\"abb\");\r\n                    }\r\n                }\r\n            }\r\n            } catch (InterruptedException | IOException e) {\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/dr/dataThread.java	(revision 41daddf67d9882267f5808e665a3498934f6e2a4)
++++ src/main/java/dr/dataThread.java	(date 1587511619553)
+@@ -35,9 +35,10 @@
+ 
+ 
+             if (req.request.equals(requestFormer.GET)) {
+-
+-             //   req.dispatchEvent();
+                 respond.put(data);
++                System.out.println("hello from thread");
++                req.dispatchEvent();
++
+             }
+ 
+ 
+@@ -45,10 +46,9 @@
+                 @SuppressWarnings("unchecked")
+                 type p=(type) req.arg1;
+                 data.removeOne(p);
++
++                respond.put(data);
+                 req.dispatchEvent();
+-                respond.offer(data);
+-
+-
+                 }
+ 
+             if (req.request.equals(requestFormer.FIND)){
+Index: src/main/java/libs/requestFormer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package libs;\r\n\r\nimport javafx.beans.InvalidationListener;\r\nimport javafx.beans.Observable;\r\nimport javafx.beans.property.IntegerProperty;\r\nimport javafx.beans.property.SimpleIntegerProperty;\r\nimport javafx.beans.value.ChangeListener;\r\nimport javafx.beans.value.ObservableValue;\r\n\r\nfinal public class requestFormer<type> {\r\n   public String request;\r\n    public Object canon;\r\n   public String req;\r\npublic type[] arguments;\r\npublic String functionName;\r\npublic Object[] funArguments;\r\npublic Object arg1,arg2,ar3,ar4;\r\n    public type obr1,obr2;\r\n    private final IntegerProperty asynk=new SimpleIntegerProperty(1);\r\n\r\n\r\n    public static final String GET=\"g\";\r\n    public static final String POST=\"p\";\r\n    public static final String UPDATE=\"u\";\r\n    public static final String REMOVE=\"r\";\r\n    public static final String CALLBACK=\"cb\";\r\n    public static final String FIND=\"f\";\r\npublic requestFormer(){}\r\npublic <klass> requestFormer<type> callBack(String fName, klass[] ob, Class<klass> className){\r\n        this.functionName=fName;\r\n        this.funArguments=ob;\r\n        this.request=CALLBACK;\r\n        return this;\r\n}\r\n\r\n    public <klass> requestFormer<type> callBack(String fName, klass arg1,klass arg2, Class<klass> className){\r\n        this.functionName=fName;\r\n        this.arg1=arg1;\r\n        this.arg2=arg2;\r\n        this.request=CALLBACK;\r\n        return this;\r\n    }\r\n\r\n    public requestFormer<type> get(){\r\n        this.request=GET;\r\n        return this;\r\n    }\r\n    public requestFormer<type> post(type arg1){\r\n        this.request=POST;\r\n        this.arg1=arg1;\r\n        return this;\r\n    }\r\n    public requestFormer<type> update(){\r\n        this.request=UPDATE;\r\n        return this;\r\n    }\r\n    public requestFormer<type> find(String getter,Object like){\r\n        this.request=FIND;\r\n        this.arg1=getter;\r\n        this.arg2=like;\r\n        return this;\r\n    }\r\n    public requestFormer<type> remove(type arg1){\r\n        this.request=REMOVE;\r\n        this.arg1=arg1;\r\n        return this;\r\n    }\r\n\r\n    public void onReceive(InvalidationListener event) {\r\n        System.out.println(\"you receive an event!!!\");\r\n\r\n        asynk.addListener(event);\r\n    }\r\n    public void dispatchEvent(){\r\n        System.out.println(\"you dispatch an event!!\");\r\n        asynk.setValue((asynk.getValue()+1)%2);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/libs/requestFormer.java	(revision 41daddf67d9882267f5808e665a3498934f6e2a4)
++++ src/main/java/libs/requestFormer.java	(date 1587512075497)
+@@ -6,6 +6,12 @@
+ import javafx.beans.property.SimpleIntegerProperty;
+ import javafx.beans.value.ChangeListener;
+ import javafx.beans.value.ObservableValue;
++import libs.coronaDb.coCollection;
++
++import java.util.List;
++import java.util.concurrent.SynchronousQueue;
++
++import static dr.FinalsVal.respondP;
+ 
+ final public class requestFormer<type> {
+    public String request;
+@@ -17,7 +23,12 @@
+ public Object arg1,arg2,ar3,ar4;
+     public type obr1,obr2;
+     private final IntegerProperty asynk=new SimpleIntegerProperty(1);
++private InvalidationListener oldEvent= new InvalidationListener() {
++    @Override
++    public void invalidated(Observable observable) {
+ 
++    }
++};
+ 
+     public static final String GET="g";
+     public static final String POST="p";
+@@ -68,9 +79,12 @@
+ 
+     public void onReceive(InvalidationListener event) {
+         System.out.println("you receive an event!!!");
+-
++      //  asynk.removeListener(oldEvent);
+         asynk.addListener(event);
+-    }
++      //  oldEvent=event;
++
++}
++
+     public void dispatchEvent(){
+         System.out.println("you dispatch an event!!");
+         asynk.setValue((asynk.getValue()+1)%2);
+Index: src/main/java/Controller/PatientList.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Controller;\r\n\r\nimport DataClass.Drug;\r\nimport DataClass.Patient;\r\nimport com.jfoenix.controls.JFXButton;\r\nimport io.reactivex.rxjava3.disposables.Disposable;\r\nimport javafx.beans.property.IntegerProperty;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.control.cell.PropertyValueFactory;\r\nimport javafx.scene.paint.Color;\r\nimport javafx.stage.Modality;\r\nimport javafx.stage.Stage;\r\nimport javafx.stage.StageStyle;\r\nimport libs.cellController;\r\nimport libs.requestFormer;\r\nimport model.showButton;\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.nio.file.Path;\r\nimport java.time.LocalDate;\r\nimport java.util.Date;\r\nimport java.util.List;\r\nimport java.util.ResourceBundle;\r\n\r\n\r\nimport static dr.FinalsVal.*;\r\nimport static dr.Main.patientThread;\r\n\r\npublic class PatientList implements Initializable {\r\n    public TableView  <Patient> patient_table;\r\n    public TableColumn<Patient,String> first_C;\r\n    public TableColumn<Patient,String> lastName_C;\r\n    public TableColumn<Patient, Integer> age_C;\r\n    public TableColumn<Patient,String> lastVisite_C;\r\n    public TableColumn<Patient,String> id_C;\r\n    public TableColumn<Patient,String > menu_C;\r\n    public TableColumn<Patient,String> diagnostic_C;\r\npublic cellController<Patient> cellController=new cellController<>();\r\n    static ObservableList<Patient> data = FXCollections.observableArrayList();\r\n    static public  Stage s;\r\n    public Spinner show_spinner;\r\n    public TextField write_TXF;\r\n    public JFXButton add_patient_btn;\r\n    public Label info2_label;\r\n    private requestFormer<Patient> req=formerP;\r\n\r\n\r\n    @Override\r\n    public void initialize(URL location, ResourceBundle resources) {\r\ninitCol();\r\nloadData();\r\neventTrigger();\r\n    }\r\n    public void initCol(){\r\n        first_C.setCellValueFactory(new PropertyValueFactory<>(\"firstName\"));\r\n        lastName_C.setCellValueFactory(new PropertyValueFactory<>(\"lastName\"));\r\n        age_C.setCellValueFactory(new PropertyValueFactory<>(\"age\"));\r\n        lastVisite_C.setCellValueFactory(new PropertyValueFactory<>(\"lastVisit\"));\r\n        id_C.setCellValueFactory(new PropertyValueFactory<>(\"PatientId\"));\r\n        diagnostic_C.setCellFactory(cellController.BCellFactory(new showButton(\"show\")));\r\n        menu_C.setCellFactory(cellController.MCellFactory(new String[]{\"dr/image/trash_24px.png\", \"dr/image/ball_point_pen_24px.png\", \"dr/image/add_32px.png\"},new  String[]{\"Delete...\",\"Edit...\",\"new prescription...\"}));\r\n    }\r\n\r\n    public void  loadData(){\r\n        try{\r\n        requestP.put(req.get());\r\n        List<Patient> dList=respondP.take();\r\n        data.setAll(dList);\r\n    } catch (Exception e) {\r\n        e.printStackTrace();\r\n    }\r\n        patient_table.setItems(data);\r\n\r\n    }\r\n\r\n    static void setTableItems(List<Patient> items){\r\n        data.setAll(items);\r\n    }\r\n\r\n    public void eventTrigger(){\r\n\r\n        cellController.MenuDispatcher.addListener(e-> {\r\n                    IntegerProperty prop= (IntegerProperty) e;\r\n                    if(prop.getValue()==0){\r\n                        System.out.println(\"delete\");\r\n\r\n                            requestP.offer(req.remove(patient_table.getItems().get(cellController.index)));\r\n                        try {\r\n                            setTableItems(respondP.take());\r\n                        } catch (InterruptedException interruptedException) {\r\n                            interruptedException.printStackTrace();\r\n                        }\r\n\r\n\r\n                    }\r\n                }\r\n        );\r\n    }\r\n\r\n    static public void closePopuUp(){\r\n        s.close();\r\n    }\r\n\r\n    public void add_patient_table(ActionEvent actionEvent) throws IOException {\r\n        Parent root = FXMLLoader.load(getClass().getResource(\"/dr/FXML/POPUP/New_patient.fxml\"));\r\n        Scene sc =new Scene(root);\r\n        sc.setFill(Color.TRANSPARENT);\r\n        sc.getStylesheets().add(\"org/kordamp/bootstrapfx/bootstrapfx.css\");\r\n         s=new Stage();\r\n        s.initModality(Modality.APPLICATION_MODAL);\r\n        s.setScene(sc);\r\n        s.initStyle(StageStyle.TRANSPARENT);\r\n        s.show();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Controller/PatientList.java	(revision 41daddf67d9882267f5808e665a3498934f6e2a4)
++++ src/main/java/Controller/PatientList.java	(date 1587652663476)
+@@ -31,7 +31,6 @@
+ 
+ 
+ import static dr.FinalsVal.*;
+-import static dr.Main.patientThread;
+ 
+ public class PatientList implements Initializable {
+     public TableView  <Patient> patient_table;
+@@ -52,11 +51,12 @@
+     private requestFormer<Patient> req=formerP;
+ 
+ 
+-    @Override
+-    public void initialize(URL location, ResourceBundle resources) {
++    @Override    public void initialize(URL location, ResourceBundle resources) {
++
++
+ initCol();
+-loadData();
+ eventTrigger();
++loadData();
+     }
+     public void initCol(){
+         first_C.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+@@ -70,9 +70,9 @@
+ 
+     public void  loadData(){
+         try{
+-        requestP.put(req.get());
+-        List<Patient> dList=respondP.take();
+-        data.setAll(dList);
++        //requestP.put(req.get());
++        //List<Patient> dList=respondP.take();
++       // data.setAll(dList);
+     } catch (Exception e) {
+         e.printStackTrace();
+     }
+@@ -86,7 +86,17 @@
+ 
+     public void eventTrigger(){
+ 
++        req.onReceive(v->{
++            System.out.println("too");
++                try {
++                     setTableItems(respondP.take());
++                } catch (Exception e) {
++                    e.printStackTrace();
++                }
++        });
++
+         cellController.MenuDispatcher.addListener(e-> {
++            req.dispatchEvent();
+                     IntegerProperty prop= (IntegerProperty) e;
+                     if(prop.getValue()==0){
+                         System.out.println("delete");
+@@ -109,6 +119,15 @@
+     }
+ 
+     public void add_patient_table(ActionEvent actionEvent) throws IOException {
++        System.out.println("hello though");
++        try {
++            req.dispatchEvent();
++            requestP.put(req.get());
++        } catch (Exception e) {
++            e.printStackTrace();
++        }
++
++        /*
+         Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/New_patient.fxml"));
+         Scene sc =new Scene(root);
+         sc.setFill(Color.TRANSPARENT);
+@@ -118,5 +137,6 @@
+         s.setScene(sc);
+         s.initStyle(StageStyle.TRANSPARENT);
+         s.show();
++    */
+     }
+ }
+Index: storage/norme.config
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[{\"tableName\":\"drug\",\"uuid\":7},{\"tableName\":\"patient\",\"uuid\":39}]
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- storage/norme.config	(revision 41daddf67d9882267f5808e665a3498934f6e2a4)
++++ storage/norme.config	(date 1587511438123)
+@@ -1,1 +1,1 @@
+-[{"tableName":"drug","uuid":7},{"tableName":"patient","uuid":39}]
+\ No newline at end of file
++[{"tableName":"drug","uuid":8},{"tableName":"patient","uuid":40}]
+\ No newline at end of file

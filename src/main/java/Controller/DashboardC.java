@@ -62,7 +62,7 @@ public class DashboardC implements Initializable {
                 final String time = clock.format(dateNow);
                 final String dmy=date.format(dateNow);
                 Platform.runLater(()-> {
-                    date_label1.setText(time);
+                    date_label1.setText("age"+time);
                     date_label.setText(dmy);
                 });
             }
