@@ -100,7 +100,10 @@
                   <fx:include source="Drugs_List.fxml" />
                </children>
             </Pane>
-            <Pane id="setting_pane" fx:id="setting_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px; -fx-background-color: green;" />
+            <Pane id="setting_pane" fx:id="setting_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;">
+               <children>
+                  <fx:include source="template.fxml" />
+               </children></Pane>
          </children>
       </AnchorPane>
    </children>

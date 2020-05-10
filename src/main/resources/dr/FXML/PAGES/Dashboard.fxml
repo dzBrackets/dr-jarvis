@@ -53,7 +53,7 @@
                   <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="161.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Pane id="icon_pane" prefHeight="161.0" prefWidth="115.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;">
+                  <Pane id="icon_pane" fx:id="pane1" prefHeight="161.0" prefWidth="115.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;">
                      <children>
                         <ImageView fitHeight="48.0" fitWidth="57.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -64,7 +64,7 @@
                         <Label id="count_label" fx:id="all_prec_cpt" alignment="CENTER" layoutX="3.0" layoutY="106.0" prefHeight="17.0" prefWidth="109.0" text="250" textFill="WHITE" />
                      </children>
                   </Pane>
-                  <Pane fx:id="pane1" prefHeight="161.0" prefWidth="115.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" GridPane.columnIndex="1">
+                  <Pane id="pane2" fx:id="pane2" prefHeight="161.0" prefWidth="115.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" GridPane.columnIndex="1">
                      <children>
                         <ImageView fitHeight="48.0" fitWidth="57.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -75,7 +75,7 @@
                         <Label id="count_label" fx:id="today_precp_cpt" alignment="CENTER" layoutX="3.0" layoutY="106.0" prefHeight="17.0" prefWidth="109.0" text="250" textFill="WHITE" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="161.0" prefWidth="115.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" GridPane.columnIndex="2">
+                  <Pane fx:id="pane3" prefHeight="161.0" prefWidth="115.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" GridPane.columnIndex="2">
                      <children>
                         <ImageView fitHeight="48.0" fitWidth="57.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -86,7 +86,7 @@
                         <Label id="count_label" fx:id="patient_cpt" alignment="CENTER" layoutX="3.0" layoutY="106.0" prefHeight="17.0" prefWidth="109.0" text="250" textFill="WHITE" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="161.0" prefWidth="115.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" GridPane.columnIndex="3">
+                  <Pane fx:id="pane4" prefHeight="161.0" prefWidth="115.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" GridPane.columnIndex="3">
                      <children>
                         <ImageView fitHeight="48.0" fitWidth="57.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>

@@ -5,11 +5,14 @@ import DataClass.Patient;
 import DataClass.prescriptionsHistory;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.Effect;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -46,10 +49,22 @@ public class DashboardC implements Initializable {
     public Label date_label1;
     public Pane recent_btn_pane1;
     public GridPane recent_grid;
+    public Pane pane1;
+    public Pane pane2;
+    public Pane pane3;
+    public Pane pane4;
     boolean enough=false;
     static public final requestFormer<Patient> req=new requestFormer<>();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        pane1.hoverProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+
+            } else {
+
+            }
+        });
+
 
         Thread timer = new Thread(() -> {
             SimpleDateFormat clock = new SimpleDateFormat("k:mm:ss");
