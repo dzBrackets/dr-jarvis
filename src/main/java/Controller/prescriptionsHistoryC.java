@@ -1,34 +1,35 @@
 package Controller;
 
-import DataClass.Patient;
 import DataClass.prescriptionsHistory;
+
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Image;
+
 import dr.Main;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Parent;
-import javafx.scene.SnapshotParameters;
+import javafx.print.*;
+import javafx.scene.Node;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.transform.Scale;
 import libs.cellController;
 import libs.requestFormer;
-import model.popUpWindow;
 import model.showButton;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.common.PDRectangle;
-import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import javax.imageio.ImageIO;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -74,20 +75,37 @@ public class prescriptionsHistoryC implements Initializable {
     }
     public void  initializeHandlers(){
         cellController.clicked.addListener(v->{
-            File file = new File("chart.png");
-
-
-
-
+     /*       File file = new File("chart.png");
             try {
-
                 ImageIO.write(SwingFXUtils.fromFXImage(MainPanelC.getTemplateSnap(), null), "png", file);
             } catch (IOException e) {
                 System.out.println(e);
             }
+            File x = new File("example.pdf");
+
+            PdfWriter writer = null;
+            try {
+                writer = new PdfWriter(x);
+            } catch (FileNotFoundException e) {
+               // e.printStackTrace();
+            }
+            assert writer != null;
+            PdfDocument pdf = new PdfDocument(writer);
+            Document document = new Document(pdf);
+            String imFile = file.getAbsolutePath();
+            ImageData data = null;
+            try {
+                data = ImageDataFactory.create(imFile);
+            } catch (MalformedURLException e) {
+           //     e.printStackTrace();
+            }
+            Image image = new Image(data);
+            document.add(image);
+            document.close();
+*/
 
 //pdf
-
+/*
             PDDocument doc    = new PDDocument();
             PDPage page = new PDPage(PDRectangle.A4);
             PDImageXObject pdimage;
@@ -103,9 +121,12 @@ public class prescriptionsHistoryC implements Initializable {
                 //file.delete();
             } catch (IOException ex) {
 ex.getStackTrace();
-            }
+            }*/
          //
 
         });
     }
+
+
+
 }

@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="container"  prefHeight="730.0" prefWidth="530.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.templateC">
+<!--       595 x 842-->
+
+<AnchorPane fx:id="container" prefHeight="842.0" prefWidth="595.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.templateC">
    <children>
       <Pane id="recent_btn_pane" fx:id="recent_btn_pane1" layoutX="308.0" layoutY="13.0" prefHeight="213.0" prefWidth="208.0" style="-fx-border-color: green; -fx-background-radius: 17px; -fx-border-radius: 17px;">
          <children>
@@ -24,7 +22,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label id="dr_name_enAr" fx:id="dr_name_enFr1111" alignment="CENTER" prefHeight="30.0" prefWidth="83.0" style="-fx-font-weight: bold;" text="Age :" textFill="GREEN" GridPane.rowIndex="3">
+                  <Label id="dr_name_enAr" fx:id="dr_name" alignment="CENTER" prefHeight="30.0" prefWidth="83.0" style="-fx-font-weight: bold;" text="Age :" textFill="GREEN" GridPane.rowIndex="3">
                      <font>
                         <Font name="Monospaced Regular" size="13.0" />
                      </font>
@@ -44,22 +42,22 @@
                         <Font name="Monospaced Regular" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="date" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="81.0" text="5/9/2020" GridPane.columnIndex="1">
+                  <Label fx:id="p_date" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="81.0" text="5/9/2020" GridPane.columnIndex="1">
                      <font>
                         <Font name="Monospaced Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="P_name" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="22.0" prefHeight="42.0" prefWidth="81.0" text="Daouadji" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="p_first_name" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="22.0" prefHeight="42.0" prefWidth="81.0" text="Daouadji" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="Monospaced Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="P_lastname" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="72.0" prefHeight="47.0" prefWidth="81.0" text="Aymen" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="p_last_name" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="72.0" prefHeight="47.0" prefWidth="81.0" text="Aymen" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Monospaced Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="P_age" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="122.0" prefHeight="27.0" prefWidth="81.0" text="21" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label fx:id="p_age" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="122.0" prefHeight="27.0" prefWidth="81.0" text="21" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="Monospaced Bold" size="13.0" />
                      </font>
@@ -72,7 +70,7 @@
          <children>
             <Label id="dr_name_enAr" fx:id="dr_name_enAr" alignment="CENTER" layoutX="21.0" layoutY="9.0" prefHeight="37.0" prefWidth="222.0" style="-fx-font-weight: bold;" text="الحكيم عبد العزيز مختاري" textFill="GREEN">
                <font>
-                  <Font name="Monospaced Regular" size="15.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
             <Label id="dr_name_enAr" fx:id="dr_name_enFr" alignment="CENTER" layoutX="14.0" layoutY="39.0" prefHeight="37.0" prefWidth="222.0" style="-fx-font-weight: bold;" text="Docteur A.MOKHTARI" textFill="GREEN">

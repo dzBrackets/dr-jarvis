@@ -20,10 +20,10 @@ public class Patient implements Serializable {
     private String patientId="N/D";
     private String firstName="N/D";
     private String lastName="N/D";
-    private String birthDay="N/D";
+    private String birthDay="12-12-1999";
     private int gender=-1;
-    private String lastVisit="N/D";
-    private String lastDiagnostic="N/D";
+    private String lastVisit="2";
+    private String lastDiagnostic="12-12-1999";
     private ArrayList<String> prescriptionsId;
 
     public Patient Patient(String patientId, String firstName, String lastName, String birthDay, int gender, LocalDate lastVisit, String lastDiagnostic) {

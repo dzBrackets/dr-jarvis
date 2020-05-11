@@ -15,7 +15,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TableColumn;
@@ -24,6 +26,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import libs.cellController;
 import libs.requestFormer;
+import model.components.drugItem;
 import model.popupMenu;
 import model.usedDrug;
 import model.showButton;
@@ -72,7 +75,7 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
 List<Drug> drugList=new ArrayList<>();
     Drug selectedDrug=null;
     Patient selectedPatient=null;
-
+    prescriptionsHistory pres;
 
 
     @Override
@@ -99,6 +102,8 @@ List<Drug> drugList=new ArrayList<>();
         table.setItems(data);
     }
 
+
+
     public void exit_methode(ActionEvent actionEvent) {
         if(PatientList.Table_quick_stage!=null&&PatientList.Table_quick_stage.isShowing()){
             PatientList.Table_quick_stage.close();
@@ -108,13 +113,16 @@ List<Drug> drugList=new ArrayList<>();
         }
 
          MainPanelC.effect.setRadius(0);
+
+
     }
 
 
 
 
     public void save(ActionEvent actionEvent) throws IOException {
-        prescriptionsHistory pres = new prescriptionsHistory();
+
+         pres = new prescriptionsHistory();
         pres.setUUID(database.updateUUID("prescriptions"));
         pres.setDrugList(table.getItems());
         pres.setUserId(selectedPatient.getPatientId());
@@ -126,10 +134,18 @@ List<Drug> drugList=new ArrayList<>();
 
 
 
-
     }
 
-    public void save_and_print(ActionEvent actionEvent) {
+    public void save_and_print(ActionEvent actionEvent) throws IOException {
+        save_btn.fire();
+        MainPanelC.templateController.setTemplateInfo(selectedPatient);
+        for (int i = 0; i < data.size(); i++) {
+            MainPanelC.templateController.drug_list.add(new drugItem(data.get(i)),0,i);
+        }
+        print(MainPanelC.templateStatic);
+        MainPanelC.templateController.reset();
+        exit_btn.fire();
+
     }
 
     public void add_to_table(ActionEvent actionEvent) {

@@ -1,7 +1,9 @@
 package Controller;
 
+import DataClass.Patient;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +22,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
+import model.usedDrug;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,7 +35,6 @@ public class MainPanelC  implements Initializable {
     public AnchorPane content_panel;
     public static  Scene search_scene;
     public static Stage search_stage;
-    public static Stage drugList;
     public static GaussianBlur effect;
     public Pane drug_panel;
     public Pane patient_panel;
@@ -49,10 +51,11 @@ public class MainPanelC  implements Initializable {
     public Pane side_pane;
     public JFXButton presHistory_btn;
     public Pane presHistory_p;
-    public Pane template;
     static public Pane templateStatic;
     public JFXButton close_btn;
     public JFXButton minimize_btn;
+    static templateC templateController;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -60,14 +63,24 @@ public class MainPanelC  implements Initializable {
         effect= new javafx.scene.effect.GaussianBlur();
         effect.setRadius(0);
         main_panel.setEffect(effect);
-        templateStatic=template;
+        initTemplate();
+    }
 
 
+    public void initTemplate(){
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/PAGES/template.fxml"));
+        try {
+           loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        templateController = loader.getController();
+        templateStatic= templateController.container;
 
     }
+
 public static WritableImage getTemplateSnap(){
      SnapshotParameters vp = new SnapshotParameters();
-    // vp.setViewport(new Rectangle2D(0,0,210,297));
     templateStatic.setVisible(true);
     WritableImage wi = templateStatic.snapshot(vp, null);
     templateStatic.setVisible(false);

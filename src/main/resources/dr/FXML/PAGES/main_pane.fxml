@@ -128,10 +128,5 @@
             </JFXButton>
          </children>
       </Pane>
-      <Pane id="template" fx:id="template" visible="false">
-         <children>
-            <fx:include source="template.fxml" />
-         </children>
-      </Pane>
    </children>
 </AnchorPane>

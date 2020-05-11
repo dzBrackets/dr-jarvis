@@ -8,17 +8,18 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
+import model.usedDrug;
 
 public class drugItem extends Pane {
     private Label name,doss,type,qts,notice;
     private Line line ;
 
-    public drugItem(Drug drug) {
-        name = new Label("catagin");
-        doss = new Label("bazzaf");
-        notice = new Label("bla bla");
-        qts =new Label("3");
-        type=new Label("dwa");
+    public drugItem(usedDrug drug) {
+        name = new Label(drug.getName());
+        doss = new Label(drug.getDoss());
+        notice = new Label(drug.getNotice());
+        qts =new Label(drug.getQts());
+        type=new Label(drug.getType());
         line =new Line();
         this.setPrefWidth(100);
         this.setPrefHeight(30);
