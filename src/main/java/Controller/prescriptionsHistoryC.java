@@ -44,7 +44,7 @@ public class prescriptionsHistoryC implements Initializable {
         presId.setCellValueFactory(new PropertyValueFactory<>("presId"));
         userId.setCellValueFactory(new PropertyValueFactory<>("UserId"));
         date.setCellValueFactory(new PropertyValueFactory<>("Date"));
-        show_c.setCellFactory(cellController.BCellFactory(new showButton("Detail...")));
+        show_c.setCellFactory(cellController.BCellFactory(new showButton("Details ...")));
     }
     public void  loadData(){
 

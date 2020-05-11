@@ -4,4 +4,17 @@
 #content_panel {
 	-fx-background-color:transparent;
 }
-
+#close_btn:hover {
+-fx-background-color: red;
+}
+#minimize_btn:hover {
+-fx-background-color: blue;
+}
+#close_btn {
+	-fx-background-color:white;
+	-fx-background-radius:50%; 
+}
+#minimize_btn {
+-fx-background-color:white;
+	-fx-background-radius:50%; 
+}

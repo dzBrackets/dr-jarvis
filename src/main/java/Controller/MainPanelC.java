@@ -2,6 +2,9 @@ package Controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRippler;
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -48,6 +51,8 @@ public class MainPanelC  implements Initializable {
     public Pane side_pane;
     public JFXButton presHistory_btn;
     public Pane presHistory_p;
+    public JFXButton close_btn;
+    public JFXButton minimize_btn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -162,5 +167,15 @@ public class MainPanelC  implements Initializable {
         drug_btn.getGraphic().setOpacity(0.5);
         setting_btn.getGraphic().setOpacity(0.5);
         dashbord_btn.getGraphic().setOpacity(0.5);
+    }
+
+    public void minimize_app(ActionEvent actionEvent) {
+      Stage s= (Stage) main_panel.getScene().getWindow();
+      s.setIconified(true);
+    }
+
+    public void close_app(ActionEvent actionEvent) {
+        Platform.exit();
+        System.exit(0);
     }
 }

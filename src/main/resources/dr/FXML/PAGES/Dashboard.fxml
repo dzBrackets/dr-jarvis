@@ -31,7 +31,8 @@
                   </Label>
                   <Label id="date_label" fx:id="date_label" layoutX="289.0" layoutY="113.0" prefHeight="17.0" prefWidth="95.0" text="1 March 2020" textFill="WHITE" />
                   <Label id="date_label" fx:id="date_label1" layoutX="384.0" layoutY="113.0" prefHeight="17.0" prefWidth="95.0" text="09:35" textFill="WHITE" />
-               </children></Pane>
+               </children>
+            </Pane>
             <ImageView fitHeight="259.0" fitWidth="316.0" layoutX="7.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../image/stBackground.png" />
