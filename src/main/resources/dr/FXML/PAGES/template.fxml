@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="730.0" prefWidth="530.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.templateC">
+<AnchorPane fx:id="container"  prefHeight="730.0" prefWidth="530.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.templateC">
    <children>
       <Pane id="recent_btn_pane" fx:id="recent_btn_pane1" layoutX="308.0" layoutY="13.0" prefHeight="213.0" prefWidth="208.0" style="-fx-border-color: green; -fx-background-radius: 17px; -fx-border-radius: 17px;">
          <children>

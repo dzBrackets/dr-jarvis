@@ -1,10 +1,7 @@
 package Controller;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXRippler;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.GaussianBlur;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -38,8 +37,7 @@ public class MainPanelC  implements Initializable {
     public Pane drug_panel;
     public Pane patient_panel;
     public Pane dashbord_pane;
-    public Pane setting_pane;
-
+    public  Pane setting_pane;
     public JFXButton dashbord_btn;
     public JFXButton pat_btn;
     public JFXButton drug_btn;
@@ -51,6 +49,8 @@ public class MainPanelC  implements Initializable {
     public Pane side_pane;
     public JFXButton presHistory_btn;
     public Pane presHistory_p;
+    public Pane template;
+    static public Pane templateStatic;
     public JFXButton close_btn;
     public JFXButton minimize_btn;
 
@@ -60,11 +60,19 @@ public class MainPanelC  implements Initializable {
         effect= new javafx.scene.effect.GaussianBlur();
         effect.setRadius(0);
         main_panel.setEffect(effect);
+        templateStatic=template;
 
 
 
     }
-
+public static WritableImage getTemplateSnap(){
+     SnapshotParameters vp = new SnapshotParameters();
+    // vp.setViewport(new Rectangle2D(0,0,210,297));
+    templateStatic.setVisible(true);
+    WritableImage wi = templateStatic.snapshot(vp, null);
+    templateStatic.setVisible(false);
+    return wi;
+}
     public void  add_quick(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/patient_search.fxml"));
         search_scene =new Scene(root);
@@ -168,6 +176,8 @@ public class MainPanelC  implements Initializable {
         setting_btn.getGraphic().setOpacity(0.5);
         dashbord_btn.getGraphic().setOpacity(0.5);
     }
+
+
 
     public void minimize_app(ActionEvent actionEvent) {
       Stage s= (Stage) main_panel.getScene().getWindow();
