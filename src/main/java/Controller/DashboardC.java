@@ -10,12 +10,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.Effect;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import libs.requestFormer;
 import model.components.recentComp;
 import sun.security.krb5.internal.PAData;
@@ -45,7 +47,7 @@ public class DashboardC implements Initializable {
     public Label patient_cpt;
     public Label today_precp_cpt;
     public Pane recent_pane1;
-    public JFXButton shwo_all_btn1;
+
     public Label date_label1;
     public Pane recent_btn_pane1;
     public GridPane recent_grid;
@@ -53,6 +55,7 @@ public class DashboardC implements Initializable {
     public Pane pane2;
     public Pane pane3;
     public Pane pane4;
+    public JFXButton show_all_btn;
     boolean enough=false;
     static public final requestFormer<Patient> req=new requestFormer<>();
     @Override
@@ -111,7 +114,5 @@ void loadRecent(){
     public void show_prescription(ActionEvent actionEvent) {
     }
 
-    public void show_all_pres(ActionEvent actionEvent) {
 
-    }
 }

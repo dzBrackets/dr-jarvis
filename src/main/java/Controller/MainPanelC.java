@@ -57,6 +57,8 @@ public class MainPanelC  implements Initializable {
     static templateC templateController;
 
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     dashbord_pane.toFront();
@@ -76,6 +78,7 @@ public class MainPanelC  implements Initializable {
         }
         templateController = loader.getController();
         templateStatic= templateController.container;
+
 
     }
 

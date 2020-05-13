@@ -55,6 +55,7 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
     public JFXTextArea notice_text_field;
     public JFXButton add_btn;
     public AnchorPane quick_pane;
+
     @FXML
     private TableView<usedDrug> table;
     @FXML
@@ -90,6 +91,8 @@ List<Drug> drugList=new ArrayList<>();
 
 
     public void initCol(){
+        name_colm.getStyleClass().add("start");
+        delete_colm.getStyleClass().add("end");
         name_colm.setCellValueFactory(new PropertyValueFactory<>("name"));
         type_colm.setCellValueFactory(new PropertyValueFactory<>("type"));
         doss_colm.setCellValueFactory(new PropertyValueFactory<>("doss"));

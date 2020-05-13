@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
 <AnchorPane id="quick_pane" fx:id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 27px; -fx-background-radius: 27px;" stylesheets="@../../CSS/quick_panel_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.quick_panelC">
    <children>
       <Label id="top_label" layoutX="585.0" layoutY="14.0" prefHeight="17.0" prefWidth="194.0" text="Patient informations :" textFill="WHITE" />
@@ -64,7 +63,7 @@
             <JFXComboBox id="doss_combo" fx:id="doss_combo" layoutX="328.0" layoutY="77.0" prefHeight="37.0" prefWidth="85.0" promptText="Doss" />
             <Label id="print_panel_labels" layoutX="14.0" layoutY="145.0" prefHeight="17.0" prefWidth="220.0" text="Notice :" textFill="WHITE" />
             <Label layoutX="429.0" layoutY="82.0" prefHeight="27.0" prefWidth="16.0" style="-fx-font-size: 14px;" text="X" textAlignment="JUSTIFY" textFill="WHITE" />
-            <Spinner id="spinner" fx:id="spinner" min="1" max="99" amountToStepBy="1" layoutX="450.0" layoutY="76.0" prefHeight="35.0" prefWidth="63.0">
+            <Spinner id="spinner" fx:id="spinner" amountToStepBy="1" layoutX="450.0" layoutY="76.0" max="99" min="1" prefHeight="35.0" prefWidth="63.0">
 
       </Spinner>
             <JFXTextArea id="notice_text_field" fx:id="notice_text_field" focusColor="#43a047" layoutX="14.0" layoutY="186.0" prefHeight="104.0" prefWidth="322.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30px;" />
@@ -88,6 +87,9 @@
             <TableColumn id="notice_colm" fx:id="notice_colm" prefWidth="228.0" text="Notice" />
             <TableColumn id="delete_colm" fx:id="delete_colm" prefWidth="51.0" sortable="false" />
          </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
    </children>
 </AnchorPane>
