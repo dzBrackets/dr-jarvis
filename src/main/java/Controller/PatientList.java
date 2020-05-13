@@ -146,7 +146,6 @@ public cellController<Patient> cellController=new cellController<>();
         Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/New_patient.fxml"));
         Scene sc =new Scene(root);
         sc.setFill(Color.TRANSPARENT);
-        sc.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
         patientFormStage =new Stage();
         patientFormStage.initModality(Modality.APPLICATION_MODAL);
         patientFormStage.setScene(sc);

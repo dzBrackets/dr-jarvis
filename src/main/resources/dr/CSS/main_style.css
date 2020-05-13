@@ -5,10 +5,10 @@
 	-fx-background-color:transparent;
 }
 #close_btn:hover {
--fx-background-color: red;
+-fx-background-color: #d73e4d;
 }
 #minimize_btn:hover {
--fx-background-color: blue;
+-fx-background-color: gray;
 }
 #close_btn {
 	-fx-background-color:white;

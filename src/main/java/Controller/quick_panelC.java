@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import dr.Main;
 import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.IntegerProperty;
@@ -27,6 +28,7 @@ import javafx.scene.layout.AnchorPane;
 import libs.cellController;
 import libs.requestFormer;
 import model.components.drugItem;
+import model.popUpWindow;
 import model.popupMenu;
 import model.usedDrug;
 import model.showButton;
@@ -71,6 +73,7 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
     @FXML
     private TableColumn<usedDrug, String> notice_colm;
     public TableColumn<usedDrug, String> delete_colm;
+    public static popUpWindow  showField ;
     ObservableList<usedDrug> data=FXCollections.observableArrayList();;
     cellController<usedDrug> cellController=new cellController<>();
 List<Drug> drugList=new ArrayList<>();
@@ -86,6 +89,7 @@ List<Drug> drugList=new ArrayList<>();
         setInfoLabelValues();
         initSearchBar();
         initEvents();
+        eventTrigger();
 
     }
 
@@ -246,6 +250,22 @@ List<Drug> drugList=new ArrayList<>();
 
         drug_search.textProperty().addListener(k);
 
+    }
+    public void eventTrigger() {
+
+        cellController.clicked.addListener(v -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/show_window.fxml"));
+            try {
+                Parent root = loader.load();
+                show_winC control = loader.getController();
+                showField = new popUpWindow(root.getChildrenUnmodifiable());
+                showField.show(quick_pane.getScene().getWindow());
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 }

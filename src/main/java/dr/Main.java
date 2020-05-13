@@ -49,7 +49,7 @@ hisPerThread.start();
         Parent root= FXMLLoader.load(getClass().getResource("/dr/FXML/PAGES/main_pane.fxml"));
         Scene scene=new Scene(root);
         scene.setFill(Color.TRANSPARENT);
-       scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
+     //  scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");//
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
