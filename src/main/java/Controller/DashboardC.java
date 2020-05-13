@@ -4,10 +4,12 @@ import DataClass.Drug;
 import DataClass.Patient;
 import DataClass.prescriptionsHistory;
 import com.jfoenix.controls.JFXButton;
+import dr.Main;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -106,13 +108,21 @@ void loadRecent(){
 
     requestP.offer(req.get(3));
 }
-    public void pan_selected(MouseEvent mouseEvent) {
 
+
+
+
+
+    public void show_prescriptions(ActionEvent actionEvent) {
+        MainPanelC c =Main.loader.getController();
+        c.reset_btn_Opicity();
+        c.presHistory_btn.getGraphic().setOpacity(1);
+        c.presHistory_p.toFront();
+        c.presHistory_p.setVisible(true);
+        c.dashbord_pane.setVisible(false);
+        c.drug_panel.setVisible(false);
+        c.patient_panel.setVisible(false);
+        c.setting_pane.setVisible(false);
 
     }
-
-    public void show_prescription(ActionEvent actionEvent) {
-    }
-
-
 }

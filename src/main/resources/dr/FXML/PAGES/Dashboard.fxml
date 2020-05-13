@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -106,6 +107,7 @@
             <Pane id="recent_btn_pane" fx:id="recent_btn_pane1" layoutX="22.0" layoutY="25.0" prefHeight="378.0" prefWidth="255.0" style="-fx-border-color: #727FF0; -fx-background-radius: 17px; -fx-border-radius: 17px;">
                <children>
                   <Label id="info1_label" layoutX="14.0" layoutY="11.0" prefHeight="25.0" prefWidth="129.0" text="Recent Prescription" textFill="WHITE" />
+                  <JFXButton id="show_all_btn" fx:id="show_all_btn" layoutX="162.0" layoutY="9.0" onAction="#show_prescriptions" text="Show all" textFill="WHITE" />
                   <GridPane id="recent_grid" fx:id="recent_grid" hgap="50.0" layoutX="6.0" layoutY="33.0" prefHeight="337.0" prefWidth="243.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
