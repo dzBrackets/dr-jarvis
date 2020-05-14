@@ -2,6 +2,7 @@ package Controller;
 
 import DataClass.Patient;
 import com.jfoenix.controls.JFXButton;
+import dr.Main;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -153,13 +154,18 @@ void chartInit(){
     container.getChildren().add(lineChart);
 }
 
-    public void pan_selected(MouseEvent mouseEvent) {
 
 
+
+    public void show_prescriptions(ActionEvent actionEvent) {
+            MainPanelC c = Main.loader.getController();
+            c.reset_btn_Opicity();
+            c.presHistory_btn.getGraphic().setOpacity(1);
+            c.presHistory_p.toFront();
+            c.presHistory_p.setVisible(true);
+            c.dashbord_pane.setVisible(false);
+            c.drug_panel.setVisible(false);
+            c.patient_panel.setVisible(false);
+            c.setting_pane.setVisible(false);
     }
-
-    public void show_prescription(ActionEvent actionEvent) {
-    }
-
-
 }
