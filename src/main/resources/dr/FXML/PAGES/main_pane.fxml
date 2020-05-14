@@ -83,9 +83,7 @@
       <AnchorPane id="content_panel" fx:id="content_panel" layoutX="89.0" layoutY="53.0" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="53.0">
          <children>
             <Pane id="dashbord_pane" fx:id="dashbord_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;">
-               <children>
-                  <fx:include fx:id="dash_id" source="Dashboard.fxml" />
-               </children></Pane>
+               </Pane>
             <Pane id="presHistory_p" fx:id="presHistory_p" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 0px 27px 27px 0px;">
                <children>
                   <fx:include source="prescriptionsHistory.fxml" />

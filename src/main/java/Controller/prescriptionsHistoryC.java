@@ -1,39 +1,30 @@
 package Controller;
 
 import DataClass.prescriptionsHistory;
-
-import com.itextpdf.io.image.ImageData;
-import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Image;
-
-import dr.Main;
-import javafx.embed.swing.SwingFXUtils;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.print.*;
-import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.transform.Scale;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import libs.cellController;
 import libs.requestFormer;
 import model.showButton;
 
-import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static dr.FinalsVal.*;
+import static dr.FinalsVal.formerH;
+import static dr.FinalsVal.requestH;
 
 public class prescriptionsHistoryC implements Initializable {
     public AnchorPane prescriptionsHistory;
@@ -43,7 +34,7 @@ public class prescriptionsHistoryC implements Initializable {
     public TableColumn <prescriptionsHistory,String> userId;
     public TableColumn <prescriptionsHistory,String> date;
     public TableColumn <prescriptionsHistory,String> show_c;
-
+    public prescriptionDetailsC deatailcontroller;
     public Spinner<Integer> show_spinner;
     public TextField write_TXF;
    public libs.cellController<prescriptionsHistory> cellController=new cellController<>();
@@ -55,6 +46,7 @@ public class prescriptionsHistoryC implements Initializable {
  initCol();
  loadData();
  initializeHandlers();
+
     }
     public void initCol(){
         presId.getStyleClass().add("start");
@@ -64,8 +56,33 @@ public class prescriptionsHistoryC implements Initializable {
         date.setCellValueFactory(new PropertyValueFactory<>("Date"));
         show_c.setCellFactory(cellController.BCellFactory(new showButton("Details ...")));
     }
-    public void  loadData(){
+    public void initDashboardController(){
 
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/prescriptionDetails.fxml"));
+        Parent root=null;
+        try {
+            root= loader.load();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.show();
+         deatailcontroller = loader.getController();
+deatailcontroller.dad(stage);
+
+    }
+    public void  loadData(){
+cellController.clicked.addListener(v->{
+
+    initDashboardController();
+
+});
         req.onReceive(v->{
             history_table.setItems(req.respond);
         });

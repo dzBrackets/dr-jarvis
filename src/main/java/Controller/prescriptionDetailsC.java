@@ -14,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import libs.cellController;
 import model.showButton;
 import model.usedDrug;
@@ -32,6 +34,7 @@ public class prescriptionDetailsC implements Initializable {
     public Label user_id;
     public Label date_label;
     public JFXButton exit_btn;
+    public AnchorPane quick_pane;
     @FXML
     private TableView<usedDrug> table;
     @FXML
@@ -46,7 +49,7 @@ public class prescriptionDetailsC implements Initializable {
     private TableColumn<usedDrug, String> notice_colm;
     ObservableList<usedDrug> data= FXCollections.observableArrayList();;
     libs.cellController<usedDrug> cellController=new cellController<>();
-
+Stage stage;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initCol();
@@ -68,7 +71,10 @@ public class prescriptionDetailsC implements Initializable {
 
 
 
-
+void dad(Stage st){
+        this.stage=st;
+}
     public void exit_methode(ActionEvent actionEvent) {
+        stage.close();
     }
 }
