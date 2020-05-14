@@ -18,20 +18,20 @@ public class coCollection < type > extends ArrayList < type >  {
     private String name;
     private String path;
     private Class<type> className;
-    private QuerySelector<type> query;
-    public coCollection(String name, String path, Class<type> className) {
+    private final QuerySelector<type> query;
+    private final coronaDb mother;
+    public coCollection(String name, String path, Class<type> className,coronaDb mother) {
         super();
         this.name = name;
         this.path = path;
         this.className = className;
-
+this.mother=mother;
         query=new QuerySelector<>(this);
     }
 
 
 
     public void insertMany(type[] data) throws IOException {
-
    FileWriter fw = new FileWriter(path, true);
    BufferedWriter bw = new BufferedWriter(fw);
    PrintWriter out = new PrintWriter(bw);
@@ -39,6 +39,7 @@ public class coCollection < type > extends ArrayList < type >  {
    new BufferedWriter(new FileWriter(path, true)).append(jsonString).append(",").close();
 
 
+        mother.updateSize(name,size());
 
 
     }
@@ -52,6 +53,7 @@ public class coCollection < type > extends ArrayList < type >  {
         new BufferedWriter(new FileWriter(path, true))
                     .append(jsonString).append(",")
                     .close();}
+        mother.updateSize(name,size());
 
     }
 
@@ -66,6 +68,12 @@ public class coCollection < type > extends ArrayList < type >  {
     public void removeOne(type data) {
     remove(data);
         reSave();
+        try {
+            mother.updateSize(name,size());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void reSave() {

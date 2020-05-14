@@ -55,19 +55,35 @@ public class MainPanelC  implements Initializable {
     public JFXButton close_btn;
     public JFXButton minimize_btn;
     static templateC templateController;
-
+    public DashboardC dashController;
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    dashbord_pane.toFront();
+        initDashboardController();
+        dashbord_pane.toFront();
         effect= new javafx.scene.effect.GaussianBlur();
         effect.setRadius(0);
         main_panel.setEffect(effect);
         initTemplate();
+        initDashboardController();
     }
 
+public void initDashboardController(){
+
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/PAGES/Dashboard.fxml"));
+    try {
+        loader.load();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    dashController = loader.getController();
+    dashbord_pane.getChildren().add( dashController.dashborad_pane);
+    dashbord_pane.setVisible(true);
+
+}
 
     public void initTemplate(){
         FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/PAGES/template.fxml"));
@@ -100,27 +116,17 @@ public static WritableImage getTemplateSnap(){
          search_stage.initStyle(StageStyle.TRANSPARENT);
         search_stage.show();
         effect.setRadius(3.25);
-        search_stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                search_stage.close();
-                effect.setRadius(0);
-            }
+        search_stage.setOnCloseRequest(event -> {
+            search_stage.close();
+            effect.setRadius(0);
         });
-
-        search_scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset=event.getSceneX();
-                yOffset=event.getSceneY();
-            }
+        search_scene.setOnMousePressed(event -> {
+            xOffset=event.getSceneX();
+            yOffset=event.getSceneY();
         });
-        search_scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                search_stage.setX(event.getScreenX() - xOffset);
-                search_stage.setY(event.getScreenY()-yOffset);
-            }
+        search_scene.setOnMouseDragged(event -> {
+            search_stage.setX(event.getScreenX() - xOffset);
+            search_stage.setY(event.getScreenY()-yOffset);
         });
 
 
@@ -140,7 +146,7 @@ public static WritableImage getTemplateSnap(){
 
     public void show_DashP(ActionEvent actionEvent) {
         requestP.offer(DashboardC.req.get(3));
-
+        dashController.update();
         dashbord_pane.toFront();
         dashbord_pane.setVisible(true);
         reset_btn_Opicity();

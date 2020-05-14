@@ -47,7 +47,7 @@ File conf;
                 .close();
     }
 private void initTab(String table,String fileName) throws IOException{
-    tables.add(new tablesObj().tablesObj(0,table));
+    tables.add(new tablesObj().tablesObj(0,table,0));
     saveConfig();
 if(!new File(fileName).exists()){
    createTabFile(fileName);
@@ -72,7 +72,7 @@ createTabFile(fileName);
     public <type> coCollection<type> getCollection(String name,Class<type> className)  {
         String loadedJson="";
         String filePath = dir + name + ".json";
-        coCollection<type> loadedObject = new coCollection<type>(name, filePath, className);
+        coCollection<type> loadedObject = new coCollection<type>(name, filePath, className,this);
         try {
            if (!tables.stream().map(tablesObj::getTableName).collect(Collectors.toList()).contains(name)) {
                initTab(name, filePath);
@@ -144,6 +144,17 @@ public void saveConfig() throws IOException {
     public int getUUID(String tableName){
         return tables.stream().filter(v->(v.getTableName()).equals(tableName)).findFirst().get().getUUID();
     }
+    public int getSize(String tableName){
+        return tables.stream().filter(v->(v.getTableName()).equals(tableName)).findFirst().get().getSize();
+    }
+
+    public int updateSize(String tableName,int a) throws IOException {
+        tablesObj tb=tables.stream().filter(v->(v.getTableName()).equals(tableName)).findFirst().get();
+        tb.setSize(a);
+        saveConfig();
+        return tb.getSize();
+    }
+
     public int updateUUID(String tableName) throws IOException {
        tablesObj tb=tables.stream().filter(v->(v.getTableName()).equals(tableName)).findFirst().get();
        tb.setUUID(tb.getUUID()+1);
