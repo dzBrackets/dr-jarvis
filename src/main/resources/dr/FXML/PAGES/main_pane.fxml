@@ -108,14 +108,14 @@
       </AnchorPane>
       <Pane layoutX="893.0" prefHeight="51.0" prefWidth="108.0">
          <children>
-            <JFXButton id="close_btn" fx:id="close_btn" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="54.0" layoutY="7.0" onAction="#close_app" prefHeight="34.0" prefWidth="34.0">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../image/close_window_100px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
+            <JFXButton id="close_btn" fx:id="close_btn" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="54.0" layoutY="7.0" onAction="#close_app" prefHeight="34.0" prefWidth="34.0" >
+            <graphic>
+               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../image/close_window_100px.png" />
+                  </image>
+               </ImageView>
+            </graphic>
             </JFXButton>
             <JFXButton id="minimize_btn" fx:id="minimize_btn" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="14.0" layoutY="7.0" onAction="#minimize_app" prefHeight="34.0" prefWidth="34.0">
                <graphic>

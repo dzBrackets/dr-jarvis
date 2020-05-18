@@ -41,7 +41,7 @@ public class drugItem extends Pane {
         qts.setLayoutX(403);
         qts.setLayoutY(1);
      //   notice.setLayoutX();//
-        notice.setLayoutY(27);
+        notice.setLayoutY(35);
 
         name.setPrefWidth(93);
         name.setPrefHeight(17);

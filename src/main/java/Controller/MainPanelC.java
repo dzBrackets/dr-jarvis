@@ -1,28 +1,22 @@
 package Controller;
 
-import DataClass.Patient;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.effect.GaussianBlur;
 import javafx.scene.SnapshotParameters;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
-import model.usedDrug;
 
 import java.io.IOException;
 import java.net.URL;
@@ -67,6 +61,8 @@ public class MainPanelC  implements Initializable {
         main_panel.setEffect(effect);
         initTemplate();
         initDashboardController();
+        hover_btn();
+
     }
 
 public void initDashboardController(){
@@ -208,5 +204,39 @@ public static WritableImage getTemplateSnap(){
     public void close_app(ActionEvent actionEvent) {
         Platform.exit();
         System.exit(0);
+    }
+    public void hover_btn (){
+        close_btn.hoverProperty().addListener((observable, oldValue, newValue) -> {
+            ImageView white_close =new ImageView("dr/image/delete_24pxwhite.png");
+            white_close.setFitHeight(20);
+            white_close.setFitWidth(20);
+            ImageView black_close =new ImageView("dr/image/close_window_100px.png");
+            black_close.setFitHeight(20);
+            black_close.setFitWidth(20);
+
+            if(close_btn.isHover()){
+                close_btn.setGraphic(white_close);
+            }
+            else {
+                close_btn.setGraphic(black_close);
+            }
+
+
+        });
+        minimize_btn.hoverProperty().addListener((observable, oldValue, newValue) -> {
+            ImageView white_mini =new ImageView("dr/image/minus_24pxwhite.png");
+            white_mini.setFitHeight(20);
+            white_mini.setFitWidth(20);
+            ImageView black_mini =new ImageView("dr/image/minimize.png");
+            black_mini.setFitHeight(20);
+            black_mini.setFitWidth(20);
+            if(minimize_btn.isHover()){
+                minimize_btn.setGraphic(white_mini);
+            }
+            else {
+                minimize_btn.setGraphic(black_mini);
+            }
+
+        });
     }
 }
