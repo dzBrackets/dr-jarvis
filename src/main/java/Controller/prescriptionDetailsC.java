@@ -5,6 +5,8 @@ import DataClass.Patient;
 import DataClass.prescriptionsHistory;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import dr.FinalsVal;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import libs.cellController;
+import libs.requestFormer;
 import model.showButton;
 import model.usedDrug;
 
@@ -24,6 +27,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import static dr.FinalsVal.*;
 
 public class prescriptionDetailsC implements Initializable {
     public Label name_label;
@@ -47,6 +51,8 @@ public class prescriptionDetailsC implements Initializable {
     private TableColumn<usedDrug, String> qts_colm;
     @FXML
     private TableColumn<usedDrug, String> notice_colm;
+    private requestFormer<Patient> req=formerP;
+
     ObservableList<usedDrug> data= FXCollections.observableArrayList();;
     libs.cellController<usedDrug> cellController=new cellController<>();
 Stage stage;
@@ -70,11 +76,33 @@ Stage stage;
     }
 
 
+private void setPatientInfo(Patient patient){
+        name_label.setText(patient.getFullName());
+        age_label.setText(patient.getAge()+"");
+        visite_label.setText(patient.getLastVisit());
+        last_notice_label.setText(patient.getLastDiagnostic());
 
+}
 void dad(Stage st){
         this.stage=st;
 }
     public void exit_methode(ActionEvent actionEvent) {
         stage.close();
+    }
+
+    public void loadFrom(prescriptionsHistory prescriptionsHistory) {
+        date_label.setText(prescriptionsHistory.getDate());
+        prec_id.setText(prescriptionsHistory.getPresId());
+        user_id.setText(prescriptionsHistory.getUserId());
+        data.addAll(prescriptionsHistory.getDrugList());
+
+        req.onReceive(v->{
+            Patient selectedPatient = req.respond.get(0);
+            Platform.runLater(()-> setPatientInfo(selectedPatient));
+        });
+      //  requestP.offer(req.find("getId",prescriptionsHistory.getUserId()));
+        requestP.offer(req.querySearch("SELECT *", "WHERE patientId = '" + prescriptionsHistory.getUserId()+"'", 1));
+
+
     }
 }

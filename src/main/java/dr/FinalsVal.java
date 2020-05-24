@@ -1,5 +1,6 @@
 package dr;
 
+import java.nio.file.Path;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ import org.reactivestreams.Subscriber;
 
 final public class FinalsVal {
 
-       static public final SynchronousQueue<Patient> respond = new SynchronousQueue<>();
+//       static public final SynchronousQueue<Patient> respond = new SynchronousQueue<>();
 
        static public final SynchronousQueue<requestFormer<Patient>> requestP = new SynchronousQueue<>();
        static public final SynchronousQueue<requestFormer<Drug>> requestD = new SynchronousQueue<>();

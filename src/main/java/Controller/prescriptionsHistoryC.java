@@ -74,7 +74,8 @@ public class prescriptionsHistoryC implements Initializable {
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
          deatailcontroller = loader.getController();
-deatailcontroller.dad(stage);
+        deatailcontroller.loadFrom(history_table.getItems().get(cellController.index));
+         deatailcontroller.dad(stage);
 
     }
     public void  loadData(){

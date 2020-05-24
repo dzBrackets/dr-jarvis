@@ -148,11 +148,17 @@ List<Drug> drugList=new ArrayList<>();
     public void save_and_print(ActionEvent actionEvent) throws IOException {
         save_btn.fire();
         MainPanelC.templateController.setTemplateInfo(selectedPatient);
-        for (int i = 0; i < data.size(); i++) {
+        int  i=0;
+        while(i<data.size()){
+            if(i % 5==0)
             MainPanelC.templateController.drug_list.add(new drugItem(data.get(i)),0,i);
+            else {
+                print(MainPanelC.templateStatic);
+                MainPanelC.templateController.reset();
+            }
+            i++;
+
         }
-        print(MainPanelC.templateStatic);
-        MainPanelC.templateController.reset();
         exit_btn.fire();
 
     }

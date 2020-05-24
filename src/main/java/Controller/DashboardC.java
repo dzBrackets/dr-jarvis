@@ -63,6 +63,7 @@ public class DashboardC implements Initializable {
         });
 
 
+
         Thread timer = new Thread(() -> {
             SimpleDateFormat clock = new SimpleDateFormat("k:mm:ss");
             SimpleDateFormat date = new SimpleDateFormat("d MMMMM y");
