@@ -5,9 +5,11 @@ import java.util.ArrayList;
 public class tablesObj {
     private int UUID=0;
     private String tableName="";
-public tablesObj tablesObj(int UUID,String tableName){
+    private int size=0;
+public tablesObj tablesObj(int UUID,String tableName,int size){
     this.UUID=UUID;
     this.tableName=tableName;
+    this.size=size;
     return this;
 }
     public int getUUID() {
@@ -24,5 +26,13 @@ public tablesObj tablesObj(int UUID,String tableName){
 
     public void setTableName(String tableName) {
         this.tableName = tableName;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }

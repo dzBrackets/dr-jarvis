@@ -8,12 +8,14 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -59,8 +61,11 @@ public cellController<Patient> cellController=new cellController<>();
         eventTrigger();
         initCol();
         loadData();
+
     }
     public void initCol(){
+        id_C.getStyleClass().add("start");
+        menu_C.getStyleClass().add("end");
         first_C.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastName_C.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         age_C.setCellValueFactory(new PropertyValueFactory<>("age"));
@@ -141,12 +146,25 @@ public cellController<Patient> cellController=new cellController<>();
         Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/New_patient.fxml"));
         Scene sc =new Scene(root);
         sc.setFill(Color.TRANSPARENT);
-        sc.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
         patientFormStage =new Stage();
         patientFormStage.initModality(Modality.APPLICATION_MODAL);
         patientFormStage.setScene(sc);
         patientFormStage.initStyle(StageStyle.TRANSPARENT);
         patientFormStage.show();
+        sc.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset=event.getSceneX();
+                yOffset=event.getSceneY();
+            }
+        });
+        sc.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                patientFormStage.setX(event.getScreenX() - xOffset);
+                patientFormStage.setY(event.getScreenY()-yOffset);
+            }
+        });
 
     }
     public void initializePane() throws IOException {

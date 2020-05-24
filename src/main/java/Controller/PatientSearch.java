@@ -8,12 +8,14 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -99,6 +101,20 @@ else{
             patientFormStage.setScene(sc);
             patientFormStage.initStyle(StageStyle.TRANSPARENT);
             patientFormStage.show();
+            sc.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    xOffset=event.getSceneX();
+                    yOffset=event.getSceneY();
+                }
+            });
+            sc.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    patientFormStage.setX(event.getScreenX() - xOffset);
+                    patientFormStage.setY(event.getScreenY()-yOffset);
+                }
+            });
         }
 
 

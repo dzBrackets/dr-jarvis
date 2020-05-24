@@ -13,18 +13,10 @@
    <children>
       <Pane id="win_pane" fx:id="win_pane" layoutX="70.0" layoutY="108.0" prefHeight="200.0" prefWidth="592.0" style="-fx-background-color: #2C3964; -fx-background-radius: 11px;">
          <children>
-            <Label id="win_name" fx:id="win_name" layoutX="26.0" layoutY="14.0" prefHeight="33.0" prefWidth="143.0" text="Label  :" textFill="WHITE">
+            <Label id="win_name" fx:id="win_name" layoutX="27.0" layoutY="14.0" prefHeight="33.0" prefWidth="143.0" text="Label  :" textFill="WHITE">
                <font>
                   <Font name="Sarabun SemiBold" size="18.0" />
                </font>
-            </Label>
-            <Label id="value_area" fx:id="value_area" alignment="TOP_LEFT" graphicTextGap="10.0" layoutX="26.0" layoutY="65.0" prefHeight="108.0" prefWidth="538.0" style="-fx-background-color: #765EE2; -fx-background-radius: 11px;" text=" value here" textFill="#eeeeee">
-               <font>
-                  <Font name="Sarabun SemiBold" size="14.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
             </Label>
             <JFXButton id="cancel_btn" fx:id="cancel_btn" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="540.0" onAction="#exit_methode" prefHeight="41.0" prefWidth="49.0">
                <graphic>
@@ -35,6 +27,18 @@
                   </ImageView>
                </graphic>
             </JFXButton>
+            <Pane layoutX="27.0" layoutY="46.0" prefHeight="108.0" prefWidth="538.0" style="-fx-background-color: #765EE2; -fx-background-radius: 11px;">
+               <children>
+                  <Label id="value_area" fx:id="value_area" alignment="TOP_CENTER" graphicTextGap="10.0" layoutX="13.0" layoutY="4.0" lineSpacing="3.0" prefHeight="100.0" prefWidth="513.0" style="-fx-background-color: #765EE2;" text=" value here" textFill="#eeeeee" wrapText="true">
+                     <font>
+                        <Font name="Sarabun SemiBold" size="14.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </Pane>
          </children></Pane>
    </children>
 </AnchorPane>

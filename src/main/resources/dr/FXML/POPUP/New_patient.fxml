@@ -49,7 +49,7 @@
             <Font name="Sarabun SemiBold" size="13.0" />
          </font>
       </JFXButton>
-      <JFXDatePicker id="date" fx:id="date" defaultColor="#1ad28b" editable="false" layoutX="227.0" layoutY="219.0" prefHeight="44.0" prefWidth="402.0" style="-fx-background-color: white; -fx-background-radius: 11px;" />
+      <JFXDatePicker id="date" fx:id="date" defaultColor="#1ad28b" editable="false" layoutX="227.0" layoutY="219.0" maxHeight="44.0" maxWidth="402.0" prefHeight="44.0" prefWidth="402.0" style="-fx-background-color: white; -fx-background-radius: 11px;" />
       <JFXRadioButton layoutX="270.0" layoutY="310.0" prefWidth="70.0" selected="true" style="-jfx-selected-color: #765EE2; -jfx-unselected-color: #765EE2;" text="Male" textFill="WHITE">
          <font>
             <Font name="Sarabun SemiBold" size="18.0" />

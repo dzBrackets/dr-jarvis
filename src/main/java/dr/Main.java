@@ -24,6 +24,7 @@ public class Main extends Application {
     public static dataThread<Drug> drugThread=null;
     public static dataThread<Patient> patientThread=null;
     public static dataThread<prescriptionsHistory> hisPerThread=null;
+    public static   FXMLLoader loader;
 
     public static Stage staticstage=null;
     public static void main(String[] args)
@@ -46,10 +47,11 @@ hisPerThread.start();
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root= FXMLLoader.load(getClass().getResource("/dr/FXML/PAGES/main_pane.fxml"));
+        loader=new FXMLLoader(getClass().getResource("/dr/FXML/PAGES/main_pane.fxml"));
+        Parent root= loader.load();
         Scene scene=new Scene(root);
         scene.setFill(Color.TRANSPARENT);
-       scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
+     //  scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");//
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();

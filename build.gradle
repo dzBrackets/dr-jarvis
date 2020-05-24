@@ -23,6 +23,17 @@ dependencies {
     compile 'com.github.jiconfont:jiconfont-javafx:1.0.0'
     compile 'org.kordamp.bootstrapfx:bootstrapfx-core:0.2.4'
     implementation 'org.controlsfx:controlsfx:11.0.1'
+    compile group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.19'
+// https://mvnrepository.com/artifact/com.itextpdf/itextpdf
+    compile group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.1'
+// https://mvnrepository.com/artifact/com.itextpdf/io
+    compile group: 'com.itextpdf', name: 'io', version: '7.1.11'
+// https://mvnrepository.com/artifact/com.itextpdf/kernel
+    compile group: 'com.itextpdf', name: 'kernel', version: '7.1.11'
+// https://mvnrepository.com/artifact/com.itextpdf/layout
+    compile group: 'com.itextpdf', name: 'layout', version: '7.1.11'
+
+
     //Jackson
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
     //query
@@ -30,12 +41,14 @@ dependencies {
 //reactive
     compile group: 'io.reactivex.rxjava3', name: 'rxjava', version: '3.0.2'
 
+
+
 }
 
 
 javafx {
     version = "12"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
+    modules = [ 'javafx.controls', 'javafx.fxml' ,'javafx.swing']
 
 }
 run {
