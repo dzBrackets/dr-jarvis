@@ -43,3 +43,27 @@
 	-fx-text-fill:#01B9CA;
 	-fx-padding: 0;
 }
+.combo-box-base  {
+-fx-border-color:#D9D9D9;
+-fx-border-radius:12px ;
+-fx-background-color:white;
+-fx-padding:0;
+-fx-font-family:'Sarabun Medium';
+-fx-font-size:12px;
+   }
+   .combo-box .list-cell {
+	 -fx-text-fill: black;
+   /* -fx-cell-size: 40px; */
+}
+.combo-box-popup .list-view .list-cell:filled:selected{
+	 -fx-background-color: transparent;
+    -fx-text-fill: black;
+}
+.combo-box-popup .list-view .list-cell:filled:hover {
+		 -fx-background-color: #2196F3;
+    -fx-text-fill: black;
+
+}
+#free_lbl {
+	-fx-font-size: 12px;
+}
