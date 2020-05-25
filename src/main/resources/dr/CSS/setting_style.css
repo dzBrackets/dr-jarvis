@@ -1,0 +1,45 @@
+
+#info1_label , #tab_type {
+-fx-font-family: 'Sarabun SemiBold' ;
+}
+/* tab pane css*/
+.tab {
+	-fx-pref-width:170;
+
+}
+.tab-header-background {
+	-fx-background-color:transparent; 
+}
+.tab-label {
+  -fx-text-fill:#000000;
+  -fx-font-size:16px;
+  -fx-font-weight:normal ;	
+}
+.jfx-tab-pane .tab-selected-line {
+	-fx-border-color:#765EE2;
+}
+/**************************************************/
+.title_label {
+-fx-font-size: 16px;
+-fx-font-family: 'Sarabun Medium ' ;
+ -fx-text-fill:#000000;
+}
+.doc_info_label{
+	-fx-font-size: 14px;
+-fx-font-family: 'Sarabun SemiBold ' ;
+ -fx-text-fill:#000000;
+}
+#import_btn {
+	-fx-text-fill:#7C9DFF;
+}
+.footer_label {
+	-fx-font-size: 10px;
+	-fx-font-family: 'Sarabun Medium ' ;
+	-fx-text-fill:#D9D9D9;
+	
+}
+#buy_btn {
+	-fx-font-size: 12px;
+	-fx-text-fill:#01B9CA;
+	-fx-padding: 0;
+}

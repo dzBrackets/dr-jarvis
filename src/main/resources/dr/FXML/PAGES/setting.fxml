@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="setting_pane" fx:id="setting_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: white; -fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px;" stylesheets="@../../CSS/setting_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label id="info1_label" layoutX="26.0" layoutY="14.0" prefHeight="32.0" prefWidth="99.0" style="-fx-font-size: 21px;" text="Settings&gt; " textFill="#4a4a4a" />
+      <Label id="tab_type" fx:id="tab_type" layoutX="119.0" layoutY="14.0" prefHeight="32.0" prefWidth="162.0" style="-fx-font-size: 21px;" text="Personal " textFill="#4a4a4a" />
+      <JFXTabPane layoutX="106.0" layoutY="80.0" prefHeight="658.0" prefWidth="701.0">
+         <tabs>
+            <Tab id="personal_tab" fx:id="personal_tab" text="Personal settings ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutY="31.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="doctor informations:" />
+                        <Pane layoutY="70.0" prefHeight="200.0" prefWidth="701.0" style="-fx-border-color: #E5E5E5; -fx-background-radius: 11px; -fx-border-radius: 11px;">
+                           <children>
+                              <GridPane layoutX="14.0" layoutY="6.0" prefHeight="176.0" prefWidth="289.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="106.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="133.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="74.0" styleClass="doc_info_label" text="Name :">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </Label>
+                                    <Label prefHeight="20.0" prefWidth="74.0" styleClass="doc_info_label" text="Email :" GridPane.rowIndex="1" />
+                                    <Label prefHeight="20.0" prefWidth="74.0" styleClass="doc_info_label" text="Adresse :" GridPane.rowIndex="2" />
+                                    <Label prefHeight="20.0" prefWidth="108.0" styleClass="doc_info_label" text="Phone number : " GridPane.rowIndex="3" />
+                                    <Label layoutX="10.0" layoutY="23.0" prefHeight="20.0" prefWidth="112.0" styleClass="doc_info_label" text="0554485499" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="23.0" prefHeight="20.0" prefWidth="112.0" styleClass="doc_info_label" text="bini tamou" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="23.0" prefHeight="20.0" prefWidth="146.0" styleClass="doc_info_label" text="daouadji@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="23.0" prefHeight="20.0" prefWidth="169.0" styleClass="doc_info_label" text="aymen daouadji" GridPane.columnIndex="1">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </Label>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </Pane>
+                        <Label layoutY="284.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="Data properties :" />
+                        <Label layoutX="14.0" layoutY="340.0" prefHeight="20.0" prefWidth="118.0" styleClass="doc_info_label" text="Import data :">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <JFXButton id="import_btn" fx:id="import_btn" layoutX="191.0" layoutY="337.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="import..." />
+                        <Label layoutX="351.0" layoutY="340.0" prefHeight="20.0" prefWidth="118.0" styleClass="doc_info_label" text="Export data:">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <JFXButton id="import_btn" fx:id="import_btn1" layoutX="528.0" layoutY="337.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="export..." />
+                        <Label layoutY="390.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="Data properties :" />
+                        <Pane layoutX="1.0" layoutY="427.0" prefHeight="150.0" prefWidth="498.0" style="-fx-border-color: #E5E5E5; -fx-background-radius: 11px; -fx-border-radius: 11px;">
+                           <children>
+                              <Label layoutX="14.0" layoutY="21.0" prefHeight="20.0" prefWidth="180.0" styleClass="doc_info_label" text="Load external Drugs list:">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Label>
+                              <JFXButton id="import_btn" fx:id="import_btn2" layoutX="241.0" layoutY="18.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="from File..." />
+                              <JFXButton id="import_btn" fx:id="import_btn21" layoutX="373.0" layoutY="18.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="Web api..." />
+                              <JFXCheckBox layoutX="14.0" layoutY="75.0" prefHeight="18.0" prefWidth="225.0" text="Enable auto update from web api" />
+                              <Label layoutX="239.0" layoutY="126.0" prefHeight="20.0" prefWidth="19.0" styleClass="footer_label" text="buy">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Label>
+                              <JFXButton id="buy_btn" fx:id="buy_btn" layoutX="258.0" layoutY="124.0" prefHeight="25.0" prefWidth="48.0" text="premium" underline="true" wrapText="true" />
+                              <Label layoutX="306.0" layoutY="127.0" prefHeight="20.0" prefWidth="99.0" styleClass="footer_label" text="to enable this feature">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Label>
+                           </children></Pane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+             <Tab id="Preferences_tab" fx:id="Preferences_tab" text="Preferences">
+                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+             </Tab>
+             <Tab id="customize_tab" fx:id="customize_tab" text="customize...">
+                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+             </Tab>
+             <Tab id="info_tab" fx:id="info_tab" text="info...">
+                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="565.0" prefWidth="710.0" />
+             </Tab>
+         </tabs>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </JFXTabPane>
+   </children>
+</AnchorPane>
