@@ -1,8 +1,11 @@
 package Controller;
 
 import DataClass.Patient;
+import DataClass.prescriptionsHistory;
 import com.jfoenix.controls.JFXButton;
+import dr.FinalsVal;
 import dr.Main;
+import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -53,12 +56,17 @@ public cellController<Patient> cellController=new cellController<>();
     public JFXButton add_patient_btn;
     public Label info2_label;
     private requestFormer<Patient> req=formerP;
+    private requestFormer<prescriptionsHistory> formerH=new requestFormer<>();
+    private requestFormer<prescriptionsHistory> req2= FinalsVal.formerH;
+
     double xOffset,yOffset;
     Parent root ;
-
+    Patient selectedPatient=null;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         eventTrigger();
+        initEvent();
         initCol();
         loadData();
 
@@ -92,6 +100,8 @@ public cellController<Patient> cellController=new cellController<>();
     public void eventTrigger(){
 
         cellController.clicked.addListener(v->{
+
+
             FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/show_window.fxml"));
             try {
                 Parent root = loader.load();
@@ -108,12 +118,11 @@ public cellController<Patient> cellController=new cellController<>();
                     IntegerProperty prop= (IntegerProperty) e;
                     if(prop.getValue()==0){
                         System.out.println("delete");
-                            requestP.offer(req.remove(patient_table.getItems().get(cellController.index)));
+                        cleanDelete(patient_table.getItems().get(cellController.index));
                         write_TXF.clear();
-
                     }
                     if(prop.getValue()==1){
-                        requestP.offer(req.update((patient_table.getItems().get(cellController.index))));
+                       // requestP.offer(req.update((patient_table.getItems().get(cellController.index))));
                     }
                     if(prop.getValue()==2){
                         try {
@@ -133,6 +142,24 @@ public cellController<Patient> cellController=new cellController<>();
             requestP.offer(req.callBack("querySearch","SELECT *","WHERE firstName $LIKE '"+value+"%' OR lastName $LIKE '"+value+"%'",String.class));
 
         });
+    }
+private void initEvent(){
+        req2.onReceive(v->{
+            System.out.println("done done done!!!");
+            requestP.offer(req.remove(selectedPatient));
+            selectedPatient=null;
+        });
+        formerH.onReceive(v->{
+            System.out.println("size is "+formerH.respond.size());
+            prescriptionsHistory[] blue = formerH.respond.toArray(prescriptionsHistory[]::new);
+            Platform.runLater(()->requestH.offer(req2.removeBunch(blue)));
+        });
+}
+    private void cleanDelete(Patient patient) {
+         selectedPatient = patient;
+        System.out.println("clean");
+            requestH.offer(formerH.mojoJojo("WHERE presId = ", patient.getPrescriptionsId().toArray(String[]::new)));
+
     }
 
     static public void closePopuUp(){

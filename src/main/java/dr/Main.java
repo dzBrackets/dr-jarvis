@@ -32,11 +32,14 @@ public class Main extends Application {
 
         try {
             drugThread=new dataThread<>("drug",Drug.class,requestD);
-            patientThread=new dataThread<>("patient",Patient.class,requestP);
-hisPerThread=new dataThread<>("prescriptions",prescriptionsHistory.class,requestH);
-            patientThread.start();
             drugThread.start();
-hisPerThread.start();
+
+            hisPerThread=new dataThread<>("prescriptions",prescriptionsHistory.class,requestH);
+            hisPerThread.start();
+
+            patientThread=new dataThread<>("patient",Patient.class,requestP);
+            patientThread.start();
+
 
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();

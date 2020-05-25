@@ -80,7 +80,7 @@ List<Drug> drugList=new ArrayList<>();
     Drug selectedDrug=null;
     Patient selectedPatient=null;
     prescriptionsHistory pres;
-
+    private boolean FIRE_EXIT=true;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -129,7 +129,7 @@ List<Drug> drugList=new ArrayList<>();
 
 
 
-    public void save(ActionEvent actionEvent) throws IOException {
+    public void save() throws IOException {
 
          pres = new prescriptionsHistory();
         pres.setUUID(database.updateUUID("prescriptions"));
@@ -140,13 +140,18 @@ List<Drug> drugList=new ArrayList<>();
         pres.setDate(selectedPatient.getLastVisit());
         requestP.offer(formerP.update(selectedPatient));
         requestH.offer(formerH.post(pres));
+        if(FIRE_EXIT)
+        exit_btn.fire();
 
 
 
     }
 
     public void save_and_print(ActionEvent actionEvent) throws IOException {
+        FIRE_EXIT=false;
         save_btn.fire();
+        FIRE_EXIT=true;
+
         MainPanelC.templateController.setTemplateInfo(selectedPatient);
         int  i=0;
         while(i<data.size()){

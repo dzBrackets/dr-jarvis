@@ -1,25 +1,18 @@
 package Controller;
 
 import DataClass.prescriptionsHistory;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import libs.cellController;
 import libs.requestFormer;
+import model.stageLoader;
 import model.showButton;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -34,7 +27,7 @@ public class prescriptionsHistoryC implements Initializable {
     public TableColumn <prescriptionsHistory,String> userId;
     public TableColumn <prescriptionsHistory,String> date;
     public TableColumn <prescriptionsHistory,String> show_c;
-    public prescriptionDetailsC deatailcontroller;
+    public prescriptionDetailsC detailController;
     public Spinner<Integer> show_spinner;
     public TextField write_TXF;
    public libs.cellController<prescriptionsHistory> cellController=new cellController<>();
@@ -57,7 +50,7 @@ public class prescriptionsHistoryC implements Initializable {
         show_c.setCellFactory(cellController.BCellFactory(new showButton("Details ...")));
     }
     public void initDashboardController(){
-
+/*
         FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/prescriptionDetails.fxml"));
         Parent root=null;
         try {
@@ -76,7 +69,12 @@ public class prescriptionsHistoryC implements Initializable {
          deatailcontroller = loader.getController();
         deatailcontroller.loadFrom(history_table.getItems().get(cellController.index));
          deatailcontroller.dad(stage);
-
+*/
+        stageLoader op=new stageLoader("/dr/FXML/POPUP/prescriptionDetails.fxml");
+        detailController = (prescriptionDetailsC) op.controller;
+        op.show();
+        detailController.loadFrom(history_table.getItems().get(cellController.index));
+        detailController.dad(op.stage);
     }
     public void  loadData(){
 cellController.clicked.addListener(v->{

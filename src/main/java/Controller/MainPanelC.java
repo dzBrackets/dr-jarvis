@@ -140,7 +140,6 @@ public static WritableImage getTemplateSnap(){
     }
 
     public void show_DashP(ActionEvent actionEvent) {
-        requestP.offer(DashboardC.req.get(3));
         dashController.update();
         dashbord_pane.toFront();
         dashbord_pane.setVisible(true);

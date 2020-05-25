@@ -2,6 +2,8 @@ package model.components;
 import DataClass.Patient;
 import DataClass.prescriptionsHistory;
 import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -49,6 +51,10 @@ public recentComp(Patient patient){
 
         //   <Label id="recent_diago_label" layoutX="7.0" layoutY="61.0" prefHeight="17.0" prefWidth="59.0" text="diagnostic : " textFill="WHITE" />
         //             <Label id="time_label" fx:id="item2_time" layoutX="164.0" layoutY="70.0" text="Today 12:00 " textFill="WHITE" />
+}
+public void  showMoreListener(EventHandler<ActionEvent> v){
+
+    showMore.setOnAction(v);
 }
 public void setChildStyle(){
     name.setLayoutX(7);

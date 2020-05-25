@@ -6,6 +6,7 @@ import org.josql.QueryExecutionException;
 import org.josql.QueryParseException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.SynchronousQueue;
 import java.util.stream.Collectors;
@@ -27,6 +28,7 @@ private final SynchronousQueue<requestFormer<type>> request;
             requestFormer<type> req;
             try {
                 req = request.take();
+                System.out.println(req.request);
                 if (req.request.equals(requestFormer.GET)) {
                     req.reply(data);
                     req.dispatchEvent();
@@ -38,7 +40,8 @@ private final SynchronousQueue<requestFormer<type>> request;
                         accepted=data.subList(data.size()-(int)req.arg1,data.size());
                     else
                     accepted=data;
-                    req.reply(accepted.stream().filter(v->!((Patient)v).getPrescriptionsId().isEmpty()).collect(Collectors.toList()));
+                    req.reply(accepted);
+                  //  req.reply(accepted.stream().filter(v->!((Patient)v).getPrescriptionsId().isEmpty()).collect(Collectors.toList()));
                     req.dispatchEvent();
                 }
 
@@ -51,7 +54,17 @@ private final SynchronousQueue<requestFormer<type>> request;
 
 
                 }
+                if (req.request.equals(requestFormer.REMOVE_LIST)){
+                    System.out.println("remove bunch");
+                    for (type p:req.sameTypeList) {
+                        data.removeOne(p);
+                    }
 
+                    req.reply(data);
+                    req.dispatchEvent();
+
+
+                }
             if (req.request.equals(requestFormer.FIND)){
 
                 List<type> D=data.findByObject((String) req.arg1,req.arg2);
@@ -86,10 +99,22 @@ private final SynchronousQueue<requestFormer<type>> request;
                 }
             if(req.request.equals(requestFormer.CALLBACK))
             {
+                System.out.println("here finaly "+req.functionName);
                 try {
                 if(req.functionName.equals("querySearch")){
                         req.reply((data.querySelector((String)req.arg1,(String)req.arg2).collect()));
                         if(req.ar3!=null&&req.respond.size()>(int)req.ar3) req.reply(req.respond.subList(0,(int)req.ar3));
+                        req.dispatchEvent();
+                    }
+
+                    if(req.functionName.equals("mojojojo")){
+                        ArrayList<type> selectiveList=new ArrayList<>();
+                        for (Object element:req.funArguments)
+                        {
+                            selectiveList.addAll(data.querySelector("SELECT *",req.arg1+"'"+(String)element+"'").collect());
+
+                        }
+                        req.reply(selectiveList);
                         req.dispatchEvent();
                     }
                 }

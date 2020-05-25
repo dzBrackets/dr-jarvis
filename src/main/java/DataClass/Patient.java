@@ -52,7 +52,7 @@ public class Patient implements Serializable {
     public int getAge(){
 
         LocalDate birth = LocalDate.parse(birthDay, dateFilters[1]);
-        System.out.println(birth);
+        //System.out.println(birth);
         int calc = Period.between(birth, LocalDate.now()).getYears();
         return calc;
     }

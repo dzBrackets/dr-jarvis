@@ -51,7 +51,7 @@ public class prescriptionDetailsC implements Initializable {
     private TableColumn<usedDrug, String> qts_colm;
     @FXML
     private TableColumn<usedDrug, String> notice_colm;
-    private requestFormer<Patient> req=formerP;
+    private requestFormer<Patient> req=new requestFormer<>();
 
     ObservableList<usedDrug> data= FXCollections.observableArrayList();;
     libs.cellController<usedDrug> cellController=new cellController<>();

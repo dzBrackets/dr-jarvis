@@ -6,15 +6,17 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 final public class requestFormer<type> {
    public String request;
 
-public List<type> respL=null;
 public String functionName;
-public Object[] funArguments;
-public Object arg1,arg2,ar3,ar4;
+    public Object[] funArguments;
+
+    public type[] sameTypeList;
+    public Object arg1,arg2,ar3,ar4;
 public type respondObject=null;
 public ObservableList<type> respond= FXCollections.observableArrayList();
     public type obr1,obr2;
@@ -30,6 +32,7 @@ public ObservableList<type> respond= FXCollections.observableArrayList();
     public static final String UPDATE="u";
     public static final String UPDATE_BY ="ub";
     public static final String REMOVE="r";
+    public static final String REMOVE_LIST="ra";
     public static final String CALLBACK="cb";
     public static final String FIND="f";
 public requestFormer(){}
@@ -83,6 +86,11 @@ public <klass> requestFormer<type> callBack(String fName, klass[] ob, Class<klas
         this.arg1=arg1;
         return this;
     }
+    public requestFormer<type> removeBunch(type[] arr){
+        this.request=REMOVE_LIST;
+        sameTypeList=arr;
+        return this;
+    }
 
     public void onReceive(InvalidationListener event) {
         System.out.println("you handle an event!!!");
@@ -108,5 +116,12 @@ public <klass> requestFormer<type> callBack(String fName, klass[] ob, Class<klas
         this.ar3=entries;
         this.request=CALLBACK;
         return this;
+    }
+    public requestFormer<type> mojoJojo(String s, String[] elements){
+    arg1=s;
+    this.functionName="mojojojo";
+    this.request=CALLBACK;
+    this.funArguments=elements;
+    return this;
     }
 }

@@ -11,6 +11,8 @@ import DataClass.Patient;
 import DataClass.prescriptionsHistory;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.internal.operators.observable.ObservableAny;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.transform.Scale;
@@ -31,6 +33,7 @@ final public class FinalsVal {
        static public final requestFormer<prescriptionsHistory> formerH=new requestFormer<>();
        static public final coronaDb database=new coronaDb("norme");
        static public final DateTimeFormatter[] dateFilters={DateTimeFormatter.ofPattern("dd-MM-yyyy h:m"),DateTimeFormatter.ofPattern("dd-MM-yyyy")};
+       private final IntegerProperty await =new SimpleIntegerProperty(1);
 
        public static boolean isNumeric(String strNum) {
               if (strNum == null) {
