@@ -81,10 +81,10 @@ List<Drug> drugList=new ArrayList<>();
     Patient selectedPatient=null;
     prescriptionsHistory pres;
     private boolean FIRE_EXIT=true;
-
+private boolean added=false;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        spinner=new Spinner<Integer>(1,99,1,1);
+       // spinner=new Spinner<Integer>(1,99,1,1);
 
         initCol();
         loadData();
@@ -122,8 +122,6 @@ List<Drug> drugList=new ArrayList<>();
         }
 
          MainPanelC.effect.setRadius(0);
-
-
     }
 
 
@@ -155,15 +153,15 @@ List<Drug> drugList=new ArrayList<>();
         MainPanelC.templateController.setTemplateInfo(selectedPatient);
         int  i=0;
         while(i<data.size()){
-            if(i % 5==0)
             MainPanelC.templateController.drug_list.add(new drugItem(data.get(i)),0,i);
-            else {
+
+            if(i % 5==0){
                 print(MainPanelC.templateStatic);
-                MainPanelC.templateController.reset();
-            }
+                  MainPanelC.templateController.drug_list.getChildren().clear();}
             i++;
 
         }
+        MainPanelC.templateController.reset();
         exit_btn.fire();
 
     }
@@ -202,10 +200,10 @@ List<Drug> drugList=new ArrayList<>();
 
     public void initEvents(){
     add_btn.setOnAction(v->{
-            if(selectedDrug!=null){
+            if(!added){
                 data.add(new usedDrug().usedDrug(selectedDrug.getName(),type_combo.getSelectionModel().getSelectedItem(),doss_combo.getSelectionModel().getSelectedItem(),spinner.getValue()+"",notice_text_field.getText()));
                 drugList.add(selectedDrug);
-                selectedDrug=null;
+                added=true;
                 type_combo.getItems().clear();
                 doss_combo.getItems().clear();
                 drug_search.setText("");
@@ -223,6 +221,8 @@ List<Drug> drugList=new ArrayList<>();
             fillDrugInfo(drugList.get(cellController.index));
             data.remove(cellController.index);
             drugList.remove(cellController.index);
+            added=false;
+
         }
     });
     }
@@ -249,6 +249,7 @@ List<Drug> drugList=new ArrayList<>();
         });
 
         suggestionsBar.onSelect(v->{
+            added=false;
             int value=((IntegerProperty) v).getValue();
             if(value!=-1&&req.respond.size()-1>=value){
                 selectedDrug=req.respond.get(value);
@@ -273,7 +274,6 @@ List<Drug> drugList=new ArrayList<>();
                 show_winC control = loader.getController();
                 showField = new popUpWindow(root.getChildrenUnmodifiable());
                 showField.show(quick_pane.getScene().getWindow());
-
 
             } catch (IOException e) {
                 e.printStackTrace();
