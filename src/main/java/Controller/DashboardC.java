@@ -15,6 +15,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import libs.coronaDb.dataTostatistics;
 import libs.requestFormer;
 import model.components.recentComp;
 import model.stageLoader;
@@ -154,37 +155,14 @@ void chartInit(){
 
     lineChart.setTitle("Last month activity");
     //defining a series
-    XYChart.Series<Number,Number> series = new XYChart.Series<>();
-    series.setName("Patient");
-    series.getData().add(new XYChart.Data<>(1, 30));
-    series.getData().add(new XYChart.Data<>(2, 14));
-    series.getData().add(new XYChart.Data<>(3, 15));
-    series.getData().add(new XYChart.Data<>(4, 10));
-    series.getData().add(new XYChart.Data<>(5, 15));
-    series.getData().add(new XYChart.Data<>(6, 14));
-    series.getData().add(new XYChart.Data<>(7, 22));
-    series.getData().add(new XYChart.Data<>(8, 20));
-    series.getData().add(new XYChart.Data<>(9, 10));
-    series.getData().add(new XYChart.Data<>(10, 17));
-    series.getData().add(new XYChart.Data<>(11, 12));
-    series.getData().add(new XYChart.Data<>(12, 25));
-
     //
     XYChart.Series<Number,Number> series2 = new XYChart.Series<>();
     series2.setName("new Patient");
-    series2.getData().add(new XYChart.Data<>(1, 1));
-    series2.getData().add(new XYChart.Data<>(2, 2));
-    series2.getData().add(new XYChart.Data<>(3, 0));
-    series2.getData().add(new XYChart.Data<>(4, 5));
-    series2.getData().add(new XYChart.Data<>(5, 15));
-    series2.getData().add(new XYChart.Data<>(6, 10));
-    series2.getData().add(new XYChart.Data<>(7, 20));
-    series2.getData().add(new XYChart.Data<>(8, 14));
-    series2.getData().add(new XYChart.Data<>(9, 5));
-    series2.getData().add(new XYChart.Data<>(10, 0));
-    series2.getData().add(new XYChart.Data<>(11, 0));
-    series2.getData().add(new XYChart.Data<>(12, 1));
-    lineChart.getData().add(series);
+    //load stat
+    dataTostatistics st=new dataTostatistics(new int[]{5,1,0,50,10,30,5,20,30,1,4,5,9,15,13,40,30,35,11,12,1,4,5,9,15,13,40,30,35});
+    for (int i = 0; i < st.daysByMonth.length; i++) {
+        series2.getData().add(new XYChart.Data<>(i+1, st.daysByMonth[i]));
+    }
     lineChart.getData().add(series2);
     container.getChildren().add(lineChart);
 }

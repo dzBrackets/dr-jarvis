@@ -39,7 +39,8 @@ public class NewDrug implements Initializable {
     public Label error_txt;
     public JFXButton Cancel_btn;
     Drug drug;
-private requestFormer<Drug> req=formerD;
+    private final requestFormer<Drug> req=formerD;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         form_validation();
@@ -71,18 +72,23 @@ private requestFormer<Drug> req=formerD;
                         update = false;
                     }
 
-                    else drug = req.respondObject;
+                    else {drug = req.respondObject;
+                    }
                     if (!drug.getType().contains(parsedType))
                         drug.getType().add(parsedType);
 
                     if (!drug.getDose().contains(doss_TXF.getText() + weight_combo.getSelectionModel().getSelectedItem()))
                         drug.getDose().add(doss_TXF.getText() + weight_combo.getSelectionModel().getSelectedItem());
                if(valid){
-                    if (update)
+                    if (update){
                         requestD.offer(req.update());
-                    else
+                    }
+                    else{
                         requestD.offer(req.post(drug));
-                }
+                    }
+                   req.respondObject=null;
+
+               }
                 }
 
         );
