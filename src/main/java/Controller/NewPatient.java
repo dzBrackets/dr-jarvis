@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -22,6 +23,7 @@ import javax.xml.validation.Validator;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import static Controller.PatientList.setTableItems;
@@ -39,33 +41,48 @@ public class NewPatient implements Initializable {
     public JFXDatePicker date;
     @FXML
     ToggleGroup gender_group;
+    private Patient oldPatient=null;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         form_validation();
-
     }
+void preFilled(Patient patient){
+        oldPatient=patient;
+        firstN_TXF.setText(patient.getFirstName());
+        lastN_TXF.setText(patient.getLastName());
+        date.setValue(LocalDate.parse(patient.getBirthDay(), DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+    add_btn.setText("Update");
 
+
+}
     public void add_patient(ActionEvent actionEvent) {
-int gender=((JFXRadioButton)gender_group.getSelectedToggle()).getText().equals("male")?0:1;
+        System.out.println(((JFXRadioButton)gender_group.getSelectedToggle()).getText());
+        int gender=((JFXRadioButton)gender_group.getSelectedToggle()).getText().equals("Male")?0:1;
         String pf=removeSpace(firstN_TXF.getText().toLowerCase());
         String pl=removeSpace(lastN_TXF.getText().toLowerCase());
-        Patient patient=null ;
+        Patient patient;
 
         try{
         if(pf.length()>2)
             if(pl.length()>2)
                 if(date.getValue().toString().length()>5){
+                if(oldPatient!=null) {
+                    oldPatient.Patient(oldPatient.getPatientId(),pf,pl,date.getValue(),gender,LocalDate.now(),write_TXA.getText());
+                    requestP.offer(req.update());
+                }
+                else{
                     patient= new Patient().Patient("N/D",pf,pl,date.getValue(),gender,LocalDate.now(),write_TXA.getText());
-                patient.setUUID(database.updateUUID("patient"));
+                    patient.setUUID(database.updateUUID("patient"));
+                    requestP.offer(req.post(patient));}
 
-          requestP.offer(req.post(patient));
                   closePopuUp();
                 }
 
     }
-      catch ( IOException e){
+      catch (IOException  ignored){
 
       }
+
         MainPanelC.effect.setRadius(0);
     }
 

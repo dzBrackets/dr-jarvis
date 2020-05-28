@@ -71,10 +71,10 @@ public class prescriptionsHistoryC implements Initializable {
          deatailcontroller.dad(stage);
 */
         stageLoader op=new stageLoader("/dr/FXML/POPUP/prescriptionDetails.fxml");
-        detailController = (prescriptionDetailsC) op.controller;
+        detailController = (prescriptionDetailsC) op.getController();
         op.show();
         detailController.loadFrom(history_table.getItems().get(cellController.index));
-        detailController.dad(op.stage);
+        detailController.dad(op.getStage());
     }
     public void  loadData(){
 cellController.clicked.addListener(v->{

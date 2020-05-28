@@ -117,10 +117,10 @@ void initHandler(){
             int finalI = i;
             comp.showMoreListener(v->{
                 stageLoader op=new stageLoader("/dr/FXML/POPUP/prescriptionDetails.fxml");
-                prescriptionDetailsC controller = (prescriptionDetailsC) op.controller;
+                prescriptionDetailsC controller = (prescriptionDetailsC) op.getController();
                 op.show();
                 controller.loadFrom(presList.get(finalI));
-                controller.dad(op.stage);
+                controller.dad(op.getStage());
             });
             /*
 

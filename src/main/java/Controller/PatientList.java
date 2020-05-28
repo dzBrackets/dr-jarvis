@@ -27,6 +27,8 @@ import libs.cellController;
 import libs.requestFormer;
 import model.popUpWindow;
 import model.showButton;
+import model.stageLoader;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -48,9 +50,11 @@ public class PatientList implements Initializable {
 public cellController<Patient> cellController=new cellController<>();
     static ObservableList<Patient> data = FXCollections.observableArrayList();
     public static popUpWindow  showField ;
-    static public  Stage patientFormStage;
     public static Stage Table_quick_stage ;
     public  static  quick_panelC control ;
+
+    static public  Stage patientFormStage;
+
     public Spinner<Integer> show_spinner;
     public TextField write_TXF;
     public JFXButton add_patient_btn;
@@ -62,6 +66,7 @@ public cellController<Patient> cellController=new cellController<>();
     double xOffset,yOffset;
     Parent root ;
     Patient selectedPatient=null;
+    private stageLoader sl;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -122,7 +127,8 @@ public cellController<Patient> cellController=new cellController<>();
                         write_TXF.clear();
                     }
                     if(prop.getValue()==1){
-                       // requestP.offer(req.update((patient_table.getItems().get(cellController.index))));
+
+                    loadAddStage(patient_table.getItems().get(cellController.index));
                     }
                     if(prop.getValue()==2){
                         try {
@@ -145,19 +151,16 @@ public cellController<Patient> cellController=new cellController<>();
     }
 private void initEvent(){
         req2.onReceive(v->{
-            System.out.println("done done done!!!");
             requestP.offer(req.remove(selectedPatient));
             selectedPatient=null;
         });
         formerH.onReceive(v->{
-            System.out.println("size is "+formerH.respond.size());
             prescriptionsHistory[] blue = formerH.respond.toArray(prescriptionsHistory[]::new);
             Platform.runLater(()->requestH.offer(req2.removeBunch(blue)));
         });
 }
     private void cleanDelete(Patient patient) {
          selectedPatient = patient;
-        System.out.println("clean");
             requestH.offer(formerH.mojoJojo("WHERE presId = ", patient.getPrescriptionsId().toArray(String[]::new)));
 
     }
@@ -166,65 +169,37 @@ private void initEvent(){
         patientFormStage.close();
     }
 
+void loadAddStage(Patient options){
+    stageLoader patientLoader = new stageLoader("/dr/FXML/POPUP/New_patient.fxml");
+    patientFormStage =patientLoader.getStage();
+    if(options!=null) ((NewPatient)patientLoader.getController()).preFilled(options);
+    patientLoader.show();
+
+
+}
     public void add_patient_table(ActionEvent actionEvent) throws IOException, InterruptedException {
 
-
-
-        Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/New_patient.fxml"));
-        Scene sc =new Scene(root);
-        sc.setFill(Color.TRANSPARENT);
-        patientFormStage =new Stage();
-        patientFormStage.initModality(Modality.APPLICATION_MODAL);
-        patientFormStage.setScene(sc);
-        patientFormStage.initStyle(StageStyle.TRANSPARENT);
-        patientFormStage.show();
-        sc.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset=event.getSceneX();
-                yOffset=event.getSceneY();
-            }
-        });
-        sc.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                patientFormStage.setX(event.getScreenX() - xOffset);
-                patientFormStage.setY(event.getScreenY()-yOffset);
-            }
-        });
-
+loadAddStage(null);
     }
     public void initializePane() throws IOException {
-        FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/quick_panel.fxml"));
-        root = loader.load();
-        control=loader.getController();
+         sl = new stageLoader("/dr/FXML/POPUP/quick_panel.fxml");
+        root = sl.getRoot();
+        control= (quick_panelC) sl.getController();
 
     }
     public void open_quick_pane(Patient selectedPatient) throws IOException {
         initializePane();
-        Scene   quick_scene =new Scene(root);
-        quick_scene.setFill(Color.TRANSPARENT);
+        Scene   quick_scene =sl.getScene();
         quick_scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-        Table_quick_stage =new Stage();
-        Table_quick_stage .initModality(Modality.APPLICATION_MODAL);
-        Table_quick_stage .setScene(quick_scene);
-        Table_quick_stage .initStyle(StageStyle.TRANSPARENT);
+        Table_quick_stage =sl.getStage();
           control.setInfoLabelValues(selectedPatient);
-        Table_quick_stage .show();
+        sl.show();
         MainPanelC.effect.setRadius(3.25);
         Table_quick_stage .setOnCloseRequest(event -> {
             Table_quick_stage .close();
             MainPanelC.effect.setRadius(0);
         });
 
-        quick_scene.setOnMousePressed(event -> {
-            xOffset=event.getSceneX();
-            yOffset=event.getSceneY();
-        });
-        quick_scene.setOnMouseDragged(event -> {
-            Table_quick_stage .setX(event.getScreenX() - xOffset);
-            Table_quick_stage .setY(event.getScreenY()-yOffset);
-        });
 
 
     }
