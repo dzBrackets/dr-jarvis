@@ -89,7 +89,6 @@ private final SynchronousQueue<requestFormer<type>> request;
                 req.dispatchEvent();
 
             }
-
                 if (req.request.equals(requestFormer.UPDATE_BY)){
                     @SuppressWarnings("unchecked")
                     type p=(type) req.arg1;

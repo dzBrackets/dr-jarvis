@@ -3,6 +3,7 @@ package dr;
 import DataClass.Drug;
 import DataClass.Patient;
 import DataClass.prescriptionsHistory;
+import DataClass.userData;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -24,6 +25,7 @@ public class Main extends Application {
     public static dataThread<Drug> drugThread=null;
     public static dataThread<Patient> patientThread=null;
     public static dataThread<prescriptionsHistory> hisPerThread=null;
+    public static dataThread<userData> userDataThread=null;
     public static   FXMLLoader loader;
 
     public static Stage staticstage=null;
@@ -40,6 +42,9 @@ public class Main extends Application {
             patientThread=new dataThread<>("patient",Patient.class,requestP);
             patientThread.start();
 
+            userDataThread=new dataThread<>("data",userData.class,requestU);
+            userDataThread.start();
+
 
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
@@ -50,6 +55,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+
         loader=new FXMLLoader(getClass().getResource("/dr/FXML/PAGES/main_pane.fxml"));
         Parent root= loader.load();
         Scene scene=new Scene(root);
@@ -59,6 +65,7 @@ public class Main extends Application {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
         staticstage=primaryStage;
+
 
         /*  Font.loadFont(getClass().getResource("/dr/fonts/Sarabun-Regular.ttf").toExternalForm(),18);*/
         scene.setOnMousePressed(event -> {

@@ -9,6 +9,7 @@ import java.util.concurrent.SynchronousQueue;
 import DataClass.Drug;
 import DataClass.Patient;
 import DataClass.prescriptionsHistory;
+import DataClass.userData;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.internal.operators.observable.ObservableAny;
 import javafx.beans.property.IntegerProperty;
@@ -26,15 +27,17 @@ final public class FinalsVal {
 //       static public final SynchronousQueue<Patient> respond = new SynchronousQueue<>();
 
        static public final SynchronousQueue<requestFormer<Patient>> requestP = new SynchronousQueue<>();
+       static public final SynchronousQueue<requestFormer<userData>> requestU = new SynchronousQueue<>();
        static public final SynchronousQueue<requestFormer<Drug>> requestD = new SynchronousQueue<>();
        static public final requestFormer<Patient> formerP=new requestFormer<>();
+       static public final requestFormer<userData> formerU=new requestFormer<>();
        static public final requestFormer<Drug> formerD=new requestFormer<>();
        static public final SynchronousQueue<requestFormer<prescriptionsHistory>> requestH = new SynchronousQueue<>();
        static public final requestFormer<prescriptionsHistory> formerH=new requestFormer<>();
        static public final coronaDb database=new coronaDb("norme");
        static public final DateTimeFormatter[] dateFilters={DateTimeFormatter.ofPattern("dd-MM-yyyy h:m"),DateTimeFormatter.ofPattern("dd-MM-yyyy")};
        private final IntegerProperty await =new SimpleIntegerProperty(1);
-
+       static public userData local_data=new userData();
        public static boolean isNumeric(String strNum) {
               if (strNum == null) {
                      return false;

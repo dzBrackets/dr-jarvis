@@ -2,6 +2,7 @@ package Controller;
 
 import DataClass.Patient;
 import DataClass.prescriptionsHistory;
+import DataClass.userData;
 import com.jfoenix.controls.JFXButton;
 import dr.Main;
 import dr.async;
@@ -63,9 +64,8 @@ public class DashboardC implements Initializable {
     @Override
 
     public void initialize(URL location, ResourceBundle resources) {
-
-        initHandler();
         chartInit();
+        initHandler();
         update();
         loadRecent();
 
@@ -93,7 +93,6 @@ public class DashboardC implements Initializable {
 void initHandler(){
 
     req.onReceive(v->{
-        System.out.println("hhh");
         Platform.runLater(()->{
             setGridList(req.respond);});
 
@@ -105,13 +104,24 @@ void initHandler(){
                 .map(prescriptionsHistory::getUserId).toArray(String[]::new);
         requestP.offer(req.mojoJojo("WHERE patientId = ",strs));
     });
+
+    formerU.onReceive(v->{
+        if(!formerU.respond.isEmpty()){
+            local_data=formerU.respond.get(0);
+            chartInit();
+        }
+    else{ requestU.offer(formerU.post(new userData()));
+        System.out.println("create new info cuz daah!");
+    }
+    });
+    requestU.offer(formerU.get());
+
 }
 
     void setGridList(List<Patient> list){
         recent_grid.getChildren().clear();
         for(int i=0;i<list.size();i++) {
             recentComp comp = new recentComp(list.get(i));
-            System.out.println(list.size()-i-1);
             recent_grid.add(comp, 0, list.size()-i-1);
 
             int finalI = i;
@@ -133,15 +143,23 @@ void loadRecent(){
 
 
     void update(){
+        Thread climp = new Thread(() -> {
+            String p = database.getSize("prescriptions") + "";
+            String d = database.getSize("drug") + "";
+            String a = database.getSize("patient") + "";
+            Platform.runLater(() -> {
+                all_prec_cpt.setText(p);
+                drug_cpt.setText(d);
+                patient_cpt.setText(a);
+                today_precp_cpt.setText(local_data.getTodayStat() + "");
+
+            });
+
+        });
+        climp.start();
         patientList.clear();
         i=0;
-    all_prec_cpt.setText(database.getSize("prescriptions")+"");
-    drug_cpt.setText(database.getSize("drug")+"");
-    patient_cpt.setText(database.getSize("patient")+"");
-    today_precp_cpt.setText(0+"");
-
     loadRecent();
-
 }
 void chartInit(){
     //defining the axes
@@ -159,12 +177,14 @@ void chartInit(){
     XYChart.Series<Number,Number> series2 = new XYChart.Series<>();
     series2.setName("new Patient");
     //load stat
-    dataTostatistics st=new dataTostatistics(new int[]{5,1,0,50,10,30,5,20,30,1,4,5,9,15,13,40,30,35,11,12,1,4,5,9,15,13,40,30,35});
-    for (int i = 0; i < st.daysByMonth.length; i++) {
-        series2.getData().add(new XYChart.Data<>(i+1, st.daysByMonth[i]));
+    //dataTostatistics st=new dataTostatistics(new int[]{5,1,0,50,10,30,5,20,30,1,4,5,9,15,13,40,30,35,11,12,1,4,5,9,15,13,40,30,35});
+    int[] daysByMonth = local_data.getMonthStats();
+    for (int i = 0; i < daysByMonth.length; i++) {
+        series2.getData().add(new XYChart.Data<>(i+1, daysByMonth[i]));
     }
+    lineChart.getData().clear();
     lineChart.getData().add(series2);
-    container.getChildren().add(lineChart);
+   Platform.runLater(()-> container.getChildren().setAll(lineChart));
 }
 
 

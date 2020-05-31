@@ -15,8 +15,6 @@ public class settingC implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
-
     public void personal_selected(Event event) {
         tab_type.setText("Personal ");
     }

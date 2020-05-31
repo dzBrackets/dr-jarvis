@@ -138,6 +138,8 @@ private boolean added=false;
         pres.setDate(selectedPatient.getLastVisit());
         requestP.offer(formerP.update(selectedPatient));
         requestH.offer(formerH.post(pres));
+        local_data.updateDayStats(database.getSize("prescriptions"));
+        requestU.offer(formerU.update());
         if(FIRE_EXIT)
         exit_btn.fire();
 
