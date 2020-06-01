@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
@@ -19,56 +20,87 @@
       <Label id="tab_type" fx:id="tab_type" layoutX="119.0" layoutY="14.0" prefHeight="32.0" prefWidth="162.0" style="-fx-font-size: 21px;" text="Personal " textFill="#4a4a4a" />
       <JFXTabPane layoutX="106.0" layoutY="80.0" prefHeight="658.0" prefWidth="701.0">
          <tabs>
-            <Tab id="personal_tab" fx:id="personal_tab" onSelectionChanged="#personal_selected" text="Personal settings ">
+            <Tab id="personal_tab" fx:id="personal_tab" closable="false" onSelectionChanged="#personal_selected" text="Personal settings ">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Label layoutY="31.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="doctor informations:" />
                         <Pane layoutY="70.0" prefHeight="200.0" prefWidth="701.0" style="-fx-border-color: #E5E5E5; -fx-background-radius: 11px; -fx-border-radius: 11px;">
                            <children>
-                              <GridPane layoutX="14.0" layoutY="6.0" prefHeight="176.0" prefWidth="289.0">
+                              <JFXButton id="import_btn" fx:id="edit_btn" focusTraversable="false" layoutX="594.0" layoutY="11.0" onAction="#edit_doc" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="Edit" />
+                              <GridPane layoutX="14.0" layoutY="8.0" prefHeight="184.0" prefWidth="110.0">
                                 <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="106.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="133.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label prefHeight="20.0" prefWidth="74.0" styleClass="doc_info_label" text="Name :">
+                                    <Label prefHeight="20.0" prefWidth="74.0" styleClass="doc_info_label" text="Name :" GridPane.halignment="LEFT">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                     </Label>
-                                    <Label prefHeight="20.0" prefWidth="74.0" styleClass="doc_info_label" text="Email :" GridPane.rowIndex="1" />
-                                    <Label prefHeight="20.0" prefWidth="74.0" styleClass="doc_info_label" text="Adresse :" GridPane.rowIndex="2" />
-                                    <Label prefHeight="20.0" prefWidth="108.0" styleClass="doc_info_label" text="Phone number : " GridPane.rowIndex="3" />
-                                    <Label fx:id="phone_label" layoutX="10.0" layoutY="23.0" prefHeight="20.0" prefWidth="112.0" styleClass="doc_info_label" text="0554485499" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <Label prefHeight="20.0" prefWidth="74.0" styleClass="doc_info_label" text="Email :" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+                                    <Label prefHeight="20.0" prefWidth="74.0" styleClass="doc_info_label" text="Adresse :" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+                                    <Label prefHeight="20.0" prefWidth="113.0" styleClass="doc_info_label" text="Phone number : " GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+                                 </children>
+                              </GridPane>
+                              <GridPane fx:id="labels_gridpane" layoutX="144.0" layoutY="8.0" prefHeight="184.0" prefWidth="171.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label fx:id="namel_label" prefHeight="20.0" prefWidth="169.0" styleClass="doc_info_label" text="aymen daouadji">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                     </Label>
-                                    <Label fx:id="adr_label" layoutX="10.0" layoutY="23.0" prefHeight="20.0" prefWidth="112.0" styleClass="doc_info_label" text="bini tamou" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Label fx:id="email_label" prefHeight="20.0" prefWidth="146.0" styleClass="doc_info_label" text="daouadji@gmail.com" GridPane.rowIndex="1">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                     </Label>
-                                    <Label fx:id="email_label" layoutX="10.0" layoutY="23.0" prefHeight="20.0" prefWidth="146.0" styleClass="doc_info_label" text="daouadji@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Label fx:id="phone_label" prefHeight="20.0" prefWidth="112.0" styleClass="doc_info_label" text="0554485499" GridPane.rowIndex="3">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                     </Label>
-                                    <Label fx:id="namel_label" layoutX="10.0" layoutY="23.0" prefHeight="20.0" prefWidth="169.0" styleClass="doc_info_label" text="aymen daouadji" GridPane.columnIndex="1">
+                                    <Label fx:id="adr_label" prefHeight="20.0" prefWidth="112.0" styleClass="doc_info_label" text="bini tamou" GridPane.rowIndex="2">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                     </Label>
                                  </children>
                               </GridPane>
-                              <JFXButton id="import_btn" fx:id="edit_btn" layoutX="594.0" layoutY="11.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="Edit" />
+                              <GridPane fx:id="fields_gridpane" layoutX="144.0" layoutY="8.0" prefHeight="184.0" prefWidth="193.0" visible="false">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <JFXTextField fx:id="name_field" alignment="CENTER" focusColor="BLACK" prefWidth="193.0" style="-fx-border-color: #765EE2; -fx-border-radius: 11px; -fx-background-color: white; -jfx-focus-color: transparent; -jfx-unfocus-color: transparent;" styleClass="edit_fields" />
+                                    <JFXTextField fx:id="email_field" alignment="CENTER" focusColor="BLACK" layoutX="10.0" layoutY="20.0" prefWidth="193.0" style="-fx-border-color: #765EE2; -fx-border-radius: 11px; -fx-background-color: white; -jfx-focus-color: transparent; -jfx-unfocus-color: transparent;" styleClass="edit_fields" GridPane.rowIndex="1" />
+                                    <JFXTextField fx:id="adr_field" alignment="CENTER" focusColor="BLACK" layoutX="10.0" layoutY="66.0" prefWidth="193.0" style="-fx-border-color: #765EE2; -fx-border-radius: 11px; -fx-background-color: white; -jfx-focus-color: transparent; -jfx-unfocus-color: transparent;" styleClass="edit_fields" GridPane.rowIndex="2" />
+                                    <JFXTextField fx:id="phone_field" alignment="CENTER" focusColor="BLACK" layoutX="10.0" layoutY="112.0" prefWidth="193.0" style="-fx-border-color: #765EE2; -fx-border-radius: 11px; -fx-background-color: white; -jfx-focus-color: transparent; -jfx-unfocus-color: transparent;" styleClass="edit_fields" GridPane.rowIndex="3" />
+                                 </children>
+                              </GridPane>
+                              <JFXButton fx:id="cancel_btn" layoutX="497.0" layoutY="11.0" onAction="#cancel_edit" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px; -fx-background-color: red;" styleClass="func_btn" text="Cancel" visible="false" />
+                              <JFXButton fx:id="save_btn" layoutX="594.0" layoutY="11.0" onAction="#save_edit" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px; -fx-background-color: #1AD28B;" styleClass="func_btn" text="Save" visible="false" />
                            </children>
                         </Pane>
                         <Label layoutY="284.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="Data properties :" />
@@ -77,13 +109,13 @@
                               <Insets />
                            </opaqueInsets>
                         </Label>
-                        <JFXButton id="import_btn" fx:id="import_btn" layoutX="191.0" layoutY="337.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="import..." />
+                        <JFXButton id="import_btn" fx:id="import_btn" focusTraversable="false" layoutX="191.0" layoutY="337.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="import..." />
                         <Label layoutX="351.0" layoutY="340.0" prefHeight="20.0" prefWidth="118.0" styleClass="doc_info_label" text="Export data:">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                         </Label>
-                        <JFXButton id="import_btn" fx:id="export_btn" layoutX="528.0" layoutY="337.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="export..." />
+                        <JFXButton id="import_btn" fx:id="export_btn" focusTraversable="false" layoutX="528.0" layoutY="337.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="export..." />
                         <Label layoutY="390.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="Data properties :" />
                         <Pane layoutX="1.0" layoutY="427.0" prefHeight="150.0" prefWidth="498.0" style="-fx-border-color: #E5E5E5; -fx-background-radius: 11px; -fx-border-radius: 11px;">
                            <children>
@@ -92,22 +124,22 @@
                                     <Insets />
                                  </opaqueInsets>
                               </Label>
-                              <JFXButton id="import_btn" fx:id="load_file_btn" layoutX="241.0" layoutY="18.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="from File..." />
-                              <JFXButton id="import_btn" fx:id="load_api_btn" layoutX="373.0" layoutY="18.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="Web api..." />
-                              <JFXCheckBox checkedColor="#173b68" layoutX="14.0" layoutY="75.0" prefHeight="18.0" prefWidth="225.0" text="Enable auto update from web api" />
+                              <JFXButton id="import_btn" fx:id="load_file_btn" focusTraversable="false" layoutX="241.0" layoutY="18.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="from File..." />
+                              <JFXButton id="import_btn" fx:id="load_api_btn" focusTraversable="false" layoutX="373.0" layoutY="18.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="Web api..." />
+                              <JFXCheckBox checkedColor="#173b68" focusTraversable="false" layoutX="14.0" layoutY="75.0" prefHeight="18.0" prefWidth="225.0" text="Enable auto update from web api" />
                               <Label layoutX="239.0" layoutY="126.0" prefHeight="20.0" prefWidth="19.0" styleClass="footer_label" text="buy">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
                               </Label>
-                              <JFXButton id="buy_btn" fx:id="buy_btn" layoutX="258.0" layoutY="124.0" prefHeight="25.0" prefWidth="48.0" text="premium" underline="true" wrapText="true" />
+                              <JFXButton id="buy_btn" fx:id="buy_btn" focusTraversable="false" layoutX="258.0" layoutY="124.0" prefHeight="25.0" prefWidth="48.0" text="premium" underline="true" wrapText="true" />
                               <Label layoutX="306.0" layoutY="127.0" prefHeight="20.0" prefWidth="99.0" styleClass="footer_label" text="to enable this feature">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
                               </Label>
                            </children></Pane>
-                        <JFXButton id="import_btn" fx:id="clean_btn" layoutX="588.0" layoutY="573.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="Clean Data" />
+                        <JFXButton id="import_btn" fx:id="clean_btn" focusTraversable="false" layoutX="588.0" layoutY="573.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="Clean Data" />
                      </children>
                   </AnchorPane>
               </content>

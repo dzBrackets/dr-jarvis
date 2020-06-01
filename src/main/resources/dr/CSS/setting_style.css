@@ -6,14 +6,22 @@
 .tab {
 	-fx-pref-width:170;
 
+
 }
+.jfx-tab-pane .depth-container { 
+	-fx-effect: none; 
+}
+
 .tab-header-background {
 	-fx-background-color:transparent; 
+
 }
 .tab-label {
   -fx-text-fill:#000000;
   -fx-font-size:16px;
   -fx-font-weight:normal ;	
+
+
 }
 .jfx-tab-pane .tab-selected-line {
 	-fx-border-color:#765EE2;
@@ -31,6 +39,10 @@
 }
 #import_btn {
 	-fx-text-fill:#7C9DFF;
+	-fx-font-family: 'Sarabun Medium ' ;
+}
+.func_btn {
+	-fx-text-fill:white;
 }
 .footer_label {
 	-fx-font-size: 10px;
@@ -66,4 +78,7 @@
 }
 #free_lbl {
 	-fx-font-size: 12px;
+}
+.edit_fields {
+
 }
