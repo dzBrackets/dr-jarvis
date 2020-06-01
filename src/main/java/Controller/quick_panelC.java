@@ -57,6 +57,10 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
     public JFXTextArea notice_text_field;
     public JFXButton add_btn;
     public AnchorPane quick_pane;
+    public JFXButton edit_btn;
+    public JFXButton cancel_btn;
+    public JFXTextArea edit_area;
+    public JFXButton saveDiago_btn;
 
     @FXML
     private TableView<usedDrug> table;
@@ -283,4 +287,30 @@ private boolean added=false;
         });
     }
 
+    public void edit_diagonstic(ActionEvent actionEvent) {
+        edit_area.setVisible(true);
+        edit_area.setText(last_notice_label.getText());
+        last_notice_label.setVisible(false);
+        edit_btn.setVisible(false);
+      saveDiago_btn.setVisible(true);
+        cancel_btn.setVisible(true);
+    }
+
+    public void save_diagonstic(ActionEvent actionEvent) {
+        last_notice_label.setText(edit_area.getText());
+        last_notice_label.setVisible(true);
+        edit_area.setVisible(false);
+        cancel_btn.setVisible(false);
+        saveDiago_btn.setVisible(false);
+        edit_btn.setVisible(true);
+
+    }
+
+    public void cancel_diagonstic(ActionEvent actionEvent) {
+        last_notice_label.setVisible(true);
+        edit_area.setVisible(false);
+        cancel_btn.setVisible(false);
+        saveDiago_btn.setVisible(false);
+        edit_btn.setVisible(true);
+    }
 }

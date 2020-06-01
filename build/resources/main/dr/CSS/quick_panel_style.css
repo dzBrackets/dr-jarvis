@@ -217,3 +217,17 @@
 #exit_btn ,#print_btn,#save_btn {
 	-fx-font-family: 'Sarabun Medium';
 }
+#edit_btn {
+	-fx-text-fill:#7C9DFF;
+	-fx-font-family: 'Sarabun Medium ' ;
+	-fx-background-color: white;
+	 -fx-font-size: 11px;
+}
+#edit_area{
+
+}
+.func_btn {
+	-fx-text-fill:white;
+	-fx-font-size: 10px;
+	-fx-font-family: 'Sarabun Medium ' ;
+}
