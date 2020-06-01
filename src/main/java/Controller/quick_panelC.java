@@ -139,6 +139,7 @@ private boolean added=false;
         pres.setUserId(selectedPatient.getPatientId());
         selectedPatient.updateVisit();
         selectedPatient.addPrescription(pres.getPresId());
+        selectedPatient.setLastDiagnostic(last_notice_label.getText());
         pres.setDate(selectedPatient.getLastVisit());
         requestP.offer(formerP.update(selectedPatient));
         requestH.offer(formerH.post(pres));
@@ -157,6 +158,7 @@ private boolean added=false;
         FIRE_EXIT=true;
 
         MainPanelC.templateController.setTemplateInfo(selectedPatient);
+        MainPanelC.templateController.setDoctorLocalInfo();
         int  i=0;
         while(i<data.size()){
             MainPanelC.templateController.drug_list.add(new drugItem(data.get(i)),0,i);

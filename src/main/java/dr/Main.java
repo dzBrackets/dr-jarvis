@@ -1,9 +1,6 @@
 package dr;
 
-import DataClass.Drug;
-import DataClass.Patient;
-import DataClass.prescriptionsHistory;
-import DataClass.userData;
+import DataClass.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -26,6 +23,7 @@ public class Main extends Application {
     public static dataThread<Patient> patientThread=null;
     public static dataThread<prescriptionsHistory> hisPerThread=null;
     public static dataThread<userData> userDataThread=null;
+    public static dataThread<customizable> costumeThread=null;
     public static   FXMLLoader loader;
 
     public static Stage staticstage=null;
@@ -44,6 +42,9 @@ public class Main extends Application {
 
             userDataThread=new dataThread<>("data",userData.class,requestU);
             userDataThread.start();
+
+            costumeThread=new dataThread<>("tempCostume",customizable.class,requestT);
+            costumeThread.start();
 
 
         } catch (ClassNotFoundException | IOException e) {

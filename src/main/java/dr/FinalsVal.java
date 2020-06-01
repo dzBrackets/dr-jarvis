@@ -6,10 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.SynchronousQueue;
 
-import DataClass.Drug;
-import DataClass.Patient;
-import DataClass.prescriptionsHistory;
-import DataClass.userData;
+import DataClass.*;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.internal.operators.observable.ObservableAny;
 import javafx.beans.property.IntegerProperty;
@@ -29,8 +26,10 @@ final public class FinalsVal {
        static public final SynchronousQueue<requestFormer<Patient>> requestP = new SynchronousQueue<>();
        static public final SynchronousQueue<requestFormer<userData>> requestU = new SynchronousQueue<>();
        static public final SynchronousQueue<requestFormer<Drug>> requestD = new SynchronousQueue<>();
+       static public final SynchronousQueue<requestFormer<customizable>> requestT = new SynchronousQueue<>();
        static public final requestFormer<Patient> formerP=new requestFormer<>();
        static public final requestFormer<userData> formerU=new requestFormer<>();
+       static public final requestFormer<customizable> formerT=new requestFormer<>();
        static public final requestFormer<Drug> formerD=new requestFormer<>();
        static public final SynchronousQueue<requestFormer<prescriptionsHistory>> requestH = new SynchronousQueue<>();
        static public final requestFormer<prescriptionsHistory> formerH=new requestFormer<>();
@@ -38,6 +37,7 @@ final public class FinalsVal {
        static public final DateTimeFormatter[] dateFilters={DateTimeFormatter.ofPattern("dd-MM-yyyy h:m"),DateTimeFormatter.ofPattern("dd-MM-yyyy")};
        private final IntegerProperty await =new SimpleIntegerProperty(1);
        static public userData local_data=new userData();
+       static public customizable customAttrs=null;
        public static boolean isNumeric(String strNum) {
               if (strNum == null) {
                      return false;

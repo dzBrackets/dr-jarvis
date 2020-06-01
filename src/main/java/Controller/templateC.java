@@ -11,6 +11,8 @@ import model.components.drugItem;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static dr.FinalsVal.customAttrs;
+
 public class templateC implements Initializable {
     public GridPane drug_list;
     public AnchorPane container;
@@ -18,11 +20,22 @@ public class templateC implements Initializable {
     public Label p_date;
     public Label p_last_name;
     public Label p_age;
+    public Label SIDEBOX_text1;
+    public Label SIDEBOX_text2;
+    public Label SIDEBOX_text3;
+    public Label SIDEBOX_text4;
     // static GridPane sharedList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //setDoctorLocalInfo
+    }
+    void setDoctorLocalInfo(){
+        SIDEBOX_text1.setText(customAttrs.getAttribute(0));
+        SIDEBOX_text2.setText(customAttrs.getAttribute(1));
+        SIDEBOX_text3.setText(customAttrs.getAttribute(2));
+        SIDEBOX_text4.setText(customAttrs.getAttribute(3));
+
     }
     public void reset(){
         drug_list.getChildren().clear();

@@ -1,6 +1,7 @@
 package Controller;
 
 import DataClass.Patient;
+import DataClass.customizable;
 import DataClass.prescriptionsHistory;
 import DataClass.userData;
 import com.jfoenix.controls.JFXButton;
@@ -106,15 +107,38 @@ void initHandler(){
     });
 
     formerU.onReceive(v->{
+
+        System.out.println("yeeah!!");
         if(!formerU.respond.isEmpty()){
             local_data=formerU.respond.get(0);
-            chartInit();
+settingC.alpha.dispatchEvent();
+chartInit();
         }
     else{ requestU.offer(formerU.post(new userData()));
         System.out.println("create new info cuz daah!");
     }
     });
     requestU.offer(formerU.get());
+
+
+   formerT.onReceive(v->{
+       if(!formerT.respond.isEmpty()){
+           customAttrs=formerT.respond.get(0);
+
+       }
+       else{
+           customizable cust = new customizable().customizable("0");
+                   cust.setAttribute(0,"doctor who");
+                   cust.setAttribute(1,"who know the truth");
+                   cust.setAttribute(2,"dont be rude");
+                   cust.setAttribute(3,"or give fuck yoo");
+           requestT.offer(formerT.post(cust));
+           System.out.println("create new info cuz daah!");
+       }
+   });
+    requestT.offer(formerT.get());
+
+
 
 }
 

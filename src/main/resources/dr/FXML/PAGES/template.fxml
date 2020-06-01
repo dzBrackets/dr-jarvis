@@ -22,22 +22,22 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label id="dr_name_enAr" fx:id="dr_name" alignment="CENTER" prefHeight="30.0" prefWidth="83.0" style="-fx-font-weight: bold;" text="Age :" textFill="GREEN" GridPane.rowIndex="3">
+                  <Label id="dr_name_enAr" alignment="CENTER" prefHeight="30.0" prefWidth="83.0" style="-fx-font-weight: bold;" text="Age :" textFill="GREEN" GridPane.rowIndex="3">
                      <font>
                         <Font name="Monospaced Regular" size="13.0" />
                      </font>
                   </Label>
-                  <Label id="dr_name_enAr" fx:id="dr_name_enFr1" alignment="CENTER" prefHeight="30.0" prefWidth="84.0" style="-fx-font-weight: bold;" text="O.E.A,le :" textAlignment="CENTER" textFill="GREEN" textOverrun="CLIP">
+                  <Label id="dr_name_enAr"  alignment="CENTER" prefHeight="30.0" prefWidth="84.0" style="-fx-font-weight: bold;" text="O.E.A,le :" textAlignment="CENTER" textFill="GREEN" textOverrun="CLIP">
                      <font>
                         <Font name="Monospaced Regular" size="13.0" />
                      </font>
                   </Label>
-                  <Label id="dr_name_enAr" fx:id="dr_name_enFr11" alignment="CENTER" prefHeight="30.0" prefWidth="83.0" style="-fx-font-weight: bold;" text="NOM :" textFill="GREEN" GridPane.rowIndex="1">
+                  <Label id="dr_name_enAr" alignment="CENTER" prefHeight="30.0" prefWidth="83.0" style="-fx-font-weight: bold;" text="NOM :" textFill="GREEN" GridPane.rowIndex="1">
                      <font>
                         <Font name="Monospaced Regular" size="13.0" />
                      </font>
                   </Label>
-                  <Label id="dr_name_enAr" fx:id="dr_name_enFr111" alignment="CENTER" prefHeight="30.0" prefWidth="83.0" style="-fx-font-weight: bold;" text="Prénom :" textFill="GREEN" GridPane.rowIndex="2">
+                  <Label id="dr_name_enAr" alignment="CENTER" prefHeight="30.0" prefWidth="83.0" style="-fx-font-weight: bold;" text="Prénom :" textFill="GREEN" GridPane.rowIndex="2">
                      <font>
                         <Font name="Monospaced Regular" size="13.0" />
                      </font>
@@ -68,22 +68,22 @@
       </Pane>
       <Pane id="recent_btn_pane" fx:id="recent_btn_pane11" layoutX="14.0" layoutY="13.0" prefHeight="213.0" prefWidth="257.0" style="-fx-border-color: green; -fx-background-radius: 17px; -fx-border-radius: 17px;">
          <children>
-            <Label id="dr_name_enAr" fx:id="dr_name_enAr" alignment="CENTER" layoutX="21.0" layoutY="9.0" prefHeight="37.0" prefWidth="222.0" style="-fx-font-weight: bold;" text="الحكيم عبد العزيز مختاري" textFill="GREEN">
+            <Label id="dr_name_enAr" fx:id="SIDEBOX_text1" alignment="CENTER" layoutX="21.0" layoutY="9.0" prefHeight="37.0" prefWidth="222.0" style="-fx-font-weight: bold;" text="SIDEBOX_text1" textFill="GREEN">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label id="dr_name_enAr" fx:id="dr_name_enFr" alignment="CENTER" layoutX="14.0" layoutY="39.0" prefHeight="37.0" prefWidth="222.0" style="-fx-font-weight: bold;" text="Docteur A.MOKHTARI" textFill="GREEN">
+            <Label id="dr_name_enAr" fx:id="SIDEBOX_text2" alignment="CENTER" layoutX="14.0" layoutY="39.0" prefHeight="37.0" prefWidth="222.0" style="-fx-font-weight: bold;" text="SIDEBOX_text2" textFill="GREEN">
                <font>
                   <Font name="Monospaced Regular" size="16.0" />
                </font>
             </Label>
-            <Label id="work_Specialiste" fx:id="work_SpecialisteAR" alignment="CENTER" layoutX="14.0" layoutY="76.0" prefHeight="59.0" prefWidth="222.0" text="عيادة متخصصة في امراض و جراحة&#10; الانف و الحنجرة و امراض الحساسية" textFill="GREEN">
+            <Label id="work_Specialiste" fx:id="SIDEBOX_text3" alignment="CENTER" layoutX="14.0" layoutY="76.0" prefHeight="59.0" prefWidth="222.0" text="SIDEBOX_text3" textFill="GREEN">
                <font>
                   <Font name="Bauhaus 93" size="11.0" />
                </font>
             </Label>
-            <Label id="work_Specialiste" fx:id="work_SpecialisteFr" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="145.0" prefHeight="59.0" prefWidth="222.0" text="Nez-Gorge Oreille -Face-Cou&#10;Audiométrie-Allergologie" textFill="GREEN">
+            <Label id="work_Specialiste" fx:id="SIDEBOX_text4" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="145.0" prefHeight="59.0" prefWidth="222.0" text="SIDEBOX_text4" textFill="GREEN">
                <font>
                   <Font name="Monospaced Bold" size="11.0" />
                </font>
