@@ -144,8 +144,9 @@ chartInit();
 
     void setGridList(List<Patient> list){
         recent_grid.getChildren().clear();
+        String[] diagnoList = presList.stream().map(prescriptionsHistory::getDiagnosis).toArray(String[]::new);
         for(int i=0;i<list.size();i++) {
-            recentComp comp = new recentComp(list.get(i));
+            recentComp comp = new recentComp(list.get(i),diagnoList[i]);
             recent_grid.add(comp, 0, list.size()-i-1);
 
             int finalI = i;

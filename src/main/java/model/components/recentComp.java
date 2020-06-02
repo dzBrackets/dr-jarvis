@@ -17,7 +17,7 @@ public class recentComp extends Button{
     private final JFXButton showMore;
 
 
-public recentComp(Patient patient){
+public recentComp(Patient patient, String s){
     name=new Label();
     age=new Label();
     diagnosis=new Label();
@@ -44,7 +44,7 @@ public recentComp(Patient patient){
     diagnosis.setText("diagno");
     time.setText("time");
 
-    settexts(patient);
+    settexts(patient,s);
 
 
     setGraphic(childPan());
@@ -97,10 +97,10 @@ Pane childPan(){
 p.getChildren().addAll(name,age,diagnosis,time,showMore);
 return p;
 }
-void settexts(Patient patient){
+void settexts(Patient patient, String s){
     name.setText(patient.getFullName());
     age.setText(patient.getAge()+"");
-    diagnosis.setText(patient.getLastDiagnostic());
+    diagnosis.setText(s);
     time.setText(patient.getLastVisit());
 }
 }

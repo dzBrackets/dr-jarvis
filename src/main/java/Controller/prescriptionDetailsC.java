@@ -6,12 +6,15 @@ import DataClass.prescriptionsHistory;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import dr.FinalsVal;
+import dr.Main;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -20,9 +23,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import libs.cellController;
 import libs.requestFormer;
+import model.popUpWindow;
 import model.showButton;
 import model.usedDrug;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +52,8 @@ public class prescriptionDetailsC implements Initializable {
     private TableColumn<usedDrug, String> type_colm;
     @FXML
     private TableColumn<usedDrug, String> doss_colm;
+    public static popUpWindow  show ;
+
     @FXML
     private TableColumn<usedDrug, String> qts_colm;
     @FXML
@@ -60,7 +67,7 @@ Stage stage;
     public void initialize(URL location, ResourceBundle resources) {
         initCol();
         loadData();
-
+        eventTrigger();
     }
     public void initCol(){
         name_colm.getStyleClass().add("start");
@@ -80,7 +87,22 @@ private void setPatientInfo(Patient patient){
         name_label.setText(patient.getFullName());
         age_label.setText(patient.getAge()+"");
         visite_label.setText(patient.getLastVisit());
-        last_notice_label.setText(patient.getLastDiagnostic());
+
+}
+void eventTrigger(){
+    cellController.clicked.addListener(v->{
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/show_window.fxml"));
+        try {
+            Parent root = loader.load();
+            show_winC control=loader.getController();
+            show = new popUpWindow(root.getChildrenUnmodifiable());
+            show.show(quick_pane.getScene().getWindow());
+            control.value_area.setText(table.getItems().get(cellController.index).getNotice());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    });
 
 }
 void dad(Stage st){
@@ -95,6 +117,7 @@ void dad(Stage st){
         prec_id.setText(prescriptionsHistory.getPresId());
         user_id.setText(prescriptionsHistory.getUserId());
         data.addAll(prescriptionsHistory.getDrugList());
+        last_notice_label.setText(prescriptionsHistory.getDiagnosis());
 
         req.onReceive(v->{
             Patient selectedPatient = req.respond.get(0);

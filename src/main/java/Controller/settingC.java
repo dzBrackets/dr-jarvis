@@ -53,6 +53,9 @@ public class settingC implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 alpha.onReceive(v->setDocInfo());
+export_btn.setOnMouseClicked(v->{
+    database.export("backup/zipzpy.commons");
+});
     }
 
      void setDocInfo(){

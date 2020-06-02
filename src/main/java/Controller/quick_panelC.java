@@ -96,7 +96,14 @@ private boolean added=false;
         initSearchBar();
         initEvents();
         eventTrigger();
-
+edit_area.focusedProperty().addListener(v->{
+    if(edit_area.isFocused())
+    System.out.println(
+            "foucus!!"
+    );
+    else
+        saveDiago_btn.fire();
+});
     }
 
 
@@ -140,6 +147,7 @@ private boolean added=false;
         selectedPatient.updateVisit();
         selectedPatient.addPrescription(pres.getPresId());
         selectedPatient.setLastDiagnostic(last_notice_label.getText());
+        pres.setDiagnosis(last_notice_label.getText());
         pres.setDate(selectedPatient.getLastVisit());
         requestP.offer(formerP.update(selectedPatient));
         requestH.offer(formerH.post(pres));
@@ -282,6 +290,7 @@ private boolean added=false;
                 show_winC control = loader.getController();
                 showField = new popUpWindow(root.getChildrenUnmodifiable());
                 showField.show(quick_pane.getScene().getWindow());
+                control.value_area.setText(table.getItems().get(cellController.index).getNotice());
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -290,8 +299,11 @@ private boolean added=false;
     }
 
     public void edit_diagonstic(ActionEvent actionEvent) {
+
         edit_area.setVisible(true);
+        edit_area.requestFocus();
         edit_area.setText(last_notice_label.getText());
+        edit_area.selectAll();
         last_notice_label.setVisible(false);
         edit_btn.setVisible(false);
       saveDiago_btn.setVisible(true);

@@ -3,6 +3,8 @@ package libs.coronaDb;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
+import libs.zippy;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -159,6 +161,9 @@ public void saveConfig() throws IOException {
        tb.setUUID(tb.getUUID()+1);
        saveConfig();
 return tb.getUUID();
+    }
+    public void export(String path){
+        zippy.zipDirectory(new File(dir),path);
     }
 }
 

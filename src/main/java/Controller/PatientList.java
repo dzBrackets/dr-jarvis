@@ -111,7 +111,7 @@ public cellController<Patient> cellController=new cellController<>();
             try {
                 Parent root = loader.load();
                 show_winC control=loader.getController();
-                 showField = new popUpWindow(root.getChildrenUnmodifiable());
+                showField = new popUpWindow(root.getChildrenUnmodifiable());
                 showField.show(Main.staticstage);
                 control.value_area.setText(patient_table.getItems().get(cellController.index).getLastDiagnostic());
 

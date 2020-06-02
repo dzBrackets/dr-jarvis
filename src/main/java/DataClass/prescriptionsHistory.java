@@ -13,12 +13,22 @@ public class prescriptionsHistory implements Serializable {
     private String date;
     private List<usedDrug> drugList=null;
     private String userId="N/D";
+    private String diagnosis="N/D";
 
-    public prescriptionsHistory prescriptionsHistory(String presId, String date,List<usedDrug> drugList,String userId) {
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
+    }
+
+    public prescriptionsHistory prescriptionsHistory(String presId, String date, List<usedDrug> drugList, String userId,String diagnosis) {
         this.presId = presId;
         this.date = date;
         this.drugList = drugList;
         this.userId=userId;
+        this.diagnosis=diagnosis;
         return this;
     }
 
