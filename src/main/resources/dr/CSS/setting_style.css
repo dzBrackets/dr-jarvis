@@ -82,3 +82,19 @@
 .edit_fields {
 
 }
+.edit_use_btns {
+-fx-background-radius: 100px;
+-fx-border-color: #D9D9D9;
+-fx-border-radius: 100px;
+-fx-text-fill:#7C9DFF;
+	-fx-font-family: 'Sarabun Medium ' ;
+}
+.selected_btn{
+	-fx-background-color: #626ED4;
+	-fx-background-radius: 8px;
+	-fx-text-fill:white;
+}
+.template_pane{
+	-fx-border-color: #E5E5E5;
+	-fx-border-radius: 11px;
+}

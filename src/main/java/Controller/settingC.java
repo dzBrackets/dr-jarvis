@@ -8,14 +8,19 @@ import dr.FinalsVal;
 import dr.async;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import model.components.template_Pane;
 
 import java.net.URL;
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static dr.FinalsVal.*;
@@ -49,6 +54,8 @@ public class settingC implements Initializable {
     public Tab customize_tab;
 
        static async alpha=new async();
+    public GridPane template_gridpane;
+    public ArrayList<Pane> list ;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -56,6 +63,13 @@ alpha.onReceive(v->setDocInfo());
 export_btn.setOnMouseClicked(v->{
     database.export("backup/zipzpy.commons");
 });
+
+for (int i=0;i<2;i++){
+for(int j=0;j<4;j++){
+    template_gridpane.add(new template_Pane(),j,i);
+}
+        }
+
     }
 
      void setDocInfo(){
@@ -121,4 +135,7 @@ export_btn.setOnMouseClicked(v->{
         requestU.offer(formerU.update());
 
     }
+
+
+
 }
