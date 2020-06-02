@@ -47,12 +47,12 @@
                         <Font name="Monospaced Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="p_first_name" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="22.0" prefHeight="42.0" prefWidth="81.0" text="unknown" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="p_first_name" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="22.0" prefHeight="42.0" prefWidth="81.0" text="Daouadji" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="Monospaced Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="p_last_name" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="72.0" prefHeight="47.0" prefWidth="81.0" text="player" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="p_last_name" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="72.0" prefHeight="47.0" prefWidth="81.0" text="Aymen" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Monospaced Bold" size="13.0" />
                      </font>

@@ -1,6 +1,9 @@
 package Controller;
 
+import DataClass.customizable;
+import DataClass.userData;
 import com.jfoenix.controls.JFXButton;
+import dr.async;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -17,12 +20,14 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import libs.requestFormer;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static dr.FinalsVal.requestP;
+import static dr.FinalsVal.*;
 
 public class MainPanelC  implements Initializable {
     public  AnchorPane main_panel;
@@ -50,22 +55,65 @@ public class MainPanelC  implements Initializable {
     public JFXButton minimize_btn;
     static templateC templateController;
     public DashboardC dashController;
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+initWaiters();
+        initSensitiveData();
         initDashboardController();
         dashbord_pane.toFront();
         effect= new javafx.scene.effect.GaussianBlur();
         effect.setRadius(0);
         main_panel.setEffect(effect);
-        initTemplate();
         initDashboardController();
         hover_btn();
 
     }
 
-public void initDashboardController(){
+    private void initWaiters() {
+        formerT.onReceive(v->{
+            if(formerT.respond.isEmpty()){
+                loadDefaultTemp();
+            }
+            else {
+                customAttrs = formerT.respond.get(local_data.getSelectedTemplate());
+            }
+            initTemplate(customAttrs.getURL());
+
+        });
+
+        formerU.onReceive(v->{
+
+            System.out.println("yeeah!!");
+            if(!formerU.respond.isEmpty()){
+                local_data=formerU.respond.get(0);
+                settingC.alpha.dispatchEvent();
+                DashboardC.chartInit();
+                requestT.offer(formerT.get());
+
+            }
+            else{ requestU.offer(formerU.post(new userData()));
+                System.out.println("create new info cuz daah!");
+            }
+        });
+    }
+
+    private void loadDefaultTemp() {
+        customAttrs=new customizable();
+        customAttrs.addAttribute("tbl1","الحكيم عبد العزيز مختاري");
+        customAttrs.addAttribute("tbl2","الحكيم عبد العزيز مختاري");
+        customAttrs.addAttribute("tbl3","الحكيم عبد العزيز مختاري");
+        customAttrs.addAttribute("tbl4","الحكيم عبد العزيز مختاري");
+        System.out.println("hello haha");
+        System.out.println(customAttrs.getAttribute("tbl1"));
+Platform.runLater(()->{requestT.offer(new requestFormer<customizable>().post(customAttrs));});
+
+    }
+
+    private void initSensitiveData() {
+
+    }
+
+    public void initDashboardController(){
 
     FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/PAGES/Dashboard.fxml"));
     try {
@@ -80,8 +128,9 @@ public void initDashboardController(){
 
 }
 
-    public void initTemplate(){
-        FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/PAGES/template.fxml"));
+    public void initTemplate(String URL){
+        FXMLLoader loader =new FXMLLoader(getClass().getResource(URL));
+
         try {
            loader.load();
         } catch (IOException e) {
@@ -89,17 +138,11 @@ public void initDashboardController(){
         }
         templateController = loader.getController();
         templateStatic= templateController.container;
-
+        templateController.setDoctorLocalInfo();
 
     }
 
-public static WritableImage getTemplateSnap(){
-     SnapshotParameters vp = new SnapshotParameters();
-    templateStatic.setVisible(true);
-    WritableImage wi = templateStatic.snapshot(vp, null);
-    templateStatic.setVisible(false);
-    return wi;
-}
+
     public void  add_quick(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/patient_search.fxml"));
         search_scene =new Scene(root);

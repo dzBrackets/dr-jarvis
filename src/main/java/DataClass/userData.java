@@ -10,8 +10,16 @@ String name="unknown player";
 String email="dont@sk.me";
 String address="empty";
 String phone ="N/D";
+int selectedTemplate=0;
 int[] monthStats=new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
+    public int getSelectedTemplate() {
+        return selectedTemplate;
+    }
+
+    public void setSelectedTemplate(int selectedTemplate) {
+        this.selectedTemplate = selectedTemplate;
+    }
 
     public userData userData(String name, String email, String address, String phone) {
         this.name = name;

@@ -26,7 +26,6 @@ public class DrugDeserializer extends StdDeserializer<ArrayList<usedDrug>> {
 
     @Override
     public ArrayList<usedDrug> deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException {
-        System.out.println("here");
         ArrayList<usedDrug> result = new ArrayList<>();
         ObjectCodec oc = jsonParser.getCodec();
 
