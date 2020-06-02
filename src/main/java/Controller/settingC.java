@@ -64,13 +64,13 @@ export_btn.setOnMouseClicked(v->{
     database.export("backup/zipzpy.commons");
 });
 
-for (int i=0;i<2;i++){
+int i=0;
 for(int j=0;j<4;j++){
     template_gridpane.add(new template_Pane(),j,i);
 }
         }
 
-    }
+
 
      void setDocInfo(){
 

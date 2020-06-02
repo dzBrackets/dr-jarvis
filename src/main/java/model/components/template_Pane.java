@@ -10,14 +10,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 public class template_Pane extends Pane {
-    private JFXButton edit ,use,add,preview;
+    private JFXButton edit ,use,add;
     private Label selected;
     public template_Pane (){
 edit =new JFXButton("Edit...");
 use=new JFXButton("Use...");
 selected=new Label("Selected");
 add =new JFXButton();
-preview=new JFXButton("Preview");
 this.getStyleClass().add("template_pane");
 show_use();
 
@@ -54,14 +53,9 @@ show_use();
         use.getStyleClass().add("edit_use_btns");
         use.setFocusTraversable(false);
 
-        preview.setPrefWidth(78);
-        preview.setPrefHeight(27);
-        preview.setLayoutX(34);
-        preview.setLayoutY(45);
-        preview.getStyleClass().add("edit_use_btns");
-        preview.setFocusTraversable(false);
+
         this.getChildren().clear();
-        this.getChildren().addAll(use,preview);
+        this.getChildren().addAll(use);
 
     }
     public void show_add(){
