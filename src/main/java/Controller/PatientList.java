@@ -105,8 +105,6 @@ public cellController<Patient> cellController=new cellController<>();
     public void eventTrigger(){
 
         cellController.clicked.addListener(v->{
-
-
             FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/show_window.fxml"));
             try {
                 Parent root = loader.load();

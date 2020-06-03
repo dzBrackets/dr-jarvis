@@ -41,6 +41,7 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 import static dr.FinalsVal.*;
+import static libs.printWorker.print;
 
 public class quick_panelC implements Initializable {
 static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
@@ -131,8 +132,9 @@ edit_area.focusedProperty().addListener(v->{
         else {
             PatientSearch.quick_stage.close();
         }
+        MainPanelC.templateController.reset();
 
-         MainPanelC.effect.setRadius(0);
+        MainPanelC.effect.setRadius(0);
     }
 
 
@@ -166,18 +168,23 @@ edit_area.focusedProperty().addListener(v->{
         FIRE_EXIT=true;
 
         MainPanelC.templateController.setTemplateInfo(selectedPatient);
-        MainPanelC.templateController.setDoctorLocalInfo();
-        int  i=0;
+        int  i=0,j=0;
         while(i<data.size()){
-            MainPanelC.templateController.drug_list.add(new drugItem(data.get(i)),0,i);
-
+            MainPanelC.templateController.drug_list.add(new drugItem(data.get(i)),0,j);
+            j++;
+            i++;
             if(i % 5==0){
                 print(MainPanelC.templateStatic);
-                  MainPanelC.templateController.drug_list.getChildren().clear();}
-            i++;
+                MainPanelC.templateController.reset();
+                MainPanelC.templateController.setTemplateInfo(selectedPatient);
+
+j=0;
+            }
+
+
 
         }
-        MainPanelC.templateController.reset();
+        print(MainPanelC.templateStatic);
         exit_btn.fire();
 
     }

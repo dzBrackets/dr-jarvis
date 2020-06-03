@@ -31,10 +31,10 @@ public class templateC implements Initializable {
         //setDoctorLocalInfo
     }
     void setDoctorLocalInfo(){
-        SIDEBOX_text1.setText(customAttrs.getAttribute(0));
-        SIDEBOX_text2.setText(customAttrs.getAttribute(1));
-        SIDEBOX_text3.setText(customAttrs.getAttribute(2));
-        SIDEBOX_text4.setText(customAttrs.getAttribute(3));
+        SIDEBOX_text1.setText(customAttrs.getAttribute("tbl1"));
+        SIDEBOX_text2.setText(customAttrs.getAttribute("tbl2"));
+        SIDEBOX_text3.setText(customAttrs.getAttribute("tbl3"));
+        SIDEBOX_text4.setText(customAttrs.getAttribute("tbl4"));
 
     }
     public void reset(){

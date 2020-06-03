@@ -53,6 +53,8 @@ public class DashboardC implements Initializable {
     public Pane pane4;
     public JFXButton show_all_btn;
     public VBox container;
+   static public VBox stCntainer;
+
     public List<prescriptionsHistory> presList;
     public ObservableList<Patient> patientList= FXCollections.observableArrayList();
     //public LineChart<Number,Number> line_chart;
@@ -65,6 +67,7 @@ public class DashboardC implements Initializable {
     @Override
 
     public void initialize(URL location, ResourceBundle resources) {
+        stCntainer=container;
         chartInit();
         initHandler();
         update();
@@ -106,37 +109,11 @@ void initHandler(){
         requestP.offer(req.mojoJojo("WHERE patientId = ",strs));
     });
 
-    formerU.onReceive(v->{
 
-        System.out.println("yeeah!!");
-        if(!formerU.respond.isEmpty()){
-            local_data=formerU.respond.get(0);
-settingC.alpha.dispatchEvent();
-chartInit();
-        }
-    else{ requestU.offer(formerU.post(new userData()));
-        System.out.println("create new info cuz daah!");
-    }
-    });
     requestU.offer(formerU.get());
 
 
-   formerT.onReceive(v->{
-       if(!formerT.respond.isEmpty()){
-           customAttrs=formerT.respond.get(0);
 
-       }
-       else{
-           customizable cust = new customizable().customizable("0");
-                   cust.setAttribute(0,"doctor who");
-                   cust.setAttribute(1,"who know the truth");
-                   cust.setAttribute(2,"dont be rude");
-                   cust.setAttribute(3,"or give fuck yoo");
-           requestT.offer(formerT.post(cust));
-           System.out.println("create new info cuz daah!");
-       }
-   });
-    requestT.offer(formerT.get());
 
 
 
@@ -186,7 +163,7 @@ void loadRecent(){
         i=0;
     loadRecent();
 }
-void chartInit(){
+static void chartInit(){
     //defining the axes
     final NumberAxis xAxis = new NumberAxis();
     final NumberAxis yAxis = new NumberAxis();
@@ -209,7 +186,7 @@ void chartInit(){
     }
     lineChart.getData().clear();
     lineChart.getData().add(series2);
-   Platform.runLater(()-> container.getChildren().setAll(lineChart));
+   Platform.runLater(()-> stCntainer.getChildren().setAll(lineChart));
 }
 
 
