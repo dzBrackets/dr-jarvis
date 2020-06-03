@@ -98,3 +98,11 @@
 	-fx-border-color: #E5E5E5;
 	-fx-border-radius: 11px;
 }
+/* Color-picker********************/
+.jfx-color-picker .color-label {
+	-fx-text-fill:transparent;
+}
+#save_customise_btn {
+-fx-text-fill:white;
+-fx-font-family: 'Sarabun Medium ' ;
+}
