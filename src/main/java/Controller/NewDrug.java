@@ -80,7 +80,8 @@ public class NewDrug implements Initializable {
                     if (!drug.getDose().contains(doss_TXF.getText() + weight_combo.getSelectionModel().getSelectedItem()))
                         drug.getDose().add(doss_TXF.getText() + weight_combo.getSelectionModel().getSelectedItem());
                if(valid){
-                    if (update){
+                   drug.setNotice(write_TXA.getText());
+                   if (update){
                         requestD.offer(req.update());
                     }
                     else{

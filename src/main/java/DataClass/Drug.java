@@ -11,6 +11,7 @@ import java.util.Objects;
 public class Drug implements Serializable {
     private  String code="N/D";
     private String name="N/D";
+    private String notice="N/D";
     private ArrayList<String> type=new ArrayList<>();
     private ArrayList<String> dose=new ArrayList<>();
 
@@ -23,11 +24,12 @@ Collections.addAll(this.dose,dose);
 Collections.addAll(this.type,type);
         return this;
     }
-    public Drug Drug(String code, String name, String type, String dose){
+    public Drug Drug(String code, String name, String type, String dose,String notice){
         this.name=name;
         this.code=code;
         (this.type=new ArrayList<String>()).add(type);
         (this.dose=new ArrayList<String>()).add(dose);
+        this.notice=notice;
 
         return this;
     }
@@ -120,4 +122,11 @@ Collections.addAll(this.type,type);
         this.dose = dose;
     }
 
+    public String getNotice() {
+        return notice;
+    }
+
+    public void setNotice(String notice) {
+        this.notice = notice;
+    }
 }

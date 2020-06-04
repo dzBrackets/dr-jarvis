@@ -84,7 +84,7 @@ public class DrugList  implements Initializable {
                 show_winC control=loader.getController();
                  showNotice  = new popUpWindow(root.getChildrenUnmodifiable());
                 showNotice.show(Main.staticstage);
-                control.value_area.setText(drug_table.getItems().get(cellController.index).getName());
+                control.value_area.setText(drug_table.getItems().get(cellController.index).getNotice());
 
             } catch (IOException e) {
                 e.printStackTrace();
