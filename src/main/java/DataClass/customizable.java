@@ -11,7 +11,7 @@ public class customizable {
     String templateId="0";
     ArrayList<String>keys=new ArrayList<>();
     ArrayList<String>attributes=new ArrayList<>();
-    String URL="/dr/FXML/PAGES/template.fxml";
+    String URL="templates/default.template";
     public customizable customizable(String templateId) {
         this.templateId = templateId;
         return this;

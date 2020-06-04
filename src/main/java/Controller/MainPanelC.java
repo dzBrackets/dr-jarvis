@@ -106,7 +106,6 @@ public class MainPanelC  implements Initializable {
 
     private customizable loadDefaultTemp() {
         customAttrs=new customizable();
-        customAttrs.setURL("templates/template.fxml");
         customAttrs.addAttribute("tbl1","doctor daudji aymen");
         customAttrs.addAttribute("tbl2","specialist a programing");
         customAttrs.addAttribute("tbl3","ouled aich");
