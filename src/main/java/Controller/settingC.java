@@ -191,7 +191,7 @@ boolean stop=false;
     if(!stop) {
         templateC controller = loader.getController();
         controller.container.getTransforms().add(new Scale(0.74, 0.74));
-        load_anchorpane.getChildren().add(controller.container);
+        load_anchorpane.getChildren().setAll(controller.container);
         controller.setLabelBy(req.respond.get(selectedTempIndex).getAttributes());
 
         controller.setPrimaryColor(Color.web(req.respond.get(selectedTempIndex).getAttribute("c1")));
@@ -200,7 +200,7 @@ boolean stop=false;
         secondaryColor.setValue(Color.web(req.respond.get(selectedTempIndex).getAttribute("c2")));
 
         controller.drug_list.getChildren().clear();
-        controller.drug_list.getChildren().add(new drugItem(new usedDrug()));
+        controller.drug_list.getChildren().add(new drugItem(new usedDrug(), secondaryColor.getValue()));
 
 
         primaryColor.setOnAction(v -> {
@@ -217,6 +217,7 @@ boolean stop=false;
         for (int i = 0; i < textFieldGrid.getChildren().size(); i++) {
             JFXTextField tf = (JFXTextField) textFieldGrid.getChildren().get(i);
             int finalI = i;
+            tf.setText(req.respond.get(selectedTempIndex).getAttribute("tbl" + (i + 1)));
 
             tf.setOnKeyTyped(v -> {
                 controller.setLabelByPos(finalI, tf.getText());
