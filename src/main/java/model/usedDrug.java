@@ -13,11 +13,11 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 public class usedDrug {
-    String name;
-    String type;
-    String doss;
-    String qts;
-    String notice;
+    String name="Unknown";
+    String type="N/D";
+    String doss="N/D";
+    String qts="N/D";
+    String notice="N/D";
 
     public usedDrug  usedDrug(String name, String type, String doss, String qts, String notice) {
         this.name = name;

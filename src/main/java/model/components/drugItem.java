@@ -12,7 +12,7 @@ import model.usedDrug;
 
 public class drugItem extends Pane {
     private Label name,doss,type,qts,notice;
-    private Line line ;
+  //  private Line line ;
 
     public drugItem(usedDrug drug) {
         name = new Label(drug.getName());
@@ -20,15 +20,31 @@ public class drugItem extends Pane {
         notice = new Label(drug.getNotice());
         qts =new Label(drug.getQts());
         type=new Label(drug.getType());
-        line =new Line();
+     //   line =new Line();
         this.setPrefWidth(100);
         this.setPrefHeight(30);
 
         setChildStyle();
-
-
-
     }
+    public drugItem(usedDrug drug,Color color) {
+        name = new Label(drug.getName());
+        doss = new Label(drug.getDoss());
+        notice = new Label(drug.getNotice());
+        qts =new Label(drug.getQts());
+        type=new Label(drug.getType());
+        name.setTextFill(color);
+        doss.setTextFill(color);
+        notice.setTextFill(color);
+        qts.setTextFill(color);
+        type.setTextFill(color);
+
+     //   line =new Line();
+        this.setPrefWidth(100);
+        this.setPrefHeight(30);
+
+        setChildStyle();
+    }
+
     public void setChildStyle(){
         this.setPrefWidth(100);
         this.setPrefHeight(30);
@@ -62,14 +78,14 @@ public class drugItem extends Pane {
 
         notice.setAlignment(Pos.TOP_LEFT);
         qts.setAlignment(Pos.CENTER);
-        line.setEndX(236);
-        line.setLayoutX(212);
-        line.setLayoutY(73);
-        line.setStartX(-212);
-        line.setStroke(Color.GREEN);
+    //    line.setEndX(236);
+      //  line.setLayoutX(212);
+     //   line.setLayoutY(73);
+      //  line.setStartX(-212);
+       // line.setStroke(Color.GREEN);
 
 
-        this.getChildren().addAll(name,doss,type,notice,qts,line);
+        this.getChildren().addAll(name,doss,type,notice,qts);
 
 
     }

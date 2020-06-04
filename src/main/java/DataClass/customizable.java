@@ -2,6 +2,9 @@ package DataClass;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 public class customizable {
@@ -34,15 +37,22 @@ public class customizable {
         return templateId;
     }
     @JsonIgnore
+    public java.net.URL URL() throws IOException {
+        if(!new File(URL).exists())throw new IOException("File dont found");
+        return new File(URL).toURI().toURL();
+    }
+    @JsonIgnore
     public String getAttribute(String key){
         return attributes.get(keys.indexOf(key));
-
     }
     @JsonIgnore
     public void addAttribute(String key,String value){
-        attributes.add(value);
-        keys.add(key);
-
+        if(keys.contains(key))
+            attributes.set(keys.indexOf(key),value);
+        else {
+            attributes.add(value);
+            keys.add(key);
+        }
     }
     public void setTemplateId(String templateId) {
         this.templateId = templateId;

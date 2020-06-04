@@ -56,7 +56,7 @@
                               <Image url="@../../image/box_important_48px.png" />
                            </image>
                         </ImageView>
-                        <Label id="mini_label" fx:id="mini_label" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="81.0" prefHeight="17.0" prefWidth="109.0" text="all Prescriptions" textFill="WHITE" />
+                        <Label id="mini_label" fx:id="mini_label" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="81.0" prefHeight="17.0" prefWidth="109.0" text="Saved Prescriptions" textFill="WHITE" />
                         <Label id="count_label" fx:id="all_prec_cpt" alignment="CENTER" layoutX="3.0" layoutY="106.0" prefHeight="17.0" prefWidth="109.0" text="250" textFill="WHITE" />
                      </children>
                   </Pane>

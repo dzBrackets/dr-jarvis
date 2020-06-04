@@ -1,29 +1,45 @@
 package Controller;
 
-import DataClass.userData;
+import DataClass.customizable;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.ISO8601Utils;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXColorPicker;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import dr.FinalsVal;
+import dr.Main;
 import dr.async;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import model.components.template_Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.transform.Scale;
+import javafx.stage.FileChooser;
+import libs.doTheFile;
+import libs.requestFormer;
+import model.components.drugItem;
+import model.components.prevBoxComponent;
+import model.usedDrug;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static dr.FinalsVal.*;
+import static dr.FinalsVal.customAttrs;
+import static libs.helper.byteString;
+import static libs.helper.byteStringUTF;
 
 public class settingC implements Initializable {
     public Label tab_type;
@@ -56,22 +72,184 @@ public class settingC implements Initializable {
        static async alpha=new async();
     public GridPane template_gridpane;
     public ArrayList<Pane> list ;
-
+    public AnchorPane choise_pan;
+    public AnchorPane edit_pan;
+    public AnchorPane load_anchorpane;
+    public GridPane textFieldGrid;
+    public JFXColorPicker primaryColor;
+    public JFXColorPicker secondaryColor;
+    public JFXButton save_customise_btn;
+    int selectedTempIndex=-1;
+    requestFormer<customizable> req=new requestFormer<>();
+   public static async beta=new async();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-alpha.onReceive(v->setDocInfo());
+alpha.onReceive(v-> Platform.runLater(this::setDocInfo));
+beta.onReceive(v-> Platform.runLater(this::fetchTemps));
 export_btn.setOnMouseClicked(v->{
     database.export("backup/zipzpy.commons");
 });
+req.onReceive(v-> Platform.runLater(this::loadTemplatesGrid));
+showTemplateList();
+fetchTemps();
+        }
+void showEditTemplatePane(){
+    choise_pan.setVisible(false);
+    edit_pan.setVisible(true);
+}
+void showTemplateList(){
+    choise_pan.setVisible(true);
+    edit_pan.setVisible(false);
+}
+    private void fetchTemps() {
+        requestT.offer(req.get());
+    }
+
+
+    void loadTemplatesGrid(){
+       template_gridpane.getChildren().clear();
+    for (int i = 0; i <req.respond.size(); i++) {
+        prevBoxComponent cs = new prevBoxComponent();
+        customizable fin = req.respond.get(i);
+        if(local_data.getSelectedTemplate()==i){
+            cs.selected();
+            int finalI = i;
+            cs.edit.setOnAction(v->{
+                System.out.println("edit");
+                 selectedTempIndex = finalI;
+                openEditTempPane(fin);
+            });
+        }
+        else{
+            cs.notSelected();
+            int finalI1 = i;
+            cs.use.setOnAction(v->{
+                selectedTempIndex = finalI1;
+                openEditTempPane(fin);
+            });
+        }
+        template_gridpane.add(cs,i,0);
+
+
+    }
+    prevBoxComponent cs = new prevBoxComponent();
+    cs.lastOne();
+    cs.add.setOnAction(v->{
+        System.out.println("add");
+        customizable customAttrs=new customizable();
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("templates Files", "*.dtem"));
+        File selectedFile = fileChooser.showOpenDialog(Main.staticstage);
+
+
+
+        if(selectedFile!=null) {
+        try {
+            doTheFile df=new doTheFile(selectedFile);
+            df.execute();
+
+            customAttrs=df.config;
+            requestT.offer(req.post(customAttrs));
+           // System.out.println(df.config.getTemplateId());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
 
         }
 
 
 
+    });
+    template_gridpane.add(cs,template_gridpane.getChildren().size(),0);
+
+
+}
+
+void openEditTempPane(customizable setting){
+boolean stop=false;
+    FXMLLoader loader = new FXMLLoader();
+    try {
+        loader.setLocation(setting.URL());
+        loader.load();
+    } catch (IOException e) {
+        if(req.respond.size()==1&&selectedTempIndex==0) {
+            loader.setLocation(getClass().getResource("/dr/FXML/PAGES/template.fxml"));
+            try {
+                loader.load();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        }
+        else{
+            requestT.offer(req.remove(req.respond.get(selectedTempIndex)));
+            stop=true;}
+    }
+    if(!stop) {
+        templateC controller = loader.getController();
+        controller.container.getTransforms().add(new Scale(0.74, 0.74));
+        load_anchorpane.getChildren().add(controller.container);
+        controller.setLabelBy(req.respond.get(selectedTempIndex).getAttributes());
+
+        controller.setPrimaryColor(Color.web(req.respond.get(selectedTempIndex).getAttribute("c1")));
+        controller.setSecondaryColor(Color.web(req.respond.get(selectedTempIndex).getAttribute("c2")));
+        primaryColor.setValue(Color.web(req.respond.get(selectedTempIndex).getAttribute("c1")));
+        secondaryColor.setValue(Color.web(req.respond.get(selectedTempIndex).getAttribute("c2")));
+
+        controller.drug_list.getChildren().clear();
+        controller.drug_list.getChildren().add(new drugItem(new usedDrug()));
+
+
+        primaryColor.setOnAction(v -> {
+            controller.setPrimaryColor(primaryColor.getValue());
+        });
+
+
+        secondaryColor.setOnAction(v -> {
+            controller.setSecondaryColor(secondaryColor.getValue());
+            controller.drug_list.getChildren().clear();
+            controller.drug_list.getChildren().add(new drugItem(new usedDrug(), secondaryColor.getValue()));
+        });
+
+        for (int i = 0; i < textFieldGrid.getChildren().size(); i++) {
+            JFXTextField tf = (JFXTextField) textFieldGrid.getChildren().get(i);
+            int finalI = i;
+
+            tf.setOnKeyTyped(v -> {
+                controller.setLabelByPos(finalI, tf.getText());
+            });
+
+        }
+
+        save_customise_btn.setOnAction(v -> {
+            customizable tmp = req.respond.get(selectedTempIndex);
+
+            for (int i = 0; i < textFieldGrid.getChildren().size(); i++) {
+                JFXTextField tf = (JFXTextField) textFieldGrid.getChildren().get(i);
+                if (tf.getText().length() > 0)
+                    tmp.addAttribute("tbl" + (i + 1), tf.getText());
+            }
+            tmp.addAttribute("c1", primaryColor.getValue().toString());
+            tmp.addAttribute("c2", secondaryColor.getValue().toString());
+
+            local_data.setSelectedTemplate(selectedTempIndex);
+            requestU.offer(formerU.update());
+            requestT.offer(formerT.update());
+            controller.drug_list.getChildren().clear();
+
+
+            showTemplateList();
+        });
+        showEditTemplatePane();
+
+    }
+}
      void setDocInfo(){
 
-         namel_label.setText(local_data.getName());
+        namel_label.setText(local_data.getName());
         email_label.setText(local_data.getEmail());
         adr_label.setText(local_data.getAddress());
         phone_label.setText(local_data.getPhone());
@@ -87,6 +265,9 @@ export_btn.setOnMouseClicked(v->{
 
     public void customize_selected(Event event) {
         tab_type.setText("customize ");
+        loadTemplatesGrid();
+
+
     }
 
     public void infoTab_selected(Event event) {

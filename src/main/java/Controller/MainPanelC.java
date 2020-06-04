@@ -24,6 +24,7 @@ import libs.requestFormer;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -57,7 +58,7 @@ public class MainPanelC  implements Initializable {
     public DashboardC dashController;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-initWaiters();
+        initWaiters();
         initSensitiveData();
         initDashboardController();
         dashbord_pane.toFront();
@@ -75,10 +76,17 @@ initWaiters();
                 loadDefaultTemp();
             }
             else {
-                customAttrs = formerT.respond.get(local_data.getSelectedTemplate());
+                try{
+                customAttrs = formerT.respond.get(local_data.getSelectedTemplate());}
+                catch (IndexOutOfBoundsException ex){
+                    customAttrs = formerT.respond.get(0);
+                    local_data.setSelectedTemplate(0);
+                    requestU.offer(new requestFormer<userData>().update());
+                }
             }
-            initTemplate(customAttrs.getURL());
-
+            initTemplate();
+            settingC.alpha.dispatchEvent();
+            settingC.beta.dispatchEvent();
         });
 
         formerU.onReceive(v->{
@@ -86,7 +94,6 @@ initWaiters();
             System.out.println("yeeah!!");
             if(!formerU.respond.isEmpty()){
                 local_data=formerU.respond.get(0);
-                settingC.alpha.dispatchEvent();
                 DashboardC.chartInit();
                 requestT.offer(formerT.get());
 
@@ -97,15 +104,18 @@ initWaiters();
         });
     }
 
-    private void loadDefaultTemp() {
+    private customizable loadDefaultTemp() {
         customAttrs=new customizable();
-        customAttrs.addAttribute("tbl1","الحكيم عبد العزيز مختاري");
-        customAttrs.addAttribute("tbl2","الحكيم عبد العزيز مختاري");
-        customAttrs.addAttribute("tbl3","الحكيم عبد العزيز مختاري");
-        customAttrs.addAttribute("tbl4","الحكيم عبد العزيز مختاري");
-        System.out.println("hello haha");
-        System.out.println(customAttrs.getAttribute("tbl1"));
-Platform.runLater(()->{requestT.offer(new requestFormer<customizable>().post(customAttrs));});
+        customAttrs.setURL("templates/template.fxml");
+        customAttrs.addAttribute("tbl1","doctor daudji aymen");
+        customAttrs.addAttribute("tbl2","specialist a programing");
+        customAttrs.addAttribute("tbl3","ouled aich");
+        customAttrs.addAttribute("tbl4","blida");
+        customAttrs.addAttribute("c1","0x6a1b9aff");
+        customAttrs.addAttribute("c2","0x0d47a1ff");
+
+        Platform.runLater(()->{requestT.offer(formerT.post(customAttrs));});
+        return customAttrs;
 
     }
 
@@ -116,6 +126,7 @@ Platform.runLater(()->{requestT.offer(new requestFormer<customizable>().post(cus
     public void initDashboardController(){
 
     FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/PAGES/Dashboard.fxml"));
+
     try {
         loader.load();
     } catch (IOException e) {
@@ -128,14 +139,32 @@ Platform.runLater(()->{requestT.offer(new requestFormer<customizable>().post(cus
 
 }
 
-    public void initTemplate(String URL){
-        FXMLLoader loader =new FXMLLoader(getClass().getResource(URL));
+    public void initTemplate(){
+
+        FXMLLoader loader =new FXMLLoader();
+        try {
+            System.out.println("lets go");
+            loader.setLocation(customAttrs.URL());
+
+        } catch (IOException e) {
+            requestT.offer(new requestFormer<customizable>().remove(customAttrs));
+            if(formerT.respond.size()>0&&formerT.respond.get(0)!=customAttrs){
+                customAttrs = formerT.respond.get(0);
+                local_data.setSelectedTemplate(0);
+                requestU.offer(new requestFormer<userData>().update());
+            }
+        }
+        try {
+            loader.setLocation(customAttrs.URL());
+        } catch (IOException e) {
+            loader.setLocation(getClass().getResource("/dr/FXML/PAGES/template.fxml"));
+        }
+
 
         try {
            loader.load();
         } catch (IOException e) {
-            e.printStackTrace();
-        }
+e.getStackTrace();        }
         templateController = loader.getController();
         templateStatic= templateController.container;
         templateController.setDoctorLocalInfo();

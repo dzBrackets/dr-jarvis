@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
-<?import com.jfoenix.controls.JFXColorPicker?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXTabPane?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane id="setting_pane" fx:id="setting_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: white; -fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px;" stylesheets="@../../CSS/setting_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.settingC">
+<AnchorPane id="setting_pane" fx:id="setting_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: white; -fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px;" stylesheets="@../../CSS/setting_style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.settingC">
    <children>
       <Label id="info1_label" layoutX="26.0" layoutY="14.0" prefHeight="32.0" prefWidth="99.0" style="-fx-font-size: 21px;" text="Settings&gt; " textFill="#4a4a4a" />
       <Label id="tab_type" fx:id="tab_type" layoutX="119.0" layoutY="14.0" prefHeight="32.0" prefWidth="162.0" style="-fx-font-size: 21px;" text="Personal " textFill="#4a4a4a" />
@@ -213,7 +203,7 @@
                                        <Label prefHeight="20.0" prefWidth="113.0" styleClass="doc_info_label" text="textfield 4 :" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
                                     </children>
                                  </GridPane>
-                                 <GridPane fx:id="template_field_gridpane" layoutX="161.0" layoutY="73.0" prefHeight="184.0" prefWidth="212.0">
+                                 <GridPane fx:id="textFieldGrid" layoutX="161.0" layoutY="73.0" prefHeight="184.0" prefWidth="212.0">
                                     <columnConstraints>
                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     </columnConstraints>
@@ -241,12 +231,12 @@
                                        <Insets />
                                     </opaqueInsets>
                                  </Label>
-                                 <JFXColorPicker fx:id="primary_picker" editable="true" focusTraversable="false" layoutX="161.0" layoutY="336.0" minHeight="24.0" prefHeight="24.0" prefWidth="35.0" style="-fx-border-radius: 5px;" />
-                                 <JFXColorPicker fx:id="secondary_picker" editable="true" focusTraversable="false" layoutX="161.0" layoutY="374.0" minHeight="24.0" prefHeight="24.0" prefWidth="35.0" style="-fx-border-radius: 5px;" />
+                                 <JFXColorPicker id="primaryColor" fx:id="primaryColor" editable="true" focusTraversable="false" layoutX="161.0" layoutY="336.0" minHeight="24.0" prefHeight="24.0" prefWidth="35.0" style="-fx-border-radius: 5px;" />
+                                 <JFXColorPicker id="secondaryColor" fx:id="secondaryColor" editable="true" focusTraversable="false" layoutX="161.0" layoutY="374.0" minHeight="24.0" prefHeight="24.0" prefWidth="35.0" style="-fx-border-radius: 5px;" />
                                  <JFXButton id="save_customise_btn" fx:id="save_customise_btn" focusTraversable="false" layoutX="288.0" layoutY="584.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px; -fx-background-color: #0ACF83;" text="Save" />
                               </children>
                            </AnchorPane>
-                           <AnchorPane fx:id="load_anchorpane" layoutX="467.0" layoutY="14.0" prefHeight="634.0" prefWidth="398.0" style="-fx-border-color: #E5E5E5; -fx-background-color: white; -fx-border-radius: 11px;" />
+                           <AnchorPane fx:id="load_anchorpane" layoutX="410.0" layoutY="14.0" prefHeight="634.0" prefWidth="448.0" style="-fx-border-color: #E5E5E5; -fx-background-color: white; -fx-border-radius: 11px;" />
                         </children>
                      </AnchorPane>
                   </children></AnchorPane>

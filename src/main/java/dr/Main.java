@@ -30,6 +30,10 @@ public class Main extends Application {
     public static void main(String[] args)
     {
 
+        System.setProperty("prism.text", "t2k");
+        System.setProperty("prism.lcdtext", "false");
+        System.setProperty("file.encoding", "UTF-8");
+
         try {
             drugThread=new dataThread<>("drug",Drug.class,requestD);
             drugThread.start();

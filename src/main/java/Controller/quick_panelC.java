@@ -170,7 +170,7 @@ edit_area.focusedProperty().addListener(v->{
         MainPanelC.templateController.setTemplateInfo(selectedPatient);
         int  i=0,j=0;
         while(i<data.size()){
-            MainPanelC.templateController.drug_list.add(new drugItem(data.get(i)),0,j);
+            MainPanelC.templateController.drug_list.add(new drugItem(data.get(i),MainPanelC.templateController.secColor),0,j);
             j++;
             i++;
             if(i % 5==0){

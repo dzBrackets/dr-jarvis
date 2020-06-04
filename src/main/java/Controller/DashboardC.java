@@ -153,7 +153,7 @@ void loadRecent(){
                 all_prec_cpt.setText(p);
                 drug_cpt.setText(d);
                 patient_cpt.setText(a);
-                today_precp_cpt.setText(local_data.getTodayStat() + "");
+                today_precp_cpt.setText(local_data.getMonthlyStat() + "");
 
             });
 
@@ -179,7 +179,6 @@ static void chartInit(){
     XYChart.Series<Number,Number> series2 = new XYChart.Series<>();
     series2.setName("new Patient");
     //load stat
-    //dataTostatistics st=new dataTostatistics(new int[]{5,1,0,50,10,30,5,20,30,1,4,5,9,15,13,40,30,35,11,12,1,4,5,9,15,13,40,30,35});
     int[] daysByMonth = local_data.getMonthStats();
     for (int i = 0; i < daysByMonth.length; i++) {
         series2.getData().add(new XYChart.Data<>(i+1, daysByMonth[i]));

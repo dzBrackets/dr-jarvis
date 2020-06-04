@@ -29,17 +29,29 @@ int[] monthStats=new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
         return this;
     }
 
-    public int[] getMonthStats() {
-        return monthStats;
-    }
-public void updateDayStats(int amount){
+    public void updateDayStats(int amount){
         monthStats[LocalDate.now().getDayOfMonth()-1]=amount; }
+
+
+    @JsonIgnore
+    public int getMonthlyStat(){
+        int total=0;
+        for (int i:monthStats
+                 ) {
+                total+=i;
+         }
+        return total;
+        }
+
     public void setMonthStats(int[] monthStats) {
         this.monthStats = monthStats;
     }
     @JsonIgnore
     public int getTodayStat(){
         return  monthStats[LocalDate.now().getDayOfMonth()-1];
+    }
+    public int[] getMonthStats() {
+        return monthStats;
     }
 
     public String getName() {
