@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import static dr.FinalsVal.*;
@@ -94,6 +95,8 @@ public class MainPanelC  implements Initializable {
             System.out.println("yeeah!!");
             if(!formerU.respond.isEmpty()){
                 local_data=formerU.respond.get(0);
+                local_data.checkAndReset(LocalDate.now().getDayOfMonth()-1);
+
                 DashboardC.chartInit();
                 requestT.offer(formerT.get());
 

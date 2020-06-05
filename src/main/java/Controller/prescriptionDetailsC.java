@@ -15,9 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -31,6 +29,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import static dr.FinalsVal.*;
 
@@ -120,8 +119,32 @@ void dad(Stage st){
         last_notice_label.setText(prescriptionsHistory.getDiagnosis());
 
         req.onReceive(v->{
+            try{
             Patient selectedPatient = req.respond.get(0);
-            Platform.runLater(()-> setPatientInfo(selectedPatient));
+                Platform.runLater(()-> setPatientInfo(selectedPatient));
+
+            }
+            catch (IndexOutOfBoundsException e){
+                Platform.runLater(()-> {
+                    System.out.println("error");
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("something went wrong.!!");
+                    alert.setHeaderText("sthe patient in prescription not found!!");
+                    alert.setContentText("you want to delete the Prescription?");
+
+                    ButtonType show = new ButtonType("continue anyway");
+                    alert.getButtonTypes().add(show);
+
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.get() == ButtonType.OK) {
+                    requestH.offer(formerH.remove(prescriptionsHistory));
+                    exit_btn.fire();
+                    }
+                    if (result.get() == ButtonType.CANCEL) {
+                        exit_btn.fire();
+                    }
+                });
+            }
         });
       //  requestP.offer(req.find("getId",prescriptionsHistory.getUserId()));
         requestP.offer(req.querySearch("SELECT *", "WHERE patientId = '" + prescriptionsHistory.getUserId()+"'", 1));

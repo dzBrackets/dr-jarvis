@@ -32,6 +32,7 @@ import model.stageLoader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -121,7 +122,16 @@ public cellController<Patient> cellController=new cellController<>();
                     IntegerProperty prop= (IntegerProperty) e;
                     if(prop.getValue()==0){
                         System.out.println("delete");
-                        cleanDelete(patient_table.getItems().get(cellController.index));
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setTitle("confirm you choice.");
+                        alert.setHeaderText("Delete anyway?");
+                        alert.setContentText("you are going to delete : "+patient_table.getItems().get(cellController.index).getFullName()+" and all the "+patient_table.getItems().get(cellController.index).getPrescriptionsId().size()+" prescriptions");
+
+                        Optional<ButtonType> result = alert.showAndWait();
+                        if (result.get() == ButtonType.OK){
+                            cleanDelete(patient_table.getItems().get(cellController.index));
+
+                        }
                         write_TXF.clear();
                     }
                     if(prop.getValue()==1){

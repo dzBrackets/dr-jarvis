@@ -181,6 +181,7 @@ static void chartInit(){
     //load stat
     int[] daysByMonth = local_data.getMonthStats();
     for (int i = 0; i < daysByMonth.length; i++) {
+        if(daysByMonth[i]!=0)
         series2.getData().add(new XYChart.Data<>(i+1, daysByMonth[i]));
     }
     lineChart.getData().clear();

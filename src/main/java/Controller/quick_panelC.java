@@ -19,10 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import libs.cellController;
@@ -153,7 +150,7 @@ edit_area.focusedProperty().addListener(v->{
         pres.setDate(selectedPatient.getLastVisit());
         requestP.offer(formerP.update(selectedPatient));
         requestH.offer(formerH.post(pres));
-        local_data.updateDayStats(database.getSize("prescriptions"));
+        local_data.updateDayStats();
         requestU.offer(formerU.update());
         if(FIRE_EXIT)
         exit_btn.fire();
@@ -184,8 +181,22 @@ j=0;
 
 
         }
+        try{
         print(MainPanelC.templateStatic);
-        exit_btn.fire();
+        exit_btn.fire();}
+        catch (NullPointerException e){
+            System.out.println("No default printer found!!");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("No default printer found in your system!!");
+            alert.showAndWait();
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("The prescription has been successfully saved.");
+            alert.showAndWait();
+        }
 
     }
 

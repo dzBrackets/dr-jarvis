@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.concurrent.SynchronousQueue;
 
 import DataClass.*;
-import io.reactivex.rxjava3.core.Observable;
-import io.reactivex.rxjava3.internal.operators.observable.ObservableAny;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.print.*;
@@ -17,8 +15,6 @@ import javafx.scene.transform.Scale;
 import libs.coronaDb.coCollection;
 import libs.coronaDb.coronaDb;
 import libs.requestFormer;
-import org.reactivestreams.Subscriber;
-
 final public class FinalsVal {
 
 //       static public final SynchronousQueue<Patient> respond = new SynchronousQueue<>();
