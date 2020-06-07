@@ -22,12 +22,12 @@
             </columnResizePolicy>
         </TableView>
         <Label id="info1_label" layoutX="26.0" layoutY="14.0" prefHeight="32.0" prefWidth="226.0" style="-fx-font-size: 21px;" text="Prescriptions History :" textFill="#4a4a4a" />
-        <Label layoutX="25.0" layoutY="78.0" prefHeight="17.0" prefWidth="41.0" text="show" textFill="#5f5f5f">
+        <Label layoutX="25.0" layoutY="78.0" prefHeight="17.0" prefWidth="41.0" text="show" textFill="#5f5f5f" visible="false">
             <font>
                 <Font name="Sarabun Medium" size="15.0" />
             </font></Label>
-        <Spinner id="show_spinner" fx:id="show_spinner" layoutX="66.0" layoutY="69.0" prefHeight="32.0" prefWidth="54.0" />
-        <Label id="info2_label" fx:id="info2_label" alignment="TOP_LEFT" layoutX="129.0" layoutY="76.0" prefHeight="25.0" prefWidth="54.0" text="entries" textFill="#5f5f5f">
+        <Spinner id="show_spinner" fx:id="show_spinner" layoutX="66.0" layoutY="69.0" prefHeight="32.0" prefWidth="54.0" visible="false" />
+        <Label id="info2_label" fx:id="info2_label" alignment="TOP_LEFT" layoutX="129.0" layoutY="76.0" prefHeight="25.0" prefWidth="54.0" text="entries" textFill="#5f5f5f" visible="false">
             <font>
                 <Font name="Sarabun Medium" size="15.0" />
             </font></Label>

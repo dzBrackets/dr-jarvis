@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXColorPicker?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="setting_pane" fx:id="setting_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: white; -fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px;" stylesheets="@../../CSS/setting_style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.settingC">
+<AnchorPane id="setting_pane" fx:id="setting_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: white; -fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px;" stylesheets="@../../CSS/setting_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.settingC">
    <children>
       <Label id="info1_label" layoutX="26.0" layoutY="14.0" prefHeight="32.0" prefWidth="99.0" style="-fx-font-size: 21px;" text="Settings&gt; " textFill="#4a4a4a" />
       <Label id="tab_type" fx:id="tab_type" layoutX="119.0" layoutY="14.0" prefHeight="32.0" prefWidth="162.0" style="-fx-font-size: 21px;" text="Personal " textFill="#4a4a4a" />
-      <JFXTabPane layoutX="24.0" layoutY="57.0" prefHeight="688.0" prefWidth="865.0">
+      <JFXTabPane fx:id="tabpane" layoutX="24.0" layoutY="57.0" prefHeight="688.0" prefWidth="865.0">
          <tabs>
             <Tab id="personal_tab" fx:id="personal_tab" closable="false" onSelectionChanged="#personal_selected" text="Personal settings ">
               <content>
@@ -94,21 +103,21 @@
                               <JFXButton fx:id="save_btn" layoutX="594.0" layoutY="11.0" onAction="#save_edit" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px; -fx-background-color: #1AD28B;" styleClass="func_btn" text="Save" visible="false" />
                            </children>
                         </Pane>
-                        <Label layoutY="284.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="Data properties :" />
-                        <Label layoutX="14.0" layoutY="340.0" prefHeight="20.0" prefWidth="118.0" styleClass="doc_info_label" text="Import data :">
+                        <Label layoutY="284.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="Data properties :" visible="false" />
+                        <Label layoutX="14.0" layoutY="340.0" prefHeight="20.0" prefWidth="118.0" styleClass="doc_info_label" text="Import data :" visible="false">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                         </Label>
-                        <JFXButton id="import_btn" fx:id="import_btn" focusTraversable="false" layoutX="191.0" layoutY="337.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="import..." />
-                        <Label layoutX="351.0" layoutY="340.0" prefHeight="20.0" prefWidth="118.0" styleClass="doc_info_label" text="Export data:">
+                        <JFXButton id="import_btn" fx:id="import_btn" focusTraversable="false" layoutX="191.0" layoutY="337.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="import..." visible="false" />
+                        <Label layoutX="351.0" layoutY="340.0" prefHeight="20.0" prefWidth="118.0" styleClass="doc_info_label" text="Export data:" visible="false">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                         </Label>
-                        <JFXButton id="import_btn" fx:id="export_btn" focusTraversable="false" layoutX="528.0" layoutY="337.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="export..." />
-                        <Label layoutY="390.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="Data properties :" />
-                        <Pane layoutX="1.0" layoutY="427.0" prefHeight="150.0" prefWidth="498.0" style="-fx-border-color: #E5E5E5; -fx-background-radius: 11px; -fx-border-radius: 11px;">
+                        <JFXButton id="import_btn" fx:id="export_btn" focusTraversable="false" layoutX="528.0" layoutY="337.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="export..." visible="false" />
+                        <Label layoutY="390.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="Data properties :" visible="false" />
+                        <Pane layoutX="1.0" layoutY="427.0" prefHeight="150.0" prefWidth="498.0" style="-fx-border-color: #E5E5E5; -fx-background-radius: 11px; -fx-border-radius: 11px;" visible="false">
                            <children>
                               <Label layoutX="14.0" layoutY="21.0" prefHeight="20.0" prefWidth="180.0" styleClass="doc_info_label" text="Load external Drugs list:">
                                  <opaqueInsets>
@@ -130,34 +139,11 @@
                                  </opaqueInsets>
                               </Label>
                            </children></Pane>
-                        <JFXButton id="import_btn" fx:id="clean_btn" focusTraversable="false" layoutX="588.0" layoutY="573.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="Clean Data" />
+                        <JFXButton id="import_btn" fx:id="clean_btn" focusTraversable="false" layoutX="588.0" layoutY="573.0" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="Clean Data" visible="false" />
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
-             <Tab id="Preferences_tab" fx:id="Preferences_tab" onSelectionChanged="#preferences_selected" text="Preferences">
-                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                  <children>
-                     <Pane layoutX="21.0" layoutY="71.0" prefHeight="200.0" prefWidth="701.0" style="-fx-border-color: #E5E5E5; -fx-background-radius: 11px; -fx-border-radius: 11px;">
-                        <children>
-                           <Label layoutX="14.0" layoutY="30.0" prefHeight="20.0" prefWidth="74.0" styleClass="doc_info_label" text="Time zone :">
-                              <opaqueInsets>
-                                 <Insets />
-                              </opaqueInsets>
-                           </Label>
-                           <Label layoutX="14.0" layoutY="90.0" prefHeight="20.0" prefWidth="89.0" styleClass="doc_info_label" text="Time format :">
-                              <opaqueInsets>
-                                 <Insets />
-                              </opaqueInsets>
-                           </Label>
-                           <JFXCheckBox checkedColor="#173b68" layoutX="14.0" layoutY="149.0" prefHeight="18.0" prefWidth="225.0" selected="true" text="Enable time clock in dashboard" />
-                           <JFXComboBox fx:id="timezone" layoutX="183.0" layoutY="28.0" prefHeight="25.0" prefWidth="162.0" style="-jfx-label-float: true; -jfx-focus-color: transparent; -jfx-unfocus-color: transparent;" />
-                           <JFXComboBox fx:id="timeformat" layoutX="183.0" layoutY="87.0" prefHeight="25.0" prefWidth="162.0" style="-jfx-label-float: true; -jfx-focus-color: transparent; -jfx-unfocus-color: transparent;" />
-                        </children>
-                     </Pane>
-                     <Label layoutX="21.0" layoutY="32.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="Time and date :" />
-                  </children></AnchorPane>
-             </Tab>
              <Tab id="customize_tab" fx:id="customize_tab" onSelectionChanged="#customize_selected" text="customize...">
                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="634.0" prefWidth="865.0">
                   <children>
