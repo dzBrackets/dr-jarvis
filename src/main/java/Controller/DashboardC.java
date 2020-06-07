@@ -186,6 +186,7 @@ static void chartInit(){
     }
     lineChart.getData().clear();
     lineChart.getData().add(series2);
+    lineChart.setPrefSize(589,277);
    Platform.runLater(()-> stCntainer.getChildren().setAll(lineChart));
 }
 
