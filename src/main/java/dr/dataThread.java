@@ -14,10 +14,12 @@ import java.util.stream.Collectors;
 import static dr.FinalsVal.*;
 
 public class dataThread<type> extends Thread {
-    private final coCollection<type> data ;
+    private coCollection<type> data ;
 private final SynchronousQueue<requestFormer<type>> request;
+    private final Class<type> className;
     public dataThread(String name, Class<type> className,SynchronousQueue<requestFormer<type>> request) throws IOException, ClassNotFoundException {
         super(name);
+        this.className=className;
         this.request=request;
         data = database.getCollection(name, className);
     }
@@ -54,11 +56,21 @@ private final SynchronousQueue<requestFormer<type>> request;
 
 
                 }
+
+                if (req.request.equals(requestFormer.REFRESH)){
+                    data = database.getCollection(this.getName(), className);
+                    req.reply(data);
+                    req.dispatchEvent();
+
+
+                }
                 if (req.request.equals(requestFormer.REMOVE_LIST)){
                     System.out.println("remove bunch");
-                    for (type p:req.sameTypeList) {
-                        data.removeOne(p);
-                    }
+                    data.removeBunch(req.sameTypeList);
+                    /*for (type p:req.sameTypeList) {
+
+                        data.removeAll(p);
+                    }*/
 
                     req.reply(data);
                     req.dispatchEvent();
@@ -112,7 +124,6 @@ private final SynchronousQueue<requestFormer<type>> request;
                         for (Object element:req.funArguments)
                         {
                             selectiveList.addAll(data.querySelector("SELECT *",req.arg1+"'"+(String)element+"'").collect());
-
                         }
                         req.reply(selectiveList);
                         req.dispatchEvent();

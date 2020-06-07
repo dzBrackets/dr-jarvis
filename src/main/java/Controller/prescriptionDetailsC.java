@@ -129,7 +129,7 @@ void dad(Stage st){
                     System.out.println("error");
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("something went wrong.!!");
-                    alert.setHeaderText("sthe patient in prescription not found!!");
+                    alert.setHeaderText("the patient in prescription not found!!");
                     alert.setContentText("you want to delete the Prescription?");
 
                     ButtonType show = new ButtonType("continue anyway");

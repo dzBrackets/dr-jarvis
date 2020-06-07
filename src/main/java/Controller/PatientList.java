@@ -152,24 +152,28 @@ public cellController<Patient> cellController=new cellController<>();
         );
         write_TXF.textProperty().addListener(v->{
            String value=((StringProperty)v).getValue();
-            System.out.println(value);
+            if(value.length()>1)
             requestP.offer(req.callBack("querySearch","SELECT *","WHERE firstName $LIKE '"+value+"%' OR lastName $LIKE '"+value+"%'",String.class));
-
+            else
+                requestP.offer(req.get());
         });
     }
 private void initEvent(){
         req2.onReceive(v->{
+
             requestP.offer(req.remove(selectedPatient));
             selectedPatient=null;
         });
         formerH.onReceive(v->{
             prescriptionsHistory[] blue = formerH.respond.toArray(prescriptionsHistory[]::new);
+            System.out.println(blue.length);
             Platform.runLater(()->requestH.offer(req2.removeBunch(blue)));
         });
 }
     private void cleanDelete(Patient patient) {
-         selectedPatient = patient;
-            requestH.offer(formerH.mojoJojo("WHERE presId = ", patient.getPrescriptionsId().toArray(String[]::new)));
+        selectedPatient = patient;
+        System.out.println(patient.getPrescriptionsId().toArray(String[]::new).length);
+        requestH.offer(formerH.mojoJojo("WHERE presId = ", patient.getPrescriptionsId().toArray(String[]::new)));
 
     }
 

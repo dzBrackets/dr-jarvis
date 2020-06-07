@@ -12,6 +12,7 @@ public class printWorker {
 
         node.setVisible(true);
         Printer printer = Printer.getDefaultPrinter();
+        System.out.println(printer.getName());
         PageLayout pageLayout = printer.createPageLayout(Paper.A5, PageOrientation.PORTRAIT, Printer.MarginType.DEFAULT);
         // System.out.println( "w:"+((pageLayout.getPrintableWidth()/72)*96) );
         //System.out.println( "h:"+((pageLayout.getPrintableHeight()/72)*96));
@@ -24,7 +25,7 @@ public class printWorker {
 
         node.getTransforms().add(new Scale(0.95, 0.95));
 
-        PrinterJob job = PrinterJob.createPrinterJob();
+        PrinterJob job = PrinterJob.createPrinterJob(printer);
         if (job != null) {
             boolean success = job.printPage(node);
             if (success) {
@@ -32,9 +33,7 @@ public class printWorker {
             }
         }
         node.setVisible(false);
-        System.out.println("after print");
-        System.out.println( "docw:"+node.getBoundsInParent().getWidth());
-        System.out.println( "doch:"+node.getBoundsInParent().getHeight());
+
     }
 
 }

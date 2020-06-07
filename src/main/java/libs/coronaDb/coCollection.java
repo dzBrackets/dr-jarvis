@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,6 +69,22 @@ this.mother=mother;
     public void removeOne(type data) {
     remove(data);
         reSave();
+        try {
+            mother.updateSize(name,size());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void removeBunch(type[] data) {
+        //System.out.println("size :"+data.length);
+       // System.out.println("total"+size());
+        removeAll(Arrays.asList(data));
+       // System.out.println("total"+size());
+
+        reSave();
+
         try {
             mother.updateSize(name,size());
         } catch (IOException e) {

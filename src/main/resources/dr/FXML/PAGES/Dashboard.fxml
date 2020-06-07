@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <AnchorPane id="dashborad_pane" fx:id="dashborad_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: #F8F8FA; -fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px;" stylesheets="@../../CSS/dashborad.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashboardC">
    <children>
       <Pane id="boxes_pane" fx:id="boxes_pane" prefHeight="752.0" prefWidth="615.0">
@@ -95,10 +96,9 @@
                   </Pane>
                </children>
             </GridPane>
-            <ScrollPane layoutX="12.0" layoutY="492.0" prefHeight="245.0" prefWidth="589.0">
-               <content>
-                  <VBox id="container" fx:id="container" prefHeight="263.0" prefWidth="571.0" />
-               </content></ScrollPane>
+
+                  <Pane id="container" fx:id="container" layoutX="12.0" layoutY="492.0" prefHeight="245.0" prefWidth="589.0"/>
+
          </children>
       </Pane>
       <Pane id="recent_pane" fx:id="recent_pane1" layoutX="615.0" prefHeight="752.0" prefWidth="298.0" style="-fx-background-radius: 27px; -fx-background-color: #2C3964; -fx-border-radius: 27px;">
@@ -116,6 +116,9 @@
                       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                   </GridPane>
 
                      </children>

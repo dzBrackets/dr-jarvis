@@ -60,7 +60,8 @@ public class DrugList  implements Initializable {
         name_C.setCellValueFactory(new PropertyValueFactory<>("name"));
         type_C.setCellFactory(cellController.CCellFactory("drug","type"));
         doss_C.setCellFactory(cellController.subCellFactory("drug","dose"));
-        menu_C.setCellFactory(cellController.MCellFactory(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."}));
+      //  menu_C.setCellFactory(cellController.MCellFactory(new String[]{"dr/image/trash_24px.png", "dr/image/ball_point_pen_24px.png"},new  String[]{"Delete...","Edit..."}));
+        menu_C.setCellFactory(cellController.MCellFactory(new String[]{"dr/image/trash_24px.png"},new  String[]{"Delete..."}));
         notice_C.setCellFactory(cellController.BCellFactory(new showButton("show")));
     }
     public void  loadData(){
@@ -103,9 +104,10 @@ public class DrugList  implements Initializable {
         );
         write_TXF.textProperty().addListener(v->{
             String value=((StringProperty)v).getValue();
-            System.out.println(value);
+            if(value.length()>1)
             requestD.offer(req.callBack("querySearch","SELECT *","WHERE name $LIKE '"+value+"%'",String.class));
-
+            else
+                requestD.offer(req.get());
         });
     }
 static public void closePopuUp(){

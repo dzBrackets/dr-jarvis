@@ -52,8 +52,8 @@ public class DashboardC implements Initializable {
     public Pane pane3;
     public Pane pane4;
     public JFXButton show_all_btn;
-    public VBox container;
-   static public VBox stCntainer;
+    public Pane container;
+   static public Pane stCntainer;
 
     public List<prescriptionsHistory> presList;
     public ObservableList<Patient> patientList= FXCollections.observableArrayList();
@@ -167,7 +167,7 @@ static void chartInit(){
     //defining the axes
     final NumberAxis xAxis = new NumberAxis();
     final NumberAxis yAxis = new NumberAxis();
-    xAxis.setLabel("day");
+    xAxis.setLabel(local_data.getTodayStat() +" today");
 
     //creating the chart
     final LineChart<Number,Number> lineChart =

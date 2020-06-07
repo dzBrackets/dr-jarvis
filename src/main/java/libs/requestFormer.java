@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 final public class requestFormer<type> {
-   public String request;
+    public String request;
 
 public String functionName;
     public Object[] funArguments;
@@ -25,7 +25,7 @@ public ObservableList<type> respond= FXCollections.observableArrayList();
     };
     private final IntegerProperty async =new SimpleIntegerProperty(1);
 
-
+    public static final String REFRESH ="refresh";
     public static final String GET="g";
     public static final String GET_AMOUNT="ga";
     public static final String POST="p";
@@ -69,6 +69,11 @@ public <klass> requestFormer<type> callBack(String fName, klass[] ob, Class<klas
         this.request=UPDATE;
         return this;
     }
+    public requestFormer<type> refresh(){
+        this.request=REFRESH;
+        return this;
+    }
+
     public requestFormer<type> update(type object){
         this.request= UPDATE_BY;
         arg1=object;
