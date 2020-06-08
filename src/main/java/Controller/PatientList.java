@@ -25,6 +25,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import libs.cellController;
 import libs.requestFormer;
+import model.components.dialog;
+import model.components.spawnButton;
 import model.popUpWindow;
 import model.showButton;
 import model.stageLoader;
@@ -122,18 +124,24 @@ public cellController<Patient> cellController=new cellController<>();
                     IntegerProperty prop= (IntegerProperty) e;
                     if(prop.getValue()==0){
                         System.out.println("delete");
-                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                        alert.setTitle("confirm you choice.");
-                        alert.setHeaderText("Delete anyway?");
-                        alert.setContentText("you are going to delete : "+patient_table.getItems().get(cellController.index).getFullName()+" and all the "+patient_table.getItems().get(cellController.index).getPrescriptionsId().size()+" prescriptions");
+                        dialog check=new dialog();
+                        check.setTitle("confirm you choice.");
+                        check.setContent("you are going to delete : "+patient_table.getItems().get(cellController.index).getFullName()+" and all the "+patient_table.getItems().get(cellController.index).getPrescriptionsId().size()+" prescriptions");
 
-                        Optional<ButtonType> result = alert.showAndWait();
-                        if (result.get() == ButtonType.OK){
-                            cleanDelete(patient_table.getItems().get(cellController.index));
+                        JFXButton ok = spawnButton.red("Delete");
+                        JFXButton cancel = spawnButton.gray("Cancel");
+                        check.setPosition(300,300);
+                        check.show(Main.staticstage);
+                        check.getButtonList().setAll(ok,cancel);
+                       ok.setOnAction(v->{
+                           cleanDelete(patient_table.getItems().get(cellController.index));
+                           cancel.fire();
+                       });
+                           cancel.setOnAction(v->check.close());
 
                         }
                         write_TXF.clear();
-                    }
+
                     if(prop.getValue()==1){
 
                     loadAddStage(patient_table.getItems().get(cellController.index));

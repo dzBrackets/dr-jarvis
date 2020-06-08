@@ -3,6 +3,7 @@ package Controller;
 import DataClass.customizable;
 import DataClass.userData;
 import com.jfoenix.controls.JFXButton;
+import dr.Main;
 import dr.async;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -11,16 +12,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
+import javafx.scene.control.Button;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import libs.requestFormer;
+import model.components.dialog;
+import model.components.spawnButton;
 import model.stageLoader;
 
 import java.io.File;
@@ -58,6 +63,7 @@ public class MainPanelC  implements Initializable {
     public JFXButton minimize_btn;
     static templateC templateController;
     public DashboardC dashController;
+    int i=0;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initWaiters();
@@ -69,7 +75,6 @@ public class MainPanelC  implements Initializable {
         main_panel.setEffect(effect);
         initDashboardController();
         hover_btn();
-
     }
 
     private void initWaiters() {
@@ -125,9 +130,99 @@ public class MainPanelC  implements Initializable {
         ((welcomePageC)sl.getController()).done.onReceive(v->sl.close());
     }
 
+
     private void settingFirstLook() {
-        setting_btn.fire();
-        settingC.Stabpane.getSelectionModel().selectNext();
+        i=0;
+        dialog alr=new dialog();
+        alr.setTitle("Welcome Doctor ^^");
+        alr.setContent("this is a quick guid on how to use this software.");
+        JFXButton next = spawnButton.green("Next");
+        alr.getButtonList().setAll(next);
+        alr.setPosition(300,300);
+
+        alr.show(Main.staticstage);
+
+        next.setOnAction(v->{
+            if(i==0) {
+                alr.setPosition(300,50);
+                alr.setBubbleDir("tr");
+                alr.setTitle("here you can see the recent prescriptions");
+                alr.setContent("the prescriptions are saved each time you make new one.");
+            }
+            if(i==1){
+                alr.setPosition(100,50);
+                alr.setBubbleDir("bl");
+                alr.setTitle("this is the dashboard");
+                alr.setContent("we put some statistics for you.");
+            }
+            if(i==2){
+                alr.setPosition(100,300);
+                alr.setBubbleDir("tl");
+                        alr.setTitle("this is the prescription list");
+                        alr.setContent("all prescriptions saved here.");
+                presHistory_btn.fire();
+                    }
+            if(i==3){
+                alr.setPosition(100,400);
+                alr.setBubbleDir("tl");
+                        alr.setTitle("this is the patient list");
+                        alr.setContent("here you can manage your patient.");
+                pat_btn.fire();
+            }
+            if(i==4){
+                alr.setPosition(100,500);
+                alr.setBubbleDir("tl");
+                        alr.setTitle("this is the drug list list");
+                        alr.setContent("here you add or remove a drug.");
+                drug_btn.fire();
+                    }
+            if(i==5){
+                alr.setPosition(100,600);
+                alr.setBubbleDir("tl");
+                        alr.setTitle("this is the settings");
+                        alr.setContent("in first look you will see your personal info and you can edit them");
+                setting_btn.fire();
+                    }
+
+                    if(i==6){
+                        alr.setPosition(300,200);
+                        alr.setBubbleDir("bl");
+                        alr.setTitle("here you can customize your template");
+                        alr.setContent("");
+                        settingC.Stabpane.getSelectionModel().selectNext();
+
+                    }
+                    if(i==7){
+                        alr.setPosition(100,550);
+                        alr.setBubbleDir("bl");
+                        alr.setTitle("here is how to add a prescription");
+                        alr.setContent("you can add a prescription or a patient using this button");
+                    }
+                    if(i==8){
+                        alr.setPosition(450,200);
+                        alr.setBubbleDir("tr");
+                        alr.setTitle("");
+                        alr.setContent("or by clicking on special patient directly in the patient list");
+                        pat_btn.fire();
+
+                    }
+                    if(i==9){
+                        alr.setPosition(300,300);
+                        alr.setBubbleDir("none");
+                        alr.setTitle("This is get very annoying i know ':)");
+                        alr.setContent("maybe you will discover more useful features by your self");
+                        next.setText("finish");
+                    }
+
+                    if(i>9) {
+                    dashbord_btn.fire();
+                        alr.close();
+                    }
+            i++;
+        }
+        );
+
+
     }
 
     private customizable loadDefaultTemp() {
@@ -237,6 +332,7 @@ e.getStackTrace();        }
     }
 
     public void show_DashP(ActionEvent actionEvent) {
+       // settingFirstLook();
         dashController.update();
         dashbord_pane.toFront();
         dashbord_pane.setVisible(true);

@@ -17,9 +17,14 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import libs.coronaDb.dataTostatistics;
 import libs.requestFormer;
+import model.components.alertBox;
+import model.components.dialog;
 import model.components.recentComp;
+import model.components.spawnButton;
 import model.stageLoader;
 
 import java.net.URL;
@@ -72,6 +77,8 @@ public class DashboardC implements Initializable {
         initHandler();
         update();
         loadRecent();
+
+
 
         pane1.hoverProperty().addListener((observable, oldValue, newValue) -> {
         });

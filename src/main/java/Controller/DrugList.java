@@ -1,6 +1,7 @@
 package Controller;
 
 import DataClass.Drug;
+import com.jfoenix.controls.JFXButton;
 import dr.Main;
 import javafx.beans.property.IntegerProperty;
 import javafx.event.EventHandler;
@@ -21,6 +22,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import libs.requestFormer;
+import model.components.dialog;
+import model.components.spawnButton;
 import model.popUpWindow;
 import model.showButton;
 import java.io.IOException;
@@ -97,7 +100,19 @@ public class DrugList  implements Initializable {
                     IntegerProperty prop= (IntegerProperty) e;
                     if(prop.getValue()==0){
                         System.out.println("delete");
-                        requestD.offer(req.remove(drug_table.getItems().get(cellController.index)));
+                        dialog check=new dialog();
+                        check.setTitle("confirm you choice.");
+                        check.setContent("you are going to delete "+drug_table.getItems().get(cellController.index).getName());
+                        JFXButton ok = spawnButton.red("Delete");
+                        JFXButton cancel = spawnButton.gray("Cancel");
+                        check.setPosition(300,300);
+                        check.show(Main.staticstage);
+                        check.getButtonList().setAll(ok,cancel);
+                        ok.setOnAction(v->{
+                            requestD.offer(req.remove(drug_table.getItems().get(cellController.index)));
+                            cancel.fire();
+                        });
+                        cancel.setOnAction(v->check.close());
 
                     }
                 }

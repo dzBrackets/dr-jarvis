@@ -13,7 +13,7 @@
    <children>
       <Pane fx:id="win_pane" layoutX="80.0" layoutY="146.0" prefHeight="108.0" prefWidth="392.0" style="-fx-background-color: #765EE2; -fx-background-radius: 11px;">
          <children>
-            <Label id="value_area" fx:id="value_area" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="10.0" layoutX="13.0" layoutY="14.0" lineSpacing="3.0" prefHeight="84.0" prefWidth="332.0" style="-fx-background-color: #765EE2;" text=" value here" textFill="#eeeeee" wrapText="true">
+            <Label id="value_area" fx:id="value_area" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="10.0" layoutX="13.0" layoutY="14.0" lineSpacing="3.0" prefHeight="84.0" prefWidth="332.0" style="-fx-background-color: #765ee2;" text=" value here" textFill="#eeeeee" wrapText="true">
                <font>
                   <Font name="Sarabun SemiBold" size="14.0" />
                </font>

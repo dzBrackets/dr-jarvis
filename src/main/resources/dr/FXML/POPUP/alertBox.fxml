@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="general" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.components.alertBox">
+   <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="1001.0" style="-fx-background-color: rgba(0,0,0,0.36);" />
+    <Pane fx:id="container" prefHeight="144.0" prefWidth="392.0" style="-fx-background-color: #765EE2; -fx-background-radius: 11px;">
+      <children>
+         <Polyline fx:id="ptr" fill="#765ee2" layoutX="392.0" layoutY="40.0" points="-14.0, -40.0, 29.0, -40.0, 0.0, -3.0, -14.0, -40.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         <Polyline fx:id="pbl" fill="#765EE2" layoutX="7.0" layoutY="147.0" points="-33.0, -3.0, 0.0, -37.0, 14.0, -3.0, -33.0, -3.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         <Polyline fx:id="pbr" fill="#765EE2" layoutX="377.0" layoutY="147.0" points="7.0, -39.0, 40.0, -3.0, -3.0, -3.0, 7.0, -39.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         <Polyline fx:id="ptl" fill="#765EE2" layoutX="1.0" layoutY="40.0" points="-25.0, -40.0, 29.0, -40.0, 0.0, -3.0, -25.0, -40.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+         <Label fx:id="title" layoutX="14.0" layoutY="5.0" text="Label" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+         </Label>
+         <Label fx:id="content" alignment="TOP_LEFT" layoutX="15.0" layoutY="41.0" prefHeight="59.0" prefWidth="357.0" text="Label" textFill="WHITE" wrapText="true">
+            <font>
+               <Font size="13.0" />
+            </font></Label>
+         <HBox fx:id="buttonList" alignment="CENTER_RIGHT" layoutY="104.0" prefHeight="36.0" prefWidth="392.0" spacing="10.0">
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <padding>
+               <Insets right="10.0" />
+            </padding>
+         </HBox>
+      </children>
+   </Pane>
+
+
+</AnchorPane>
