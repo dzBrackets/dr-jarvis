@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="772.0" stylesheets="@../../CSS/welcome.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="772.0" style="-fx-background-color: transparent;" stylesheets="@../../CSS/welcome.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane fx:id="welcome_pane" layoutX="114.0" layoutY="276.0" prefHeight="200.0" prefWidth="544.0" style="-fx-background-color: #737FE7; -fx-background-radius: 11px;" visible="false">
+      <Pane fx:id="welcome_pane" layoutX="114.0" layoutY="276.0" prefHeight="200.0" prefWidth="544.0" style="-fx-background-color: #737FE7; -fx-background-radius: 11px;">
          <children>
             <ImageView fitHeight="259.0" fitWidth="316.0" layoutX="-36.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -80,6 +80,8 @@
                   <Label prefHeight="30.0" prefWidth="159.0" styleClass="doc_info_label" text="Phone number : " GridPane.halignment="LEFT" GridPane.rowIndex="3" />
                </children>
             </GridPane>
+            <JFXButton id="next_btn" fx:id="second_next_btn" focusTraversable="false" layoutX="568.0" layoutY="626.0" prefHeight="29.0" prefWidth="79.0" style="-fx-background-radius: 100px; -fx-border-radius: 100px; -fx-background-color: #0ACF83;" text="Next" />
+            <JFXButton id="next_btn" fx:id="skip_btn" focusTraversable="false" layoutX="30.0" layoutY="626.0" prefHeight="29.0" prefWidth="71.0" style="-fx-background-radius: 100px; -fx-border-radius: 100px; -fx-background-color: transparent;" text="Skip" />
          </children>
       </Pane>
    </children>

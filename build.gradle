@@ -30,6 +30,7 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
     //query
     compile group: 'org.lockss', name: 'josql', version: '2.2-p1'
+    compile 'com.airhacks:afterburner.fx:1.6.0'
 
 }
 
