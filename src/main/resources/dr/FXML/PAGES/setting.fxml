@@ -24,8 +24,8 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutY="31.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="doctor informations:" />
-                        <Pane layoutY="70.0" prefHeight="200.0" prefWidth="701.0" style="-fx-border-color: #E5E5E5; -fx-background-radius: 11px; -fx-border-radius: 11px;">
+                        <Label layoutX="22.0" layoutY="31.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="doctor informations:" />
+                        <Pane layoutX="22.0" layoutY="70.0" prefHeight="200.0" prefWidth="701.0" style="-fx-border-color: #E5E5E5; -fx-background-radius: 11px; -fx-border-radius: 11px;">
                            <children>
                               <JFXButton id="import_btn" fx:id="edit_btn" focusTraversable="false" layoutX="594.0" layoutY="11.0" onAction="#edit_doc" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="Edit" />
                               <GridPane layoutX="14.0" layoutY="8.0" prefHeight="184.0" prefWidth="110.0">

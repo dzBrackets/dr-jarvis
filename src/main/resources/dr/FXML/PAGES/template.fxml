@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <!--       595 x 842-->
 
-<AnchorPane fx:id="container" prefHeight="842.0" prefWidth="595.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.templateC">
+<AnchorPane fx:id="container" prefHeight="842.0" prefWidth="595.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.templateC">
    <children>
       <Pane id="patientBox" fx:id="patientBox" layoutX="308.0" layoutY="13.0" prefHeight="213.0" prefWidth="208.0" style="-fx-border-color: green; -fx-background-radius: 17px; -fx-border-radius: 17px;">
          <children>
-            <GridPane  fx:id="patientInfoGrid" hgap="20.0" layoutX="6.0" layoutY="6.0" prefHeight="200.0" prefWidth="196.0">
+            <GridPane fx:id="patientInfoGrid" hgap="20.0" layoutX="6.0" layoutY="6.0" prefHeight="200.0" prefWidth="196.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="79.0" minWidth="10.0" prefWidth="77.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="81.0" minWidth="10.0" prefWidth="81.0" />
@@ -52,12 +57,12 @@
                         <Font name="Monospaced Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="p_last_name" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="72.0" prefHeight="47.0" prefWidth="81.0" text="player" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="p_last_name" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="72.0" prefHeight="47.0" prefWidth="81.0" text="unknown" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Monospaced Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="p_age" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="122.0" prefHeight="27.0" prefWidth="81.0" text="21" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label fx:id="p_age" alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="122.0" prefHeight="27.0" prefWidth="81.0" text="Null" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="Monospaced Bold" size="13.0" />
                      </font>

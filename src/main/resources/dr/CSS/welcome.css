@@ -1,0 +1,20 @@
+#welcome_lbl {
+	-fx-text-fill: white;
+		-fx-font-size: 20px;
+-fx-font-family: 'Sarabun SemiBold ' ;
+-fx-font-weight: bold;
+
+}
+#next_btn {
+-fx-text-fill:white;
+-fx-font-family: 'Sarabun Medium ' ;
+}
+.doc_info_label {
+		-fx-text-fill: white;
+		-fx-font-size: 16px;
+-fx-font-family: 'Sarabun Medium ' ;
+-fx-font-weight: bold;
+}
+.edit_fields {
+
+}
