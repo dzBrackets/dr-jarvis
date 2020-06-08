@@ -135,7 +135,7 @@ public class MainPanelC  implements Initializable {
         i=0;
         dialog alr=new dialog();
         alr.setTitle("Welcome Doctor ^^");
-        alr.setContent("this is a quick guid on how to use this software.");
+        alr.setContent("this is a quick guide on how to use this software.");
         JFXButton next = spawnButton.green("Next");
         alr.getButtonList().setAll(next);
         alr.setPosition(300,300);
