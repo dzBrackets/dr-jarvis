@@ -25,7 +25,7 @@
                         <Font name="Sarabun Medium" size="12.0" />
                      </font>
                   </Label>
-                  <Label id="good_label" fx:id="doctor_name_label" layoutX="408.0" layoutY="69.0" text="Dr.Jarvis" textFill="WHITE">
+                  <Label id="good_label" fx:id="doctor_name_label" layoutX="408.0" layoutY="69.0" text="Dr." textFill="WHITE">
                      <font>
                         <Font name="Sarabun Medium" size="12.0" />
                      </font>

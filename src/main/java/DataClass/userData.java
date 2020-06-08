@@ -3,16 +3,25 @@ package DataClass;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class userData {
-String name="unknown player";
+String name="user";
 String email="dont@sk.me";
 String address="empty";
 String phone ="N/D";
+int firstTime=1;
+boolean isFirstTime=false;
 int selectedTemplate=0;
-int[] monthStats=new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
+    int[] monthStats=new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+    public int getFirstTime() {
+        return firstTime;
+    }
+
+    public void setFirstTime(int firstTime) {
+        this.firstTime = firstTime;
+    }
     public int getSelectedTemplate() {
         return selectedTemplate;
     }
@@ -39,6 +48,15 @@ int[] monthStats=new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
         monthStats[today]+=1;
         checkAndReset(today);
     }
+   // @JsonIgnore
+   @JsonIgnore
+   public boolean isfirstLaunch(){
+        if(firstTime==1){
+            firstTime=0;
+        return true;}
+        return false;
+    }
+
     @JsonIgnore
     public void checkAndReset(int today){
     for (int i = today+1; i <monthStats.length ; i++) {
@@ -101,4 +119,7 @@ int[] monthStats=new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
         this.phone = phone;
     }
 
+
+
 }
+

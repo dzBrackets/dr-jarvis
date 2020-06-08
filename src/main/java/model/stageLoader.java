@@ -1,5 +1,7 @@
 package model;
 
+import dr.async;
+import javafx.beans.InvalidationListener;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,6 +18,7 @@ public class stageLoader {
    private Stage stage;
    private Scene scene;
 private double xOffset,yOffset;
+private async close=new async();
     public stageLoader(String URL){
         FXMLLoader loader =new FXMLLoader(getClass().getResource(URL));
         try {
@@ -30,6 +33,7 @@ private double xOffset,yOffset;
         stage = new Stage();
 
 
+
         scene.setOnMousePressed(event -> {
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();
@@ -38,17 +42,21 @@ private double xOffset,yOffset;
             stage.setX(event.getScreenX() - xOffset);
             stage.setY(event.getScreenY()-yOffset);
         });
-    }
-    public void show(){
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
+    }
+    public void show(){
+
         stage.show();
     }
     public void close(){
         stage.close();
+        close.dispatchEvent();
     }
-
+public void setOneClose(InvalidationListener v){
+    close.onReceive(v);
+}
     public Object getController() {
         return controller;
     }

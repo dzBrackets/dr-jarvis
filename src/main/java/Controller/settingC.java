@@ -3,10 +3,7 @@ package Controller;
 import DataClass.customizable;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.ISO8601Utils;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXColorPicker;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import dr.Main;
 import dr.async;
 import javafx.application.Platform;
@@ -68,6 +65,7 @@ public class settingC implements Initializable {
     public JFXComboBox timezone;
     public JFXComboBox timeformat;
     public Tab customize_tab;
+    static public Tab Scustomize_tab;
 
        static async alpha=new async();
     public GridPane template_gridpane;
@@ -79,11 +77,15 @@ public class settingC implements Initializable {
     public JFXColorPicker primaryColor;
     public JFXColorPicker secondaryColor;
     public JFXButton save_customise_btn;
+    public JFXTabPane tabpane;
+  static  public JFXTabPane Stabpane;
     int selectedTempIndex=-1;
     requestFormer<customizable> req=new requestFormer<>();
    public static async beta=new async();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Stabpane=tabpane;
+        Scustomize_tab=customize_tab;
 alpha.onReceive(v-> Platform.runLater(this::setDocInfo));
 beta.onReceive(v-> Platform.runLater(this::fetchTemps));
 export_btn.setOnMouseClicked(v->{

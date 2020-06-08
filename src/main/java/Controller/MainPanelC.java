@@ -21,6 +21,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import libs.requestFormer;
+import model.stageLoader;
 
 import java.io.File;
 import java.io.IOException;
@@ -99,20 +100,42 @@ public class MainPanelC  implements Initializable {
 
                 DashboardC.chartInit();
                 requestT.offer(formerT.get());
+                if(local_data.isfirstLaunch())
+                    Platform.runLater(this::firstTime);
 
             }
-            else{ requestU.offer(formerU.post(new userData()));
-                System.out.println("create new info cuz daah!");
+            else{
+                userData uss = new userData();
+                requestU.offer(formerU.post(uss));
             }
         });
     }
 
+    private void firstTime() {
+        stageLoader sl=new stageLoader("/dr/FXML/PAGES/welcomePage.fxml");
+        sl.setOneClose(v-> {
+            System.out.println("closed");
+            requestU.offer(formerU.update());
+
+            settingFirstLook();
+        });
+
+        sl.show();
+
+        ((welcomePageC)sl.getController()).done.onReceive(v->sl.close());
+    }
+
+    private void settingFirstLook() {
+        setting_btn.fire();
+        settingC.Stabpane.getSelectionModel().selectNext();
+    }
+
     private customizable loadDefaultTemp() {
         customAttrs=new customizable();
-        customAttrs.addAttribute("tbl1","doctor daudji aymen");
-        customAttrs.addAttribute("tbl2","specialist a programing");
-        customAttrs.addAttribute("tbl3","ouled aich");
-        customAttrs.addAttribute("tbl4","blida");
+        customAttrs.addAttribute("tbl1","doctor Jarvis");
+        customAttrs.addAttribute("tbl2","doctor at nasa");
+        customAttrs.addAttribute("tbl3","alien force");
+        customAttrs.addAttribute("tbl4","new york");
         customAttrs.addAttribute("c1","0x6a1b9aff");
         customAttrs.addAttribute("c2","0x0d47a1ff");
 

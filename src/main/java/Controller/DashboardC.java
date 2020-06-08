@@ -154,6 +154,7 @@ void loadRecent(){
                 drug_cpt.setText(d);
                 patient_cpt.setText(a);
                 today_precp_cpt.setText(local_data.getMonthlyStat() + "");
+                doctor_name_label.setText("Dr."+local_data.getName().split(" ")[0]);
 
             });
 
