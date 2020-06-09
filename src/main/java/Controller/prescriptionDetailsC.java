@@ -159,4 +159,10 @@ void dad(Stage st){
 
 
     }
+
+    public void delete_methode(ActionEvent actionEvent) {
+    }
+
+    public void print_methode(ActionEvent actionEvent) {
+    }
 }
