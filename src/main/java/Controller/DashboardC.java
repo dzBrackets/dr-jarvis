@@ -185,7 +185,7 @@ static void chartInit(){
     //defining a series
     //
     XYChart.Series<Number,Number> series2 = new XYChart.Series<>();
-    series2.setName("new Patient");
+    series2.setName("New Patient");
     //load stat
     int[] daysByMonth = local_data.getMonthStats();
     for (int i = 0; i < daysByMonth.length; i++) {

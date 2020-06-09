@@ -94,6 +94,7 @@ export_btn.setOnMouseClicked(v->{
 req.onReceive(v-> Platform.runLater(this::loadTemplatesGrid));
 showTemplateList();
 fetchTemps();
+
         }
 void showEditTemplatePane(){
     choise_pan.setVisible(false);

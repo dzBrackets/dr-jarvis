@@ -16,12 +16,12 @@
             <children>
                 <Label id="info4_label" layoutX="511.0" layoutY="137.0" prefHeight="21.0" prefWidth="132.0" style="-fx-font-size: 15px;" text="Last Notice :" textFill="WHITE" />
                 <Label id="info1_label" layoutX="511.0" layoutY="13.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Name :" textFill="WHITE" />
-                <Label id="name_label" fx:id="name_label" layoutX="640.0" layoutY="13.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Aymen Brahim" textFill="WHITE" />
+                <Label id="name_label" fx:id="name_label" layoutX="640.0" layoutY="13.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="UNKNOWN" textFill="WHITE" />
                 <Label id="info2_label" layoutX="511.0" layoutY="53.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Age :" textFill="WHITE" />
-                <Label id="age_label" fx:id="age_label" layoutX="640.0" layoutY="53.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="12 year" textFill="WHITE" />
+                <Label id="age_label" fx:id="age_label" layoutX="640.0" layoutY="53.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Null" textFill="WHITE" />
                 <Label id="info3_label" layoutX="510.0" layoutY="93.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Last Visite :" textFill="WHITE" />
-                <Label id="visite_label" fx:id="visite_label" layoutX="639.0" layoutY="93.0" prefHeight="21.0" prefWidth="132.0" style="-fx-font-size: 15px;" text="32/02/2050" textFill="WHITE" />
-                <Label id="last_notice_label" fx:id="last_notice_label" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="10.0" layoutX="505.0" layoutY="158.0" prefHeight="118.0" prefWidth="271.0" style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-background-radius: 11px;" text="fgfgfgfg gfdgdgdg&#10;&#10;fhgfgfgfg" textFill="WHITE">
+                <Label id="visite_label" fx:id="visite_label" layoutX="639.0" layoutY="93.0" prefHeight="21.0" prefWidth="132.0" style="-fx-font-size: 15px;" text="1/1/2050" textFill="WHITE" />
+                <Label id="last_notice_label" fx:id="last_notice_label" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="10.0" layoutX="505.0" layoutY="158.0" prefHeight="118.0" prefWidth="271.0" style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-background-radius: 11px;" text="N/D" textFill="WHITE">
                     <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </padding>
@@ -29,9 +29,9 @@
             <Label id="info1_label" layoutX="48.0" layoutY="34.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Prescription id :" textFill="WHITE" />
             <Label id="info1_label" layoutX="48.0" layoutY="104.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="User id :" textFill="WHITE" />
             <Label id="info1_label" layoutX="48.0" layoutY="180.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Date :" textFill="WHITE" />
-            <Label id="prec_id" fx:id="prec_id" layoutX="195.0" layoutY="34.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="#00001" textFill="WHITE" />
-            <Label id="user_id" fx:id="user_id" layoutX="195.0" layoutY="104.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="#00001" textFill="WHITE" />
-            <Label id="date_label" fx:id="date_label" layoutX="195.0" layoutY="180.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="5/13/2020" textFill="WHITE" />
+            <Label id="prec_id" fx:id="prec_id" layoutX="195.0" layoutY="34.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="NULL" textFill="WHITE" />
+            <Label id="user_id" fx:id="user_id" layoutX="195.0" layoutY="104.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="NULL" textFill="WHITE" />
+            <Label id="date_label" fx:id="date_label" layoutX="195.0" layoutY="180.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="1/1/2050" textFill="WHITE" />
             </children>
         </Pane>
         <Label id="print_panel_labels" layoutX="68.0" layoutY="337.0" prefHeight="39.0" prefWidth="98.0" text="Drugs List :" textFill="WHITE">
@@ -48,7 +48,7 @@
             <columns>
                 <TableColumn id="name_colm" fx:id="name_colm" prefWidth="116.0" text="Name" />
                 <TableColumn id="type_colm" fx:id="type_colm" prefWidth="124.0" text="Type" />
-                <TableColumn id="type_colm" fx:id="doss_colm" minWidth="0.0" prefWidth="120.0" text="Doss" />
+                <TableColumn id="type_colm" fx:id="doss_colm" minWidth="0.0" prefWidth="120.0" text="Dose" />
                 <TableColumn id="qts_colm" fx:id="qts_colm" prefWidth="102.0" text="Qts" />
                 <TableColumn id="notice_colm" fx:id="notice_colm" prefWidth="228.0" text="Notice" />
             </columns>

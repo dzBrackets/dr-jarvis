@@ -24,7 +24,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="22.0" layoutY="31.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="doctor informations:" />
+                        <Label layoutX="22.0" layoutY="31.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="Doctor informations :" />
                         <Pane layoutX="22.0" layoutY="70.0" prefHeight="200.0" prefWidth="701.0" style="-fx-border-color: #E5E5E5; -fx-background-radius: 11px; -fx-border-radius: 11px;">
                            <children>
                               <JFXButton id="import_btn" fx:id="edit_btn" focusTraversable="false" layoutX="594.0" layoutY="11.0" onAction="#edit_doc" prefHeight="25.0" prefWidth="85.0" style="-fx-background-radius: 100px; -fx-border-color: #D9D9D9; -fx-border-radius: 100px;" text="Edit" />
@@ -144,7 +144,7 @@
                   </AnchorPane>
               </content>
             </Tab>
-             <Tab id="customize_tab" fx:id="customize_tab" onSelectionChanged="#customize_selected" text="customize...">
+             <Tab id="customize_tab" fx:id="customize_tab" onSelectionChanged="#customize_selected" text="Customize...">
                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="634.0" prefWidth="865.0">
                   <children>
                      <AnchorPane fx:id="choise_pan" prefHeight="634.0" prefWidth="865.0" visible="false">
@@ -227,13 +227,13 @@
                      </AnchorPane>
                   </children></AnchorPane>
              </Tab>
-             <Tab id="info_tab" fx:id="info_tab" onSelectionChanged="#infoTab_selected" text="info...">
+             <Tab id="info_tab" fx:id="info_tab" onSelectionChanged="#infoTab_selected" text="Info">
                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="565.0" prefWidth="710.0">
                   <children>
                      <Label layoutX="22.0" layoutY="36.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="Time and date :" />
                      <Pane layoutX="22.0" layoutY="75.0" prefHeight="200.0" prefWidth="701.0" style="-fx-border-color: #E5E5E5; -fx-background-radius: 11px; -fx-border-radius: 11px;">
                         <children>
-                           <Label layoutX="14.0" layoutY="32.0" prefHeight="20.0" prefWidth="85.0" styleClass="doc_info_label" text="version :">
+                           <Label layoutX="14.0" layoutY="32.0" prefHeight="20.0" prefWidth="85.0" styleClass="doc_info_label" text="Version :">
                               <opaqueInsets>
                                  <Insets />
                               </opaqueInsets>
@@ -254,7 +254,7 @@
                                  <Insets />
                               </opaqueInsets>
                            </Label>
-                           <Label fx:id="version_lbl11" layoutX="14.0" layoutY="127.0" prefHeight="20.0" prefWidth="233.0" styleClass="doc_info_label" text="powered by : open source MIT">
+                           <Label fx:id="version_lbl11" layoutX="14.0" layoutY="127.0" prefHeight="20.0" prefWidth="233.0" styleClass="doc_info_label" text="Powered by : open source MIT">
                               <opaqueInsets>
                                  <Insets />
                               </opaqueInsets>

@@ -101,6 +101,10 @@
 /* Color-picker********************/
 .jfx-color-picker .color-label {
 	-fx-text-fill:transparent;
+	-fx-content-display	:graphic-only;
+}
+.jfx-color-picker .color-label .text {
+	-fx-text-fill:transparent;
 }
 #save_customise_btn {
 -fx-text-fill:white;

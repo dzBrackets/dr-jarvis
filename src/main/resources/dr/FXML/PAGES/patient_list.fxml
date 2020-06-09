@@ -38,7 +38,7 @@
             <Font name="Sarabun Medium" size="15.0" />
          </font></Label>
       <TextField id="write_TXF" fx:id="write_TXF" layoutX="431.0" layoutY="68.0" prefHeight="41.0" prefWidth="293.0" promptText="write something..." />
-      <JFXButton id="add_patient_btn" fx:id="add_patient_btn" layoutX="738.0" layoutY="68.0" onAction="#add_patient_table" prefHeight="41.0" prefWidth="149.0" style="-fx-background-color: #5144FF; -fx-background-radius: 11px;" text="Add new Patient" textAlignment="CENTER" textFill="WHITE">
+      <JFXButton id="add_patient_btn" fx:id="add_patient_btn" layoutX="738.0" layoutY="68.0" onAction="#add_patient_table" prefHeight="41.0" prefWidth="149.0" style="-fx-background-color: #5144FF; -fx-background-radius: 11px;" text="Add New Patient" textAlignment="CENTER" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                <image>

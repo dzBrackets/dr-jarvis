@@ -12,7 +12,7 @@
 
 <AnchorPane id="Pform" fx:id="Pform" prefHeight="687.0" prefWidth="680.0" style="-fx-background-color: #2C3964; -fx-background-radius: 11px;" stylesheets="@../../CSS/new_patient_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewPatient">
    <children>
-      <Label layoutX="68.0" layoutY="31.0" prefHeight="32.0" prefWidth="150.0" text="New patient" textFill="WHITE">
+      <Label layoutX="68.0" layoutY="31.0" prefHeight="32.0" prefWidth="150.0" text="New Patient" textFill="WHITE">
          <font>
             <Font name="Sarabun SemiBold" size="22.0" />
          </font>

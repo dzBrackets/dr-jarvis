@@ -47,7 +47,7 @@
                         <Font name="Monospaced Regular" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="p_date" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="81.0" text="5/9/2020" GridPane.columnIndex="1">
+                  <Label fx:id="p_date" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="81.0" text="1/1/2050" GridPane.columnIndex="1">
                      <font>
                         <Font name="Monospaced Bold" size="13.0" />
                      </font>

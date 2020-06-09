@@ -22,12 +22,12 @@
          <children>
             <Label id="info4_label" layoutX="19.0" layoutY="142.0" prefHeight="21.0" prefWidth="132.0" style="-fx-font-size: 15px;" text="Diagnostic" textFill="WHITE" />
             <Label id="info1_label" layoutX="19.0" layoutY="18.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Name :" textFill="WHITE" />
-            <Label id="name_label" fx:id="name_label" layoutX="148.0" layoutY="18.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="Aymen Brahim" textFill="WHITE" />
+            <Label id="name_label" fx:id="name_label" layoutX="148.0" layoutY="18.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="UNKNOWN" textFill="WHITE" />
             <Label id="info2_label" layoutX="19.0" layoutY="58.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Age :" textFill="WHITE" />
-            <Label id="age_label" fx:id="age_label" layoutX="148.0" layoutY="58.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="12 year" textFill="WHITE" />
+            <Label id="age_label" fx:id="age_label" layoutX="148.0" layoutY="58.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="NULL" textFill="WHITE" />
             <Label id="info3_label" layoutX="18.0" layoutY="98.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Last Visite :" textFill="WHITE" />
-            <Label id="visite_label" fx:id="visite_label" layoutX="147.0" layoutY="98.0" prefHeight="21.0" prefWidth="132.0" style="-fx-font-size: 15px;" text="32/02/2050" textFill="WHITE" />
-            <Label id="last_notice_label" fx:id="last_notice_label" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="10.0" layoutX="18.0" layoutY="172.0" prefHeight="132.0" prefWidth="271.0" style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-background-radius: 11px;" text="fgfgfgfg gfdgdgdg&#10;&#10;fhgfgfgfg" textFill="WHITE">
+            <Label id="visite_label" fx:id="visite_label" layoutX="147.0" layoutY="98.0" prefHeight="21.0" prefWidth="132.0" style="-fx-font-size: 15px;" text="1/01/2050" textFill="WHITE" />
+            <Label id="last_notice_label" fx:id="last_notice_label" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="10.0" layoutX="18.0" layoutY="172.0" prefHeight="132.0" prefWidth="271.0" style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-background-radius: 11px;" text="N/D" textFill="WHITE">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -77,7 +77,7 @@
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton id="print_btn" fx:id="print_btn" layoutX="737.0" layoutY="699.0" onAction="#save_and_print" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #0ACF83; -fx-background-radius: 16.5px;" text="Save &amp; print" textFill="WHITE">
+      <JFXButton id="print_btn" fx:id="print_btn" layoutX="737.0" layoutY="699.0" onAction="#save_and_print" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #0ACF83; -fx-background-radius: 16.5px;" text="Save &amp; Print" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
@@ -105,12 +105,12 @@
                </graphic>
             </JFXButton>
          </children></Pane>
-      <Label id="top_label" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="194.0" text="Print a prescription" textFill="WHITE" />
+      <Label id="top_label" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="194.0" text="Print a Prescription" textFill="WHITE" />
       <TableView id="table" fx:id="table" layoutX="68.0" layoutY="430.0" prefHeight="248.0" prefWidth="776.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="68.0">
          <columns>
             <TableColumn id="name_colm" fx:id="name_colm" prefWidth="116.0" text="Name" />
             <TableColumn id="type_colm" fx:id="type_colm" prefWidth="124.0" text="Type" />
-            <TableColumn id="type_colm" fx:id="doss_colm" minWidth="0.0" prefWidth="120.0" text="Doss" />
+            <TableColumn id="type_colm" fx:id="doss_colm" minWidth="0.0" prefWidth="120.0" text="Dose" />
             <TableColumn id="qts_colm" fx:id="qts_colm" prefWidth="102.0" text="Qts" />
             <TableColumn id="notice_colm" fx:id="notice_colm" prefWidth="228.0" text="Notice" />
             <TableColumn id="delete_colm" fx:id="delete_colm" prefWidth="51.0" sortable="false" />

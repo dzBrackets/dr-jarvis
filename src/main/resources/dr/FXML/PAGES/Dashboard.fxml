@@ -30,7 +30,7 @@
                         <Font name="Sarabun Medium" size="12.0" />
                      </font>
                   </Label>
-                  <Label id="date_label" fx:id="date_label" layoutX="289.0" layoutY="113.0" prefHeight="17.0" prefWidth="95.0" text="1 March 2020" textFill="WHITE" />
+                  <Label id="date_label" fx:id="date_label" layoutX="289.0" layoutY="113.0" prefHeight="17.0" prefWidth="95.0" text="1 March 2050" textFill="WHITE" />
                   <Label id="date_label" fx:id="date_label1" layoutX="384.0" layoutY="113.0" prefHeight="17.0" prefWidth="95.0" text="09:35" textFill="WHITE" />
                </children>
             </Pane>
@@ -63,7 +63,7 @@
                            </image>
                         </ImageView>
                         <Label id="mini_label" fx:id="mini_label" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="81.0" prefHeight="17.0" prefWidth="109.0" text="Saved Prescriptions" textFill="WHITE" />
-                        <Label id="count_label" fx:id="all_prec_cpt" alignment="CENTER" layoutX="3.0" layoutY="106.0" prefHeight="17.0" prefWidth="109.0" text="250" textFill="WHITE" />
+                        <Label id="count_label" fx:id="all_prec_cpt" alignment="CENTER" layoutX="3.0" layoutY="106.0" prefHeight="17.0" prefWidth="109.0" text="-1" textFill="WHITE" />
                      </children>
                   </Pane>
                   <Pane id="pane2" fx:id="pane2" prefHeight="161.0" prefWidth="115.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" GridPane.columnIndex="1">
@@ -74,7 +74,7 @@
                            </image>
                         </ImageView>
                         <Label id="mini_label" fx:id="mini_label111" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="81.0" prefHeight="17.0" prefWidth="109.0" text="Prescription" textFill="WHITE" />
-                        <Label id="count_label" fx:id="today_precp_cpt" alignment="CENTER" layoutX="3.0" layoutY="106.0" prefHeight="17.0" prefWidth="109.0" text="250" textFill="WHITE" />
+                        <Label id="count_label" fx:id="today_precp_cpt" alignment="CENTER" layoutX="3.0" layoutY="106.0" prefHeight="17.0" prefWidth="109.0" text="-1" textFill="WHITE" />
                      </children>
                   </Pane>
                   <Pane fx:id="pane3" prefHeight="161.0" prefWidth="115.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" GridPane.columnIndex="2">
@@ -85,7 +85,7 @@
                            </image>
                         </ImageView>
                         <Label id="mini_label" fx:id="mini_label11" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="81.0" prefHeight="17.0" prefWidth="109.0" text="Patients" textFill="WHITE" />
-                        <Label id="count_label" fx:id="patient_cpt" alignment="CENTER" layoutX="3.0" layoutY="106.0" prefHeight="17.0" prefWidth="109.0" text="250" textFill="WHITE" />
+                        <Label id="count_label" fx:id="patient_cpt" alignment="CENTER" layoutX="3.0" layoutY="106.0" prefHeight="17.0" prefWidth="109.0" text="-1" textFill="WHITE" />
                      </children>
                   </Pane>
                   <Pane fx:id="pane4" prefHeight="161.0" prefWidth="115.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" GridPane.columnIndex="3">
@@ -96,7 +96,7 @@
                            </image>
                         </ImageView>
                         <Label id="mini_label" fx:id="mini_label1" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="81.0" prefHeight="17.0" prefWidth="109.0" text="Drugs Count" textFill="WHITE" />
-                        <Label id="count_label" fx:id="drug_cpt" alignment="CENTER" layoutX="3.0" layoutY="106.0" prefHeight="17.0" prefWidth="109.0" text="250" textFill="WHITE" />
+                        <Label id="count_label" fx:id="drug_cpt" alignment="CENTER" layoutX="3.0" layoutY="106.0" prefHeight="17.0" prefWidth="109.0" text="-1" textFill="WHITE" />
                      </children>
                   </Pane>
                </children>

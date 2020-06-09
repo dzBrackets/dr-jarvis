@@ -17,7 +17,7 @@
             <columns>
                 <TableColumn id="name_C" fx:id="name_C" prefWidth="75.0" text="Name" />
                 <TableColumn id="type_C" fx:id="type_C" prefWidth="75.0" text="Type" />
-                <TableColumn id="doss_C" fx:id="doss_C" prefWidth="75.0" text="Doss" />
+                <TableColumn id="doss_C" fx:id="doss_C" prefWidth="75.0" text="Dose" />
                 <TableColumn id="code_C" fx:id="code_C" prefWidth="75.0" text="Code" />
                 <TableColumn id="notice_C" fx:id="notice_C" prefWidth="75.0" text="Notice" />
                 <TableColumn id="menu_C" fx:id="menu_C" prefWidth="75.0" />
@@ -28,7 +28,7 @@
         </TableView>
         <Label id="info1_label" layoutX="25.0" layoutY="14.0" prefHeight="32.0" prefWidth="137.0" style="-fx-font-size: 21px;" text="Drugs Liste :" textFill="#4a4a4a" />
         <TextField id="write_TXF" fx:id="write_TXF" layoutX="431.0" layoutY="68.0" prefHeight="41.0" prefWidth="293.0" promptText="write something..." />
-      <JFXButton id="add_drug_btn" fx:id="add_drug_btn" layoutX="738.0" layoutY="68.0" onAction="#add_drug_table" prefHeight="41.0" prefWidth="149.0" style="-fx-background-color: #5144FF; -fx-background-radius: 11px;" text="Add new Drug     " textAlignment="CENTER" textFill="WHITE">
+      <JFXButton id="add_drug_btn" fx:id="add_drug_btn" layoutX="738.0" layoutY="68.0" onAction="#add_drug_table" prefHeight="41.0" prefWidth="149.0" style="-fx-background-color: #5144FF; -fx-background-radius: 11px;" text="Add New Drug     " textAlignment="CENTER" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                <image>
