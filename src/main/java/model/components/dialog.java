@@ -1,10 +1,11 @@
 package model.components;
 
-import com.jfoenix.controls.JFXDialog;
+import Controller.alertBox;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.image.Image;
 import javafx.stage.Window;
 import model.popUpWindow;
 
@@ -46,6 +47,12 @@ public class dialog {
     public void setPosition(double x, double y){
         self.container.setLayoutX(x);
         self.container.setLayoutY(y);
+    }
+    public  void setImage(String type){
+        if(type.equals("warning")) {
+            Image error = new Image("dr/image/error_24px.png");
+            self.icon.setImage(error);
+        }
     }
 public void setBubbleDir(String pos){
     if(pos.equals("tl")){

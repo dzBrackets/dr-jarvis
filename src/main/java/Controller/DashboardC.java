@@ -1,9 +1,7 @@
 package Controller;
 
 import DataClass.Patient;
-import DataClass.customizable;
 import DataClass.prescriptionsHistory;
-import DataClass.userData;
 import com.jfoenix.controls.JFXButton;
 import dr.Main;
 import dr.async;
@@ -17,14 +15,8 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
-import javafx.stage.Window;
-import libs.coronaDb.dataTostatistics;
 import libs.requestFormer;
-import model.components.alertBox;
-import model.components.dialog;
 import model.components.recentComp;
-import model.components.spawnButton;
 import model.stageLoader;
 
 import java.net.URL;
@@ -32,7 +24,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 import static dr.FinalsVal.*;
 

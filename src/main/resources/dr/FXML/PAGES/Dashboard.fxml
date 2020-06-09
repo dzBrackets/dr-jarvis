@@ -59,7 +59,7 @@
                      <children>
                         <ImageView fitHeight="48.0" fitWidth="57.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../image/box_important_48px.png" />
+                              <Image url="@../../image/combo_chart_48px.png" />
                            </image>
                         </ImageView>
                         <Label id="mini_label" fx:id="mini_label" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="81.0" prefHeight="17.0" prefWidth="109.0" text="Saved Prescriptions" textFill="WHITE" />
@@ -68,9 +68,9 @@
                   </Pane>
                   <Pane id="pane2" fx:id="pane2" prefHeight="161.0" prefWidth="115.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" GridPane.columnIndex="1">
                      <children>
-                        <ImageView fitHeight="48.0" fitWidth="57.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../image/task_completed_48px.png" />
+                              <Image url="@../../image/statistics_48px.png" />
                            </image>
                         </ImageView>
                         <Label id="mini_label" fx:id="mini_label111" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="81.0" prefHeight="17.0" prefWidth="109.0" text="Prescription" textFill="WHITE" />
@@ -79,9 +79,9 @@
                   </Pane>
                   <Pane fx:id="pane3" prefHeight="161.0" prefWidth="115.0" style="-fx-background-color: #626ED4; -fx-background-radius: 22px;" GridPane.columnIndex="2">
                      <children>
-                        <ImageView fitHeight="48.0" fitWidth="57.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="61.0" fitWidth="48.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../image/notification_48px.png" />
+                              <Image url="@../../image/sick_48px.png" />
                            </image>
                         </ImageView>
                         <Label id="mini_label" fx:id="mini_label11" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="81.0" prefHeight="17.0" prefWidth="109.0" text="Patients" textFill="WHITE" />
@@ -92,7 +92,7 @@
                      <children>
                         <ImageView fitHeight="48.0" fitWidth="57.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../image/box_important_48px.png" />
+                              <Image url="@../../image/pill_dash_48px.png" />
                            </image>
                         </ImageView>
                         <Label id="mini_label" fx:id="mini_label1" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="81.0" prefHeight="17.0" prefWidth="109.0" text="Drugs Count" textFill="WHITE" />

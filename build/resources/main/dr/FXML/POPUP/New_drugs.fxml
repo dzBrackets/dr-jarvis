@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="687.0" prefWidth="561.0" style="-fx-background-color: #2C3964; -fx-background-radius: 11px;" stylesheets="@../../CSS/new_drug_style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewDrug">
+<AnchorPane prefHeight="687.0" prefWidth="561.0" style="-fx-background-color: #2C3964; -fx-background-radius: 11px;" stylesheets="@../../CSS/new_drug_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewDrug">
    <children>
       <Label layoutX="73.0" layoutY="50.0" prefHeight="17.0" prefWidth="133.0" text="New Drug" textFill="WHITE">
          <font>
@@ -15,7 +18,7 @@
          <font>
             <Font name="Sarabun SemiBold" size="18.0" />
          </font></Label>
-      <Label id="info3_lable" fx:id="info3_lable" layoutX="73.0" layoutY="354.0" prefHeight="27.0" prefWidth="354.0" text="Info (feel free to keep this blank) :" textFill="WHITE">
+      <Label id="info3_lable" fx:id="info3_lable" layoutX="73.0" layoutY="354.0" prefHeight="27.0" prefWidth="354.0" text="Info (feel free to fill this later) :" textFill="WHITE">
          <font>
             <Font name="Sarabun SemiBold" size="18.0" />
          </font></Label>

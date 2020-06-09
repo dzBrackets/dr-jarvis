@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Polyline?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="general" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.components.alertBox">
+<AnchorPane fx:id="general" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.alertBox">
    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="1001.0" style="-fx-background-color: rgba(0,0,0,0.36);" />
     <Pane fx:id="container" prefHeight="144.0" prefWidth="392.0" style="-fx-background-color: #765EE2; -fx-background-radius: 11px;">
       <children>
@@ -19,7 +22,7 @@
                <Font name="System Bold" size="18.0" />
             </font>
          </Label>
-         <Label fx:id="content" alignment="TOP_LEFT" layoutX="15.0" layoutY="41.0" prefHeight="59.0" prefWidth="357.0" text="Label" textFill="WHITE" wrapText="true">
+         <Label fx:id="content" alignment="TOP_LEFT" layoutX="15.0" layoutY="41.0" prefHeight="59.0" prefWidth="363.0" text="Label" textFill="WHITE" wrapText="true">
             <font>
                <Font size="13.0" />
             </font></Label>
@@ -31,6 +34,7 @@
                <Insets right="10.0" />
             </padding>
          </HBox>
+         <ImageView fx:id="icon" fitHeight="33.0" fitWidth="37.0" layoutX="347.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
       </children>
    </Pane>
 

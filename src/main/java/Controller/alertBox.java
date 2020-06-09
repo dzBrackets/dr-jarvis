@@ -1,7 +1,8 @@
-package model.components;
+package Controller;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -21,6 +22,7 @@ public class alertBox implements Initializable {
     public Label title;
     public Label content;
     public HBox buttonList;
+    public ImageView icon;
 
     alertBox self;
 
