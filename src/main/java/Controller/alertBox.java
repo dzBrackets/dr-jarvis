@@ -23,6 +23,7 @@ public class alertBox implements Initializable {
     public Label content;
     public HBox buttonList;
     public ImageView icon;
+    public Pane blackHover;
 
     alertBox self;
 

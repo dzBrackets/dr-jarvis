@@ -21,12 +21,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import libs.cellController;
+import libs.helper;
 import libs.requestFormer;
+import model.components.dialog;
 import model.components.spawnButton;
 import model.popUpWindow;
 import model.showButton;
 import model.usedDrug;
 
+import javax.print.PrintException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -63,18 +66,17 @@ public class prescriptionDetailsC implements Initializable {
     @FXML
     private TableColumn<usedDrug, String> notice_colm;
     private requestFormer<Patient> req=new requestFormer<>();
-
+    prescriptionsHistory selectedPres=null;
+    Patient selectedPatient=null;
     ObservableList<usedDrug> data= FXCollections.observableArrayList();;
     libs.cellController<usedDrug> cellController=new cellController<>();
-Stage stage;
+    Stage stage;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initCol();
         loadData();
         eventTrigger();
-        JFXButton deleteBtn = spawnButton.red("Delete");
-        JFXButton printBtn = spawnButton.blue("Print");
-        buttonList.getChildren().addAll(deleteBtn,printBtn);
+
     }
     public void initCol(){
         name_colm.getStyleClass().add("start");
@@ -91,6 +93,7 @@ Stage stage;
 
 
 private void setPatientInfo(Patient patient){
+        selectedPatient=patient;
         name_label.setText(patient.getFullName());
         age_label.setText(patient.getAge()+"");
         visite_label.setText(patient.getLastVisit());
@@ -120,6 +123,7 @@ void dad(Stage st){
     }
 
     public void loadFrom(prescriptionsHistory prescriptionsHistory) {
+        selectedPres=prescriptionsHistory;
         date_label.setText(prescriptionsHistory.getDate());
         prec_id.setText(prescriptionsHistory.getPresId());
         user_id.setText(prescriptionsHistory.getUserId());
@@ -161,8 +165,49 @@ void dad(Stage st){
     }
 
     public void delete_methode(ActionEvent actionEvent) {
+
+
+        dialog check=new dialog();
+        check.setTitle("confirm you choice.");
+        check.setContent("you sure you want to delete this prescription?");
+        check.setImage(dialog.WARNING);
+        JFXButton ok = spawnButton.red("Delete");
+        JFXButton cancel = spawnButton.gray("Cancel");
+        check.setPosition(300,300);
+        check.show(Main.staticstage,quick_pane);
+        check.getButtonList().setAll(ok,cancel);
+        ok.setOnAction(v->{
+            requestH.offer(formerH.remove(selectedPres));
+            selectedPatient.getPrescriptionsId().remove(selectedPres.getPresId());
+            requestP.offer(formerP.update());
+            cancel.fire();
+            exit_btn.fire();
+
+        });
+
+        cancel.setOnAction(v->{
+            check.close();
+
+        });
+
+
+
+
     }
 
     public void print_methode(ActionEvent actionEvent) {
+        try {
+            helper.printWithData(selectedPatient,selectedPres.getDrugList());
+        } catch (PrintException e) {
+            dialog alr=new dialog();
+
+            alr.setPosition(300,300);
+            alr.setTitle("Something went wrong. ");
+            alr.setContent("Error:"+e.getMessage()+"\nadd a printer to your system then try again.");
+            JFXButton continueBtn = spawnButton.gray("Continue");
+            alr.getButtonList().addAll(continueBtn);
+            continueBtn.setOnAction(v->{alr.close();exit_btn.fire();});
+            alr.show(quick_pane.getScene().getWindow(),quick_pane);
+        }
     }
 }

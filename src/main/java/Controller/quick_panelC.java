@@ -27,6 +27,7 @@ import libs.helper;
 import libs.requestFormer;
 import model.components.dialog;
 import model.components.drugItem;
+import model.components.spawnButton;
 import model.popUpWindow;
 import model.popupMenu;
 import model.usedDrug;
@@ -124,7 +125,6 @@ edit_area.focusedProperty().addListener(v->{
     }
 
 
-
     public void exit_methode(ActionEvent actionEvent) {
         if(PatientList.Table_quick_stage!=null&&PatientList.Table_quick_stage.isShowing()){
             PatientList.Table_quick_stage.close();
@@ -204,6 +204,16 @@ edit_area.focusedProperty().addListener(v->{
             helper.printWithData(selectedPatient,data);
         } catch (PrintException e) {
             dialog alr=new dialog();
+
+            alr.setPosition(300,300);
+            alr.setTitle("Something went wrong. ");
+            alr.setContent("Error:"+e.getMessage()+"\nYou still can print the prescription by going to prescription history.");
+            JFXButton continueBtn = spawnButton.gray("Continue");
+            alr.getButtonList().addAll(continueBtn);
+            continueBtn.setOnAction(v->{alr.close();exit_btn.fire();});
+            alr.show(quick_pane.getScene().getWindow(),quick_pane);
+
+
         }
 
     }
