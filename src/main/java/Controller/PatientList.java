@@ -126,7 +126,7 @@ public cellController<Patient> cellController=new cellController<>();
                         System.out.println("delete");
                         dialog check=new dialog();
                         check.setTitle("confirm you choice.");
-                        check.setContent("you are going to delete : "+patient_table.getItems().get(cellController.index).getFullName()+" and all the "+patient_table.getItems().get(cellController.index).getPrescriptionsId().size()+" prescriptions");
+                        check.setContent("you are going to delete :\n "+patient_table.getItems().get(cellController.index).getFullName()+" and all the "+patient_table.getItems().get(cellController.index).getPrescriptionsId().size()+" prescriptions");
 
                         JFXButton ok = spawnButton.red("Delete");
                         JFXButton cancel = spawnButton.gray("Cancel");

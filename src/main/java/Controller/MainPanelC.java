@@ -61,7 +61,7 @@ public class MainPanelC  implements Initializable {
     static public Pane templateStatic;
     public JFXButton close_btn;
     public JFXButton minimize_btn;
-    static templateC templateController;
+    public static templateC templateController;
     public DashboardC dashController;
     int i=0;
     @Override

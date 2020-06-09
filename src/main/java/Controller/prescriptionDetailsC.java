@@ -18,9 +18,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import libs.cellController;
 import libs.requestFormer;
+import model.components.spawnButton;
 import model.popUpWindow;
 import model.showButton;
 import model.usedDrug;
@@ -43,6 +45,7 @@ public class prescriptionDetailsC implements Initializable {
     public Label date_label;
     public JFXButton exit_btn;
     public AnchorPane quick_pane;
+    public HBox buttonList;
     @FXML
     private TableView<usedDrug> table;
     @FXML
@@ -67,6 +70,9 @@ Stage stage;
         initCol();
         loadData();
         eventTrigger();
+        JFXButton deleteBtn = spawnButton.red("Delete");
+        JFXButton printBtn = spawnButton.blue("Print");
+        buttonList.getChildren().addAll(deleteBtn,printBtn);
     }
     public void initCol(){
         name_colm.getStyleClass().add("start");

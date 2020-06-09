@@ -4,14 +4,17 @@ import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.transform.Scale;
 
+import javax.print.PrintException;
+
 public class printWorker {
 
 
 
-    static final public void print(final Node node) {
+    static final public void print(final Node node) throws PrintException {
 
         node.setVisible(true);
         Printer printer = Printer.getDefaultPrinter();
+        if (printer==null) throw new PrintException("Default printer not found");
         System.out.println(printer.getName());
         PageLayout pageLayout = printer.createPageLayout(Paper.A5, PageOrientation.PORTRAIT, Printer.MarginType.DEFAULT);
         // System.out.println( "w:"+((pageLayout.getPrintableWidth()/72)*96) );

@@ -23,13 +23,16 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import libs.cellController;
+import libs.helper;
 import libs.requestFormer;
+import model.components.dialog;
 import model.components.drugItem;
 import model.popUpWindow;
 import model.popupMenu;
 import model.usedDrug;
 import model.showButton;
 
+import javax.print.PrintException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -159,43 +162,48 @@ edit_area.focusedProperty().addListener(v->{
 
     }
 
-    public void save_and_print(ActionEvent actionEvent) throws IOException {
+    public void save_and_print(ActionEvent actionEvent) {
         FIRE_EXIT=false;
         save_btn.fire();
         FIRE_EXIT=true;
 
-        MainPanelC.templateController.setTemplateInfo(selectedPatient);
-        int  i=0,j=0;
-        while(i<data.size()){
-            MainPanelC.templateController.drug_list.add(new drugItem(data.get(i),MainPanelC.templateController.secColor),0,j);
-            j++;
-            i++;
-            if(i % 5==0){
-                print(MainPanelC.templateStatic);
-                MainPanelC.templateController.reset();
-                MainPanelC.templateController.setTemplateInfo(selectedPatient);
-
-j=0;
-            }
-
-
-
-        }
-        try{
-        print(MainPanelC.templateStatic);
-        exit_btn.fire();}
-        catch (NullPointerException e){
-            System.out.println("No default printer found!!");
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("No default printer found in your system!!");
-            alert.showAndWait();
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("The prescription has been successfully saved.");
-            alert.showAndWait();
+//        MainPanelC.templateController.setTemplateInfo(selectedPatient);
+//        int  i=0,j=0;
+//        while(i<data.size()){
+//            MainPanelC.templateController.drug_list.add(new drugItem(data.get(i),MainPanelC.templateController.secColor),0,j);
+//            j++;
+//            i++;
+//            if(i % 5==0){
+//                print(MainPanelC.templateStatic);
+//                MainPanelC.templateController.reset();
+//                MainPanelC.templateController.setTemplateInfo(selectedPatient);
+//
+//j=0;
+//            }
+//
+//
+//
+//        }
+//        try{
+//        print(MainPanelC.templateStatic);
+//        exit_btn.fire();}
+//        catch (NullPointerException e){
+//            System.out.println("No default printer found!!");
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Error");
+//            alert.setHeaderText(null);
+//            alert.setContentText("No default printer found in your system!!");
+//            alert.showAndWait();
+//            alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Error");
+//            alert.setHeaderText(null);
+//            alert.setContentText("The prescription has been successfully saved.");
+//            alert.showAndWait();
+//        }
+        try {
+            helper.printWithData(selectedPatient,data);
+        } catch (PrintException e) {
+            dialog alr=new dialog();
         }
 
     }
