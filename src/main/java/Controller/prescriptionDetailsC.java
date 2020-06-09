@@ -46,6 +46,8 @@ public class prescriptionDetailsC implements Initializable {
     public JFXButton exit_btn;
     public AnchorPane quick_pane;
     public HBox buttonList;
+    public JFXButton print_btn;
+    public JFXButton delete_btn;
     @FXML
     private TableView<usedDrug> table;
     @FXML

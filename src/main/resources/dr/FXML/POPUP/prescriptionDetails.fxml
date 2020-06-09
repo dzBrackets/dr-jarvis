@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="quick_pane" fx:id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 27px; -fx-background-radius: 27px;" stylesheets="@../../CSS/quick_panel_style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.prescriptionDetailsC">
+<AnchorPane id="quick_pane" fx:id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 27px; -fx-background-radius: 27px;" stylesheets="@../../CSS/quick_panel_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.prescriptionDetailsC">
     <children>
         <Label id="top_label" layoutX="23.0" layoutY="14.0" prefHeight="17.0" prefWidth="194.0" text="Prescription Details  :" textFill="WHITE" />
         <Pane id="pat_info_panel" layoutX="22.0" layoutY="48.0" prefHeight="285.0" prefWidth="866.0" style="-fx-background-color: #765EE2; -fx-background-radius: 30px;" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="23.0">
@@ -36,15 +39,6 @@
                 <Font size="18.0" />
             </font>
         </Label>
-      <HBox fx:id="buttonList" alignment="CENTER_RIGHT" layoutX="502.0" layoutY="705.0" prefHeight="33.0" prefWidth="387.0">
-         <children>
-              <JFXButton id="exit_btn" fx:id="exit_btn" onAction="#exit_methode" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: #F24E1E; -fx-background-radius: 16.5px;" text="Exit" textFill="WHITE">
-                  <font>
-                      <Font size="14.0" />
-                  </font>
-              </JFXButton>
-         </children>
-      </HBox>
         <TableView id="table" fx:id="table" layoutX="68.0" layoutY="380.0" prefHeight="320.0" prefWidth="776.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="68.0">
             <columns>
                 <TableColumn id="name_colm" fx:id="name_colm" prefWidth="116.0" text="Name" />
@@ -57,5 +51,20 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
         </TableView>
+        <JFXButton id="exit_btn" fx:id="exit_btn" layoutX="68.0" layoutY="711.0" onAction="#exit_methode" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: #F24E1E; -fx-background-radius: 16.5px;" text="Exit" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </JFXButton>
+      <JFXButton id="exit_btn" fx:id="print_btn" layoutX="765.0" layoutY="711.0" onAction="#print_methode" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: #0ACF83; -fx-background-radius: 16.5px;" text="Print" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton id="exit_btn" fx:id="delete_btn" layoutX="673.0" layoutY="711.0" onAction="#delete_methode" prefHeight="33.0" prefWidth="79.0" style="-fx-background-color: #F24E1E; -fx-background-radius: 16.5px;" text="Delete" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>
