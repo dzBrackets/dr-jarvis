@@ -202,6 +202,7 @@ edit_area.focusedProperty().addListener(v->{
 //        }
         try {
             helper.printWithData(selectedPatient,data);
+            exit_btn.fire();
         } catch (PrintException e) {
             dialog alr=new dialog();
 
@@ -223,12 +224,24 @@ edit_area.focusedProperty().addListener(v->{
 
     public void fillDrugInfo(Drug d){
         drug_search.setText(d.getName());
+
         type_combo.getItems().setAll(d.getType());
         type_combo.getSelectionModel().select(0);
         doss_combo.getItems().setAll(d.getDose());
         doss_combo.getSelectionModel().select(0);
-    }
+        //notice_text_field.setText(d.getNotice());
 
+    }
+    public void fillDrugInfo(usedDrug d){
+        drug_search.setText(d.getName());
+        type_combo.getItems().setAll(d.getType());
+        type_combo.getSelectionModel().select(0);
+        doss_combo.getItems().setAll(d.getDoss());
+        doss_combo.getSelectionModel().select(0);
+        notice_text_field.setText(d.getNotice());
+        spinner.increment(Integer.parseInt(d.getQts())-1);
+
+    }
     public  void setInfoLabelValues(String fName, int age, String lastVisit, String lastDiagnostic) {
         name_label.setText(fName);
         age_label.setText(""+age);
@@ -259,6 +272,8 @@ edit_area.focusedProperty().addListener(v->{
                 type_combo.getItems().clear();
                 doss_combo.getItems().clear();
                 drug_search.setText("");
+                notice_text_field.setText("");
+            spinner.decrement(spinner.getValue());
 
             }
         });
@@ -270,8 +285,9 @@ edit_area.focusedProperty().addListener(v->{
         drugList.remove(cellController.index);
         }
         if (prop.getValue()==1){
-            fillDrugInfo(drugList.get(cellController.index));
+            fillDrugInfo(data.get(cellController.index));
             data.remove(cellController.index);
+            selectedDrug=drugList.get(cellController.index);
             drugList.remove(cellController.index);
             added=false;
 

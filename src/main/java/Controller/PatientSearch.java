@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import libs.requestFormer;
 import model.popupMenu;
+import model.stageLoader;
 
 import static Controller.PatientList.patientFormStage;
 import static dr.FinalsVal.requestP;
@@ -119,20 +120,15 @@ else{
 
 
     }
-    public void initializePane() throws IOException {
-        FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/quick_panel.fxml"));
-         root = loader.load();
-         control=loader.getController();
-    }
+
     public void open_quick_pane() throws IOException {
-        initializePane();
-        quick_scene =new Scene(root);
-        quick_scene.setFill(Color.TRANSPARENT);
-        quick_scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-        quick_stage =new Stage();
-        quick_stage.initModality(Modality.APPLICATION_MODAL);
-        quick_stage.setScene(quick_scene);
-        quick_stage.initStyle(StageStyle.TRANSPARENT);
+        stageLoader sl=new stageLoader("New prescription","/dr/FXML/POPUP/quick_panel.fxml");
+        quick_scene =sl.getScene();
+
+        quick_stage =sl.getStage();
+        root=sl.getRoot();
+        control= (quick_panelC) sl.getController();
+
         //setLabels
         control.setInfoLabelValues(selectedPatient);
         quick_stage.show();
@@ -141,14 +137,6 @@ else{
             MainPanelC.effect.setRadius(0);
         });
 
-        quick_scene.setOnMousePressed(event -> {
-            xOffset=event.getSceneX();
-            yOffset=event.getSceneY();
-        });
-        quick_scene.setOnMouseDragged(event -> {
-            quick_stage.setX(event.getScreenX() - xOffset);
-            quick_stage.setY(event.getScreenY()-yOffset);
-        });
 
 
     }

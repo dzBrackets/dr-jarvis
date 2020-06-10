@@ -50,27 +50,8 @@ public class prescriptionsHistoryC implements Initializable {
         show_c.setCellFactory(cellController.BCellFactory(new showButton("Details ...")));
     }
     public void initDashboardController(){
-/*
-        FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/prescriptionDetails.fxml"));
-        Parent root=null;
-        try {
-            root= loader.load();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene scene = new Scene(root);
-        scene.setFill(Color.TRANSPARENT);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.TRANSPARENT);
-        stage.show();
-         deatailcontroller = loader.getController();
-        deatailcontroller.loadFrom(history_table.getItems().get(cellController.index));
-         deatailcontroller.dad(stage);
-*/
-        stageLoader op=new stageLoader("/dr/FXML/POPUP/prescriptionDetails.fxml");
+        stageLoader op=new stageLoader("View prescription","/dr/FXML/POPUP/prescriptionDetails.fxml");
         detailController = (prescriptionDetailsC) op.getController();
         op.show();
         detailController.loadFrom(history_table.getItems().get(cellController.index));

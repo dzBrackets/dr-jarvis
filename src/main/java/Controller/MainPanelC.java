@@ -117,7 +117,7 @@ public class MainPanelC  implements Initializable {
     }
 
     private void firstTime() {
-        stageLoader sl=new stageLoader("/dr/FXML/PAGES/welcomePage.fxml");
+        stageLoader sl=new stageLoader("Welcome :)","/dr/FXML/PAGES/welcomePage.fxml");
         sl.setOneClose(v-> {
             System.out.println("closed");
             requestU.offer(formerU.update());
@@ -293,33 +293,20 @@ e.getStackTrace();        }
 
 
     public void  add_quick(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/patient_search.fxml"));
-        search_scene =new Scene(root);
-        search_scene.setFill(Color.TRANSPARENT);
-        search_scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-         search_stage=new Stage();
-        search_stage.initModality(Modality.APPLICATION_MODAL);
-        search_stage.setScene(search_scene);
-         search_stage.initStyle(StageStyle.TRANSPARENT);
-        search_stage.show();
+      stageLoader sl=new stageLoader("Search for a patient","/dr/FXML/POPUP/patient_search.fxml");
+        search_scene =sl.getScene();
+         search_stage=sl.getStage();
+
+        sl.show();
         effect.setRadius(3.25);
         search_stage.setOnCloseRequest(event -> {
             search_stage.close();
             effect.setRadius(0);
         });
-        search_scene.setOnMousePressed(event -> {
-            xOffset=event.getSceneX();
-            yOffset=event.getSceneY();
-        });
-        search_scene.setOnMouseDragged(event -> {
-            search_stage.setX(event.getScreenX() - xOffset);
-            search_stage.setY(event.getScreenY()-yOffset);
-        });
-
-
     }
 
     public void show_presHistory(ActionEvent actionEvent) throws IOException {
+        Main.staticstage.setTitle("Dr.jarvis - Prescriptions list");
 
         reset_btn_Opicity();
         presHistory_btn.getGraphic().setOpacity(1);
@@ -332,7 +319,9 @@ e.getStackTrace();        }
     }
 
     public void show_DashP(ActionEvent actionEvent) {
-       // settingFirstLook();
+        Main.staticstage.setTitle("Dr.jarvis - Dashboard");
+
+        // settingFirstLook();
         dashController.update();
         dashbord_pane.toFront();
         dashbord_pane.setVisible(true);
@@ -345,6 +334,8 @@ e.getStackTrace();        }
     }
 
     public void show_patientP(ActionEvent actionEvent) {
+        Main.staticstage.setTitle("Dr.jarvis - Patients list");
+
         patient_panel.toFront();
         patient_panel.setVisible(true);
         reset_btn_Opicity();
@@ -357,6 +348,8 @@ e.getStackTrace();        }
     }
 
     public void show_drugPanel(ActionEvent actionEvent) {
+        Main.staticstage.setTitle("Dr.jarvis - Drugs list");
+
         drug_panel.toFront();
         drug_panel.setVisible(true);
         reset_btn_Opicity();
@@ -368,6 +361,8 @@ e.getStackTrace();        }
     }
 
     public void show_SettingP(ActionEvent actionEvent) {
+        Main.staticstage.setTitle("Dr.jarvis - Settings");
+
         setting_pane.toFront();
         setting_pane.setVisible(true);
         reset_btn_Opicity();

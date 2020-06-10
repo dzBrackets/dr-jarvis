@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXTextArea?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Spinner?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="quick_pane" fx:id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 27px; -fx-background-radius: 27px;" stylesheets="@../../CSS/quick_panel_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.quick_panelC">
+<AnchorPane id="quick_pane" fx:id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-border-radius: 27px; -fx-background-radius: 27px;" stylesheets="@../../CSS/quick_panel_style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.quick_panelC">
    <children>
       <Label id="top_label" layoutX="585.0" layoutY="14.0" prefHeight="17.0" prefWidth="194.0" text="Patient informations :" textFill="WHITE" />
       <Pane id="pat_info_panel" layoutX="585.0" layoutY="48.0" prefHeight="315.0" prefWidth="304.0" style="-fx-background-color: #765EE2; -fx-background-radius: 30px;" AnchorPane.leftAnchor="585.0" AnchorPane.rightAnchor="23.0">
          <children>
-            <Label id="info4_label" layoutX="19.0" layoutY="142.0" prefHeight="21.0" prefWidth="132.0" style="-fx-font-size: 15px;" text="Diagnostic" textFill="WHITE" />
+            <Label id="info4_label" layoutX="19.0" layoutY="142.0" prefHeight="21.0" prefWidth="132.0" style="-fx-font-size: 15px;" text="Diagnostis" textFill="WHITE" />
             <Label id="info1_label" layoutX="19.0" layoutY="18.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Name :" textFill="WHITE" />
             <Label id="name_label" fx:id="name_label" layoutX="148.0" layoutY="18.0" prefHeight="21.0" prefWidth="151.0" style="-fx-font-size: 15px;" text="UNKNOWN" textFill="WHITE" />
             <Label id="info2_label" layoutX="19.0" layoutY="58.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Age :" textFill="WHITE" />
             <Label id="age_label" fx:id="age_label" layoutX="148.0" layoutY="58.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="NULL" textFill="WHITE" />
-            <Label id="info3_label" layoutX="18.0" layoutY="98.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Last Visite :" textFill="WHITE" />
+            <Label id="info3_label" layoutX="18.0" layoutY="98.0" prefHeight="21.0" prefWidth="115.0" style="-fx-font-size: 15px;" text="Last Visit :" textFill="WHITE" />
             <Label id="visite_label" fx:id="visite_label" layoutX="147.0" layoutY="98.0" prefHeight="21.0" prefWidth="132.0" style="-fx-font-size: 15px;" text="1/01/2050" textFill="WHITE" />
             <Label id="last_notice_label" fx:id="last_notice_label" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="10.0" layoutX="18.0" layoutY="172.0" prefHeight="132.0" prefWidth="271.0" style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-background-radius: 11px;" text="N/D" textFill="WHITE">
                <padding>

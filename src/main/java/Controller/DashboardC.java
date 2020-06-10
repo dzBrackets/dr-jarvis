@@ -126,7 +126,7 @@ void initHandler(){
 
             int finalI = i;
             comp.showMoreListener(v->{
-                stageLoader op=new stageLoader("/dr/FXML/POPUP/prescriptionDetails.fxml");
+                stageLoader op=new stageLoader("Prescription details","/dr/FXML/POPUP/prescriptionDetails.fxml");
                 prescriptionDetailsC controller = (prescriptionDetailsC) op.getController();
                 op.show();
                 controller.loadFrom(presList.get(finalI));
@@ -144,11 +144,11 @@ void loadRecent(){
 
     void update(){
         Thread climp = new Thread(() -> {
-            String p = database.getSize("prescriptions") + "";
+           // String p = database.getSize("prescriptions") + "";
             String d = database.getSize("drug") + "";
             String a = database.getSize("patient") + "";
             Platform.runLater(() -> {
-                all_prec_cpt.setText(p);
+                all_prec_cpt.setText(local_data.getTodayStat()+"");
                 drug_cpt.setText(d);
                 patient_cpt.setText(a);
                 today_precp_cpt.setText(local_data.getMonthlyStat() + "");
@@ -172,11 +172,11 @@ static void chartInit(){
     final LineChart<Number,Number> lineChart =
             new LineChart<>(xAxis,yAxis);
 
-    lineChart.setTitle("Last month activity");
+    lineChart.setTitle(" Monthly activity");
     //defining a series
     //
     XYChart.Series<Number,Number> series2 = new XYChart.Series<>();
-    series2.setName("New Patient");
+    series2.setName("Prescriptions/Day");
     //load stat
     int[] daysByMonth = local_data.getMonthStats();
     for (int i = 0; i < daysByMonth.length; i++) {

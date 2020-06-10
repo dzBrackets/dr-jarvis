@@ -190,7 +190,7 @@ private void initEvent(){
     }
 
 void loadAddStage(Patient options){
-    stageLoader patientLoader = new stageLoader("/dr/FXML/POPUP/New_patient.fxml");
+    stageLoader patientLoader = new stageLoader("Add new patient","/dr/FXML/POPUP/New_patient.fxml");
     patientFormStage =patientLoader.getStage();
     if(options!=null) ((NewPatient)patientLoader.getController()).preFilled(options);
     patientLoader.show();
@@ -202,7 +202,7 @@ void loadAddStage(Patient options){
 loadAddStage(null);
     }
     public void initializePane() throws IOException {
-         sl = new stageLoader("/dr/FXML/POPUP/quick_panel.fxml");
+         sl = new stageLoader("New prescription","/dr/FXML/POPUP/quick_panel.fxml");
         root = sl.getRoot();
         control= (quick_panelC) sl.getController();
 

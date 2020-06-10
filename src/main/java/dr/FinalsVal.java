@@ -11,6 +11,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.print.*;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
 import javafx.scene.transform.Scale;
 import libs.coronaDb.coCollection;
 import libs.coronaDb.coronaDb;
@@ -19,6 +20,7 @@ final public class FinalsVal {
 
 //       static public final SynchronousQueue<Patient> respond = new SynchronousQueue<>();
 
+       static public final Image APP_ICON=new Image("dr/image/appIcon.png");
        static public final SynchronousQueue<requestFormer<Patient>> requestP = new SynchronousQueue<>();
        static public final SynchronousQueue<requestFormer<userData>> requestU = new SynchronousQueue<>();
        static public final SynchronousQueue<requestFormer<Drug>> requestD = new SynchronousQueue<>();

@@ -13,6 +13,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
+import model.stageLoader;
 
 import static dr.FinalsVal.*;
 import java.io.IOException;
@@ -25,10 +26,10 @@ public class Main extends Application {
     public static dataThread<userData> userDataThread=null;
     public static dataThread<customizable> costumeThread=null;
     public static   FXMLLoader loader;
-
+    stageLoader sl;
     public static Stage staticstage=null;
-    public static void main(String[] args)
-    {
+    public void init() throws InterruptedException {
+
 
         System.setProperty("prism.text", "t2k");
         System.setProperty("prism.lcdtext", "false");
@@ -55,39 +56,30 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-        launch(args);
+         Platform.runLater(()->sl=new stageLoader("Dr.jarvis - Dashboard","/dr/FXML/PAGES/main_pane.fxml"));
+        System.out.println("wait");
+
+
+
+
+
+
+
+
     }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-
-        loader=new FXMLLoader(getClass().getResource("/dr/FXML/PAGES/main_pane.fxml"));
-        Parent root= loader.load();
-        Scene scene=new Scene(root);
-        scene.setFill(Color.TRANSPARENT);
-     //  scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");//
-        primaryStage.setScene(scene);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.show();
+        primaryStage=sl.getStage();
         staticstage=primaryStage;
 
+        staticstage.setOnCloseRequest(event -> {
+            Platform.exit();
+            System.exit(0);
+        });
+        sl.show();
 
-        /*  Font.loadFont(getClass().getResource("/dr/fonts/Sarabun-Regular.ttf").toExternalForm(),18);*/
-        scene.setOnMousePressed(event -> {
-            xOffset=event.getSceneX();
-            yOffset=event.getSceneY();
-        });
-        scene.setOnMouseDragged(event -> {
-            primaryStage.setX(event.getScreenX() - xOffset);
-            primaryStage.setY(event.getScreenY()-yOffset);
-        });
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                Platform.exit();
-                System.exit(0);
-            }
-        });
 
     }
+
 }

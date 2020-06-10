@@ -26,6 +26,8 @@ import model.components.dialog;
 import model.components.spawnButton;
 import model.popUpWindow;
 import model.showButton;
+import model.stageLoader;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -129,30 +131,10 @@ static public void closePopuUp(){
     add_drug_from_stage.close();
 }
     public void add_drug_table(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/dr/FXML/POPUP/New_drugs.fxml"));
-      Scene sc =new Scene(root);
+        stageLoader sl=new stageLoader("Add new drug","/dr/FXML/POPUP/New_drugs.fxml");
+         add_drug_from_stage =sl.getStage();
+        sl.show();
 
-        sc.setFill(Color.TRANSPARENT);
-        sc.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-         add_drug_from_stage =new Stage();
-        add_drug_from_stage.initModality(Modality.APPLICATION_MODAL);
-        add_drug_from_stage.setScene(sc);
-        add_drug_from_stage.initStyle(StageStyle.TRANSPARENT);
-        add_drug_from_stage.show();
-        sc.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset=event.getSceneX();
-                yOffset=event.getSceneY();
-            }
-        });
-        sc.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                add_drug_from_stage.setX(event.getScreenX() - xOffset);
-                add_drug_from_stage.setY(event.getScreenY()-yOffset);
-            }
-        });
 
     }
 }

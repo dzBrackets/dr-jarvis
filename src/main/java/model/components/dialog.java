@@ -20,8 +20,8 @@ import java.io.IOException;
 
 public class dialog {
 
-    alertBox self;
-    popUpWindow pop;
+    public alertBox self;
+    public popUpWindow pop;
     public static final String WARNING="warning";
     public static final String INFO="info";
     public static final String TOP_LEFT="tl";
@@ -107,10 +107,11 @@ public void setBubbleDir(String pos){
     }
     }
 
-    public void show(Window staticstage, Pane node)
+    public void show(Window staticstage, Node node)
     {
-        setBlur(node);
+
         pop.show(staticstage,staticstage.getX(),staticstage.getY()+53);
+        setBlur(node);
     }
     public void show(Window staticstage)
     {
@@ -125,8 +126,13 @@ public void setBubbleDir(String pos){
             self.blackHover.setVisible(b);
     }
 
-    public void setBlur(Pane pane) {
+    public void removeBlur(Pane pane) {
+        pane.setEffect(null);
+        // blur(false);
+    }
+
+    public void setBlur(Node ownerNode) {
         blur(false);
-        pane.setEffect(new GaussianBlur(3.25));
+        ownerNode.setEffect(new GaussianBlur(3.25));
     }
 }

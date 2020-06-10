@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Spinner?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="drugs_pane" fx:id="drugs_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px; -fx-background-color: #ffffff;" stylesheets="@../../CSS/table_pages_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DrugList">
+<AnchorPane id="drugs_pane" fx:id="drugs_pane" prefHeight="752.0" prefWidth="912.0" style="-fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px; -fx-background-color: #ffffff;" stylesheets="@../../CSS/table_pages_style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DrugList">
     <children>
         <TableView id="drug_table" fx:id="drug_table" layoutX="47.0" layoutY="117.0" prefHeight="607.0" prefWidth="818.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
             <columns>
@@ -26,7 +21,7 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-        <Label id="info1_label" layoutX="25.0" layoutY="14.0" prefHeight="32.0" prefWidth="137.0" style="-fx-font-size: 21px;" text="Drugs Liste :" textFill="#4a4a4a" />
+        <Label layoutX="25.0" layoutY="14.0" prefHeight="32.0" prefWidth="137.0" style="-fx-font-size: 21px; -fx-font-family: Sarabun SemiBold;" text="Drugs Liste :" textFill="#4a4a4a" />
         <TextField id="write_TXF" fx:id="write_TXF" layoutX="431.0" layoutY="68.0" prefHeight="41.0" prefWidth="293.0" promptText="write something..." />
       <JFXButton id="add_drug_btn" fx:id="add_drug_btn" layoutX="738.0" layoutY="68.0" onAction="#add_drug_table" prefHeight="41.0" prefWidth="149.0" style="-fx-background-color: #5144FF; -fx-background-radius: 11px;" text="Add New Drug     " textAlignment="CENTER" textFill="WHITE">
          <graphic>

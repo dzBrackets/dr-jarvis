@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDatePicker?>
-<?import com.jfoenix.controls.JFXRadioButton?>
-<?import com.jfoenix.controls.JFXTextArea?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="Pform" fx:id="Pform" prefHeight="687.0" prefWidth="680.0" style="-fx-background-color: #2C3964; -fx-background-radius: 11px;" stylesheets="@../../CSS/new_patient_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewPatient">
+<AnchorPane id="Pform" fx:id="Pform" prefHeight="687.0" prefWidth="680.0" style="-fx-background-color: #2C3964; -fx-background-radius: 11px;" stylesheets="@../../CSS/new_patient_style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewPatient">
    <children>
       <Label layoutX="68.0" layoutY="31.0" prefHeight="32.0" prefWidth="150.0" text="New Patient" textFill="WHITE">
          <font>
@@ -34,7 +29,7 @@
             <Font name="Sarabun SemiBold" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="68.0" layoutY="387.0" prefHeight="26.0" prefWidth="318.0" text="Diagnostic (feel free to fill this later):" textFill="WHITE">
+      <Label layoutX="68.0" layoutY="387.0" prefHeight="26.0" prefWidth="318.0" text="Diagnostis (feel free to fill this later):" textFill="WHITE">
          <font>
             <Font name="Sarabun SemiBold" size="17.0" />
          </font>

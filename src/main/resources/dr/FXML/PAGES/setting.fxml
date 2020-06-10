@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
-<?import com.jfoenix.controls.JFXColorPicker?>
-<?import com.jfoenix.controls.JFXTabPane?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane id="setting_pane" fx:id="setting_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: white; -fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px;" stylesheets="@../../CSS/setting_style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.settingC">
+<AnchorPane id="setting_pane" fx:id="setting_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="912.0" style="-fx-background-color: white; -fx-background-radius: 0px 27px 27px 0px; -fx-border-radius: 0px 27px 27px 0px;" stylesheets="@../../CSS/setting_style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.settingC">
    <children>
       <Label id="info1_label" layoutX="26.0" layoutY="14.0" prefHeight="32.0" prefWidth="99.0" style="-fx-font-size: 21px;" text="Settings&gt; " textFill="#4a4a4a" />
       <Label id="tab_type" fx:id="tab_type" layoutX="119.0" layoutY="14.0" prefHeight="32.0" prefWidth="162.0" style="-fx-font-size: 21px;" text="Personal " textFill="#4a4a4a" />
@@ -60,22 +51,22 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Label fx:id="namel_label" prefHeight="20.0" prefWidth="169.0" styleClass="doc_info_label" text="aymen daouadji">
+                                    <Label fx:id="namel_label" prefHeight="20.0" prefWidth="169.0" styleClass="doc_info_label" text="N/D">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                     </Label>
-                                    <Label fx:id="email_label" prefHeight="20.0" prefWidth="173.0" styleClass="doc_info_label" text="daouadji@gmail.com" GridPane.rowIndex="1">
+                                    <Label fx:id="email_label" prefHeight="20.0" prefWidth="173.0" styleClass="doc_info_label" text="XXX" GridPane.rowIndex="1">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                     </Label>
-                                    <Label fx:id="phone_label" prefHeight="20.0" prefWidth="170.0" styleClass="doc_info_label" text="0554485499" GridPane.rowIndex="3">
+                                    <Label fx:id="phone_label" prefHeight="20.0" prefWidth="170.0" styleClass="doc_info_label" text="XXX" GridPane.rowIndex="3">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                     </Label>
-                                    <Label fx:id="adr_label" prefHeight="20.0" prefWidth="169.0" styleClass="doc_info_label" text="bini tamou" GridPane.rowIndex="2">
+                                    <Label fx:id="adr_label" prefHeight="20.0" prefWidth="169.0" styleClass="doc_info_label" text="XXX" GridPane.rowIndex="2">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -230,7 +221,7 @@
              <Tab id="info_tab" fx:id="info_tab" onSelectionChanged="#infoTab_selected" text="Info">
                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="565.0" prefWidth="710.0">
                   <children>
-                     <Label layoutX="22.0" layoutY="36.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="Time and date :" />
+                     <Label layoutX="22.0" layoutY="36.0" prefHeight="27.0" prefWidth="180.0" styleClass="title_label" text="Software information :" />
                      <Pane layoutX="22.0" layoutY="75.0" prefHeight="200.0" prefWidth="701.0" style="-fx-border-color: #E5E5E5; -fx-background-radius: 11px; -fx-border-radius: 11px;">
                         <children>
                            <Label layoutX="14.0" layoutY="32.0" prefHeight="20.0" prefWidth="85.0" styleClass="doc_info_label" text="Version :">
@@ -238,7 +229,7 @@
                                  <Insets />
                               </opaqueInsets>
                            </Label>
-                           <Label fx:id="version_lbl" layoutX="79.0" layoutY="32.0" prefHeight="20.0" prefWidth="324.0" styleClass="doc_info_label" text="Dr stone beta test 2020.05 / build #0.0.1b202005s">
+                           <Label fx:id="version_lbl" layoutX="79.0" layoutY="32.0" prefHeight="20.0" prefWidth="324.0" styleClass="doc_info_label" text="Dr.Djarvis beta test 2020.06 / build #0.0.1b202006s">
                               <opaqueInsets>
                                  <Insets />
                               </opaqueInsets>
@@ -248,13 +239,13 @@
                                  <Insets />
                               </opaqueInsets>
                            </Label>
-                           <JFXButton id="buy_btn" fx:id="terms_btn" layoutX="634.0" layoutY="33.0" prefHeight="18.0" prefWidth="39.0" text="terms." underline="true" wrapText="true" />
+                           <JFXButton id="buy_btn" fx:id="terms_btn" layoutX="634.0" layoutY="33.0" prefHeight="18.0" prefWidth="39.0" text="terms." underline="true" visible="false" wrapText="true" />
                            <Label fx:id="version_lbl1" layoutX="14.0" layoutY="80.0" prefHeight="20.0" prefWidth="144.0" styleClass="doc_info_label" text="JDK version : 11+">
                               <opaqueInsets>
                                  <Insets />
                               </opaqueInsets>
                            </Label>
-                           <Label fx:id="version_lbl11" layoutX="14.0" layoutY="127.0" prefHeight="20.0" prefWidth="233.0" styleClass="doc_info_label" text="Powered by : open source MIT">
+                           <Label fx:id="version_lbl11" layoutX="14.0" layoutY="127.0" prefHeight="20.0" prefWidth="233.0" styleClass="doc_info_label" text="Powered by : open source">
                               <opaqueInsets>
                                  <Insets />
                               </opaqueInsets>

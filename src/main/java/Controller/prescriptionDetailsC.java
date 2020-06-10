@@ -51,6 +51,7 @@ public class prescriptionDetailsC implements Initializable {
     public HBox buttonList;
     public JFXButton print_btn;
     public JFXButton delete_btn;
+    public Label lastDiago;
     @FXML
     private TableView<usedDrug> table;
     @FXML
@@ -97,7 +98,7 @@ private void setPatientInfo(Patient patient){
         name_label.setText(patient.getFullName());
         age_label.setText(patient.getAge()+"");
         visite_label.setText(patient.getLastVisit());
-
+    lastDiago.setText(patient.getLastDiagnostic());
 }
 void eventTrigger(){
     cellController.clicked.addListener(v->{
@@ -174,7 +175,7 @@ void dad(Stage st){
         JFXButton ok = spawnButton.red("Delete");
         JFXButton cancel = spawnButton.gray("Cancel");
         check.setPosition(300,300);
-        check.show(Main.staticstage,quick_pane);
+        check.show(quick_pane.getScene().getWindow(),quick_pane);
         check.getButtonList().setAll(ok,cancel);
         ok.setOnAction(v->{
             requestH.offer(formerH.remove(selectedPres));
@@ -186,6 +187,7 @@ void dad(Stage st){
         });
 
         cancel.setOnAction(v->{
+            check.removeBlur(quick_pane);
             check.close();
 
         });
@@ -200,7 +202,6 @@ void dad(Stage st){
             helper.printWithData(selectedPatient,selectedPres.getDrugList());
         } catch (PrintException e) {
             dialog alr=new dialog();
-
             alr.setPosition(300,300);
             alr.setTitle("Something went wrong. ");
             alr.setContent("Error:"+e.getMessage()+"\nadd a printer to your system then try again.");
@@ -209,5 +210,6 @@ void dad(Stage st){
             continueBtn.setOnAction(v->{alr.close();exit_btn.fire();});
             alr.show(quick_pane.getScene().getWindow(),quick_pane);
         }
+
     }
 }

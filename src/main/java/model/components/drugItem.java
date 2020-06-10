@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import model.usedDrug;
 
 public class drugItem extends Pane {
@@ -18,7 +19,7 @@ public class drugItem extends Pane {
         name = new Label(drug.getName());
         doss = new Label(drug.getDoss());
         notice = new Label(drug.getNotice());
-        qts =new Label(drug.getQts());
+        qts =new Label("x "+drug.getQts());
         type=new Label(drug.getType());
      //   line =new Line();
         this.setPrefWidth(100);
@@ -57,7 +58,7 @@ public class drugItem extends Pane {
         qts.setLayoutX(403);
         qts.setLayoutY(1);
      //   notice.setLayoutX();//
-        notice.setLayoutY(35);
+        notice.setLayoutY(40);
 
         name.setPrefWidth(93);
         name.setPrefHeight(17);
@@ -70,11 +71,12 @@ public class drugItem extends Pane {
         qts.setPrefWidth(31);
         qts.setPrefHeight(27);
 
-        name.setFont(Font.font("Marlett",12));
-        doss.setFont(Font.font("Marlett",12));
-        type.setFont(Font.font("Marlett",12));
-        notice.setFont(Font.font("Marlett",12));
-        notice.setFont(Font.font("Marlett",13));
+        name.setFont(Font.font("SansSerif",17));
+        doss.setFont(Font.font("SansSerif",17));
+        type.setFont(Font.font("SansSerif",17));
+        notice.setFont(Font.font("SansSerif",17));
+        notice.setFont(Font.font("SansSerif",17));
+        qts.setFont(Font.font("SansSerif", FontWeight.EXTRA_BOLD, 18));
 
         notice.setAlignment(Pos.TOP_LEFT);
         qts.setAlignment(Pos.CENTER);

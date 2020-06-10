@@ -5,10 +5,7 @@ import DataClass.Patient;
 import com.fasterxml.jackson.databind.util.ISO8601Utils;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import model.components.drugItem;
 
@@ -44,6 +41,7 @@ public class templateC implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //setDoctorLocalInfo
+      // container.setStyle("-fx-border-color:black; -fx-background-radius: 17px; -fx-border-radius: 17px");;
     }
     void setLabelByPos(int i,String val)
     {

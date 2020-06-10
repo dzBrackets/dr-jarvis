@@ -12,6 +12,8 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
+import static dr.FinalsVal.APP_ICON;
+
 public class stageLoader {
    private Parent root=null;
    private Object controller;
@@ -19,7 +21,7 @@ public class stageLoader {
    private Scene scene;
 private double xOffset,yOffset;
 private async close=new async();
-    public stageLoader(String URL){
+    public stageLoader(String name,String URL){
         FXMLLoader loader =new FXMLLoader(getClass().getResource(URL));
         try {
             root= loader.load();
@@ -45,6 +47,9 @@ private async close=new async();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
+        stage.getIcons().add(APP_ICON);
+        stage.setTitle(name);
+
     }
     public void show(){
 
