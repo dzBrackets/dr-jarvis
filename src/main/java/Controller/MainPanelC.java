@@ -62,6 +62,7 @@ public class MainPanelC  implements Initializable {
     public JFXButton close_btn;
     public JFXButton minimize_btn;
     public static templateC templateController;
+    public static Stage welcomeStage;
     public DashboardC dashController;
     int i=0;
     @Override
@@ -106,8 +107,7 @@ public class MainPanelC  implements Initializable {
                 DashboardC.chartInit();
                 requestT.offer(formerT.get());
                 if(local_data.isfirstLaunch())
-                    Platform.runLater(this::firstTime);
-
+                  Main.wait.onReceive(x->  Platform.runLater(this::firstTime));
             }
             else{
                 userData uss = new userData();
@@ -118,10 +118,12 @@ public class MainPanelC  implements Initializable {
 
     private void firstTime() {
         stageLoader sl=new stageLoader("Welcome :)","/dr/FXML/PAGES/welcomePage.fxml");
+         welcomeStage = sl.getStage();
+         Main.staticstage.hide();
         sl.setOneClose(v-> {
             System.out.println("closed");
             requestU.offer(formerU.update());
-
+Main.staticstage.show();
             settingFirstLook();
         });
 

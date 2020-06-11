@@ -47,6 +47,15 @@ public class dialog {
     //setdialogType("warn");
 
     }
+    public dialog(alertBox controller){
+
+        super();
+        self = controller;
+        self.general.getChildren().remove(self.blackHover);
+
+        //pop = new popUpWindow(self.general.getChildren());
+        setBubbleDir("none");
+    }
 
 //    private void setdialogType(String type) {
 //    if(warn.equals("warinig"))
@@ -64,6 +73,7 @@ public class dialog {
         self.container.setLayoutX(x);
         self.container.setLayoutY(y);
     }
+
     public  void setImage(String type){
         if(type.equals(WARNING)) {
             Image error = new Image("dr/image/error_24px.png");
