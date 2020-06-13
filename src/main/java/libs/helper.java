@@ -2,26 +2,19 @@ package libs;
 
 import Controller.MainPanelC;
 import DataClass.Patient;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import model.components.dialog;
 import model.components.drugItem;
 import model.usedDrug;
 
-import javax.print.PrintException;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static libs.printWorker.print;
 
 public class helper {
-   static public void printWithData(Patient selectedPatient, List<usedDrug> data) throws PrintException {
+   static public void printWithData(Patient selectedPatient, List<usedDrug> data) throws printerException {
 
 
        MainPanelC.templateController.setTemplateInfo(selectedPatient);
@@ -51,6 +44,7 @@ public class helper {
                 (int) (255 * color.getBlue()),
                 color.getOpacity());
     }
+  /*
     static public String byteString(String str){
         byte[] bt = str.getBytes(StandardCharsets.UTF_8);
         return new String(bt);
@@ -60,7 +54,10 @@ public class helper {
         byte[] bt = str.getBytes(StandardCharsets.UTF_8);
         return new String(bt);
 
+
     }
+
+   */
     static public Window getCurrentStage(){
         System.out.println(Stage.getWindows().stream().filter(Window::isShowing).collect(Collectors.toList()));
         return Stage.getWindows().stream().filter(Window::isShowing).collect(Collectors.toList()).get(1);

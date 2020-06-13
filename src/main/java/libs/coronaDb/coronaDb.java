@@ -1,6 +1,5 @@
 package libs.coronaDb;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import libs.zippy;
@@ -14,16 +13,15 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class coronaDb {
-    private String name;
+    private final String name;
     static ObjectMapper mapper;
-    private ArrayList<tablesObj> tables;
-    private String dir=new File("storage").getAbsolutePath()+File.separator;
-    private String backup=new File("backup").getAbsolutePath()+File.separator;
+    private final ArrayList<tablesObj> tables;
+    private final String dir=new File("storage").getAbsolutePath()+File.separator;
+    private final String backup=new File("backup").getAbsolutePath()+File.separator;
 File conf;
     public coronaDb(String name){
         this.name=name;
@@ -80,8 +78,7 @@ createTabFile(fileName);
                System.out.println("Not Founds! Creating table...");
                return loadedObject;
            }
-           ;
-           if (!new File(filePath).exists()) {
+            if (!new File(filePath).exists()) {
                createTabFile(filePath);
                return loadedObject;
            }
@@ -134,7 +131,8 @@ public void loadConfig() throws IOException {
 public void saveConfig() throws IOException {
     System.out.println("save");
     mapper.writeValue(conf,tables);
-};
+}
+
     static public String _jsonStringFixer(String str) {
         if (str != null && str.length() > 1) {
             str = str.substring(0, str.length() - 1);

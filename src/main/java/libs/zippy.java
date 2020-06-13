@@ -19,7 +19,7 @@ public class zippy {
             for(String filePath : filesListInDir){
                 System.out.println("Zipping "+filePath);
                 //for ZipEntry we need to keep only relative file path, so we used substring on absolute path
-                ZipEntry ze = new ZipEntry(filePath.substring(dir.getAbsolutePath().length()+1, filePath.length()));
+                ZipEntry ze = new ZipEntry(filePath.substring(dir.getAbsolutePath().length()+1));
                 zos.putNextEntry(ze);
                 //read the file and write to ZipOutputStream
                 FileInputStream fis = new FileInputStream(filePath);

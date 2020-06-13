@@ -7,7 +7,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import dr.Main;
 import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.IntegerProperty;
@@ -19,21 +18,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import libs.cellController;
 import libs.helper;
+import libs.printerException;
 import libs.requestFormer;
 import model.components.dialog;
-import model.components.drugItem;
 import model.components.spawnButton;
 import model.popUpWindow;
 import model.popupMenu;
-import model.usedDrug;
 import model.showButton;
+import model.usedDrug;
 
-import javax.print.PrintException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -42,7 +43,6 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 import static dr.FinalsVal.*;
-import static libs.printWorker.print;
 
 public class quick_panelC implements Initializable {
 static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
@@ -80,7 +80,7 @@ static public String fName="N/D",age="N/D",lastDiagnostic="N/D",lastVisit="N/D";
     private TableColumn<usedDrug, String> notice_colm;
     public TableColumn<usedDrug, String> delete_colm;
     public static popUpWindow  showField ;
-    ObservableList<usedDrug> data=FXCollections.observableArrayList();;
+    ObservableList<usedDrug> data=FXCollections.observableArrayList();
     cellController<usedDrug> cellController=new cellController<>();
 List<Drug> drugList=new ArrayList<>();
     Drug selectedDrug=null;
@@ -203,7 +203,7 @@ edit_area.focusedProperty().addListener(v->{
         try {
             helper.printWithData(selectedPatient,data);
             exit_btn.fire();
-        } catch (PrintException e) {
+        } catch (printerException e) {
             dialog alr=new dialog();
 
             alr.setPosition(300,300);

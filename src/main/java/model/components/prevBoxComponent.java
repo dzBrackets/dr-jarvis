@@ -12,8 +12,9 @@ import javafx.scene.layout.Pane;
 public class prevBoxComponent extends Pane {
     public final JFXButton edit =new JFXButton("Edit...");
     public final JFXButton use=new JFXButton("Use...");
-    public final JFXButton add=new JFXButton();;
-    public final Label selected=new Label("Selected");;
+    public final JFXButton add=new JFXButton();
+    public final Label selected=new Label("Selected");
+
     public prevBoxComponent(){
 setContentPosition();
     }

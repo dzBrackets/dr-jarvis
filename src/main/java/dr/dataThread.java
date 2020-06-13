@@ -1,5 +1,5 @@
 package dr;
-import DataClass.Patient;
+
 import libs.coronaDb.coCollection;
 import libs.requestFormer;
 import org.josql.QueryExecutionException;
@@ -9,9 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.SynchronousQueue;
-import java.util.stream.Collectors;
 
-import static dr.FinalsVal.*;
+import static dr.FinalsVal.database;
 
 public class dataThread<type> extends Thread {
     private coCollection<type> data ;
@@ -23,7 +22,6 @@ private final SynchronousQueue<requestFormer<type>> request;
         this.request=request;
         data = database.getCollection(name, className);
     }
-
     public void run() {
 
         while (true) {
@@ -33,6 +31,7 @@ private final SynchronousQueue<requestFormer<type>> request;
                 System.out.println(req.request);
                 if (req.request.equals(requestFormer.GET)) {
                     req.reply(data);
+
                     req.dispatchEvent();
                 }
 
@@ -123,7 +122,7 @@ private final SynchronousQueue<requestFormer<type>> request;
                         ArrayList<type> selectiveList=new ArrayList<>();
                         for (Object element:req.funArguments)
                         {
-                            selectiveList.addAll(data.querySelector("SELECT *",req.arg1+"'"+(String)element+"'").collect());
+                            selectiveList.addAll(data.querySelector("SELECT *",req.arg1+"'"+ element +"'").collect());
                         }
                         req.reply(selectiveList);
                         req.dispatchEvent();

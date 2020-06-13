@@ -1,7 +1,5 @@
 package libs.coronaDb;
 
-import java.util.ArrayList;
-
 public class tablesObj {
     private int UUID=0;
     private String tableName="";

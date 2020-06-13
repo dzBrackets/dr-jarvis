@@ -7,7 +7,7 @@ import org.josql.QueryParseException;
 import java.util.List;
 
 public class QuerySelector<type> extends Query {
-    private coCollection<type> myOwn;
+    private final coCollection<type> myOwn;
 
       QuerySelector(coCollection <type> myOwn){
         this.myOwn=myOwn;

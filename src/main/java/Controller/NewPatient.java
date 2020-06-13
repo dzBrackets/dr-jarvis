@@ -1,32 +1,25 @@
 package Controller;
 
-import DataClass.Drug;
 import DataClass.Patient;
 import com.jfoenix.controls.*;
 import com.jfoenix.validation.RegexValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
-import dr.Main;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.AnchorPane;
 import libs.requestFormer;
 
-import javax.xml.validation.Validator;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-import static Controller.PatientList.setTableItems;
 import static Controller.PatientList.closePopuUp;
 import static dr.FinalsVal.*;
 
@@ -35,7 +28,7 @@ public class NewPatient implements Initializable {
     public AnchorPane Pform;
     public JFXTextArea write_TXA;
     public JFXButton add_btn;
-    private requestFormer<Patient> req=formerP;
+    private final requestFormer<Patient> req=formerP;
     public JFXTextField firstN_TXF;
     public JFXTextField lastN_TXF;
     public JFXDatePicker date;

@@ -1,8 +1,6 @@
 package Controller;
 
 import DataClass.customizable;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.ISO8601Utils;
 import com.jfoenix.controls.*;
 import dr.Main;
 import dr.async;
@@ -11,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
@@ -28,15 +25,11 @@ import model.usedDrug;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static dr.FinalsVal.*;
-import static dr.FinalsVal.customAttrs;
-import static libs.helper.byteString;
-import static libs.helper.byteStringUTF;
 
 public class settingC implements Initializable {
     public Label tab_type;

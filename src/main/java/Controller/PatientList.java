@@ -11,18 +11,13 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import libs.cellController;
 import libs.requestFormer;
 import model.components.dialog;
@@ -34,10 +29,7 @@ import model.stageLoader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
-
-
 
 import static dr.FinalsVal.*;
 
@@ -62,9 +54,9 @@ public cellController<Patient> cellController=new cellController<>();
     public TextField write_TXF;
     public JFXButton add_patient_btn;
     public Label info2_label;
-    private requestFormer<Patient> req=formerP;
-    private requestFormer<prescriptionsHistory> formerH=new requestFormer<>();
-    private requestFormer<prescriptionsHistory> req2= FinalsVal.formerH;
+    private final requestFormer<Patient> req=formerP;
+    private final requestFormer<prescriptionsHistory> formerH=new requestFormer<>();
+    private final requestFormer<prescriptionsHistory> req2= FinalsVal.formerH;
 
     double xOffset,yOffset;
     Parent root ;

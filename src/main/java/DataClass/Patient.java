@@ -1,18 +1,11 @@
 package DataClass;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import dr.FinalsVal;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 
 import static dr.FinalsVal.dateFilters;
 
@@ -32,7 +25,7 @@ public class Patient implements Serializable {
         this.lastName = lastName;
         this.birthDay = birthDay;
         this.gender = gender;
-        this.lastVisit =lastVisit.format(dateFilters[1]);;
+        this.lastVisit =lastVisit.format(dateFilters[1]);
         this.lastDiagnostic = lastDiagnostic;
         this.prescriptionsId = new ArrayList<>();
         return this;
@@ -43,7 +36,7 @@ public class Patient implements Serializable {
         this.lastName = lastName;
         this.birthDay = birthDay.format(dateFilters[1]);
         this.gender = gender;
-        this.lastVisit =lastVisit.format(dateFilters[1]);;
+        this.lastVisit =lastVisit.format(dateFilters[1]);
         this.lastDiagnostic = lastDiagnostic;
         this.prescriptionsId = new ArrayList<>();
         return this;

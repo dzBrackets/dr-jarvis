@@ -20,7 +20,7 @@ public class stageLoader {
    private Stage stage;
    private Scene scene;
 private double xOffset,yOffset;
-private async close=new async();
+private final async close=new async();
     public stageLoader(String name,String URL){
         FXMLLoader loader =new FXMLLoader(getClass().getResource(URL));
         try {

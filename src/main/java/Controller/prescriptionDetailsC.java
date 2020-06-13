@@ -1,12 +1,8 @@
 package Controller;
 
-import DataClass.Drug;
 import DataClass.Patient;
 import DataClass.prescriptionsHistory;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
-import dr.FinalsVal;
-import dr.Main;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,20 +18,18 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import libs.cellController;
 import libs.helper;
+import libs.printerException;
 import libs.requestFormer;
 import model.components.dialog;
 import model.components.spawnButton;
 import model.popUpWindow;
 import model.showButton;
 import model.usedDrug;
-
-import javax.print.PrintException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
 import static dr.FinalsVal.*;
 
 public class prescriptionDetailsC implements Initializable {
@@ -48,7 +42,6 @@ public class prescriptionDetailsC implements Initializable {
     public Label date_label;
     public JFXButton exit_btn;
     public AnchorPane quick_pane;
-    public HBox buttonList;
     public JFXButton print_btn;
     public JFXButton delete_btn;
     public Label lastDiago;
@@ -66,10 +59,10 @@ public class prescriptionDetailsC implements Initializable {
     private TableColumn<usedDrug, String> qts_colm;
     @FXML
     private TableColumn<usedDrug, String> notice_colm;
-    private requestFormer<Patient> req=new requestFormer<>();
+    private final requestFormer<Patient> req=new requestFormer<>();
     prescriptionsHistory selectedPres=null;
     Patient selectedPatient=null;
-    ObservableList<usedDrug> data= FXCollections.observableArrayList();;
+    ObservableList<usedDrug> data= FXCollections.observableArrayList();
     libs.cellController<usedDrug> cellController=new cellController<>();
     Stage stage;
     @Override
@@ -200,7 +193,7 @@ void dad(Stage st){
     public void print_methode(ActionEvent actionEvent) {
         try {
             helper.printWithData(selectedPatient,selectedPres.getDrugList());
-        } catch (PrintException e) {
+        } catch (printerException e) {
             dialog alr=new dialog();
             alr.setPosition(300,300);
             alr.setTitle("Something went wrong. ");

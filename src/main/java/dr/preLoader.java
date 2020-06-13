@@ -6,11 +6,6 @@ import javafx.application.Preloader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -23,7 +18,7 @@ public class preLoader extends Preloader {
     public static loading controller;
     @Override
     public void start(Stage primaryStage) throws Exception {
-            this.preloaderStage = primaryStage;
+            preloaderStage = primaryStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/dr/FXML/PAGES/LoadingPage.fxml"));
 
         Parent root= loader.load();

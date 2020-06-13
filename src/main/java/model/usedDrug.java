@@ -1,17 +1,5 @@
 package model;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
-import javafx.geometry.Side;
-import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-
 public class usedDrug {
     String name="Unknown";
     String type="N/D";

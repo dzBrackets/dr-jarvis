@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.validation.IntegerValidator;
 import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RegexValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
@@ -16,7 +15,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import libs.requestFormer;
 
@@ -25,7 +23,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static Controller.DrugList.closePopuUp;
-import static Controller.DrugList.setTableItems;
 import static dr.FinalsVal.*;
 
 public class NewDrug implements Initializable {

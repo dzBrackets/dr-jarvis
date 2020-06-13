@@ -14,11 +14,7 @@ import model.stageLoader;
 
 import static dr.FinalsVal.*;
 
-import java.io.File;
-import java.io.IOException;
-
 public class Main extends Application {
-    public static double xOffset,yOffset;
     public static dataThread<Drug> drugThread=null;
     public static dataThread<Patient> patientThread=null;
     public static dataThread<prescriptionsHistory> hisPerThread=null;

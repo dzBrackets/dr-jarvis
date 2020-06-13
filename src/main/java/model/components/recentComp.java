@@ -1,6 +1,6 @@
 package model.components;
+
 import DataClass.Patient;
-import DataClass.prescriptionsHistory;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

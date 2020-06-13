@@ -4,23 +4,19 @@ import DataClass.Drug;
 import com.jfoenix.controls.JFXButton;
 import dr.Main;
 import javafx.beans.property.IntegerProperty;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import libs.cellController;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.Parent;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import libs.cellController;
 import libs.requestFormer;
 import model.components.dialog;
 import model.components.spawnButton;
@@ -32,7 +28,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import static dr.FinalsVal.*;
+
+import static dr.FinalsVal.formerD;
+import static dr.FinalsVal.requestD;
 public class DrugList  implements Initializable {
     public TableView<Drug> drug_table;
     public TableColumn<Drug,String>  code_C;
@@ -46,7 +44,7 @@ public class DrugList  implements Initializable {
     static public  Stage add_drug_from_stage;
     public static popUpWindow showNotice;/*create same methode for patientlist and quick panel and i will close them*/
     cellController<Drug> cellController = new cellController<>();
-    private requestFormer<Drug> req=formerD;
+    private final requestFormer<Drug> req=formerD;
     double xOffset,yOffset;
 
     @Override

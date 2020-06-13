@@ -1,19 +1,16 @@
 package Controller;
 
-import DataClass.Drug;
 import DataClass.Patient;
-import com.fasterxml.jackson.databind.util.ISO8601Utils;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import model.components.drugItem;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import static dr.FinalsVal.customAttrs;

@@ -1,22 +1,18 @@
 package libs;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.print.*;
 import javafx.scene.Node;
-import javafx.scene.layout.Pane;
 import javafx.scene.transform.Scale;
 import model.components.dialog;
 import model.components.spawnButton;
-
-import javax.print.PrintException;
 
 import static libs.helper.getCurrentStage;
 
 public class printWorker {
 
 
-    static public void print(final Node node) throws PrintException {
+    static public void print(final Node node) throws printerException {
         dialog alr=new dialog();
         alr.setPosition(300,300);
         alr.setTitle("Working...");
@@ -28,7 +24,7 @@ public class printWorker {
         node.setVisible(true);
         Printer printer = Printer.getDefaultPrinter();
 
-        if (printer==null) throw new PrintException("Default printer not found");
+        if (printer==null) throw new printerException("Default printer not found");
         alr.setContent("Printer name: "+printer.getName());
 
         PageLayout page = printer.createPageLayout(Paper.A5, PageOrientation.PORTRAIT, Printer.MarginType.HARDWARE_MINIMUM);

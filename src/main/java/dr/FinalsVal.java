@@ -1,21 +1,14 @@
 package dr;
 
-import java.nio.file.Path;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.SynchronousQueue;
-
 import DataClass.*;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.print.*;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
-import javafx.scene.transform.Scale;
-import libs.coronaDb.coCollection;
 import libs.coronaDb.coronaDb;
 import libs.requestFormer;
+
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.SynchronousQueue;
 final public class FinalsVal {
 
 //       static public final SynchronousQueue<Patient> respond = new SynchronousQueue<>();

@@ -1,18 +1,19 @@
 package model.components;
 
-import DataClass.Drug;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import model.usedDrug;
 
 public class drugItem extends Pane {
-    private Label name,doss,type,qts,notice;
+    private final Label name;
+    private final Label doss;
+    private final Label type;
+    private final Label qts;
+    private final Label notice;
   //  private Line line ;
 
     public drugItem(usedDrug drug) {
