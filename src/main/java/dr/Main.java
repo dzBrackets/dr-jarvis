@@ -15,11 +15,11 @@ import model.stageLoader;
 import static dr.FinalsVal.*;
 
 public class Main extends Application {
-    public static dataThread<Drug> drugThread=null;
-    public static dataThread<Patient> patientThread=null;
-    public static dataThread<prescriptionsHistory> hisPerThread=null;
-    public static dataThread<userData> userDataThread=null;
-    public static dataThread<customizable> costumeThread=null;
+    public static dataWorker<Drug> drugThread=null;
+    public static dataWorker<Patient> patientThread=null;
+    public static dataWorker<prescriptionsHistory> hisPerThread=null;
+    public static dataWorker<userData> userDataWorker =null;
+    public static dataWorker<customizable> costumeThread=null;
     public static   FXMLLoader loader;
    static public stageLoader sl=null;
     public static Stage staticstage=null;
@@ -33,18 +33,18 @@ public class Main extends Application {
         System.setProperty("file.encoding", "UTF-8");
 
         try {
-            drugThread=new dataThread<>("drug",Drug.class,requestD);
+            drugThread=new dataWorker<>("drug",Drug.class,requestD);
             drugThread.start();
-            hisPerThread=new dataThread<>("prescriptions",prescriptionsHistory.class,requestH);
+            hisPerThread=new dataWorker<>("prescriptions",prescriptionsHistory.class,requestH);
             hisPerThread.start();
 
-            patientThread=new dataThread<>("patient",Patient.class,requestP);
+            patientThread=new dataWorker<>("patient",Patient.class,requestP);
             patientThread.start();
 
-            userDataThread=new dataThread<>("data",userData.class,requestU);
-            userDataThread.start();
+            userDataWorker =new dataWorker<>("data",userData.class,requestU);
+            userDataWorker.start();
 
-            costumeThread=new dataThread<>("tempCostume",customizable.class,requestT);
+            costumeThread=new dataWorker<>("tempCostume",customizable.class,requestT);
             costumeThread.start();
 
             Platform.runLater(()->sl=new stageLoader("Dr.jarvis - Dashboard","/dr/FXML/PAGES/main_pane.fxml"));

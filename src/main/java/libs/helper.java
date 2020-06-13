@@ -2,6 +2,9 @@ package libs;
 
 import Controller.MainPanelC;
 import DataClass.Patient;
+import com.jfoenix.controls.JFXButton;
+import javafx.collections.ObservableList;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -59,7 +62,34 @@ public class helper {
 
    */
     static public Window getCurrentStage(){
-        System.out.println(Stage.getWindows().stream().filter(Window::isShowing).collect(Collectors.toList()));
+        if((Stage.getWindows().stream().filter(Window::isShowing).collect(Collectors.toList()).get(1))!=null)
         return Stage.getWindows().stream().filter(Window::isShowing).collect(Collectors.toList()).get(1);
+
+        return Stage.getWindows().stream().filter(Window::isShowing).collect(Collectors.toList()).get(0);
     }
+
+    public static void printWithData(Patient selectedPatient, ObservableList<usedDrug> data, JFXButton exit_btn) {
+
+        MainPanelC.templateController.setTemplateInfo(selectedPatient);
+        int i = 0, j = 0;
+        while (i < data.size()) {
+            MainPanelC.templateController.drug_list.add(new drugItem(data.get(i), MainPanelC.templateController.secColor), 0, j);
+            j++;
+            i++;
+            if (i % 5 == 0) {
+                print(MainPanelC.templateStatic,exit_btn);
+                MainPanelC.templateController.reset();
+                MainPanelC.templateController.setTemplateInfo(selectedPatient);
+
+                j = 0;
+            }
+
+        }
+        print(MainPanelC.templateStatic,exit_btn);
+        MainPanelC.templateController.reset();
+
+
+    }
+
+
 }

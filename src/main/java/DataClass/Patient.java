@@ -41,6 +41,17 @@ public class Patient implements Serializable {
         this.prescriptionsId = new ArrayList<>();
         return this;
     }
+    public Patient Patient(String patientId, String firstName, String lastName, LocalDate birthDay, int gender, LocalDate lastVisit, String lastDiagnostic,ArrayList<String> prescriptionsId) {
+        this.patientId = patientId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDay = birthDay.format(dateFilters[1]);
+        this.gender = gender;
+        this.lastVisit =lastVisit.format(dateFilters[1]);
+        this.lastDiagnostic = lastDiagnostic;
+        this.prescriptionsId = prescriptionsId;
+        return this;
+    }
     @JsonIgnore
     public int getAge(){
 

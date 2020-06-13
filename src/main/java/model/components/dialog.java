@@ -128,7 +128,10 @@ public void setBubbleDir(String pos){
 
 
     public void blur(boolean b){
-            self.blackHover.setVisible(b);
+        self.blackHover.setVisible(b);
+    }
+    public void blur(){
+        self.blackHover.setStyle("-fx-background-color: rgba(0,0,0,0.1);");
     }
 
     public void removeBlur(Pane pane) {

@@ -12,11 +12,11 @@ import java.util.concurrent.SynchronousQueue;
 
 import static dr.FinalsVal.database;
 
-public class dataThread<type> extends Thread {
+public class dataWorker<type> extends Thread {
     private coCollection<type> data ;
 private final SynchronousQueue<requestFormer<type>> request;
     private final Class<type> className;
-    public dataThread(String name, Class<type> className,SynchronousQueue<requestFormer<type>> request) throws IOException, ClassNotFoundException {
+    public dataWorker(String name, Class<type> className, SynchronousQueue<requestFormer<type>> request) throws IOException, ClassNotFoundException {
         super(name);
         this.className=className;
         this.request=request;

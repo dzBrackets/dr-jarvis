@@ -129,7 +129,7 @@ edit_area.focusedProperty().addListener(v->{
         if(PatientList.Table_quick_stage!=null&&PatientList.Table_quick_stage.isShowing()){
             PatientList.Table_quick_stage.close();
         }
-        else {
+        if(PatientSearch.quick_stage!=null) {
             PatientSearch.quick_stage.close();
         }
         MainPanelC.templateController.reset();
@@ -201,8 +201,8 @@ edit_area.focusedProperty().addListener(v->{
 //            alert.showAndWait();
 //        }
         try {
-            helper.printWithData(selectedPatient,data);
-            exit_btn.fire();
+            helper.printWithData(selectedPatient,data,exit_btn);
+          //  exit_btn.fire();
         } catch (printerException e) {
             dialog alr=new dialog();
 

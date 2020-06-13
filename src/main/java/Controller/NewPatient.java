@@ -60,7 +60,7 @@ void preFilled(Patient patient){
             if(pl.length()>2)
                 if(date.getValue().toString().length()>5){
                 if(oldPatient!=null) {
-                    oldPatient.Patient(oldPatient.getPatientId(),pf,pl,date.getValue(),gender,LocalDate.now(),write_TXA.getText());
+                    oldPatient.Patient(oldPatient.getPatientId(),pf,pl,date.getValue(),gender,LocalDate.now(),write_TXA.getText(),oldPatient.getPrescriptionsId());
                     requestP.offer(req.update());
                 }
                 else{
