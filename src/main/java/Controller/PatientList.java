@@ -20,7 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import libs.cellController;
 import libs.requestFormer;
-import model.components.dialog;
+import model.components.amazingDialog;
 import model.components.spawnButton;
 import model.popUpWindow;
 import model.showButton;
@@ -116,7 +116,7 @@ public cellController<Patient> cellController=new cellController<>();
                     IntegerProperty prop= (IntegerProperty) e;
                     if(prop.getValue()==0){
                         System.out.println("delete");
-                        dialog check=new dialog();
+                        amazingDialog check=new amazingDialog();
                         check.setTitle("confirm you choice.");
                         check.setContent("you are going to delete :\n "+patient_table.getItems().get(cellController.index).getFullName()+" and all the "+patient_table.getItems().get(cellController.index).getPrescriptionsId().size()+" prescriptions");
                          check.setImage("warning");

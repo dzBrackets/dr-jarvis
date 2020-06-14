@@ -8,7 +8,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import libs.stackTraceViewer;
-import model.components.dialog;
+import model.components.amazingDialog;
 import model.components.spawnButton;
 import model.stageLoader;
 
@@ -54,10 +54,10 @@ public class Main extends Application {
            Error=true;
             Platform.runLater(()->{
                 sl =new stageLoader("DrJarvis -ERROR "+e.getMessage(),"/dr/FXML/POPUP/alertBox.fxml");
-                dialog alr=new dialog((alertBox) sl.getController());
+                amazingDialog alr=new amazingDialog((alertBox) sl.getController());
                 alr.setTitle("Ohh ohh!!!");
                 alr.setContent("Something wrong happen. try to run the app as administrator");
-                alr.setImage(dialog.WARNING);
+                alr.setImage(amazingDialog.WARNING);
                 //sl.getStage().setScene(new Scene(alr.self.container));
 
                 JFXButton exit = spawnButton.red("Exit");

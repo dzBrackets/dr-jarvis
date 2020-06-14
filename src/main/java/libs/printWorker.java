@@ -5,7 +5,7 @@ import javafx.application.Platform;
 import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.transform.Scale;
-import model.components.dialog;
+import model.components.amazingDialog;
 import model.components.spawnButton;
 
 import static libs.helper.getCurrentStage;
@@ -14,10 +14,10 @@ public class printWorker {
 
 
     static public void print(final Node node) throws printerException {
-        dialog alr=new dialog();
+        amazingDialog alr=new amazingDialog();
         alr.setPosition(300,300);
         alr.setTitle("Working...");
-        alr.blur(false);
+        alr.blackBack(false);
         alr.show(getCurrentStage());
         JFXButton ok = spawnButton.blue("continue");
         ok.setOnAction(v->alr.close());
@@ -58,7 +58,7 @@ public class printWorker {
                 alr.getButtonList().setAll(ok);
             }
             if(newValue== PrinterJob.JobStatus.ERROR){
-                alr.setImage(dialog.WARNING);
+                alr.setImage(amazingDialog.WARNING);
                 alr.setTitle("Your printer refuse to print!");
                 alr.setContent("maybe its time to buy a new one.");
                 alr.getButtonList().setAll(ok);
@@ -78,10 +78,9 @@ public class printWorker {
 
     }
     static public void print(final Node node,JFXButton btn) throws printerException {
-        dialog alr=new dialog();
+        amazingDialog alr=new amazingDialog();
         alr.setPosition(300,300);
         alr.setTitle("Working...");
-        alr.blur();
         alr.show(getCurrentStage());
         JFXButton ok = spawnButton.blue("continue");
         ok.setOnAction(v->{alr.close();btn.fire();});
@@ -122,7 +121,7 @@ public class printWorker {
                 alr.getButtonList().setAll(ok);
             }
             if(newValue== PrinterJob.JobStatus.ERROR){
-                alr.setImage(dialog.WARNING);
+                alr.setImage(amazingDialog.WARNING);
                 alr.setTitle("Your printer refuse to print!");
                 alr.setContent("maybe its time to buy a new one.");
                 alr.getButtonList().setAll(ok);

@@ -14,13 +14,12 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import libs.cellController;
 import libs.helper;
 import libs.printerException;
 import libs.requestFormer;
-import model.components.dialog;
+import model.components.amazingDialog;
 import model.components.spawnButton;
 import model.popUpWindow;
 import model.showButton;
@@ -160,16 +159,28 @@ void dad(Stage st){
 
     public void delete_methode(ActionEvent actionEvent) {
 
+        delete_btn.setDisable(true);
+        print_btn.setDisable(true);
+        amazingDialog check=new amazingDialog();
 
-        dialog check=new dialog();
+
         check.setTitle("confirm you choice.");
+
         check.setContent("you sure you want to delete this prescription?");
-        check.setImage(dialog.WARNING);
+
+        check.setImage(amazingDialog.WARNING);
+
         JFXButton ok = spawnButton.red("Delete");
+
         JFXButton cancel = spawnButton.gray("Cancel");
+
+
         check.setPosition(300,300);
-        check.show(quick_pane.getScene().getWindow(),quick_pane);
+
+        check.show(quick_pane.getScene().getWindow());
+
         check.getButtonList().setAll(ok,cancel);
+
         ok.setOnAction(v->{
             requestH.offer(formerH.remove(selectedPres));
             selectedPatient.getPrescriptionsId().remove(selectedPres.getPresId());
@@ -190,11 +201,13 @@ void dad(Stage st){
 
     }
 
+
     public void print_methode(ActionEvent actionEvent) {
         try {
             helper.printWithData(selectedPatient,selectedPres.getDrugList());
+            print_btn.setDisable(true);
         } catch (printerException e) {
-            dialog alr=new dialog();
+            amazingDialog alr=new amazingDialog();
             alr.setPosition(300,300);
             alr.setTitle("Something went wrong. ");
             alr.setContent("Error:"+e.getMessage()+"\nadd a printer to your system then try again.");

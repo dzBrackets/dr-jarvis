@@ -15,7 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import libs.requestFormer;
-import model.components.dialog;
+import model.components.amazingDialog;
 import model.components.spawnButton;
 import model.stageLoader;
 
@@ -122,14 +122,14 @@ Main.staticstage.show();
 
     private void settingFirstLook() {
         i=0;
-        dialog alr=new dialog();
+        amazingDialog alr=new amazingDialog();
         alr.setTitle("Welcome Doctor ^^");
         alr.setContent("this is a quick guide on how to use this software.");
         JFXButton next = spawnButton.green("Next");
         alr.getButtonList().setAll(next);
         alr.setPosition(300,300);
-
-        alr.show(Main.staticstage);
+        alr.blackBack(true);
+        alr.show(Main.staticstage,false);
 
         next.setOnAction(v->{
             if(i==0) {
@@ -296,7 +296,6 @@ e.getStackTrace();        }
 
     public void show_presHistory(ActionEvent actionEvent) throws IOException {
         Main.staticstage.setTitle("Dr.jarvis - Prescriptions list");
-
         reset_btn_Opicity();
         presHistory_btn.getGraphic().setOpacity(1);
         presHistory_p.toFront();

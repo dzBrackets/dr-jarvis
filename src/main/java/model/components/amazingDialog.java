@@ -13,7 +13,7 @@ import model.popUpWindow;
 
 import java.io.IOException;
 
-public class dialog {
+public class amazingDialog {
 
     public alertBox self;
     public popUpWindow pop;
@@ -23,8 +23,9 @@ public class dialog {
     public static final String TOP_RIGHT="tr";
     public static final String BOTTOM_LEFT="bl";
     public static final String BOTTOM_RIGHT="br";
+    private Window stage;
 
-    public dialog(){
+    public amazingDialog(){
         super();
 
         Parent root=null;
@@ -38,24 +39,20 @@ public class dialog {
         assert root != null;
         self = loader.getController();
          pop = new popUpWindow(self.general.getChildren());
+
         setBubbleDir("none");
-    //setdialogType("warn");
+
+        autoHide(false);
+        blackBack(false);
 
     }
-    public dialog(alertBox controller){
-
+    public amazingDialog(alertBox controller){
         super();
         self = controller;
         self.general.getChildren().remove(self.blackHover);
-
-        //pop = new popUpWindow(self.general.getChildren());
         setBubbleDir("none");
     }
 
-//    private void setdialogType(String type) {
-//    if(warn.equals("warinig"))
-//        self.in.set("url")
-//    }
 
 
     public void setTitle(String str){self.title.setText(str);}
@@ -111,28 +108,46 @@ public void setBubbleDir(String pos){
         self.ptr.setVisible(false);
     }
     }
-
+public void autoHide(boolean v){
+    pop.setAutoHide(v);
+    pop.setHideOnEscape(false);
+}
     public void show(Window staticstage, Node node)
     {
+        pop.setOnAutoHide(v->close());
+        pop.hideOnEscapeProperty().addListener(v->close());
+        pop.show(staticstage,staticstage.getX(),staticstage.getY()+53);
 
-        pop.show(staticstage,staticstage.getX(),staticstage.getY()+53);
-        setBlur(node);
+        //setBlur(node);
+
     }
-    public void show(Window staticstage)
+    public void show(Window stage)
     {
-        pop.show(staticstage,staticstage.getX(),staticstage.getY()+53);
+        this.stage=stage;
+        pop.show(stage,stage.getX(),stage.getY()+53);
+        stage.getScene().getRoot().setEffect(new GaussianBlur(3.25));
+        stage.getScene().getRoot().setDisable(true);
+    }
+    public void show(Window stage,boolean blur)
+    {
+        this.stage=stage;
+        pop.show(stage,stage.getX(),stage.getY()+53);
+        if(blur){
+        stage.getScene().getRoot().setEffect(new GaussianBlur(3.25));
+        stage.getScene().getRoot().setDisable(true);}
     }
     public void close(){
+        stage.getScene().getRoot().setEffect(null);
+        stage.getScene().getRoot().setDisable(false);
         pop.hide();
+
     }
 
 
-    public void blur(boolean b){
+    public void blackBack(boolean b){
         self.blackHover.setVisible(b);
     }
-    public void blur(){
-        self.blackHover.setStyle("-fx-background-color: rgba(0,0,0,0.1);");
-    }
+
 
     public void removeBlur(Pane pane) {
         pane.setEffect(null);
@@ -140,7 +155,7 @@ public void setBubbleDir(String pos){
     }
 
     public void setBlur(Node ownerNode) {
-        blur(false);
+        blackBack(false);
         ownerNode.setEffect(new GaussianBlur(3.25));
     }
 }

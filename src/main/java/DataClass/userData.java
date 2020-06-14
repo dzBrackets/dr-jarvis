@@ -2,16 +2,16 @@ package DataClass;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class userData {
-String name="user";
-String email="dont@sk.me";
-String address="empty";
-String phone ="N/D";
-int firstTime=1;
-boolean isFirstTime=false;
-int selectedTemplate=0;
+public class userData implements Serializable {
+private String name="user";
+private String email="dont@sk.me";
+private String address="empty";
+private String phone ="N/D";
+private int firstTime=1;
+private int selectedTemplate=0;
 
     int[] monthStats=new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 

@@ -28,7 +28,7 @@ import libs.cellController;
 import libs.helper;
 import libs.printerException;
 import libs.requestFormer;
-import model.components.dialog;
+import model.components.amazingDialog;
 import model.components.spawnButton;
 import model.popUpWindow;
 import model.popupMenu;
@@ -202,9 +202,9 @@ edit_area.focusedProperty().addListener(v->{
 //        }
         try {
             helper.printWithData(selectedPatient,data,exit_btn);
-          //  exit_btn.fire();
+          print_btn.setDisable(true);
         } catch (printerException e) {
-            dialog alr=new dialog();
+            amazingDialog alr=new amazingDialog();
 
             alr.setPosition(300,300);
             alr.setTitle("Something went wrong. ");

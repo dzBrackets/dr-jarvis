@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class customizable {
-    String templateId="0";
-    ArrayList<String>keys=new ArrayList<>();
-    ArrayList<String>attributes=new ArrayList<>();
-    String URL="templates/default.template";
+public class customizable implements Serializable {
+    private String templateId="0";
+    private ArrayList<String>keys=new ArrayList<>();
+    private ArrayList<String>attributes=new ArrayList<>();
+    private String URL="templates/default.template";
     public customizable customizable(String templateId) {
         this.templateId = templateId;
         return this;

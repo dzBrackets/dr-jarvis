@@ -18,7 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import libs.cellController;
 import libs.requestFormer;
-import model.components.dialog;
+import model.components.amazingDialog;
 import model.components.spawnButton;
 import model.popUpWindow;
 import model.showButton;
@@ -100,7 +100,7 @@ public class DrugList  implements Initializable {
                     IntegerProperty prop= (IntegerProperty) e;
                     if(prop.getValue()==0){
                         System.out.println("delete");
-                        dialog check=new dialog();
+                        amazingDialog check=new amazingDialog();
                         check.setTitle("confirm you choice.");
                         check.setContent("you are going to delete "+drug_table.getItems().get(cellController.index).getName());
                         JFXButton ok = spawnButton.red("Delete");
