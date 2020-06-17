@@ -136,7 +136,7 @@ void showTemplateList(){
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("templates Files", "*.dtem"));
-        File selectedFile = fileChooser.showOpenDialog(Main.staticstage);
+        File selectedFile = fileChooser.showOpenDialog(Main.mainStage);
 
 
 

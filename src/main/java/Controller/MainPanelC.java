@@ -51,6 +51,7 @@ public class MainPanelC  implements Initializable {
     public static templateC templateController;
     public static Stage welcomeStage;
     public DashboardC dashController;
+    static public DashboardC dashControllerStatic;
     int i=0;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -106,11 +107,11 @@ public class MainPanelC  implements Initializable {
     private void firstTime() {
         stageLoader sl=new stageLoader("Welcome :)","/dr/FXML/PAGES/welcomePage.fxml");
          welcomeStage = sl.getStage();
-         Main.staticstage.hide();
+         Main.mainStage.hide();
         sl.setOneClose(v-> {
             System.out.println("closed");
             requestU.offer(formerU.update());
-Main.staticstage.show();
+Main.mainStage.show();
             settingFirstLook();
         });
 
@@ -129,7 +130,7 @@ Main.staticstage.show();
         alr.getButtonList().setAll(next);
         alr.setPosition(300,300);
         alr.blackBack(true);
-        alr.show(Main.staticstage,false);
+        alr.show(Main.mainStage,false);
 
         next.setOnAction(v->{
             if(i==0) {
@@ -243,6 +244,7 @@ Main.staticstage.show();
     }
 
     dashController = loader.getController();
+    dashControllerStatic=dashController;
     dashbord_pane.getChildren().add( dashController.dashborad_pane);
     dashbord_pane.setVisible(true);
 
@@ -295,7 +297,7 @@ e.getStackTrace();        }
     }
 
     public void show_presHistory(ActionEvent actionEvent) throws IOException {
-        Main.staticstage.setTitle("Dr.jarvis - Prescriptions list");
+        Main.mainStage.setTitle("Dr.jarvis - Prescriptions list");
         reset_btn_Opicity();
         presHistory_btn.getGraphic().setOpacity(1);
         presHistory_p.toFront();
@@ -307,7 +309,7 @@ e.getStackTrace();        }
     }
 
     public void show_DashP(ActionEvent actionEvent) {
-        Main.staticstage.setTitle("Dr.jarvis - Dashboard");
+        Main.mainStage.setTitle("Dr.jarvis - Dashboard");
 
         // settingFirstLook();
         dashController.update();
@@ -322,7 +324,7 @@ e.getStackTrace();        }
     }
 
     public void show_patientP(ActionEvent actionEvent) {
-        Main.staticstage.setTitle("Dr.jarvis - Patients list");
+        Main.mainStage.setTitle("Dr.jarvis - Patients list");
 
         patient_panel.toFront();
         patient_panel.setVisible(true);
@@ -336,7 +338,7 @@ e.getStackTrace();        }
     }
 
     public void show_drugPanel(ActionEvent actionEvent) {
-        Main.staticstage.setTitle("Dr.jarvis - Drugs list");
+        Main.mainStage.setTitle("Dr.jarvis - Drugs list");
 
         drug_panel.toFront();
         drug_panel.setVisible(true);
@@ -349,7 +351,7 @@ e.getStackTrace();        }
     }
 
     public void show_SettingP(ActionEvent actionEvent) {
-        Main.staticstage.setTitle("Dr.jarvis - Settings");
+        Main.mainStage.setTitle("Dr.jarvis - Settings");
 
         setting_pane.toFront();
         setting_pane.setVisible(true);

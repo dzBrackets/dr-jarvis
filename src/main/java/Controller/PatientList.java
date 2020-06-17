@@ -105,7 +105,7 @@ public cellController<Patient> cellController=new cellController<>();
                 Parent root = loader.load();
                 show_winC control=loader.getController();
                 showField = new popUpWindow(root.getChildrenUnmodifiable());
-                showField.show(Main.staticstage);
+                showField.show(Main.mainStage);
                 control.value_area.setText(patient_table.getItems().get(cellController.index).getLastDiagnostic());
 
             } catch (IOException e) {
@@ -123,7 +123,7 @@ public cellController<Patient> cellController=new cellController<>();
                         JFXButton ok = spawnButton.red("Delete");
                         JFXButton cancel = spawnButton.gray("Cancel");
                         check.setPosition(300,300);
-                        check.show(Main.staticstage);
+                        check.show(Main.mainStage);
                         check.getButtonList().setAll(ok,cancel);
                        ok.setOnAction(v->{
                            cleanDelete(patient_table.getItems().get(cellController.index));

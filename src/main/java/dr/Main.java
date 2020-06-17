@@ -5,7 +5,6 @@ import DataClass.*;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import libs.stackTraceViewer;
 import model.components.amazingDialog;
@@ -21,7 +20,7 @@ public class Main extends Application {
     public static dataWorker<userData> userDataWorker =null;
     public static dataWorker<customizable> costumeThread=null;
    static public stageLoader sl=null;
-    public static Stage staticstage=null;
+    public static Stage mainStage =null;
     public static async wait=new async();
     private boolean Error=false;
     public void init() {
@@ -91,9 +90,9 @@ public class Main extends Application {
 
         if (!Error) {
             primaryStage = sl.getStage();
-            staticstage = primaryStage;
+            mainStage = primaryStage;
             wait.dispatchEvent();
-            staticstage.setOnCloseRequest(event -> {
+            mainStage.setOnCloseRequest(event -> {
                 Platform.exit();
                 System.exit(0);
             });

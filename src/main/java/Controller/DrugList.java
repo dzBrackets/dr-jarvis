@@ -87,7 +87,7 @@ public class DrugList  implements Initializable {
                 Parent root = loader.load();
                 show_winC control=loader.getController();
                  showNotice  = new popUpWindow(root.getChildrenUnmodifiable());
-                showNotice.show(Main.staticstage);
+                showNotice.show(Main.mainStage);
                 control.value_area.setText(drug_table.getItems().get(cellController.index).getNotice());
 
             } catch (IOException e) {
@@ -106,7 +106,7 @@ public class DrugList  implements Initializable {
                         JFXButton ok = spawnButton.red("Delete");
                         JFXButton cancel = spawnButton.gray("Cancel");
                         check.setPosition(300,300);
-                        check.show(Main.staticstage);
+                        check.show(Main.mainStage);
                         check.getButtonList().setAll(ok,cancel);
                         ok.setOnAction(v->{
                             requestD.offer(req.remove(drug_table.getItems().get(cellController.index)));

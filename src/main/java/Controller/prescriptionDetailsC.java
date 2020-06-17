@@ -29,6 +29,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import static Controller.MainPanelC.dashControllerStatic;
 import static dr.FinalsVal.*;
 
 public class prescriptionDetailsC implements Initializable {
@@ -185,6 +186,7 @@ void dad(Stage st){
             requestH.offer(formerH.remove(selectedPres));
             selectedPatient.getPrescriptionsId().remove(selectedPres.getPresId());
             requestP.offer(formerP.update());
+            dashControllerStatic.update();
             cancel.fire();
             exit_btn.fire();
 
