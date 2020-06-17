@@ -195,7 +195,7 @@ static void chartInit(){
 
 
     public void show_prescriptions(ActionEvent actionEvent) {
-            MainPanelC c = Main.loader.getController();
+            MainPanelC c = (MainPanelC) Main.sl.getController();
             c.reset_btn_Opicity();
             c.presHistory_btn.getGraphic().setOpacity(1);
             c.presHistory_p.toFront();

@@ -20,7 +20,6 @@ public class Main extends Application {
     public static dataWorker<prescriptionsHistory> hisPerThread=null;
     public static dataWorker<userData> userDataWorker =null;
     public static dataWorker<customizable> costumeThread=null;
-    public static   FXMLLoader loader;
    static public stageLoader sl=null;
     public static Stage staticstage=null;
     public static async wait=new async();
