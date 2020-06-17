@@ -102,6 +102,9 @@ public <klass> requestFormer<type> callBack(String fName, klass[] ob, Class<klas
         async.addListener(event);
         this.event =event;
     }
+    public void addReceive(InvalidationListener event) {
+        async.addListener(event);
+    }
     public void dispatchEvent(){
        System.out.println("you dispatch an event!!");
         async.setValue((async.getValue()+1)%2);
@@ -128,4 +131,5 @@ public <klass> requestFormer<type> callBack(String fName, klass[] ob, Class<klas
     this.funArguments=elements;
     return this;
     }
+
 }

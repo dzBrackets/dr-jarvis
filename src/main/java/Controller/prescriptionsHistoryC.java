@@ -1,6 +1,8 @@
 package Controller;
 
 import DataClass.prescriptionsHistory;
+import dr.Main;
+import javafx.application.Platform;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TableColumn;
@@ -67,6 +69,8 @@ cellController.clicked.addListener(v->{
 });
         req.onReceive(v->{
             history_table.setItems(req.respond);
+            Platform.runLater(()->
+                    (( MainPanelC)Main.sl.getController()).dashController.update());
         });
 
         requestH.offer(req.get());

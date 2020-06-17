@@ -3,6 +3,7 @@ package Controller;
 import DataClass.Patient;
 import DataClass.prescriptionsHistory;
 import com.jfoenix.controls.JFXButton;
+import dr.Main;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,8 +29,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import static Controller.MainPanelC.dashControllerStatic;
 import static dr.FinalsVal.*;
 
 public class prescriptionDetailsC implements Initializable {
@@ -183,10 +182,12 @@ void dad(Stage st){
         check.getButtonList().setAll(ok,cancel);
 
         ok.setOnAction(v->{
+            formerH.addReceive(vb-> Platform.runLater(()->
+                    (( MainPanelC)Main.sl.getController()).dashController.update()
+            ));
             requestH.offer(formerH.remove(selectedPres));
             selectedPatient.getPrescriptionsId().remove(selectedPres.getPresId());
             requestP.offer(formerP.update());
-            dashControllerStatic.update();
             cancel.fire();
             exit_btn.fire();
 

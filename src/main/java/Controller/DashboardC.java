@@ -94,16 +94,16 @@ public class DashboardC implements Initializable {
         timer.start();
 
     }
-void initHandler(){
-
+public void initHandler(){
     req.onReceive(v->{
-        Platform.runLater(()->{
-            setGridList(req.respond);});
+        Platform.runLater(()-> setGridList(req.respond));
 
     });
     //get prescriptions request handler
     req2.onReceive(v->{
-            presList=req2.respond;
+        System.out.println("init recent");
+
+        presList=req2.respond;
         String[] strs = req2.respond.stream()
                 .map(prescriptionsHistory::getUserId).toArray(String[]::new);
         requestP.offer(req.mojoJojo("WHERE patientId = ",strs));
@@ -139,7 +139,7 @@ void initHandler(){
              */
         }
     }
-void loadRecent(){
+    public void loadRecent(){
     requestH.offer(req2.get(3));
 }
 

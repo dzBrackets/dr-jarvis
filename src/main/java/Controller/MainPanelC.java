@@ -51,7 +51,6 @@ public class MainPanelC  implements Initializable {
     public static templateC templateController;
     public static Stage welcomeStage;
     public DashboardC dashController;
-    static public DashboardC dashControllerStatic;
     int i=0;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -244,11 +243,11 @@ Main.mainStage.show();
     }
 
     dashController = loader.getController();
-    dashControllerStatic=dashController;
     dashbord_pane.getChildren().add( dashController.dashborad_pane);
     dashbord_pane.setVisible(true);
 
-}
+
+    }
 
     public void initTemplate(){
 
