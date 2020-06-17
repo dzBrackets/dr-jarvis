@@ -64,17 +64,18 @@ public class printWorker {
                 alr.getButtonList().setAll(ok);
             }
         });
-        Platform.runLater(()-> {
+
                     boolean success = job.printPage(node);
                     if (success) {
                         job.endJob();
                     }
-                }
-        );
+            node.getTransforms().remove(A5Scale);
+            node.setVisible(false);
 
 
-        node.getTransforms().remove(A5Scale);
-        node.setVisible(false);
+
+
+
 
     }
     static public void print(final Node node,JFXButton btn) throws printerException {
@@ -127,18 +128,16 @@ public class printWorker {
                 alr.getButtonList().setAll(ok);
             }
         });
-        Platform.runLater(()-> {
                     boolean success = job.printPage(node);
                     if (success) {
                         job.endJob();
-
                     }
-                }
-        );
 
-
-        node.getTransforms().remove(A5Scale);
+           node.getTransforms().remove(A5Scale);
         node.setVisible(false);
+
+
+
 
     }
 
