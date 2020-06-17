@@ -3,7 +3,10 @@ package libs;
 import Controller.MainPanelC;
 import DataClass.Patient;
 import com.jfoenix.controls.JFXButton;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -11,6 +14,7 @@ import javafx.stage.Window;
 import model.components.drugItem;
 import model.usedDrug;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -91,5 +95,15 @@ public class helper {
 
     }
 
-
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    public static void movableFalse(TableView tableView) {
+        List<TableColumn<?, ?>> columns = new ArrayList(tableView.getColumns());
+        tableView.getColumns().addListener(new ListChangeListener()
+        {
+            public boolean suspended;
+            @Override public void onChanged(Change change) {
+                change.next();
+                if (change.wasReplaced() && !suspended) {
+                    this.suspended = true; tableView.getColumns().setAll(columns);
+                    this.suspended = false; } } }); }
 }

@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 
 import static dr.FinalsVal.formerH;
 import static dr.FinalsVal.requestH;
+import static libs.helper.movableFalse;
 
 public class prescriptionsHistoryC implements Initializable {
     public AnchorPane prescriptionsHistory;
@@ -39,6 +40,7 @@ public class prescriptionsHistoryC implements Initializable {
  initCol();
  loadData();
  initializeHandlers();
+        movableFalse(history_table);
 
     }
     public void initCol(){

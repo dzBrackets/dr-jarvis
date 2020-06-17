@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import static dr.FinalsVal.*;
+import static libs.helper.movableFalse;
 
 public class PatientList implements Initializable {
     public TableView  <Patient> patient_table;
@@ -57,20 +58,22 @@ public cellController<Patient> cellController=new cellController<>();
     private final requestFormer<Patient> req=formerP;
     private final requestFormer<prescriptionsHistory> formerH=new requestFormer<>();
     private final requestFormer<prescriptionsHistory> req2= FinalsVal.formerH;
-
-    double xOffset,yOffset;
     Parent root ;
     Patient selectedPatient=null;
     private stageLoader sl;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
         eventTrigger();
         initEvent();
         initCol();
         loadData();
 
+       movableFalse(patient_table);
+
     }
+
     public void initCol(){
         id_C.getStyleClass().add("start");
         menu_C.getStyleClass().add("end");
