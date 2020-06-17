@@ -31,6 +31,8 @@ import java.util.ResourceBundle;
 
 import static dr.FinalsVal.formerD;
 import static dr.FinalsVal.requestD;
+import static libs.helper.movableFalse;
+
 public class DrugList  implements Initializable {
     public TableView<Drug> drug_table;
     public TableColumn<Drug,String>  code_C;
@@ -54,6 +56,8 @@ public class DrugList  implements Initializable {
         initCol();
         loadData();
         eventTrigger();
+        movableFalse(drug_table);
+
 
     }
     public void initCol(){
