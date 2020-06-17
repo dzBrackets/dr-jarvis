@@ -70,6 +70,7 @@ public cellController<Patient> cellController=new cellController<>();
         initCol();
         loadData();
 
+
     }
     public void initCol(){
         id_C.getStyleClass().add("start");
