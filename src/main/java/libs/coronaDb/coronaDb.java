@@ -68,7 +68,7 @@ createTabFile(fileName);
 }
 
 
-    public <type> coCollection<type> getCollection(String name,Class<type> className)  {
+    public <type> coCollection<type> getCollection(String name,Class<type> className) throws IOException {
         String loadedJson="";
         String filePath = dir + name + ".json";
         coCollection<type> loadedObject = new coCollection<type>(name, filePath, className,this);
@@ -94,12 +94,7 @@ createTabFile(fileName);
            return loadedObject;
        }
        catch (IOException e){
-           e.printStackTrace();
-           System.out.println(" is this look like json? :->\n"+ loadedJson);
-           try{
-           backupTable(name,filePath);}
-           catch (IOException e2){
-               System.out.println(e2.getMessage());           }
+           backupTable(name,filePath);
            return loadedObject;
        }
 

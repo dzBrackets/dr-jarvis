@@ -16,11 +16,12 @@ public class dataWorker<type> extends Thread {
     private coCollection<type> data ;
 private final SynchronousQueue<requestFormer<type>> request;
     private final Class<type> className;
-    public dataWorker(String name, Class<type> className, SynchronousQueue<requestFormer<type>> request) throws IOException, ClassNotFoundException {
+    public dataWorker(String name, Class<type> className, SynchronousQueue<requestFormer<type>> request) throws IOException {
         super(name);
         this.className=className;
         this.request=request;
         data = database.getCollection(name, className);
+        data.lock();
     }
     public void run() {
 

@@ -3,12 +3,11 @@ package libs.coronaDb;
 
 import org.josql.QueryParseException;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,39 +20,53 @@ public class coCollection < type > extends ArrayList < type >  {
     private Class<type> className;
     private final QuerySelector<type> query;
     private final coronaDb mother;
-    public coCollection(String name, String path, Class<type> className,coronaDb mother) {
+    private final FileChannel channel;
+    private FileLock lock=null;
+    public coCollection(String name, String path, Class<type> className, coronaDb mother) throws IOException {
         super();
+        channel=new RandomAccessFile(path, "rw").getChannel();
+
+       // channel = FileChannel.open(Path.of(path), StandardOpenOption.APPEND);
         this.name = name;
         this.path = path;
         this.className = className;
-this.mother=mother;
+        this.mother=mother;
         query=new QuerySelector<>(this);
+
+
+
     }
 
 
 
     public void insertMany(type[] data) throws IOException {
-   FileWriter fw = new FileWriter(path, true);
-   BufferedWriter bw = new BufferedWriter(fw);
-   PrintWriter out = new PrintWriter(bw);
-   String jsonString =_jsonStringFixer(coronaDb.mapper.writeValueAsString(data),true);
-   new BufferedWriter(new FileWriter(path, true)).append(jsonString).append(",").close();
+        unlock();
 
+        FileWriter fw = new FileWriter(path, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter out = new PrintWriter(bw);
+        String jsonString =_jsonStringFixer(coronaDb.mapper.writeValueAsString(data),true);
+        new BufferedWriter(new FileWriter(path, true)).append(jsonString).append(",").close();
+        lock();
 
         mother.updateSize(name,size());
 
 
     }
     public void insertOne(type data) throws IOException {
+
         if(data!=null){
-        add(data);
-        FileWriter fw = new FileWriter(path, true);
-        BufferedWriter bw = new BufferedWriter(fw);
-        PrintWriter out = new PrintWriter(bw);
-        String jsonString =  coronaDb.mapper.writeValueAsString(data);
-        new BufferedWriter(new FileWriter(path, true))
+            unlock();
+            add(data);
+            FileWriter fw = new FileWriter(path, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter out = new PrintWriter(bw);
+            String jsonString =  coronaDb.mapper.writeValueAsString(data);
+            new BufferedWriter(new FileWriter(path, true))
                     .append(jsonString).append(",")
-                    .close();}
+                    .close();
+            lock();
+        }
         mother.updateSize(name,size());
 
     }
@@ -67,7 +80,7 @@ this.mother=mother;
         reSave();
     }
     public void removeOne(type data) {
-    remove(data);
+        remove(data);
         reSave();
         try {
             mother.updateSize(name,size());
@@ -78,11 +91,8 @@ this.mother=mother;
     }
 
     public void removeBunch(type[] data) {
-        //System.out.println("size :"+data.length);
-       // System.out.println("total"+size());
-        removeAll(Arrays.asList(data));
-       // System.out.println("total"+size());
 
+        removeAll(Arrays.asList(data));
         reSave();
 
         try {
@@ -95,13 +105,14 @@ this.mother=mother;
 
     public void reSave() {
         try {
+            unlock();
             String jsonString = coronaDb.mapper.writeValueAsString(this.toArray());
             BufferedWriter writer = new BufferedWriter(new FileWriter(path));
             writer.write(_jsonStringFixer(jsonString,false));
             writer.close();
             if(size()>0)
-            new BufferedWriter(new FileWriter(path, true)).append(",").close();
-
+                new BufferedWriter(new FileWriter(path, true)).append(",").close();
+            lock();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -119,20 +130,20 @@ this.mother=mother;
 
         return this.stream()
                 .filter(t-> {
-        try {
-            @SuppressWarnings("unchecked")
-            List < doc > b = (ArrayList < doc > ) f.invoke(t);
-            return b.containsAll(list);
-        } catch (IllegalAccessException | InvocationTargetException e) {
+                    try {
+                        @SuppressWarnings("unchecked")
+                        List < doc > b = (ArrayList < doc > ) f.invoke(t);
+                        return b.containsAll(list);
+                    } catch (IllegalAccessException | InvocationTargetException e) {
 
-            return false;
-        }
-            }).collect(Collectors.toList());
+                        return false;
+                    }
+                }).collect(Collectors.toList());
     }
 
-public type getLike(type object){
+    public type getLike(type object){
         return this.stream().filter(t->t.equals(object)).findAny().orElse(null);
-}
+    }
 
     public List < type > findByObject(String getter, Object object) {
 
@@ -146,20 +157,20 @@ public type getLike(type object){
 
         return this.stream()
                 .filter(t-> {
-        try {
+                    try {
 
-            return f.invoke(t).equals(object);
-        } catch (IllegalAccessException | InvocationTargetException e) {
+                        return f.invoke(t).equals(object);
+                    } catch (IllegalAccessException | InvocationTargetException e) {
 
-            return false;
-        }
-            }).collect(Collectors.toList());
+                        return false;
+                    }
+                }).collect(Collectors.toList());
     }
     static public String _jsonStringFixer(String str,boolean both) {
         if (str != null && str.length() > 0) {
             str = str.substring(0, str.length() - 1);
             if(both)
-            str = str.substring(1);
+                str = str.substring(1);
 
         }
 
@@ -167,11 +178,11 @@ public type getLike(type object){
     }
 
 
-public QuerySelector<type> querySelector(String selectwhat,String Clausers) throws QueryParseException {
+    public QuerySelector<type> querySelector(String selectwhat,String Clausers) throws QueryParseException {
         //SELECT * FROM className.getClass WHERE IT FUCKEDUP
-    System.out.println(selectwhat+" FROM "+className.getName()+" "+Clausers);
-    return query.parser(selectwhat+" FROM "+className.getName()+" "+Clausers);
-}
+        System.out.println(selectwhat+" FROM "+className.getName()+" "+Clausers);
+        return query.parser(selectwhat+" FROM "+className.getName()+" "+Clausers);
+    }
 
     public String getName() {
         return name;
@@ -195,5 +206,12 @@ public QuerySelector<type> querySelector(String selectwhat,String Clausers) thro
 
     public void setClassName(Class < type > className) {
         this.className = className;
+    }
+    public void lock() throws IOException {
+        lock = channel.lock();
+    }
+    public void unlock() throws IOException {
+        if(lock!=null)
+        lock.release();
     }
 }
