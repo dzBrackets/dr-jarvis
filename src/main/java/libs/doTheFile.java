@@ -11,6 +11,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Comparator;
 
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+
 public class doTheFile {
     public customizable config;
     File file;
@@ -37,7 +39,8 @@ int i=1;
         i++;
     }
     config.setURL(file.getAbsolutePath());
-    Files.copy(Paths.get("tempDisteny/didi"), file.toPath());
+    file.mkdirs();
+    Files.copy(Paths.get("tempDisteny/didi"), file.toPath(),REPLACE_EXISTING);
     deleteDirectoryStream(tmp.toPath());
 }
 

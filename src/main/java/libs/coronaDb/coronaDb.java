@@ -49,24 +49,32 @@ File conf;
 private void initTab(String table,String fileName) throws IOException{
     tables.add(new tablesObj().tablesObj(0,table,0));
     saveConfig();
-if(!new File(fileName).exists()){
+//if(!new File(fileName).exists()){
    createTabFile(fileName);
-}
-
-else{
-backupTable(table,fileName);
-}
+//}
+//else{
+//backupTable(table,fileName,1);
+//}
     }
 
 void backupTable(String table,String fileName) throws IOException {
     File f=new File(backup+table+" "+"savethis");
     f.mkdirs();
     Files.copy(Paths.get(fileName),f.toPath(), StandardCopyOption.REPLACE_EXISTING);
-createTabFile(fileName);
-    throw new IOException("Something Wrong happen your file has been backedUp in case of loss data.try launch app again and hope good");
+
+    // new IOException("Something Wrong happen your file has been backedUp in case of loss data. try launch app again and hope good");
+
+    createTabFile(fileName);
 
 }
+    void backupTable(String table,String fileName,int i) throws IOException {
+        File f=new File(backup+table+" "+"savethis");
+        f.mkdirs();
+        Files.copy(Paths.get(fileName),f.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        createTabFile(fileName);
+        System.out.println("backup...");
 
+    }
 
     public <type> coCollection<type> getCollection(String name,Class<type> className) throws IOException {
         String loadedJson="";
