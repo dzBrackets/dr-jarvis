@@ -127,8 +127,7 @@ public <klass> requestFormer<type> callBack(String fName, klass[] ob, Class<klas
     }
     public requestFormer<type> mojoJojo(String s, String[] elements){
     arg1=s;
-    this.functionName="mojojojo";
-    this.request=CALLBACK;
+    this.request="mojojojo";
     this.funArguments=elements;
     return this;
     }

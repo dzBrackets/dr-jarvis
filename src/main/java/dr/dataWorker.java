@@ -25,6 +25,7 @@ private final SynchronousQueue<requestFormer<type>> request;
     }
     public void run() {
 
+        //noinspection InfiniteLoopStatement
         while (true) {
             requestFormer<type> req;
             try {
@@ -86,6 +87,29 @@ private final SynchronousQueue<requestFormer<type>> request;
                 req.dispatchEvent();
 
             }
+                if(req.request.equals(requestFormer.FINDALL)){
+                    ArrayList<type> selectiveList=new ArrayList<>();
+
+                    for (Object element:req.funArguments)
+                    {
+                        List<type> D=data.findByObject((String) req.arg1,element);
+                        selectiveList.addAll(D);
+                    }
+                    req.reply(selectiveList);
+                    req.dispatchEvent();
+                }
+                if(req.request.equals("mojojojo")){
+                    ArrayList<type> selectiveList=new ArrayList<>();
+
+                    for (Object element:req.funArguments)
+                    {
+                        List<type> D=data.findByObject((String) req.arg1,element);
+                        if(D.size()>0)
+                            selectiveList.add(D.get(0));
+                    }
+                    req.reply(selectiveList);
+                    req.dispatchEvent();
+                }
 
             if (req.request.equals(requestFormer.POST)) {
                 @SuppressWarnings("unchecked")
@@ -124,18 +148,7 @@ private final SynchronousQueue<requestFormer<type>> request;
                     }
 
 
-                    if(req.functionName.equals("mojojojo")){
-                        ArrayList<type> selectiveList=new ArrayList<>();
 
-                        for (Object element:req.funArguments)
-                        {
-                            List<type> D=data.findByObject((String) req.arg1,element);
-                            if(D.size()>0)
-                            selectiveList.add(D.get(0));
-                        }
-                        req.reply(selectiveList);
-                        req.dispatchEvent();
-                    }
                 }
                     catch (QueryParseException|QueryExecutionException e) {
                         e.printStackTrace();
