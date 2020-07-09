@@ -16,6 +16,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static dr.FinalsVal.database;
+
 public class coronaDb {
     private final String name;
     static ObjectMapper mapper;
@@ -84,11 +86,13 @@ void backupTable(String table,String fileName) throws IOException {
            if (!tables.stream().map(tablesObj::getTableName).collect(Collectors.toList()).contains(name)) {
                initTab(name, filePath);
                System.out.println("Not Founds! Creating table...");
+               updateSize(name,loadedObject.size());
                return loadedObject;
            }
             if (!new File(filePath).exists()) {
                createTabFile(filePath);
-               return loadedObject;
+                updateSize(name,loadedObject.size());
+                return loadedObject;
            }
 
            File tempFile = _tempFile(filePath);
@@ -96,13 +100,16 @@ void backupTable(String table,String fileName) throws IOException {
             loadedJson = _jsonStringFixer(readFile(filePath));
            if (loadedJson.length() <= 2) {
                createTabFile(filePath);
+               updateSize(name,loadedObject.size());
                return loadedObject;
            }
            loadedObject.addAll(mapper.readValue(loadedJson, TypeFactory.defaultInstance().constructCollectionType(ArrayList.class, className)));
-           return loadedObject;
+            updateSize(name,loadedObject.size());
+            return loadedObject;
        }
        catch (IOException e){
            backupTable(name,filePath);
+           updateSize(name,loadedObject.size());
            return loadedObject;
        }
 

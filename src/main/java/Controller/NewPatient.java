@@ -39,7 +39,7 @@ public class NewPatient implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         form_validation();
     }
-void preFilled(Patient patient){
+public void preFilled(Patient patient){
         oldPatient=patient;
         firstN_TXF.setText(patient.getFirstName());
         lastN_TXF.setText(patient.getLastName());

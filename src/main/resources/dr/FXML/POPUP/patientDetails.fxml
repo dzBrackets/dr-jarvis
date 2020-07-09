@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane id="quick_pane" fx:id="quick_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="752.0" prefWidth="507.0"
+            style="-fx-border-radius: 27px; -fx-background-radius: 27px;" stylesheets="@../../CSS/quick_panel_style.css"
+            xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.patientDetailsC">
+    <Label id="top_label" layoutX="23.0" layoutY="14.0" prefHeight="17.0" prefWidth="194.0"
+           text="Prescription Details  :" textFill="WHITE"/>
+    <Pane id="pat_info_panel" layoutX="86.0" layoutY="47.0" prefHeight="290.0" prefWidth="317.0"
+          style="-fx-background-color: #765EE2; -fx-background-radius: 30px;" AnchorPane.leftAnchor="86.0"
+          AnchorPane.rightAnchor="104.0">
+        <Pane layoutX="23.0" layoutY="14.0">
+            <Label id="info1_label" layoutX="6.0" prefHeight="21.0" prefWidth="115.0"
+                   style="-fx-font-size: 15px;" text="Name :" textFill="WHITE"/>
+            <Label id="name_label" fx:id="name_label" layoutX="135.0" prefHeight="21.0" prefWidth="151.0"
+                   style="-fx-font-size: 15px;" text="UNKNOWN" textFill="WHITE"/>
+            <Label id="info2_label" layoutX="6.0" layoutY="40.0" prefHeight="21.0" prefWidth="115.0"
+                   style="-fx-font-size: 15px;" text="Age :" textFill="WHITE"/>
+            <Label id="age_label" fx:id="age_label" layoutX="135.0" layoutY="40.0" prefHeight="21.0"
+                   prefWidth="115.0" style="-fx-font-size: 15px;" text="Null" textFill="WHITE"/>
+            <Label id="info3_label" layoutX="5.0" layoutY="80.0" prefHeight="21.0" prefWidth="115.0"
+                   style="-fx-font-size: 15px;" text="Last Visit :" textFill="WHITE"/>
+            <Label id="visite_label" fx:id="visite_label" layoutX="134.0" layoutY="80.0" prefHeight="21.0"
+                   prefWidth="132.0" style="-fx-font-size: 15px;" text="1/1/2050" textFill="WHITE"/>
+            <Label id="info4_label" layoutX="6.0" layoutY="119.0" prefHeight="21.0" prefWidth="132.0"
+                   style="-fx-font-size: 15px;" text="Last diagnosis:" textFill="WHITE"/>
+            <Label id="lastDiago" fx:id="lastDiago" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY"
+                   graphicTextGap="10.0" layoutY="140.0" prefHeight="118.0" prefWidth="271.0"
+                   style="-fx-background-color: rgba(255, 255, 255, 0.06); -fx-background-radius: 11px;"
+                   text="N/D" textFill="WHITE">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </padding>
+            </Label>
+        </Pane>
+    </Pane>
+    <Label id="print_panel_labels" layoutX="68.0" layoutY="337.0" prefHeight="39.0" prefWidth="98.0" text="Drugs List :"
+           textFill="WHITE">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Label>
+    <TableView id="table" fx:id="table" layoutX="69.0" layoutY="376.0" prefHeight="320.0" prefWidth="493.0"
+               AnchorPane.leftAnchor="69.0" AnchorPane.rightAnchor="86.0">
+        <columns>
+            <TableColumn id="name_colm" fx:id="date" prefWidth="116.0" text="Date"/>
+            <TableColumn id="type_colm" fx:id="id" prefWidth="124.0" text="ID"/>
+            <TableColumn id="notice_colm" fx:id="show" prefWidth="228.0"/>
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+    </TableView>
+    <JFXButton id="exit_btn" fx:id="exit_btn" layoutX="68.0" layoutY="711.0" onAction="#exit_methode" prefHeight="33.0"
+               prefWidth="79.0" style="-fx-background-color: #F24E1E; -fx-background-radius: 16.5px;" text="Exit"
+               textFill="WHITE">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </JFXButton>
+    <Pane layoutX="290.0" layoutY="711.0">
+        <JFXButton id="exit_btn" fx:id="add_button" layoutX="92.0" onAction="#add_methode" prefHeight="33.0"
+                   prefWidth="79.0" style="-fx-background-color: #0ACF83; -fx-background-radius: 16.5px;"
+                   text="New.." textFill="WHITE">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </JFXButton>
+        <JFXButton id="exit_btn" fx:id="delete_btn" onAction="#delete_methode" prefHeight="33.0" prefWidth="79.0"
+                   style="-fx-background-color: #F24E1E; -fx-background-radius: 16.5px;" text="Delete"
+                   textFill="WHITE">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </JFXButton>
+    </Pane>
+</AnchorPane>

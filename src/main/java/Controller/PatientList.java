@@ -5,6 +5,9 @@ import DataClass.prescriptionsHistory;
 import com.jfoenix.controls.JFXButton;
 import dr.FinalsVal;
 import dr.Main;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
@@ -18,9 +21,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import libs.cellController;
 import libs.requestFormer;
 import model.components.amazingDialog;
+import model.components.animations;
 import model.components.spawnButton;
 import model.popUpWindow;
 import model.showButton;
@@ -32,6 +37,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import static dr.FinalsVal.*;
+import static dr.Main.mainStage;
 import static libs.helper.movableFalse;
 
 public class PatientList implements Initializable {
@@ -61,6 +67,7 @@ public cellController<Patient> cellController=new cellController<>();
     Parent root ;
     Patient selectedPatient=null;
     private stageLoader sl;
+    patientDetailsC detailController;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -89,25 +96,20 @@ public cellController<Patient> cellController=new cellController<>();
     public void  loadData(){
 
             req.onReceive(v->{
-                try {
-                    database.updateSize("patient",req.respond.size());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
                 patient_table.setItems(req.respond);
                 System.out.println("patient "+(patient_table.getItems().size()-req.respond.size()));
             });
 
             requestP.offer(req.get());
-
+        stageLoader op=new stageLoader("Patient info","/dr/FXML/POPUP/patientDetails.fxml");
+         detailController = (patientDetailsC) op.getController();
     }
 
 
     public void eventTrigger(){
 
         cellController.clicked.addListener(v->{
-            FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/show_window.fxml"));
+          /*  FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/show_window.fxml"));
             try {
                 Parent root = loader.load();
                 show_winC control=loader.getController();
@@ -117,7 +119,9 @@ public cellController<Patient> cellController=new cellController<>();
 
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+            }*/
+            initPatDetailsStage(patient_table.getItems().get(cellController.index));
+
         });
         cellController.MenuDispatcher.addListener(e-> {
                     IntegerProperty prop= (IntegerProperty) e;
@@ -130,7 +134,7 @@ public cellController<Patient> cellController=new cellController<>();
                         JFXButton ok = spawnButton.red("Delete");
                         JFXButton cancel = spawnButton.gray("Cancel");
                         check.setPosition(300,300);
-                        check.show(Main.mainStage);
+                        check.show(mainStage);
                         check.getButtonList().setAll(ok,cancel);
                        ok.setOnAction(v->{
                            cleanDelete(patient_table.getItems().get(cellController.index));
@@ -142,7 +146,6 @@ public cellController<Patient> cellController=new cellController<>();
                         write_TXF.clear();
 
                     if(prop.getValue()==1){
-
                     loadAddStage(patient_table.getItems().get(cellController.index));
                     }
                     if(prop.getValue()==2){
@@ -160,6 +163,26 @@ public cellController<Patient> cellController=new cellController<>();
                 requestP.offer(req.get());
         });
     }
+    public void initPatDetailsStage(Patient patient){
+
+
+        detailController.pops();
+        detailController.loadFrom(patient);
+        animations easeIn=new animations(detailController.quick_pane,animations.EASE_IN);
+        easeIn.playAnimation();
+      //  op.getStage().close();
+        detailController.getPops().addCloseAnimation(new animations(detailController.quick_pane,animations.EASE_OUT));
+
+        detailController.add_button.setOnAction(v->{
+            open_quick_pane(patient);
+        });
+        detailController.delete_btn.setOnAction(v->{
+            cellController.MenuDispatcher.setValue(-1);
+            cellController.MenuDispatcher.setValue(0);
+        });
+
+    }
+
 private void initEvent(){
         req2.onReceive(v->{
 

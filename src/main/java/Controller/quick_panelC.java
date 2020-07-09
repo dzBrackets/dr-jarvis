@@ -28,12 +28,9 @@ import libs.cellController;
 import libs.helper;
 import libs.printerException;
 import libs.requestFormer;
+import model.*;
 import model.components.amazingDialog;
 import model.components.spawnButton;
-import model.popUpWindow;
-import model.popupMenu;
-import model.showButton;
-import model.usedDrug;
 
 import java.io.IOException;
 import java.net.URL;
@@ -266,15 +263,19 @@ edit_area.focusedProperty().addListener(v->{
     public void initEvents(){
     add_btn.setOnAction(v->{
             if(!added){
-                data.add(new usedDrug().usedDrug(selectedDrug.getName(),type_combo.getSelectionModel().getSelectedItem(),doss_combo.getSelectionModel().getSelectedItem(),spinner.getValue()+"",notice_text_field.getText()));
-                drugList.add(selectedDrug);
-                added=true;
-                type_combo.getItems().clear();
-                doss_combo.getItems().clear();
-                drug_search.setText("");
-                notice_text_field.setText("");
-            spinner.decrement(spinner.getValue());
-
+                if(selectedDrug!=null) {
+                    data.add(new usedDrug().usedDrug(selectedDrug.getName(), type_combo.getSelectionModel().getSelectedItem(), doss_combo.getSelectionModel().getSelectedItem(), spinner.getValue() + "", notice_text_field.getText()));
+                    drugList.add(selectedDrug);
+                    added = true;
+                    type_combo.getItems().clear();
+                    doss_combo.getItems().clear();
+                    drug_search.setText("");
+                    notice_text_field.setText("");
+                    spinner.decrement(spinner.getValue());
+                }
+                else {
+                    openAddDrug();
+                }
             }
         });
     cellController.MenuDispatcher.addListener(v-> {
@@ -293,6 +294,13 @@ edit_area.focusedProperty().addListener(v->{
 
         }
     });
+    }
+
+    private void openAddDrug() {
+        stageLoader sl=new stageLoader("Add new drug","/dr/FXML/POPUP/New_drugs.fxml");
+NewDrug controller= (NewDrug) sl.getController();
+    controller.pops();
+
     }
 
     public void initSearchBar(){

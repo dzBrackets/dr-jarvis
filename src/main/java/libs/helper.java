@@ -1,6 +1,7 @@
 package libs;
 
 import Controller.MainPanelC;
+import Controller.NewPatient;
 import DataClass.Patient;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.ListChangeListener;
@@ -12,12 +13,15 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import model.components.drugItem;
+import model.stageLoader;
 import model.usedDrug;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static dr.FinalsVal.formerH;
+import static dr.FinalsVal.requestH;
 import static libs.printWorker.print;
 
 public class helper {
@@ -106,4 +110,16 @@ public class helper {
                 if (change.wasReplaced() && !suspended) {
                     this.suspended = true; tableView.getColumns().setAll(columns);
                     this.suspended = false; } } }); }
+
+
+    static public void cleanDelete(Patient patient) {
+        System.out.println(patient.getPrescriptionsId().toArray(String[]::new).length);
+        requestH.offer(formerH.mojoJojo("getPresId", patient.getPrescriptionsId().toArray(String[]::new)));
+    }
+    static public void loadAddStage(Patient options){
+        stageLoader patientLoader = new stageLoader("Add new patient","/dr/FXML/POPUP/New_patient.fxml");
+        if(options!=null) ((NewPatient)patientLoader.getController()).preFilled(options);
+        patientLoader.show();
+
+    }
 }

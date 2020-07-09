@@ -16,7 +16,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import libs.requestFormer;
+import model.popUpWindow;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,6 +26,8 @@ import java.util.ResourceBundle;
 
 import static Controller.DrugList.closePopuUp;
 import static dr.FinalsVal.*;
+import static dr.Main.mainStage;
+import static libs.helper.getCurrentStage;
 
 public class NewDrug implements Initializable {
 
@@ -35,8 +39,10 @@ public class NewDrug implements Initializable {
     public JFXComboBox<String> weight_combo;
     public Label error_txt;
     public JFXButton Cancel_btn;
+    public AnchorPane container;
     Drug drug;
     private final requestFormer<Drug> req=formerD;
+    popUpWindow window=null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -47,7 +53,12 @@ public class NewDrug implements Initializable {
 
     }
 
+    public void pops() {
+        window = new popUpWindow(container);
+        window.show(getCurrentStage());
 
+    }
+    popUpWindow getPops(){return window;}
 
     public void add_drug(ActionEvent actionEvent) {
         String parsedName=removeSpace(name_TXF.getText().toLowerCase());
@@ -93,6 +104,9 @@ public class NewDrug implements Initializable {
 
         requestD.offer(req.find("getName", parsedName));
       if(valid)
+          if(window!=null)
+              window.hide();
+              else
         closePopuUp();
 else {
 
@@ -126,8 +140,8 @@ else {
         name_val.setIcon(new ImageView("dr/image/icons8_box_important_16.png"));
         type_val.setIcon(new ImageView("dr/image/icons8_box_important_16.png"));
         doss_val.setIcon(new ImageView("dr/image/icons8_box_important_16.png"));
-        name_val.setRegexPattern("[a-z]{1,10}");
-        type_val.setRegexPattern("[a-z]{1,10}");
+        name_val.setRegexPattern("[a-z]{1,20}");
+        type_val.setRegexPattern("[a-z0-9]{1,20}");
         /*******************************************************************************/
         name_TXF.getValidators().addAll(name_req,name_val);
         type_TXF.getValidators().addAll(type_req,type_val);
@@ -157,7 +171,12 @@ else {
     }
 
     public void Cancel(ActionEvent actionEvent) {
+        if(window!=null)
+        {
+            window.hide();
+        }
+            else{
         DrugList.add_drug_from_stage.close();
-        MainPanelC.effect.setRadius(0);
+        MainPanelC.effect.setRadius(0);}
     }
 }

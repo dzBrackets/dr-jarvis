@@ -37,10 +37,12 @@ private final async close=new async();
 
 
         scene.setOnMousePressed(event -> {
+
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();
         });
         scene.setOnMouseDragged(event -> {
+
             stage.setX(event.getScreenX() - xOffset);
             stage.setY(event.getScreenY()-yOffset);
         });
@@ -53,6 +55,11 @@ private final async close=new async();
     }
     public void show(){
 
+        stage.show();
+    }
+    public void show(Double X,Double Y){
+stage.setX(X);
+stage.setY(Y);
         stage.show();
     }
     public void close(){
@@ -92,5 +99,14 @@ public void setOneClose(InvalidationListener v){
 
     public void setScene(Scene scene) {
         this.scene = scene;
+    }
+
+    public void disableDrag() {
+        scene.setOnMousePressed(event -> {
+
+        });
+        scene.setOnMouseDragged(event -> {
+
+        });
     }
 }
