@@ -89,16 +89,20 @@ public cellController<Patient> cellController=new cellController<>();
     public void  loadData(){
 
             req.onReceive(v->{
+                try {
+                    database.updateSize("patient",req.respond.size());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
                 patient_table.setItems(req.respond);
+                System.out.println("patient "+(patient_table.getItems().size()-req.respond.size()));
             });
 
             requestP.offer(req.get());
 
     }
 
-    static void setTableItems(List<Patient> items){
-        data.setAll(items);
-    }
 
     public void eventTrigger(){
 
@@ -142,12 +146,7 @@ public cellController<Patient> cellController=new cellController<>();
                     loadAddStage(patient_table.getItems().get(cellController.index));
                     }
                     if(prop.getValue()==2){
-                        try {
-                            initializePane();
-                            open_quick_pane(patient_table.getItems().get(cellController.index));
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
-                        }
+                        open_quick_pane(patient_table.getItems().get(cellController.index));
 
 
                     }
@@ -193,17 +192,17 @@ void loadAddStage(Patient options){
 
 
 }
-    public void add_patient_table(ActionEvent actionEvent) throws IOException, InterruptedException {
+    public void add_patient_table() {
 
 loadAddStage(null);
     }
-    public void initializePane() throws IOException {
+    public void initializePane() {
          sl = new stageLoader("New prescription","/dr/FXML/POPUP/quick_panel.fxml");
         root = sl.getRoot();
         control= (quick_panelC) sl.getController();
 
     }
-    public void open_quick_pane(Patient selectedPatient) throws IOException {
+    public void open_quick_pane(Patient selectedPatient)  {
         initializePane();
         Scene   quick_scene =sl.getScene();
         quick_scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
