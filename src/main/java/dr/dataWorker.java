@@ -114,16 +114,24 @@ private final SynchronousQueue<requestFormer<type>> request;
                 System.out.println("here finaly "+req.functionName);
                 try {
                 if(req.functionName.equals("querySearch")){
-                        req.reply((data.querySelector((String)req.arg1,(String)req.arg2).collect()));
-                        if(req.ar3!=null&&req.respond.size()>(int)req.ar3) req.reply(req.respond.subList(0,(int)req.ar3));
+                    List<type> tmp = (data.querySelector((String) req.arg1, (String) req.arg2).collect());
+
+                        if(req.ar3!=null&&tmp.size()>(int)req.ar3)
+                            tmp=tmp.subList(0,(int)req.ar3);
+
+                            req.reply(tmp);
                         req.dispatchEvent();
                     }
 
+
                     if(req.functionName.equals("mojojojo")){
                         ArrayList<type> selectiveList=new ArrayList<>();
+
                         for (Object element:req.funArguments)
                         {
-                            selectiveList.addAll(data.querySelector("SELECT *",req.arg1+"'"+ element +"'").collect());
+                            List<type> D=data.findByObject((String) req.arg1,element);
+                            if(D.size()>0)
+                            selectiveList.add(D.get(0));
                         }
                         req.reply(selectiveList);
                         req.dispatchEvent();

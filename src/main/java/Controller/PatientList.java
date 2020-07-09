@@ -175,8 +175,9 @@ private void initEvent(){
 }
     private void cleanDelete(Patient patient) {
         selectedPatient = patient;
+
         System.out.println(patient.getPrescriptionsId().toArray(String[]::new).length);
-        requestH.offer(formerH.mojoJojo("WHERE presId = ", patient.getPrescriptionsId().toArray(String[]::new)));
+        requestH.offer(formerH.mojoJojo("getPresId", patient.getPrescriptionsId().toArray(String[]::new)));
 
     }
 

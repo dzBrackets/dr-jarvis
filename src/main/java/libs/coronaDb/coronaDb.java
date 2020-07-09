@@ -159,6 +159,10 @@ public void saveConfig() throws IOException {
 
     public int updateUUID(String tableName) throws IOException {
        tablesObj tb=tables.stream().filter(v->(v.getTableName()).equals(tableName)).findFirst().get();
+       if (tb.getSize()>tb.getUUID()){
+           tb.setUUID(tb.getSize()+1);
+       }
+else
        tb.setUUID(tb.getUUID()+1);
        saveConfig();
 return tb.getUUID();

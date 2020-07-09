@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import java.util.List;
 
 final public class requestFormer<type> {
+    public static final String FINDALL = "fa";
     public String request;
 
 public String functionName;
