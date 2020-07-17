@@ -1,6 +1,8 @@
 package model.components;
 
 import Controller.alertBox;
+import javafx.beans.InvalidationListener;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
@@ -10,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 import model.popUpWindow;
 
@@ -26,7 +29,8 @@ public class amazingDialog {
     public static final String BOTTOM_LEFT="bl";
     public static final String BOTTOM_RIGHT="br";
     private Window stage;
-
+    boolean FOLLOW_HIDE=false;
+    InvalidationListener event = observable ->{};
     public amazingDialog(){
         super();
 
@@ -40,7 +44,29 @@ public class amazingDialog {
         }
         assert root != null;
         self = loader.getController();
-         pop = new popUpWindow(self.general.getChildren());
+        pop = new popUpWindow(self.general.getChildren());
+
+        setBubbleDir("none");
+
+        autoHide(false);
+        blackBack(false);
+
+    }
+    public amazingDialog(Window stage){
+        super();
+this.stage=stage;
+
+        Parent root=null;
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("/dr/FXML/POPUP/alertBox.fxml"));
+        try {
+            root= loader.load();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assert root != null;
+        self = loader.getController();
+        pop = new popUpWindow(self.general.getChildren());
 
         setBubbleDir("none");
 
@@ -114,14 +140,29 @@ public void autoHide(boolean v){
     pop.setAutoHide(v);
     pop.setHideOnEscape(false);
 }
+public void stageFollowHide(boolean value){
+
+        if (stage == null) return;
+        FOLLOW_HIDE=value;
+        stage.focusedProperty().removeListener(event);
+    if(value){
+        event = v -> {
+            if (!stage.isFocused()) {
+                close();
+            } else
+                show(stage);
+        };
+        stage.focusedProperty().addListener(event);
+    }
+
+
+}
     public void show(Window stage, Node node)
     {
         this.stage=stage;
         pop.setOnAutoHide(v->close());
         pop.hideOnEscapeProperty().addListener(v->close());
         pop.show(stage,stage.getX(),stage.getY()+53);
-
-        //setBlur(node);
 
     }
     public void show(Window stage)
@@ -131,6 +172,14 @@ public void autoHide(boolean v){
         stage.getScene().getRoot().setEffect(new GaussianBlur(3.25));
         stage.getScene().getRoot().setDisable(true);
     }
+    public void show()
+    {
+        if (stage!=null) {
+            pop.show(stage, stage.getX(), stage.getY() + 53);
+            stage.getScene().getRoot().setEffect(new GaussianBlur(3.25));
+            stage.getScene().getRoot().setDisable(true);
+        }
+    }
     public void show(Window stage,boolean blur)
     {
         this.stage=stage;
@@ -139,12 +188,14 @@ public void autoHide(boolean v){
         stage.getScene().getRoot().setEffect(new GaussianBlur(3.25));
         stage.getScene().getRoot().setDisable(true);}
     }
+
     public void close(){
         stage.getScene().getRoot().setEffect(null);
         stage.getScene().getRoot().setDisable(false);
         pop.hide();
 
     }
+
 
 
     public void blackBack(boolean b){

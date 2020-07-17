@@ -17,8 +17,9 @@ import java.util.List;
 public class checker {
     static ObjectMapper mapper= coronaDb.mapper;
    synchronized public static versionInfo  requestInfo(String value) throws Exception {
-
+       System.out.println("requesting...");
         HttpPost post = new HttpPost("https://quiet-dust-9740.getsandbox.com/update");
+
         List<NameValuePair> urlParameters = new ArrayList<>();
         urlParameters.add(new BasicNameValuePair("version", value));
 

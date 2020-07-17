@@ -240,12 +240,12 @@
                               </opaqueInsets>
                            </Label>
                            <JFXButton id="buy_btn" fx:id="terms_btn" layoutX="634.0" layoutY="33.0" prefHeight="18.0" prefWidth="39.0" text="terms." underline="true" visible="false" wrapText="true" />
-                           <Label fx:id="version_lbl1" layoutX="14.0" layoutY="80.0" prefHeight="20.0" prefWidth="144.0" styleClass="doc_info_label" text="JDK version : 11+">
+                           <Label layoutX="14.0" layoutY="80.0" prefHeight="20.0" prefWidth="144.0" styleClass="doc_info_label" text="JDK version : 11+">
                               <opaqueInsets>
                                  <Insets />
                               </opaqueInsets>
                            </Label>
-                           <Label fx:id="version_lbl11" layoutX="14.0" layoutY="127.0" prefHeight="20.0" prefWidth="233.0" styleClass="doc_info_label" text="Powered by : open source">
+                           <Label layoutX="14.0" layoutY="127.0" prefHeight="20.0" prefWidth="233.0" styleClass="doc_info_label" text="Powered by : open source">
                               <opaqueInsets>
                                  <Insets />
                               </opaqueInsets>

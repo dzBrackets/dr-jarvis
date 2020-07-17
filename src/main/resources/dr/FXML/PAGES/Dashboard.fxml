@@ -15,7 +15,7 @@
             <Pane layoutX="58.0" layoutY="38.0" prefHeight="200.0" prefWidth="544.0" style="-fx-background-color: #737FE7; -fx-background-radius: 11px;">
                <children>
                   <Line endX="34.0" endY="-15.0" fill="#5b6072" layoutX="343.0" layoutY="131.0" startX="34.0" startY="-2.0" />
-                  <Label id="good_label" fx:id="good_label" layoutX="289.0" layoutY="69.0" text="Good Evening" textFill="WHITE">
+                  <Label id="good_label" fx:id="good_label" layoutX="289.0" layoutY="69.0" text="Good morning" textFill="WHITE">
                      <font>
                         <Font name="Sarabun Medium" size="12.0" />
                      </font>

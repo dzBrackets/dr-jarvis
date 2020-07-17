@@ -11,6 +11,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.text.DecimalFormat;
 
+import static libs.env.APP_VERSION;
 import static libs.updater.checker.requestInfo;
 
 public class updateTask extends Task<Void> {
@@ -38,9 +39,17 @@ if(updateState.getValue()==5){
     protected Void call() throws Exception {
 
             updateMessage("Cheking for update...");
+    System.out.println("looking");
+    try{
+             ver = requestInfo(APP_VERSION);}
+    catch (Exception e){
+        updateUpdateState(-1);
+        updateMessage("try again later."+e.getMessage());
+    }
+    System.out.println("got a reply!");
+    if(isCancelled())return null;
 
-             ver = requestInfo("1");
-            if(ver.isNew()){
+    if(ver.isNew()){
                 updateUpdateState(1);
                 updateMessage("a new update available!");}
             else {
@@ -49,16 +58,19 @@ if(updateState.getValue()==5){
                 updateMessage("you have the latest version!");
 
             }
-    while (notYet) {
+    while (notYet&&!isCancelled()) {
         Thread.onSpinWait();
 
     }
+    if(isCancelled())return null;
+
     URL url = new URL(ver.url);
-    String filename = "file.zip";
+    String filename = "bin/update.zip";
     download(url, filename);
+    System.gc();
     return null;
     }
-    public void download(URL url, String fileName) throws IOException {
+    public void download(URL url, String fileName) throws IOException, InterruptedException {
         updateTitle("Downloading the update:");
         updateMessage("Please wait");
         URLConnection openConnection = url.openConnection();
@@ -69,22 +81,32 @@ if(updateState.getValue()==5){
         int n;
         long downloaded = 0;
         DecimalFormat df = new DecimalFormat("#.##");
-        while (-1 != (n = in.read(buf))) {
+        while (-1 != (n = in.read(buf))&&!isCancelled()) {
             downloaded += n;
             out.write(buf, 0, n);
-            updateProgress(downloaded, fileSize);
-
+            updateProgress(downloaded, fileSize+10000);
+            System.out.println("file size: "+fileSize);
+            System.out.println("downloaded: "+downloaded);
             updateMessage((df.format(downloaded / (1024F*1024F*8F))) +" MB");
-        }
-        updateTitle("update has been downloaded successfully.");
-        updateMessage("Please click on install to apply the update.");
-        out.close();
 
+        }
+        if(isCancelled())return;
+
+        out.close();
+        updateMessage("unpacking...");
 
         byte[] response = out.toByteArray();
         FileOutputStream fos = new FileOutputStream(fileName);
         fos.write(response);
         doTheFile.doFile(new File(fileName));
+        while(!new File(fileName).exists()){
+
+        }
+        Thread.sleep(1000);
+        updateProgress(fileSize+10000, fileSize+10000);
+
+        updateTitle("update has been downloaded successfully.");
+        updateMessage("Please click on install to apply the update.");
     }
     public void updateUpdateState(int value){
         updateState.setValue(value);
