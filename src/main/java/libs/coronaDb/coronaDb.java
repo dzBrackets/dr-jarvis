@@ -20,7 +20,7 @@ import static dr.FinalsVal.database;
 
 public class coronaDb {
     private final String name;
-    static ObjectMapper mapper;
+    public static ObjectMapper mapper;
     private final ArrayList<tablesObj> tables;
     private final String dir=new File("storage").getAbsolutePath()+File.separator;
     private final String backup=new File("backup").getAbsolutePath()+File.separator;

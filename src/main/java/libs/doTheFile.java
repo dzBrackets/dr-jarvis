@@ -18,6 +18,14 @@ public class doTheFile {
     File file;
     public File tmp=new File("tempDisteny/");
 
+    static public void doFile(File f) throws IOException {
+         File tmp=new File(System.getProperty("user.dir"));
+        Unzip unzipper = new Unzip();
+        unzipper.setSrc(f);
+        unzipper.setDest(tmp);
+        unzipper.execute();
+        f.delete();
+    }
     public <type>doTheFile(File f) throws IOException {
         Unzip unzipper = new Unzip();
         unzipper.setSrc(f);

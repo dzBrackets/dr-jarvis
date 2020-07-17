@@ -1,0 +1,18 @@
+
+.progress-indicator {    
+    -fx-progress-color: rgb(45,137,239);    
+}
+.progress-indicator .indicator {
+    -fx-background-color:rgb(231,231,231);
+-fx-border-color: -fx-box-border;
+}
+.progress-indicator .progress {
+    -fx-background-color: transparent;       
+     -fx-padding: 1.5em;
+}
+.progress-indicator:indeterminate .spinner {    
+    -fx-padding: 1em;
+}
+.progress-indicator .percentage {
+    -fx-text-fill: #ffffff;
+}

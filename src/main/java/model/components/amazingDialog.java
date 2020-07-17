@@ -1,6 +1,8 @@
 package model.components;
 
 import Controller.alertBox;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -112,11 +114,12 @@ public void autoHide(boolean v){
     pop.setAutoHide(v);
     pop.setHideOnEscape(false);
 }
-    public void show(Window staticstage, Node node)
+    public void show(Window stage, Node node)
     {
+        this.stage=stage;
         pop.setOnAutoHide(v->close());
         pop.hideOnEscapeProperty().addListener(v->close());
-        pop.show(staticstage,staticstage.getX(),staticstage.getY()+53);
+        pop.show(stage,stage.getX(),stage.getY()+53);
 
         //setBlur(node);
 
@@ -157,5 +160,20 @@ public void autoHide(boolean v){
     public void setBlur(Node ownerNode) {
         blackBack(false);
         ownerNode.setEffect(new GaussianBlur(3.25));
+    }
+    public void progress(boolean visible){
+        self.progress.setVisible(visible);
+
+    }
+    public StringProperty contentProperty(){
+        return self.content.textProperty();
+    }
+    public StringProperty titleProperty(){
+        return self.title.textProperty();
+    }
+    public DoubleProperty progressProperty(){
+        self.icon.setVisible(false);
+        progress(true);
+        return self.progress.progressProperty();
     }
 }

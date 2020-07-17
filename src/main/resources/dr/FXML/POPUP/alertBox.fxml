@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="general" xmlns="http://javafx.com/javafx/10.0.2-internal" style="-fx-background-color: transparent; -fx-background-radius: 11px;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.alertBox">
+<AnchorPane fx:id="general" style="-fx-background-color: transparent; -fx-background-radius: 11px;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.alertBox">
    <Pane fx:id="blackHover" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="1001.0" style="-fx-background-color: rgba(0,0,0,0.36);" />
     <Pane fx:id="container" prefHeight="144.0" prefWidth="392.0" style="-fx-background-color: #765EE2; -fx-background-radius: 11px;">
       <children>
@@ -24,7 +24,7 @@
             <font>
                <Font size="13.0" />
             </font></Label>
-         <HBox fx:id="buttonList" alignment="CENTER_RIGHT" layoutY="104.0" prefHeight="36.0" prefWidth="392.0" spacing="10.0">
+         <HBox fx:id="buttonList" alignment="CENTER_RIGHT" layoutY="104.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="392.0" spacing="10.0">
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
@@ -32,9 +32,8 @@
                <Insets right="10.0" />
             </padding>
          </HBox>
+         <ProgressIndicator fx:id="progress" layoutX="310.0" layoutY="30.0" progress="0.0" stylesheets="@../../CSS/progress.css" visible="false" />
          <ImageView fx:id="icon" fitHeight="33.0" fitWidth="37.0" layoutX="347.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
       </children>
    </Pane>
-
-
 </AnchorPane>
