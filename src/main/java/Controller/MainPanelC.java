@@ -110,7 +110,7 @@ public class MainPanelC  implements Initializable {
         sl.setOneClose(v-> {
             System.out.println("closed");
             requestU.offer(formerU.update());
-Main.mainStage.show();
+            Main.mainStage.show();
             settingFirstLook();
         });
 

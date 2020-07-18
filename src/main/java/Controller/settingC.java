@@ -107,7 +107,8 @@ fetchTemps();
                 alr.stageFollowHide(true);
             }
             else
-                 updateSoftwareEvent();}
+                 updateSoftwareEvent();
+            }
             catch (NullPointerException e){
                 System.out.println("hemm");
             }
@@ -115,7 +116,6 @@ fetchTemps();
         });
         }
         void updateSoftwareEvent(){
-updHided=false;
                 alr=new amazingDialog();
                 updateTask updater=new updateTask();
                 Thread exes=new Thread(updater);
@@ -138,6 +138,7 @@ updHided=false;
                     updater.cancel();
                     alr.stageFollowHide(false);
                     alr.close();
+                    updHided=false;
 
                 });
 

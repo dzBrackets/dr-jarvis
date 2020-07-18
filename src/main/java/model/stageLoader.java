@@ -20,7 +20,7 @@ public class stageLoader {
    private Stage stage;
    private Scene scene;
 private double xOffset,yOffset;
-private final async close=new async();
+private  async close;
     public stageLoader(String name,String URL){
         FXMLLoader loader =new FXMLLoader(getClass().getResource(URL));
         try {
@@ -67,6 +67,7 @@ stage.setY(Y);
         close.dispatchEvent();
     }
 public void setOneClose(InvalidationListener v){
+        close=new async();
     close.onReceive(v);
 }
     public Object getController() {
