@@ -311,6 +311,7 @@ boolean stop=false;
         templateC controller = loader.getController();
         controller.container.getTransforms().add(new Scale(0.74, 0.74));
         load_anchorpane.getChildren().setAll(controller.container);
+        //controller.configTemplate(setting);
         controller.setLabelBy(req.respond.get(selectedTempIndex).getAttributes());
 
         controller.setPrimaryColor(Color.web(req.respond.get(selectedTempIndex).getAttribute("c1")));

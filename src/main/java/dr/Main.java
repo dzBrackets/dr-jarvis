@@ -5,11 +5,22 @@ import DataClass.*;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import libs.stackTraceViewer;
+import libs.templateCracker.Holder;
+import libs.templateCracker.templateController;
+import libs.templateCracker.templateDeserializer;
 import model.components.amazingDialog;
 import model.components.spawnButton;
 import model.stageLoader;
+
+import java.awt.*;
+import java.util.ArrayList;
 
 import static dr.FinalsVal.*;
 
@@ -88,6 +99,29 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
 
+      /*  ArrayList<Holder> holders=new ArrayList<Holder>();
+        Holder holder = new Holder();
+        holder.setType(Holder.LABEL);
+        holder.setValue("hello doc");
+        holder.setYPos(7.0);
+        holder.setWidth(222.0);
+        holder.setHeight(37.0);
+        holder.setStyle("-fx-font-weight: bold;-fx-text-fill:Green;");
+        holder.setName("tmp");
+        holders.add(holder);
+        holder = new Holder();
+        holder.setType(Holder.LABEL);
+        holder.setValue("hello doc");
+        holder.setYPos(45.0);
+        holder.setWidth(222.0);
+        holder.setHeight(37.0);
+        holder.setStyle("-fx-font-weight: bold;-fx-text-fill:Green;");
+        holder.setName("tmp");
+        holders.add(holder);
+        templateDeserializer td=new templateDeserializer(holders);
+        templateController controller = td.tc;
+                stageLoader sc=new stageLoader("temp",controller.container);
+                sc.show();*/
         if (!Error) {
             primaryStage = sl.getStage();
             mainStage = primaryStage;

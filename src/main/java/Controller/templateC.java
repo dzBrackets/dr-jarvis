@@ -1,14 +1,15 @@
 package Controller;
 
 import DataClass.Patient;
+import DataClass.customizable;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -37,7 +38,6 @@ public class templateC implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //setDoctorLocalInfo
       // container.setStyle("-fx-border-color:black; -fx-background-radius: 17px; -fx-border-radius: 17px");;
     }
     void setLabelByPos(int i,String val)
@@ -51,6 +51,21 @@ public class templateC implements Initializable {
         for (int i = 0; i <sideBox.getChildren().size() ; i++) {
 
             ((Label)sideBox.getChildren().get(i)).setText(list.get(i));
+        }
+    }
+void configTemplate(customizable config){
+    for (int i = 0; i <config.getKeys().size() ; i++) {
+        int finalI = i;
+       Node node = container.getChildren().stream().filter(v -> v.getId().equals(config.getKeys().get(finalI))).findFirst().orElse(null);
+        setNodeConfig(node,config.getAttributes().get(i),config.getValues().get(i));
+    }
+}
+    void setNodeConfig(Node node,String type,String value){
+        if ("style".equals(type)) {
+            node.setStyle(value);
+        }
+        if("text".equals(type)&&node instanceof Label){
+           ((Label) node).setText(value);
         }
     }
 

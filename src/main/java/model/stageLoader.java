@@ -5,6 +5,7 @@ import javafx.beans.InvalidationListener;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -21,6 +22,32 @@ public class stageLoader {
    private Scene scene;
 private double xOffset,yOffset;
 private  async close;
+    public stageLoader(String name, Pane node) {
+        root=  node;
+
+    scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+    controller = null;
+    stage = new Stage();
+
+
+
+        scene.setOnMousePressed(event -> {
+
+        xOffset = event.getSceneX();
+        yOffset = event.getSceneY();
+    });
+        scene.setOnMouseDragged(event -> {
+
+        stage.setX(event.getScreenX() - xOffset);
+        stage.setY(event.getScreenY()-yOffset);
+    });
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.getIcons().add(APP_ICON);
+        stage.setTitle(name);
+    }
     public stageLoader(String name,String URL){
         FXMLLoader loader =new FXMLLoader(getClass().getResource(URL));
         try {
