@@ -23,6 +23,7 @@ import model.components.spawnButton;
 import model.stageLoader;
 
 import java.awt.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -111,7 +112,7 @@ public class Main extends Application {
         holder.setWidth(222.0);
         holder.setHeight(37.0);
         holder.setStyle("-fx-font-weight: bold;-fx-text-fill:Green;-fx-background-color: black");
-        holder.setName("tmp");
+        holder.setName(Holder.PATIENT_FNAME);
         holders.add(holder);
         holder = new Holder();
         holder.setType(Holder.LABEL);
@@ -133,14 +134,14 @@ public class Main extends Application {
         holder.setName("img");
         holders.add(holder);
         System.out.println(holders);
-        templateDeserializer td=new templateDeserializer(holders);
-        templateController controller = td.tc;
+        templateController controller = new templateController(holders);
         stageLoader sc=new stageLoader("temp",controller.container);
+controller.setTemplateInfo(new Patient().Patient("dd","moh","boh","",1, LocalDate.now(),""));
         sc.show();
 
-        List<Holder> v = td.templateSerializer(controller.edge);
+        List<Holder> v = controller.serialize();
         System.out.println(v);
-        */
+*/
 
                if (!Error) {
             primaryStage = sl.getStage();

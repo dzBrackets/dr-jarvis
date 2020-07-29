@@ -3,6 +3,8 @@ package libs.templateCracker;
 public class Holder {
     //types{label,image,patientHolder,DrugListHolder}
     public static final String LABEL="label",IMAGE="img",PATIENT_HOLDER="patHold",DRUGS_HOLD="drugListHolder";
+    public static final String PATIENT_FNAME="fn",PATIENT_LNAME="ln",PATIENT_AGE="age",PATIENT_VDATE="vdate";
+
     String type="";
     String name="";
     String style="";
@@ -12,6 +14,10 @@ public class Holder {
     Double width=0.0;
     Double height=0.0;
 
+    public boolean isSpecial(){
+        return name.equals(PATIENT_AGE)||name.equals(PATIENT_FNAME)||name.equals(PATIENT_LNAME)||name.equals(PATIENT_VDATE);
+
+    }
     public String getStyle() {
         return style;
     }

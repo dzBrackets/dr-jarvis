@@ -5,35 +5,23 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 
 import java.io.File;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.List;
 
-public class templateDeserializer {
-public templateController tc;
-public templateDeserializer(){
+public class Deserializer {
 
-}
-    public templateDeserializer(List<Holder> components){
-        tc=new templateController();
 
-       for (Holder holder:components) {
-           tc.edge.getChildren().add(HolderToNodeTransformer(holder));
-       }
-   }
-    public templateDeserializer(templateController tc,List<Holder> components){
-        this.tc=tc;
+   static public void deserialize(templateController tc, List<Holder> components){
 
         for (Holder holder:components) {
-            tc.edge.getChildren().add(HolderToNodeTransformer(holder));
+            tc.edge.getChildren().add(HolderToNodeTransformer(holder,tc));
         }
 
     }
-Node HolderToNodeTransformer(Holder holder)  {
+static Node HolderToNodeTransformer(Holder holder,templateController tc)  {
        Node babyNodyLoveU = null;
     if(holder.getType().equals(Holder.IMAGE)){
         babyNodyLoveU=new ImageView();
@@ -52,17 +40,18 @@ Node HolderToNodeTransformer(Holder holder)  {
     else if(holder.getType().equals(Holder.LABEL)){
         babyNodyLoveU=new Label(holder.getValue());
         nodeFiller(babyNodyLoveU,holder);
+
         switch (holder.getName()){
-            case Holder.PATIENT_FNAME:
+            case "FirstName":
                 tc.p_first_name= (Label) babyNodyLoveU;
                 break;
-            case Holder.PATIENT_LNAME:
+            case "LastName":
                 tc.p_last_name= (Label) babyNodyLoveU;
                 break;
-            case Holder.PATIENT_AGE:
+            case "Age":
                 tc.p_age= (Label) babyNodyLoveU;
                 break;
-            case Holder.PATIENT_VDATE:
+            case "Date":
                 tc.p_date= (Label) babyNodyLoveU;
                 break;
         }
@@ -82,7 +71,7 @@ babyNodyLoveU.setId(Holder.PATIENT_HOLDER);
     }
 return babyNodyLoveU;
 }
-void nodeFiller(Node babyNodyLoveU, Holder holder){
+static void nodeFiller(Node babyNodyLoveU, Holder holder){
 
     babyNodyLoveU.setId(holder.getName());
     babyNodyLoveU.setLayoutX(holder.getXPos());
