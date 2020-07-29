@@ -16,6 +16,19 @@ public class Holder {
         return style;
     }
 
+
+
+    /**
+     * A string representation of the CSS style associated with this
+     * specific {@code Node}. This is analogous to the "style" attribute of an
+     * HTML element. Note that, like the HTML style attribute, this
+     * variable contains style properties and values and not the
+     * selector portion of a style rule.
+     * @param style The inline CSS style to use for this {@code Node}.
+     *         {@code null} is implicitly converted to an empty String.
+     * @defaultValue empty string
+     * @see <a href="doc-files/cssref.html">CSS Reference Guide</a>
+     */
     public void setStyle(String style) {
         this.style = style;
     }
@@ -74,5 +87,19 @@ public class Holder {
 
     public void setHeight(Double height) {
         this.height = height;
+    }
+
+    @Override
+    public String toString() {
+        return "Holder{" +
+                "type='" + type + '\'' +
+                ", name='" + name + '\'' +
+                ", style='" + style + '\'' +
+                ", value='" + value + '\'' +
+                ", xPos=" + xPos +
+                ", yPos=" + yPos +
+                ", width=" + width +
+                ", height=" + height +
+                '}';
     }
 }

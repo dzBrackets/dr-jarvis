@@ -15,6 +15,12 @@ public class templateController {
     public templateController(){
         container=new Pane();
         edge=new Pane();
+        container.setMinHeight(842);
+        container.setMinWidth(595.0);
+        edge.setLayoutX(25.0);
+        edge.setLayoutY(14.0);
+        edge.setMinHeight(522.0);
+        container.getChildren().add(edge);
     }
 
 }

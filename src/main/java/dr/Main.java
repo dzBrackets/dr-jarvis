@@ -9,18 +9,22 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import libs.stackTraceViewer;
 import libs.templateCracker.Holder;
 import libs.templateCracker.templateController;
 import libs.templateCracker.templateDeserializer;
+import libs.templateCracker.templateSerializer;
 import model.components.amazingDialog;
 import model.components.spawnButton;
 import model.stageLoader;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 import static dr.FinalsVal.*;
 
@@ -98,15 +102,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
-      /*  ArrayList<Holder> holders=new ArrayList<Holder>();
+/*
+        ArrayList<Holder> holders=new ArrayList<Holder>();
         Holder holder = new Holder();
         holder.setType(Holder.LABEL);
         holder.setValue("hello doc");
         holder.setYPos(7.0);
         holder.setWidth(222.0);
         holder.setHeight(37.0);
-        holder.setStyle("-fx-font-weight: bold;-fx-text-fill:Green;");
+        holder.setStyle("-fx-font-weight: bold;-fx-text-fill:Green;-fx-background-color: black");
         holder.setName("tmp");
         holders.add(holder);
         holder = new Holder();
@@ -118,11 +122,27 @@ public class Main extends Application {
         holder.setStyle("-fx-font-weight: bold;-fx-text-fill:Green;");
         holder.setName("tmp");
         holders.add(holder);
+        holder = new Holder();
+        holder.setType(Holder.IMAGE);
+        holder.setValue("C:\\Users\\forgiven\\Desktop\\dr-jarvis\\src\\main\\resources\\dr\\image\\appIcon.png");
+        holder.setYPos(100.0);
+        holder.setXPos(100.0);
+        holder.setWidth(10.0);
+        holder.setHeight(10.0);
+        //holder.setStyle("-fx-font-weight: bold;-fx-text-fill:Green;");
+        holder.setName("img");
+        holders.add(holder);
+        System.out.println(holders);
         templateDeserializer td=new templateDeserializer(holders);
         templateController controller = td.tc;
-                stageLoader sc=new stageLoader("temp",controller.container);
-                sc.show();*/
-        if (!Error) {
+        stageLoader sc=new stageLoader("temp",controller.container);
+        sc.show();
+
+        List<Holder> v = td.templateSerializer(controller.edge);
+        System.out.println(v);
+        */
+
+               if (!Error) {
             primaryStage = sl.getStage();
             mainStage = primaryStage;
             wait.dispatchEvent();
