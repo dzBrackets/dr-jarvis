@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane prefHeight="840.0" prefWidth="1160.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" >
+   <left>
+      <VBox prefHeight="754.0" prefWidth="245.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Label contentDisplay="CENTER" prefHeight="35.0" prefWidth="246.0" style="-fx-background-color: #765EE2;" text="Components" textFill="WHITE" wrapText="true">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+            </Label>
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <VBox prefHeight="840.0" prefWidth="245.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Label contentDisplay="CENTER" prefHeight="35.0" prefWidth="246.0" style="-fx-background-color: #765EE2;" text="Settings" textFill="WHITE" wrapText="true">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="21.0" />
+               </padding>
+            </Label>
+         </children>
+      </VBox>
+   </right>
+   <center>
+      <Pane prefHeight="840.0" prefWidth="531.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutX="89.0" layoutY="84.0" prefHeight="675.0" prefWidth="464.0" style="-fx-background-color: white;" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

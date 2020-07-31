@@ -142,7 +142,8 @@ controller.setTemplateInfo(new Patient().Patient("dd","moh","boh","",1, LocalDat
         List<Holder> v = controller.serialize();
         System.out.println(v);
 */
-
+        stageLoader sc=new stageLoader("temp","/dr/FXML/POPUP/templateEditor.fxml");
+sc.show();
                if (!Error) {
             primaryStage = sl.getStage();
             mainStage = primaryStage;
@@ -152,7 +153,7 @@ controller.setTemplateInfo(new Patient().Patient("dd","moh","boh","",1, LocalDat
                 System.exit(0);
             });
         }
-        sl.show();
+       // sl.show();
 
     }
 }
