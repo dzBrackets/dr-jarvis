@@ -8,7 +8,7 @@
 ### This work was intended to a university project,So we endsup doing this:
 - We writing [some weird stuff](https://docs.google.com/document/d/e/2PACX-1vTcRSH2lxsivaxESN6Z-hFyudUSe9STgRfSexdmFQMzOJVfwbg0hRPSvV1G94L94xBTpo0TLQKYpOgt/pub) to discribe the work.
 - We also did this akward [powerPoint presentation](https://docs.google.com/presentation/d/e/2PACX-1vQ1AHSDjoouf0DRh01O9E5c5vmu4Iu96h8buiG2yvTCNIl3v7tD6jIe2gkcDlJkramSxZxMAW30gNve/pub?start=false&loop=false&delayms=3000&slide=id.p)
-- we make a [movie](https://drive.google.com/file/d/1BpQwqD7vnCLjC8w4u9cggLveZaGrUg9aL/view?usp=sharing)
+- we make a [movie](https://drive.google.com/file/d/1BpQwqD7vnCLjC8w4u9cggLveZaGrUg9aL/view)
 
 ### some captures from the app:
 ![Home](https://lh6.googleusercontent.com/HNHZUUbXchCq_-3kiYcrjBTW9yWaspt_VdEJGqZS6gZhd89WNrOFAWRFJCeB705sF4EwHip6RVEu7kjvPIibVeasL1jm5mLqM3fJodNZnRpgygBaTthzhJCYMUXMUjyc4K_dfcY1)
